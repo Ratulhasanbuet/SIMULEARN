@@ -1,16 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.simulearn.MenuController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
-
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.MenuController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/Menu.png" />
+         </image>
+      </ImageView>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <VBox prefHeight="1139.0" prefWidth="1920.0">
+               <children>
+                  <Button mnemonicParsing="false" styleClass="card-button" text="Login">
+                     <VBox.margin>
+                        <Insets left="1800.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <HBox prefHeight="209.0" prefWidth="1920.0">
+                     <VBox.margin>
+                        <Insets top="800.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox prefHeight="172.0" prefWidth="297.0" />
+                        <Button mnemonicParsing="false" onAction="#physics" prefHeight="215.0" prefWidth="230.0" style="-fx-background-color: #71bdd8;" styleClass="card-button">
+                           <graphic>
+                              <ImageView fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/physics_button.gif" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <VBox prefHeight="210.0" prefWidth="130.0" />
+                        <Button mnemonicParsing="false" onAction="#math" prefHeight="214.0" prefWidth="229.0" style="-fx-background-color: #595880;" styleClass="card-button">
+                           <graphic>
+                              <ImageView fitHeight="199.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" styleClass="card-button">
+                                 <image>
+                                    <Image url="@../../../Images/math.gif" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <VBox prefHeight="210.0" prefWidth="130.0" />
+                        <Button mnemonicParsing="false" onAction="#chemistry" prefHeight="215.0" prefWidth="230.0" styleClass="card-button">
+                           <graphic>
+                              <ImageView fitHeight="210.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/Chemistry_button.gif" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <VBox prefHeight="210.0" prefWidth="130.0" />
+                        <Button fx:id="biologybutton" mnemonicParsing="false" onAction="#biology" prefHeight="215.0" prefWidth="230.0" style="-fx-background-color: ffffff;" styleClass="card-button">
+                           <graphic>
+                              <ImageView fitHeight="202.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/biology_button.gif" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <VBox prefHeight="222.0" prefWidth="297.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>
