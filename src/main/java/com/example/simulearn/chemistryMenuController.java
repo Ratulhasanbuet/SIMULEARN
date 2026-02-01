@@ -1,4 +1,4 @@
-package com.example.cse108_project;
+package com.example.simulearn;
 
 import javafx.fxml.FXML;
 
