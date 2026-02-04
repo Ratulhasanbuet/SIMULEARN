@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -10,71 +11,102 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.MenuController">
-   <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Images/Menu.png" />
-         </image>
-      </ImageView>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0">
-         <content>
-            <VBox prefHeight="1139.0" prefWidth="1920.0">
-               <children>
-                  <Button mnemonicParsing="false" styleClass="card-button" text="Login">
+    <children>
+        <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/menuimage.png" />
+            </image>
+        </ImageView>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <content>
+                <VBox prefHeight="1139.0" prefWidth="1920.0">
+                    <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                            <children>
+                                <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="120.0" text="Home">
+                                    <styleClass>
+                                        <String fx:value="card-button" />
+                                        <String fx:value="button-74" />
+                                    </styleClass>
+                                </Button>
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Login" />
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="About" />
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Exit">
+                                    <HBox.margin>
+                                        <Insets right="50.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox fx:id="cardHBox" alignment="CENTER" prefHeight="209.0" prefWidth="1920.0" spacing="30">
+                            <children>
+                                <!-- Spacer left -->
+                                <VBox prefWidth="50.0" />
+
+                                <!-- Physics Button -->
+                                <Button mnemonicParsing="false" onAction="#physics" styleClass="card-button" userData="Physics.fxml">
+                                    <graphic>
+                                        <ImageView fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/physics_button.gif" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+
+                                <!-- Spacer -->
+                                <VBox prefWidth="30.0" />
+
+                                <!-- Math Button -->
+                                <Button mnemonicParsing="false" onAction="#math" styleClass="card-button" userData="Math.fxml">
+                                    <graphic>
+                                        <ImageView fitHeight="199.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/math.gif" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+
+                                <!-- Spacer -->
+                                <VBox prefWidth="30.0" />
+
+                                <!-- Chemistry Button -->
+                                <Button mnemonicParsing="false" onAction="#chemistry" styleClass="card-button" userData="Chemistry.fxml">
+                                    <graphic>
+                                        <ImageView fitHeight="210.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/Chemistry_button.gif" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+
+                                <!-- Spacer -->
+                                <VBox prefWidth="30.0" />
+
+                                <!-- Biology Button -->
+                                <Button mnemonicParsing="false" onAction="#biology" styleClass="card-button" userData="Biology.fxml">
+                                    <graphic>
+                                        <ImageView fitHeight="202.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/biology_button.gif" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+
+                                <!-- Spacer right -->
+                                <VBox prefWidth="50.0" />
+                            </children>
                      <VBox.margin>
-                        <Insets left="1800.0" top="20.0" />
+                        <Insets top="500.0" />
                      </VBox.margin>
-                  </Button>
-                  <HBox prefHeight="209.0" prefWidth="1920.0">
-                     <VBox.margin>
-                        <Insets top="800.0" />
-                     </VBox.margin>
-                     <children>
-                        <VBox prefHeight="172.0" prefWidth="297.0" />
-                        <Button mnemonicParsing="false" onAction="#physics" prefHeight="215.0" prefWidth="230.0" style="-fx-background-color: #71bdd8;" styleClass="card-button">
-                           <graphic>
-                              <ImageView fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/physics_button.gif" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <VBox prefHeight="210.0" prefWidth="130.0" />
-                        <Button mnemonicParsing="false" onAction="#math" prefHeight="214.0" prefWidth="229.0" style="-fx-background-color: #595880;" styleClass="card-button">
-                           <graphic>
-                              <ImageView fitHeight="199.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" styleClass="card-button">
-                                 <image>
-                                    <Image url="@../../../Images/math.gif" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <VBox prefHeight="210.0" prefWidth="130.0" />
-                        <Button mnemonicParsing="false" onAction="#chemistry" prefHeight="215.0" prefWidth="230.0" styleClass="card-button">
-                           <graphic>
-                              <ImageView fitHeight="210.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Chemistry_button.gif" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <VBox prefHeight="210.0" prefWidth="130.0" />
-                        <Button fx:id="biologybutton" mnemonicParsing="false" onAction="#biology" prefHeight="215.0" prefWidth="230.0" style="-fx-background-color: ffffff;" styleClass="card-button">
-                           <graphic>
-                              <ImageView fitHeight="202.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/biology_button.gif" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Button>
-                        <VBox prefHeight="222.0" prefWidth="297.0" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-   </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
 </StackPane>

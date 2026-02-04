@@ -1,0 +1,29 @@
+.button-74 {
+    -fx-background-color: #fbeee0;
+    -fx-border-color: #422800;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+    -fx-text-fill: #422800;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 25 10 25;
+    -fx-cursor: hand;
+
+    /* Shadow */
+    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 4, 4);
+}
+
+/* Hover */
+.button-74:hover {
+    -fx-background-color: white;
+}
+
+/* Pressed (active) */
+.button-74:pressed {
+    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 2, 2);
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+}

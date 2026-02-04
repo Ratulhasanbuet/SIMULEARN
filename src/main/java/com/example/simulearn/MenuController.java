@@ -1,6 +1,9 @@
 package com.example.simulearn;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,10 +17,21 @@ import java.io.File;
 
 public class MenuController {
 
-
+    @FXML
+    private HBox cardHBox;
     @FXML
     public void initialize() {
-
+        for (Node node : cardHBox.getChildren()) {
+            if (node instanceof Button btn) {
+                // Optionally scale on hover
+                btn.setOnMouseEntered(e -> btn.setScaleX(1.05));
+                btn.setOnMouseEntered(e -> btn.setScaleY(1.05));
+                btn.setOnMouseExited(e -> {
+                    btn.setScaleX(1);
+                    btn.setScaleY(1);
+                });
+            }
+        }
 
     }
 
