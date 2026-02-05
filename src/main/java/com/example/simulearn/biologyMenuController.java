@@ -21,7 +21,9 @@ public class biologyMenuController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/ligation.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root , 1920,1080);
+            stage.setScene(scene);
+            stage.setMaximized(true);
             stage.show();
 
         } catch (java.io.IOException e) {

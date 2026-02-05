@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 
@@ -14,6 +15,8 @@ public class Menu extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         stage.setTitle("SimuLearn");
         stage.setScene(scene);
+
+        stage.setMaximized(true);
         stage.show();
     }
 

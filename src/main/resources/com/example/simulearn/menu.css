@@ -58,6 +58,25 @@
     -fx-translate-y: 2;
 }
 
+.hbox {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-effect:
+        /* inset shadows (top depth) */
+        innershadow(gaussian, rgba(0,0,0,0.17), 25, 0, 0, -23),
+        innershadow(gaussian, rgba(0,0,0,0.15), 30, 0, 0, -36),
+        innershadow(gaussian, rgba(0,0,0,0.10), 40, 0, 0, -79),
+
+        /* outer shadows (bottom depth) */
+        dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 2),
+        dropshadow(gaussian, rgba(0,0,0,0.09), 2, 0, 0, 4),
+        dropshadow(gaussian, rgba(0,0,0,0.09), 4, 0, 0, 8),
+        dropshadow(gaussian, rgba(0,0,0,0.09), 8, 0, 0, 16),
+        dropshadow(gaussian, rgba(0,0,0,0.09), 16, 0, 0, 32);
+}
+
+
+
 
 
 
