@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="327" height="417" fill="none" viewBox="0 0 327 417">
+    <path fill="#8AADC6" d="M4 45h286v321a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V45z"/>
+    <path fill="#9ABBD3" d="M18 57h24v320H18zM251 57h24v320h-24z"/>
+    <path fill="#DFDFDF" d="M42 195h209l24 13H18l24-13z"/>
+    <path fill="#fff" d="M15 208h260v11H15v-11z"/>
+    <path fill="#E9E9E9" fill-rule="evenodd" d="M290 45H4v363a3 3 0 0 0 3 3h280a3 3 0 0 0 3-3V45zM21 61.84a3 3 0 0 0-3 3v327.442a3 3 0 0 0 3 3h251a3 3 0 0 0 3-3V64.841a3 3 0 0 0-3-3H21z" clip-rule="evenodd"/>
+    <path fill="#E9E9E9" fill-rule="evenodd" d="M290 45H4v315h286V45zm-15 12H18v289h257V57z" clip-rule="evenodd"/>
+    <path fill="#D4D4D4" fill-rule="evenodd" d="M290 45h-29v16.84h9a5 5 0 0 1 5 5v323.442a5 5 0 0 1-5 5h-9V411h26a3 3 0 0 0 3-3V45z" clip-rule="evenodd"/>
+    <path fill="#38B0DC" d="M0 3a3 3 0 0 1 3-3h289a3 3 0 0 1 3 3v42H0V3z"/>
+    <path fill="#54BCE3" d="M0 3a3 3 0 0 1 3-3h114.927c2.649 0 3.998 3.181 2.157 5.085L81.5 45H0V3z"/>
+    <path fill="#15A5DA" d="M261 3a3 3 0 0 1 3-3h28a3 3 0 0 1 3 3v42h-34V3z"/>
+    <path fill="#C4C4C4" d="M12 411h19v6H12zM263 411h19v6h-19z"/>
+    <path fill="#54BCE3" d="M150.5 401H12v-45h226l-87.5 45z"/>
+    <path fill="#38B0DC" d="M138 356h144v45H99.5l38.5-45z"/>
+    <mask id="a" width="67" height="35" x="221" y="5" maskUnits="userSpaceOnUse">
+        <rect width="65.182" height="34.143" x="221.818" y="5.857" fill="#C4C4C4" rx="1"/>
+    </mask>
+    <g mask="url(#a)">
+        <path fill="#4873E2" d="M287 5.857h-65.182V40H287V5.857z"/>
+        <path fill="#254FBB" d="M221.818 5.857H287v1.366h-65.182z"/>
+        <path fill="#254FBB" d="M221.818 40V5.857h1.105v32.777L221.818 40z"/>
+        <path fill="#fff" d="M292.5 7.223L254.842 40h5.041l36.429-32.777H292.5zM262.064 7.223L223.08 40h25.151l39.242-32.777h-25.409z" opacity=".2"/>
+    </g>
+    <rect width="26" height="9" x="294" y="65" fill="#fff" rx="4.5"/>
+    <rect width="26" height="9" x="294" y="150" fill="#fff" rx="4.5"/>
+    <rect width="13" height="110" x="314" y="57" fill="#54BCE3" rx="5"/>
+    <path fill="#F5F7F9" d="M274 50h27v315h-27z"/>
+    <path fill="#BEDCDE" d="M263 60a1 1 0 0 1 1-1h10v297h-10a1 1 0 0 1-1-1V60z"/>
+    <path fill="#ACBFC0" d="M271 60a1 1 0 0 1 1-1h2v297h-2a1 1 0 0 1-1-1V60z"/>
+</svg>

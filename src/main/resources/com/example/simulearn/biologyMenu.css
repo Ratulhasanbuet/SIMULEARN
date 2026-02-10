@@ -27,3 +27,29 @@
     -fx-translate-x: 2;
     -fx-translate-y: 2;
 }
+.neu-button {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #cecece;
+    -fx-border-width: 2;
+
+    -fx-text-fill: #4d4d4d;
+    -fx-font-size: 18px;
+    -fx-padding: 15 40 15 40;
+
+    /* Neumorphism effect */
+    -fx-effect: innershadow(gaussian, #bcbcbc, 10, 0.4, 4, 4),
+                 innershadow(gaussian, #ffffff, 10, 0.4, -4, -4);
+}
+.neu-button:hover {
+    -fx-effect:
+        innershadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
+        innershadow(gaussian, #ffffff, 5, 0.3, -2, -2),
+        dropshadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
+        dropshadow(gaussian, #ffffff, 5, 0.3, -2, -2);
+}
+.neu-button:focused {
+    -fx-background-insets: 0;
+}
+

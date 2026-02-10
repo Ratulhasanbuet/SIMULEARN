@@ -22,6 +22,9 @@ public class biologyMenuController {
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root , 1920,1080);
+            scene.getStylesheets().add(
+                    getClass().getResource("biologyMenu.css").toExternalForm()
+            );
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.show();
