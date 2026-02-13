@@ -21,7 +21,6 @@ public class physicsMenuController {
     {
         try {
             URL fxmlLocation = getClass().getResource("com/example/simulearn/Buoyancy.fxml");
-            System.out.println("FXML location: " + fxmlLocation);
             // Load FXML correctly
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Buoyancy.fxml"));
             Parent root = loader.load();
