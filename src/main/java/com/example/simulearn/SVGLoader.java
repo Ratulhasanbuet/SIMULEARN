@@ -30,8 +30,9 @@ public class SVGLoader {
             InputStream svgStream = SVGLoader.class.getResourceAsStream(svgPath);
 
             if (svgStream == null) {
-                System.err.println("❌ SVG file not found: " + svgPath);
-                return createFallbackImage(width, height);
+                System.err.println("⚠ SVG file not found: " + svgPath);
+                // ✅ Try loading PNG version instead
+                return loadPNGFallback(svgPath, width, height);
             }
 
             PNGTranscoder transcoder = new PNGTranscoder();
@@ -79,7 +80,46 @@ public class SVGLoader {
             return imageView;
 
         } catch (Exception e) {
-            System.err.println("❌ Error loading SVG: " + svgPath);
+            System.err.println("⚠ Error loading SVG: " + svgPath);
+            e.printStackTrace();
+            // ✅ Try loading PNG version instead
+            return loadPNGFallback(svgPath, width, height);
+        }
+    }
+
+    /**
+     * Try to load PNG version when SVG fails
+     * Converts ".../you.svg" to ".../you.png"
+     */
+    private static ImageView loadPNGFallback(String svgPath, double width, double height) {
+        try {
+            // Convert .svg to .png
+            String pngPath = svgPath.replaceFirst("\\.svg$", ".png");
+
+            System.out.println("🔄 Trying PNG fallback: " + pngPath);
+
+            InputStream pngStream = SVGLoader.class.getResourceAsStream(pngPath);
+
+            if (pngStream == null) {
+                System.err.println("❌ PNG fallback not found: " + pngPath);
+                return createFallbackImage(width, height);
+            }
+
+            // Load PNG image
+            Image image = new Image(pngStream, width, height, true, true);
+
+            ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+
+            pngStream.close();
+
+            System.out.println("✅ Successfully loaded PNG fallback: " + pngPath);
+            return imageView;
+
+        } catch (Exception e) {
+            System.err.println("❌ Error loading PNG fallback");
             e.printStackTrace();
             return createFallbackImage(width, height);
         }

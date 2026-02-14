@@ -115,15 +115,7 @@ public class LigationController implements Initializable {
 
         // Image container with styling
         StackPane imageContainer = new StackPane(plasmidImage);
-        imageContainer.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 9;" +
-                        "-fx-background-radius: 5;" +
-                        "-fx-padding: 10;" +
-                        "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
-        );
+        imageContainer.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 9;" + "-fx-background-radius: 5;" + "-fx-padding: 10;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         imageContainer.setMaxWidth(600);
         imageContainer.setPrefHeight(300);
         imageContainer.setPadding(new Insets(10, 0, 10, 0));
@@ -162,14 +154,7 @@ public class LigationController implements Initializable {
         // Info box
         Label infoText = new Label("Click on the images to learn more about them.");
         infoText.setFont(Font.font("Arial", 14));
-        infoText.setStyle(
-                "-fx-background-color: #e8f4f8;" +
-                        "-fx-padding: 15;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 5;" +
-                        "-fx-background-radius: 5;"
-        );
+        infoText.setStyle("-fx-background-color: #e8f4f8;" + "-fx-padding: 15;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
         infoText.setMaxWidth(600);
 
         // === REAGENTS SECTION ===
@@ -202,17 +187,7 @@ public class LigationController implements Initializable {
         GridPane otherEquipmentGrid = createOtherEquipmentGrid();
 
         // Add all components
-        content.getChildren().addAll(
-                title,
-                underline,
-                infoText,
-                new VBox(5, reagentsTitle, reagentsSubtitle),
-                reagentsGrid,
-                new VBox(5, micropipettingTitle, micropipettingSubtitle),
-                micropipettingGrid,
-                otherEquipmentTitle,
-                otherEquipmentGrid
-        );
+        content.getChildren().addAll(title, underline, infoText, new VBox(5, reagentsTitle, reagentsSubtitle), reagentsGrid, new VBox(5, micropipettingTitle, micropipettingSubtitle), micropipettingGrid, otherEquipmentTitle, otherEquipmentGrid);
 
         return content;
     }
@@ -224,13 +199,7 @@ public class LigationController implements Initializable {
         grid.setPadding(new Insets(20, 0, 20, 0));
 
         // Reagent items - SVG paths
-        String[][] reagents = {
-                {"/Images/LigationImage/reagents/K+-close.svg", "Digested pKAN-R\n(K+)", "#4a90e2"},
-                {"/Images/LigationImage/reagents/A+-close.svg", "Digested pARA\n(A+)", "#e24a4a"},
-                {"/Images/LigationImage/reagents/5XB-close.svg", "Ligation Buffer\n(5XB) Solution", "#50c878"},
-                {"/Images/LigationImage/reagents/LIG-close.svg", "DNA Ligase (LIG)\nSolution", "#9b59b6"},
-                {"/Images/LigationImage/reagents/dH20-close.svg", "Distilled Water\n(dH₂O)", "#3498db"}
-        };
+        String[][] reagents = {{"/Images/LigationImage/reagents/K+-close.svg", "Digested pKAN-R\n(K+)", "#4a90e2"}, {"/Images/LigationImage/reagents/A+-close.svg", "Digested pARA\n(A+)", "#e24a4a"}, {"/Images/LigationImage/reagents/5XB-close.svg", "Ligation Buffer\n(5XB) Solution", "#50c878"}, {"/Images/LigationImage/reagents/LIG-close.svg", "DNA Ligase (LIG)\nSolution", "#9b59b6"}, {"/Images/LigationImage/reagents/dH20-close.svg", "Distilled Water\n(dH₂O)", "#3498db"}};
 
         int col = 0;
         int row = 0;
@@ -254,19 +223,9 @@ public class LigationController implements Initializable {
         grid.setPadding(new Insets(20, 0, 20, 0));
 
         // Micropipetting items - SVG paths
-        String[][] pipettes = {
-                {"/Images/LigationImage/pipettes/P2.svg", "P2 Pipette", "#ff6b6b"},
-                {"/Images/LigationImage/pipettes/P20.svg", "P20 Pipette", "#ffd93d"},
-                {"/Images/LigationImage/pipettes/P200.svg", "P200 Pipette", "#6bcf7f"},
-                {"/Images/LigationImage/pipettes/P1000.svg", "P1000 Pipette", "#4d96ff"}
-        };
+        String[][] pipettes = {{"/Images/LigationImage/pipettes/P2.svg", "P2 Pipette", "#ff6b6b"}, {"/Images/LigationImage/pipettes/P20.svg", "P20 Pipette", "#ffd93d"}, {"/Images/LigationImage/pipettes/P200.svg", "P200 Pipette", "#6bcf7f"}, {"/Images/LigationImage/pipettes/P1000.svg", "P1000 Pipette", "#4d96ff"}};
 
-        String[][] tipBoxes = {
-                {"/Images/LigationImage/tipboxes/P2_Tip_Box.svg", "P2 Tip Box", "#ff6b6b"},
-                {"/Images/LigationImage/tipboxes/P20_Tip_Box.svg", "P20 Tip Box", "#ffd93d"},
-                {"/Images/LigationImage/tipboxes/P200_Tip_Box.svg", "P200 Tip Box", "#6bcf7f"},
-                {"/Images/LigationImage/tipboxes/P1000_Tip_Box.svg", "P1000 Tip Box", "#4d96ff"}
-        };
+        String[][] tipBoxes = {{"/Images/LigationImage/tipboxes/P2_Tip_Box.svg", "P2 Tip Box", "#ff6b6b"}, {"/Images/LigationImage/tipboxes/P20_Tip_Box.svg", "P20 Tip Box", "#ffd93d"}, {"/Images/LigationImage/tipboxes/P200_Tip_Box.svg", "P200 Tip Box", "#6bcf7f"}, {"/Images/LigationImage/tipboxes/P1000_Tip_Box.svg", "P1000 Tip Box", "#4d96ff"}};
 
         // Add pipettes
         int col = 0;
@@ -294,15 +253,7 @@ public class LigationController implements Initializable {
         grid.setPadding(new Insets(20, 0, 20, 0));
 
         // Equipment items - SVG paths
-        String[][] equipment = {
-                {"/Images/LigationImage/equipment/Microcentrifuge.svg", "Microcentrifuge", "#7f8c8d"},
-                {"/Images/LigationImage/equipment/Trash.svg", "Trash", "#95a5a6"},
-                {"/Images/LigationImage/equipment/floating-solution-tube-rack-empty.svg", "Floating Tube\nRack", "#95a5a6"},
-                {"/Images/LigationImage/equipment/freezer-closed.svg", "Freezer", "#3498db"},
-                {"/Images/LigationImage/equipment/Water Bath.svg", "Water Bath", "#e74c3c"},
-                {"/Images/LigationImage/equipment/Ice_Bucket.svg", "Ice Bucket", "#3498db"},
-                {"/Images/LigationImage/equipment/vortex.svg", "Vortex", "#16a085"}
-        };
+        String[][] equipment = {{"/Images/LigationImage/equipment/Microcentrifuge.svg", "Microcentrifuge", "#7f8c8d"}, {"/Images/LigationImage/equipment/Trash.svg", "Trash", "#95a5a6"}, {"/Images/LigationImage/equipment/floating-solution-tube-rack-empty.svg", "Floating Tube\nRack", "#95a5a6"}, {"/Images/LigationImage/equipment/freezer-closed.svg", "Freezer", "#3498db"}, {"/Images/LigationImage/equipment/Water Bath.svg", "Water Bath", "#e74c3c"}, {"/Images/LigationImage/equipment/Ice_Bucket.svg", "Ice Bucket", "#3498db"}, {"/Images/LigationImage/equipment/vortex.svg", "Vortex", "#16a085"}};
 
         int col = 0;
         int row = 0;
@@ -319,32 +270,19 @@ public class LigationController implements Initializable {
         return grid;
     }
 
-    private VBox createMaterialItem(String imagePath, String labelText,
-                                    String accentColor, double imgWidth, double imgHeight) {
+    private VBox createMaterialItem(String imagePath, String labelText, String accentColor, double imgWidth, double imgHeight) {
         VBox container = new VBox(10);
         container.setAlignment(Pos.CENTER);
         container.setPrefSize(150, 180);
-        container.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 8;" +
-                        "-fx-background-radius: 8;" +
-                        "-fx-padding: 15;" +
-                        "-fx-cursor: hand;" +
-                        "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
-        );
+        container.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;" + "-fx-cursor: hand;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
 
         // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 100);
-        imageContainer.setStyle(
-                "-fx-background-color: #0d3d5c;" +
-                        "-fx-background-radius: 5;"
-        );
+        imageContainer.setStyle("-fx-background-color: #0d3d5c;" + "-fx-background-radius: 5;");
 
         // Load SVG using SVGLoader utility
-        ImageView imageView = SVGLoader.loadSVG(imagePath, imgWidth, imgHeight,true);
+        ImageView imageView = SVGLoader.loadSVG(imagePath, imgWidth, imgHeight, true);
 
         if (imageView != null) {
             imageView.setFitWidth(imgWidth);
@@ -378,29 +316,11 @@ public class LigationController implements Initializable {
 
     private void addHoverEffects(VBox container) {
         container.setOnMouseEntered(e -> {
-            container.setStyle(
-                    "-fx-background-color: #e8f4f8;" +
-                            "-fx-border-color: #00aaff;" +
-                            "-fx-border-width: 2;" +
-                            "-fx-border-radius: 8;" +
-                            "-fx-background-radius: 8;" +
-                            "-fx-padding: 15;" +
-                            "-fx-cursor: hand;" +
-                            "-fx-effect: dropshadow(gaussian, rgba(0,170,255,0.4), 15, 0, 0, 6);"
-            );
+            container.setStyle("-fx-background-color: #e8f4f8;" + "-fx-border-color: #00aaff;" + "-fx-border-width: 2;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;" + "-fx-cursor: hand;" + "-fx-effect: dropshadow(gaussian, rgba(0,170,255,0.4), 15, 0, 0, 6);");
         });
 
         container.setOnMouseExited(e -> {
-            container.setStyle(
-                    "-fx-background-color: white;" +
-                            "-fx-border-color: #d0d0d0;" +
-                            "-fx-border-width: 1;" +
-                            "-fx-border-radius: 8;" +
-                            "-fx-background-radius: 8;" +
-                            "-fx-padding: 15;" +
-                            "-fx-cursor: hand;" +
-                            "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
-            );
+            container.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;" + "-fx-cursor: hand;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         });
     }
 
@@ -490,11 +410,7 @@ public class LigationController implements Initializable {
         underline.setPrefHeight(3);
 
         // Introduction text
-        Label introText = new Label(
-                "It is important to summarize your methodology and observations after you have " +
-                        "completed an experiment. Please view a recap of this simulation and tips " +
-                        "regarding ligating DNA fragments below."
-        );
+        Label introText = new Label("It is important to summarize your methodology and observations after you have " + "completed an experiment. Please view a recap of this simulation and tips " + "regarding ligating DNA fragments below.");
         introText.setWrapText(true);
         introText.setFont(Font.font("Arial", 16));
         introText.setStyle("-fx-text-fill: #333333;");
@@ -512,37 +428,18 @@ public class LigationController implements Initializable {
         // Takeaway items
         VBox takeawayItems = createTakeawayItems();
 
-        content.getChildren().addAll(
-                title,
-                underline,
-                introText,
-                learningBox,
-                takeawayTitle,
-                takeawayItems
-        );
+        content.getChildren().addAll(title, underline, introText, learningBox, takeawayTitle, takeawayItems);
 
         return content;
     }
 
     private VBox createLearningOutcomesBox() {
         VBox box = new VBox(15);
-        box.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 8;" +
-                        "-fx-background-radius: 8;" +
-                        "-fx-padding: 25;"
-        );
+        box.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 25;");
         box.setMaxWidth(650);
 
         // Main heading
-        Label heading = new Label(
-                "In this simulation, you learned how to ligate DNA fragments from a " +
-                        "restriction digest using DNA ligase. You should be able to predict " +
-                        "possible recombinant plasmids that can occur during the ligation " +
-                        "process. The simulation explored how to:"
-        );
+        Label heading = new Label("In this simulation, you learned how to ligate DNA fragments from a " + "restriction digest using DNA ligase. You should be able to predict " + "possible recombinant plasmids that can occur during the ligation " + "process. The simulation explored how to:");
         heading.setWrapText(true);
         heading.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         heading.setStyle("-fx-text-fill: #1a5490;");
@@ -550,11 +447,7 @@ public class LigationController implements Initializable {
         // Learning points with checkmarks
         VBox points = new VBox(12);
 
-        points.getChildren().addAll(
-                createChecklistItem("Model different recombinant plasmids."),
-                createChecklistItem("Inactivate restriction enzymes."),
-                createChecklistItem("Prepare and incubate a ligation reaction.")
-        );
+        points.getChildren().addAll(createChecklistItem("Model different recombinant plasmids."), createChecklistItem("Inactivate restriction enzymes."), createChecklistItem("Prepare and incubate a ligation reaction."));
 
         box.getChildren().addAll(heading, points);
         return box;
@@ -594,24 +487,7 @@ public class LigationController implements Initializable {
         container.setMaxWidth(750);
 
         // Takeaway messages data: [image_path, message_text]
-        String[][] takeaways = {
-                {
-                        "/Images/LigationImage/equipment/waterBath.svg",
-                        "When setting up the water bath, always make sure there is enough distilled water and the lid is closed to reduce evaporation."
-                },
-                {
-                        "/Images/LigationImage/equipment/degree.svg",
-                        "It is always a good idea to confirm the temperature of the water with a thermometer, even if there is a digital temperature reading on the water bath."
-                },
-                {
-                        "/Images/LigationImage/equipment/Ice_Bucket.svg",
-                        "Make sure you always keep DNA ligase enzymes and ligation buffer on ice or on a cold block to prevent protein degradation."
-                },
-                {
-                        "/Images/LigationImage/equipment/2tube.svg",
-                        "Make sure your DNA ligase and ligation buffer are completely defrosted before use."
-                }
-        };
+        String[][] takeaways = {{"/Images/LigationImage/equipment/waterBath.svg", "When setting up the water bath, always make sure there is enough distilled water and the lid is closed to reduce evaporation."}, {"/Images/LigationImage/equipment/degree.svg", "It is always a good idea to confirm the temperature of the water with a thermometer, even if there is a digital temperature reading on the water bath."}, {"/Images/LigationImage/equipment/Ice_Bucket.svg", "Make sure you always keep DNA ligase enzymes and ligation buffer on ice or on a cold block to prevent protein degradation."}, {"/Images/LigationImage/equipment/2tube.svg", "Make sure your DNA ligase and ligation buffer are completely defrosted before use."}};
 
         for (String[] takeaway : takeaways) {
             HBox item = createTakeawayItem(takeaway[0], takeaway[1]);
@@ -624,23 +500,13 @@ public class LigationController implements Initializable {
     private HBox createTakeawayItem(String imagePath, String messageText) {
         HBox container = new HBox(15);
         container.setAlignment(Pos.CENTER_LEFT);
-        container.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 8;" +
-                        "-fx-background-radius: 8;" +
-                        "-fx-padding: 15;"
-        );
+        container.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;");
         container.setPrefHeight(120);
 
         // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 90);
-        imageContainer.setStyle(
-                "-fx-background-color: #0d3d5c;" +
-                        "-fx-background-radius: 5;"
-        );
+        imageContainer.setStyle("-fx-background-color: #0d3d5c;" + "-fx-background-radius: 5;");
 
         // Load SVG image
         ImageView imageView = SVGLoader.loadSVG(imagePath, 80, 80);
@@ -778,20 +644,7 @@ public class LigationController implements Initializable {
         });
 
         // Add buttons with spacing
-        panel.getChildren().addAll(
-                btnContext,
-                createSpacer(20),
-                btnMaterials,
-                createSpacer(20),
-                btnPredictions,
-                createSpacer(20),
-                btnProtocol,
-                createSpacer(20),
-                btnResults,
-                createSpacer(20),
-                btnReflection,
-                createSpacer(20),
-                btnSummary);
+        panel.getChildren().addAll(btnContext, createSpacer(20), btnMaterials, createSpacer(20), btnPredictions, createSpacer(20), btnProtocol, createSpacer(20), btnResults, createSpacer(20), btnReflection, createSpacer(20), btnSummary);
 
         // Set initial selection
         setSelectedButton(btnContext);
@@ -852,15 +705,13 @@ public class LigationController implements Initializable {
         if (btn != null) {
             HBox container = (HBox) btn.getUserData();
             if (container != null) {
-                container.setStyle("-fx-background-color: rgba(255,255,255,0.2); " +
-                        "-fx-background-radius: 5;");
+                container.setStyle("-fx-background-color: rgba(255,255,255,0.2); " + "-fx-background-radius: 5;");
             }
         }
     }
 
     private void resetToButtonView() {
-        if (!isPredictionExpanded)
-            return;
+        if (!isPredictionExpanded) return;
         isPredictionExpanded = false;
         instruction.getChildren().clear();
         buttonPanel = createButtonPanel();
@@ -904,10 +755,7 @@ public class LigationController implements Initializable {
         underline.setPrefHeight(3);
 
         // Introduction text
-        Label text = new Label(
-                "Let's look at what you learned from this simulation. Please click on your answer " +
-                        "to each of the following questions to save them in your notebook."
-        );
+        Label text = new Label("Let's look at what you learned from this simulation. Please click on your answer " + "to each of the following questions to save them in your notebook.");
         text.setFont(Font.font("Arial", 16));
         text.setWrapText(true);
         text.setStyle("-fx-text-fill: #333333;");
@@ -917,74 +765,25 @@ public class LigationController implements Initializable {
         VBox questionsContainer = new VBox(20);
 
         // Question 1
-        QuizQuestion q1 = createQuizQuestion(
-                1,
-                "What do you think is the main purpose of this simulation?",
-                new String[]{
-                        "To differentiate between restriction enzymes and DNA ligase.",
-                        "To model the process of ligation.",
-                        "To verify that the correct recombinant plasmid has formed."
-                },
-                1, // Correct answer index (B - second option)
-                "What skill did you practice during this simulation?",
-                2  // Attempts allowed
+        QuizQuestion q1 = createQuizQuestion(1, "What do you think is the main purpose of this simulation?", new String[]{"To differentiate between restriction enzymes and DNA ligase.", "To model the process of ligation.", "To verify that the correct recombinant plasmid has formed."}, 1, // Correct answer index (B - second option)
+                "What skill did you practice during this simulation?", 2  // Attempts allowed
         );
 
         // Question 2
-        QuizQuestion q2 = createQuizQuestion(
-                2,
-                "Why are the K+ and A+ tubes placed in an 80°C water bath before ligation?",
-                new String[]{
-                        "To warm up the ligation buffer.",
-                        "To defrost the frozen samples of DNA.",
-                        "To inactivate the restriction enzymes."
-                },
-                2, // Correct answer index (C - third option)
-                null,
-                2
-        );
+        QuizQuestion q2 = createQuizQuestion(2, "Why are the K+ and A+ tubes placed in an 80°C water bath before ligation?", new String[]{"To warm up the ligation buffer.", "To defrost the frozen samples of DNA.", "To inactivate the restriction enzymes."}, 2, // Correct answer index (C - third option)
+                null, 2);
 
         // Question 3
-        QuizQuestion q3 = createQuizQuestion(
-                3,
-                "What is the function of DNA ligase when building a recombinant plasmid?",
-                new String[]{
-                        "It replicates the DNA molecules.",
-                        "It catalyzes the joining of DNA fragments.",
-                        "It adds nucleotides to the DNA fragments."
-                },
-                1, // Correct answer index (B)
-                null,
-                2
-        );
+        QuizQuestion q3 = createQuizQuestion(3, "What is the function of DNA ligase when building a recombinant plasmid?", new String[]{"It replicates the DNA molecules.", "It catalyzes the joining of DNA fragments.", "It adds nucleotides to the DNA fragments."}, 1, // Correct answer index (B)
+                null, 2);
 
         // Question 4
-        QuizQuestion q4 = createQuizQuestion(
-                4,
-                "Why do enzymes need to be stored at cold temperatures?",
-                new String[]{
-                        "To avoid protein denaturation.",
-                        "To increase enzyme activity.",
-                        "To consolidate samples in the solution tubes."
-                },
-                0, // Correct answer index (A)
-                null,
-                2
-        );
+        QuizQuestion q4 = createQuizQuestion(4, "Why do enzymes need to be stored at cold temperatures?", new String[]{"To avoid protein denaturation.", "To increase enzyme activity.", "To consolidate samples in the solution tubes."}, 0, // Correct answer index (A)
+                null, 2);
 
         // Question 5
-        QuizQuestion q5 = createQuizQuestion(
-                5,
-                "Can any two DNA fragments be joined together?",
-                new String[]{
-                        "Yes, if the fragments were cut with the same restriction enzyme.",
-                        "No, the ligase looks for a specific sequence and can only join fragments with that sequence.",
-                        "Maybe, ligase can connect any two fragments if enough energy is added to the reaction."
-                },
-                0, // Correct answer index (A)
-                null,
-                3
-        );
+        QuizQuestion q5 = createQuizQuestion(5, "Can any two DNA fragments be joined together?", new String[]{"Yes, if the fragments were cut with the same restriction enzyme.", "No, the ligase looks for a specific sequence and can only join fragments with that sequence.", "Maybe, ligase can connect any two fragments if enough energy is added to the reaction."}, 0, // Correct answer index (A)
+                null, 3);
 
         // Feedback Question (separate section)
         Label feedbackTitle = new Label("FEEDBACK QUESTION");
@@ -992,27 +791,9 @@ public class LigationController implements Initializable {
         feedbackTitle.setStyle("-fx-text-fill: #1a5490;");
         feedbackTitle.setPadding(new Insets(30, 0, 10, 0));
 
-        QuizQuestion q6 = createFeedbackQuestion(
-                6,
-                "How confident do you feel about using the technique you learned?",
-                new String[]{
-                        "Not confident at all.",
-                        "Slightly confident.",
-                        "Somewhat confident.",
-                        "Fairly confident.",
-                        "Very confident."
-                }
-        );
+        QuizQuestion q6 = createFeedbackQuestion(6, "How confident do you feel about using the technique you learned?", new String[]{"Not confident at all.", "Slightly confident.", "Somewhat confident.", "Fairly confident.", "Very confident."});
 
-        questionsContainer.getChildren().addAll(
-                q1.getQuestionBox(),
-                q2.getQuestionBox(),
-                q3.getQuestionBox(),
-                q4.getQuestionBox(),
-                q5.getQuestionBox(),
-                feedbackTitle,
-                q6.getQuestionBox()
-        );
+        questionsContainer.getChildren().addAll(q1.getQuestionBox(), q2.getQuestionBox(), q3.getQuestionBox(), q4.getQuestionBox(), q5.getQuestionBox(), feedbackTitle, q6.getQuestionBox());
 
         content.getChildren().addAll(title, underline, text, questionsContainer);
         return content;
@@ -1034,22 +815,14 @@ public class LigationController implements Initializable {
             return questionBox;
         }
 
-        public QuizQuestion(int questionNum, String questionText, String[] options,
-                            int correctIndex, String feedback, int maxAttempts, boolean isFeedback) {
+        public QuizQuestion(int questionNum, String questionText, String[] options, int correctIndex, String feedback, int maxAttempts, boolean isFeedback) {
             this.correctAnswerIndex = correctIndex;
             this.feedbackText = feedback;
             this.attemptsLeft = maxAttempts;
             this.optionBoxes = new ArrayList<>();
 
             questionBox = new VBox(15);
-            questionBox.setStyle(
-                    "-fx-background-color: white;" +
-                            "-fx-border-color: #d0d0d0;" +
-                            "-fx-border-width: 1;" +
-                            "-fx-border-radius: 8;" +
-                            "-fx-background-radius: 8;" +
-                            "-fx-padding: 25;"
-            );
+            questionBox.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 25;");
             questionBox.setMaxWidth(700);
 
             // Question text
@@ -1080,26 +853,14 @@ public class LigationController implements Initializable {
 
             submitButton = new Button("Submit answer");
             submitButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-            submitButton.setStyle(
-                    "-fx-background-color: #95a5a6;" +
-                            "-fx-text-fill: white;" +
-                            "-fx-padding: 10 30;" +
-                            "-fx-background-radius: 5;" +
-                            "-fx-cursor: hand;"
-            );
+            submitButton.setStyle("-fx-background-color: #95a5a6;" + "-fx-text-fill: white;" + "-fx-padding: 10 30;" + "-fx-background-radius: 5;" + "-fx-cursor: hand;");
             submitButton.setDisable(true);
 
             // Enable submit when an option is selected
             toggleGroup.selectedToggleProperty().addListener((obs, old, newVal) -> {
                 if (newVal != null && !answered) {
                     submitButton.setDisable(false);
-                    submitButton.setStyle(
-                            "-fx-background-color: #f39c12;" +
-                                    "-fx-text-fill: white;" +
-                                    "-fx-padding: 10 30;" +
-                                    "-fx-background-radius: 5;" +
-                                    "-fx-cursor: hand;"
-                    );
+                    submitButton.setStyle("-fx-background-color: #f39c12;" + "-fx-text-fill: white;" + "-fx-padding: 10 30;" + "-fx-background-radius: 5;" + "-fx-cursor: hand;");
                 }
             });
 
@@ -1119,15 +880,7 @@ public class LigationController implements Initializable {
         private HBox createOptionBox(String optionText, char letter, int index) {
             HBox box = new HBox(15);
             box.setAlignment(Pos.CENTER_LEFT);
-            box.setStyle(
-                    "-fx-background-color: #f9f9f9;" +
-                            "-fx-border-color: #d0d0d0;" +
-                            "-fx-border-width: 1;" +
-                            "-fx-border-radius: 5;" +
-                            "-fx-background-radius: 5;" +
-                            "-fx-padding: 15;" +
-                            "-fx-cursor: hand;"
-            );
+            box.setStyle("-fx-background-color: #f9f9f9;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;" + "-fx-cursor: hand;");
             box.setPrefHeight(60);
 
             // Letter circle
@@ -1165,25 +918,9 @@ public class LigationController implements Initializable {
                     radioButton.setSelected(true);
                     // Highlight selected option
                     for (HBox optBox : optionBoxes) {
-                        optBox.setStyle(
-                                "-fx-background-color: #f9f9f9;" +
-                                        "-fx-border-color: #d0d0d0;" +
-                                        "-fx-border-width: 1;" +
-                                        "-fx-border-radius: 5;" +
-                                        "-fx-background-radius: 5;" +
-                                        "-fx-padding: 15;" +
-                                        "-fx-cursor: hand;"
-                        );
+                        optBox.setStyle("-fx-background-color: #f9f9f9;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;" + "-fx-cursor: hand;");
                     }
-                    box.setStyle(
-                            "-fx-background-color: #e8f4f8;" +
-                                    "-fx-border-color: #00aaff;" +
-                                    "-fx-border-width: 2;" +
-                                    "-fx-border-radius: 5;" +
-                                    "-fx-background-radius: 5;" +
-                                    "-fx-padding: 15;" +
-                                    "-fx-cursor: hand;"
-                    );
+                    box.setStyle("-fx-background-color: #e8f4f8;" + "-fx-border-color: #00aaff;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;" + "-fx-cursor: hand;");
                 }
             });
 
@@ -1203,21 +940,9 @@ public class LigationController implements Initializable {
                 answered = true;
                 submitButton.setDisable(true);
                 submitButton.setText("Submitted");
-                submitButton.setStyle(
-                        "-fx-background-color: #95a5a6;" +
-                                "-fx-text-fill: white;" +
-                                "-fx-padding: 10 30;" +
-                                "-fx-background-radius: 5;"
-                );
+                submitButton.setStyle("-fx-background-color: #95a5a6;" + "-fx-text-fill: white;" + "-fx-padding: 10 30;" + "-fx-background-radius: 5;");
                 // Highlight selected option in blue
-                optionBoxes.get(selectedIndex).setStyle(
-                        "-fx-background-color: #d4e6f1;" +
-                                "-fx-border-color: #00aaff;" +
-                                "-fx-border-width: 2;" +
-                                "-fx-border-radius: 5;" +
-                                "-fx-background-radius: 5;" +
-                                "-fx-padding: 15;"
-                );
+                optionBoxes.get(selectedIndex).setStyle("-fx-background-color: #d4e6f1;" + "-fx-border-color: #00aaff;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;");
             } else {
                 // For quiz questions
                 if (selectedIndex == correctAnswerIndex) {
@@ -1240,13 +965,7 @@ public class LigationController implements Initializable {
                         // Reset selection for retry
                         toggleGroup.selectToggle(null);
                         submitButton.setDisable(true);
-                        submitButton.setStyle(
-                                "-fx-background-color: #95a5a6;" +
-                                        "-fx-text-fill: white;" +
-                                        "-fx-padding: 10 30;" +
-                                        "-fx-background-radius: 5;" +
-                                        "-fx-cursor: hand;"
-                        );
+                        submitButton.setStyle("-fx-background-color: #95a5a6;" + "-fx-text-fill: white;" + "-fx-padding: 10 30;" + "-fx-background-radius: 5;" + "-fx-cursor: hand;");
                     }
                 }
             }
@@ -1269,14 +988,7 @@ public class LigationController implements Initializable {
                 StackPane checkIcon = new StackPane(checkCircle, checkmark);
 
                 selectedBox.getChildren().add(checkIcon);
-                selectedBox.setStyle(
-                        "-fx-background-color: #d5f4e6;" +
-                                "-fx-border-color: #27ae60;" +
-                                "-fx-border-width: 2;" +
-                                "-fx-border-radius: 5;" +
-                                "-fx-background-radius: 5;" +
-                                "-fx-padding: 15;"
-                );
+                selectedBox.setStyle("-fx-background-color: #d5f4e6;" + "-fx-border-color: #27ae60;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;");
 
                 // Show feedback text if available
                 if (feedbackText != null) {
@@ -1301,14 +1013,7 @@ public class LigationController implements Initializable {
                 StackPane xIcon = new StackPane(xCircle, xMark);
 
                 selectedBox.getChildren().add(xIcon);
-                selectedBox.setStyle(
-                        "-fx-background-color: #fadbd8;" +
-                                "-fx-border-color: #e74c3c;" +
-                                "-fx-border-width: 2;" +
-                                "-fx-border-radius: 5;" +
-                                "-fx-background-radius: 5;" +
-                                "-fx-padding: 15;"
-                );
+                selectedBox.setStyle("-fx-background-color: #fadbd8;" + "-fx-border-color: #e74c3c;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;");
             }
         }
 
@@ -1327,19 +1032,11 @@ public class LigationController implements Initializable {
             StackPane checkIcon = new StackPane(checkCircle, checkmark);
 
             correctBox.getChildren().add(checkIcon);
-            correctBox.setStyle(
-                    "-fx-background-color: #d5f4e6;" +
-                            "-fx-border-color: #27ae60;" +
-                            "-fx-border-width: 2;" +
-                            "-fx-border-radius: 5;" +
-                            "-fx-background-radius: 5;" +
-                            "-fx-padding: 15;"
-            );
+            correctBox.setStyle("-fx-background-color: #d5f4e6;" + "-fx-border-color: #27ae60;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 15;");
         }
     }
 
-    private QuizQuestion createQuizQuestion(int num, String question, String[] options,
-                                            int correctIndex, String feedback, int attempts) {
+    private QuizQuestion createQuizQuestion(int num, String question, String[] options, int correctIndex, String feedback, int attempts) {
         return new QuizQuestion(num, question, options, correctIndex, feedback, attempts, false);
     }
 
@@ -1360,13 +1057,7 @@ public class LigationController implements Initializable {
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        Label text = new Label("In this simulation, DNA ligase was used to join the DNA fragments resulting from the restriction digest of pKAN-R and pARA to create the recombinant pARA-R plasmid. Remember that multiple combinations of fragments can form when the fragments have complementary sticky ends.\n" +
-                "\n" +
-                "\n" +
-                "Below you can view a closeup of your LIG tube to see whether your experiment has worked and you have produced circular plasmids from the fragments in the K+ and A+ tubes. If your experiment has failed, you will have only fragments in your LIG tube and no circular plasmids.\n" +
-                "\n" +
-                "\n" +
-                "It is important to note that you will not normally be able to see anything in your LIG tube due to the microscopic size of DNA fragments and plasmids. The next experimental step is to run a gel with your stored solutions (LIG, A+ and K+) to verify whether you have successfully ligated the correct fragments to create the desired pARA-R plasmid.");
+        Label text = new Label("In this simulation, DNA ligase was used to join the DNA fragments resulting from the restriction digest of pKAN-R and pARA to create the recombinant pARA-R plasmid. Remember that multiple combinations of fragments can form when the fragments have complementary sticky ends.\n" + "\n" + "\n" + "Below you can view a closeup of your LIG tube to see whether your experiment has worked and you have produced circular plasmids from the fragments in the K+ and A+ tubes. If your experiment has failed, you will have only fragments in your LIG tube and no circular plasmids.\n" + "\n" + "\n" + "It is important to note that you will not normally be able to see anything in your LIG tube due to the microscopic size of DNA fragments and plasmids. The next experimental step is to run a gel with your stored solutions (LIG, A+ and K+) to verify whether you have successfully ligated the correct fragments to create the desired pARA-R plasmid.");
         text.setFont(Font.font("Arial", 16));
         text.setWrapText(true);
         text.setFont(Font.font("Arial", 16));
@@ -1379,15 +1070,7 @@ public class LigationController implements Initializable {
 
         // Image container with styling
         StackPane imageContainer = new StackPane(possibleplasimid);
-        imageContainer.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-border-color: #d0d0d0;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 7;" +
-                        "-fx-background-radius: 5;" +
-                        "-fx-padding: 10;" +
-                        "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
-        );
+        imageContainer.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 7;" + "-fx-background-radius: 5;" + "-fx-padding: 10;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         imageContainer.setMaxWidth(750);
         imageContainer.setPrefHeight(450);
         imageContainer.setPadding(new Insets(10, 0, 10, 0));
@@ -1444,13 +1127,7 @@ public class LigationController implements Initializable {
         // Navigation buttons
         HBox navigationButtons = createNavigationButtons();
 
-        panel.getChildren().addAll(
-                header,
-                progressSection,
-                stepTitleLabel,
-                instructionsScroll,
-                navigationButtons
-        );
+        panel.getChildren().addAll(header, progressSection, stepTitleLabel, instructionsScroll, navigationButtons);
 
         return panel;
     }
@@ -1483,11 +1160,7 @@ public class LigationController implements Initializable {
 
         Button notesBtn = new Button("📋 Notes");
         notesBtn.setFont(Font.font("Arial", FontWeight.BOLD, 11));
-        notesBtn.setStyle(
-                "-fx-background-color: transparent;" +
-                        "-fx-text-fill: #1a5490;" +
-                        "-fx-cursor: hand;"
-        );
+        notesBtn.setStyle("-fx-background-color: transparent;" + "-fx-text-fill: #1a5490;" + "-fx-cursor: hand;");
 
         header.getChildren().addAll(circleStack, titleLabel, spacer, notesBtn);
         Button protocolButton = new Button();
@@ -1561,16 +1234,7 @@ public class LigationController implements Initializable {
         Button previousBtn = new Button("◀ Previous");
         previousBtn.setId("previousBtn");
         previousBtn.setFont(Font.font("Arial", FontWeight.BOLD, 12));
-        previousBtn.setStyle(
-                "-fx-background-color: white;" +
-                        "-fx-text-fill: #1a5490;" +
-                        "-fx-border-color: #1a5490;" +
-                        "-fx-border-width: 2;" +
-                        "-fx-border-radius: 5;" +
-                        "-fx-background-radius: 5;" +
-                        "-fx-padding: 8 20;" +
-                        "-fx-cursor: hand;"
-        );
+        previousBtn.setStyle("-fx-background-color: white;" + "-fx-text-fill: #1a5490;" + "-fx-border-color: #1a5490;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 8 20;" + "-fx-cursor: hand;");
         previousBtn.setOnAction(e -> handlePreviousStep());
 
         // Circle button (1.a, 2.b, etc)
@@ -1590,14 +1254,7 @@ public class LigationController implements Initializable {
         Button nextBtn = new Button("Next ▶");
         nextBtn.setId("nextBtn");
         nextBtn.setFont(Font.font("Arial", FontWeight.BOLD, 12));
-        nextBtn.setStyle(
-                "-fx-background-color: #1a5490;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-border-radius: 5;" +
-                        "-fx-background-radius: 5;" +
-                        "-fx-padding: 8 20;" +
-                        "-fx-cursor: hand;"
-        );
+        nextBtn.setStyle("-fx-background-color: #1a5490;" + "-fx-text-fill: white;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 8 20;" + "-fx-cursor: hand;");
         nextBtn.setOnAction(e -> handleNextStep());
 
         navButtons.getChildren().addAll(previousBtn, circleBtn, nextBtn);
@@ -1639,76 +1296,24 @@ public class LigationController implements Initializable {
 
     private void updateStepContent(int stepNumber) {
         // Step titles
-        String[] stepTitles = {
-                "1. Heat inactivate the restriction enzymes in the restriction digests.",
-                "2. Set the volume of the P20 micropipette.",
-                "3. Pipette restriction digests into the reaction tubes.",
-                "4. Pipette additional reagents into the reaction tubes.",
-                "5. Spin the reaction tubes.",
-                "6. Incubate the reaction tubes.",
-                "7. Store the ligation product."
-        };
+        String[] stepTitles = {"1. Heat inactivate the restriction enzymes in the restriction digests.", "2. Set the volume of the P20 micropipette.", "3. Pipette restriction digests into the reaction tubes.", "4. Pipette additional reagents into the reaction tubes.", "5. Spin the reaction tubes.", "6. Incubate the reaction tubes.", "7. Store the ligation product."};
 
         // All instructions for each step
         String[][][] allInstructions = {
                 // Step 1
-                {
-                        {"a", "Use the temperature setting to set the water bath temperature to 80°C.", String.valueOf(false)},
-                        {"b", "Move the K+ and A+ tubes to the floating tube rack.", String.valueOf(false)},
-                        {"c", "Open the water bath.", String.valueOf(false)},
-                        {"d", "Move the rack containing the K+ and A+ tubes to the water bath.", String.valueOf(false)},
-                        {"e", "Close the water bath.", String.valueOf(false)},
-                        {"f", "Use the buttons on the water bath interface to set the timer for 20 minutes. Press start to begin the timer.", String.valueOf(false)},
-                        {"g", "After 20 minutes, remove the floating solution tube rack from the water bath.", String.valueOf(false)}
-                },
+                {{"a", "Use the temperature setting to set the water bath temperature to 80°C.", String.valueOf(false)}, {"b", "Move the K+ and A+ tubes to the floating tube rack.", String.valueOf(false)}, {"c", "Open the water bath.", String.valueOf(false)}, {"d", "Move the rack containing the K+ and A+ tubes to the water bath.", String.valueOf(false)}, {"e", "Close the water bath.", String.valueOf(false)}, {"f", "Use the buttons on the water bath interface to set the timer for 20 minutes. Press start to begin the timer.", String.valueOf(false)}, {"g", "After 20 minutes, remove the floating solution tube rack from the water bath.", String.valueOf(false)}},
                 // Step 2
-                {
-                        {"a", "Pick up the P20 micropipette from the micropipette rack.", String.valueOf(false)},
-                        {"b", "Use the volume setting to set the volume to 4µl and click Save volume.", String.valueOf(false)},
-                        {"c", "Open the P20 tip box.", String.valueOf(false)},
-                        {"d", "Move the P20 micropipette onto the P20 tip box to attach a tip.", String.valueOf(false)},
-                        {"e", "Close the P20 tip box.", String.valueOf(false)}
-                },
+                {{"a", "Pick up the P20 micropipette from the micropipette rack.", String.valueOf(false)}, {"b", "Use the volume setting to set the volume to 4µl and click Save volume.", String.valueOf(false)}, {"c", "Open the P20 tip box.", String.valueOf(false)}, {"d", "Move the P20 micropipette onto the P20 tip box to attach a tip.", String.valueOf(false)}, {"e", "Close the P20 tip box.", String.valueOf(false)}},
                 // Step 3
-                {
-                        {"a", "Open the A+ tube.", String.valueOf(false)},
-                        {"b", "Pick up and move the micropipette so that the tip is above the A+ tube.", String.valueOf(false)},
-                        {"c", "Draw up the A+ solution by pressing the plunger down until it reaches the first stop.", String.valueOf(false)},
-                        {"d", "Close the A+ solution tube.", String.valueOf(false)},
-                        {"e", "Open the LIG tube.", String.valueOf(false)},
-                        {"f", "Dispense the A+ solution into the LIG tube by holding down the plunger until it reaches the second stop.", String.valueOf(false)},
-                        {"g", "Move the micropipette over the trash can and use the eject icon to eject the tip.", String.valueOf(false)},
-                        {"h", "Follow the same micropipetting procedure to dispense 4µl of the K+ solution into the LIG tube.", String.valueOf(false)}
-                },
+                {{"a", "Open the A+ tube.", String.valueOf(false)}, {"b", "Pick up and move the micropipette so that the tip is above the A+ tube.", String.valueOf(false)}, {"c", "Draw up the A+ solution by pressing the plunger down until it reaches the first stop.", String.valueOf(false)}, {"d", "Close the A+ solution tube.", String.valueOf(false)}, {"e", "Open the LIG tube.", String.valueOf(false)}, {"f", "Dispense the A+ solution into the LIG tube by holding down the plunger until it reaches the second stop.", String.valueOf(false)}, {"g", "Move the micropipette over the trash can and use the eject icon to eject the tip.", String.valueOf(false)}, {"h", "Follow the same micropipetting procedure to dispense 4µl of the K+ solution into the LIG tube.", String.valueOf(false)}},
                 // Step 4
-                {
-                        {"a", "Follow the same micropipetting procedure to dispense 3µl of the ligation buffer from the 5XB tube into the LIG tube.", String.valueOf(false)},
-                        {"b", "Follow the micropipetting procedure to dispense 2µl of distilled water from the dH₂O tube into the LIG tube.", String.valueOf(false)},
-                        {"c", "Use the vortex to mix the solution in the LIG tube.", String.valueOf(false)}
-                },
+                {{"a", "Follow the same micropipetting procedure to dispense 3µl of the ligation buffer from the 5XB tube into the LIG tube.", String.valueOf(false)}, {"b", "Follow the micropipetting procedure to dispense 2µl of distilled water from the dH₂O tube into the LIG tube.", String.valueOf(false)}, {"c", "Use the vortex to mix the solution in the LIG tube.", String.valueOf(false)}},
                 // Step 5
-                {
-                        {"a", "Open the microcentrifuge.", String.valueOf(false)},
-                        {"b", "Place the LIG tube in the microcentrifuge.", String.valueOf(false)},
-                        {"c", "Fill the balance tube with dH₂O so that it matches the total volume of the LIG tube (18µl).", String.valueOf(false)},
-                        {"d", "Place the balance tube in the microcentrifuge opposite the LIG tube to balance it.", String.valueOf(false)},
-                        {"e", "Close the microcentrifuge.", String.valueOf(false)},
-                        {"f", "Press the pulse button to spin the tubes.", String.valueOf(false)},
-                        {"g", "Once the spin is complete, open the microcentrifuge.", String.valueOf(false)},
-                        {"h", "Move the LIG tube back to the tube rack.", String.valueOf(false)},
-                        {"i", "Close the microcentrifuge lid.", String.valueOf(false)}
-                },
+                {{"a", "Open the microcentrifuge.", String.valueOf(false)}, {"b", "Place the LIG tube in the microcentrifuge.", String.valueOf(false)}, {"c", "Fill the balance tube with dH₂O so that it matches the total volume of the LIG tube (18µl).", String.valueOf(false)}, {"d", "Place the balance tube in the microcentrifuge opposite the LIG tube to balance it.", String.valueOf(false)}, {"e", "Close the microcentrifuge.", String.valueOf(false)}, {"f", "Press the pulse button to spin the tubes.", String.valueOf(false)}, {"g", "Once the spin is complete, open the microcentrifuge.", String.valueOf(false)}, {"h", "Move the LIG tube back to the tube rack.", String.valueOf(false)}, {"i", "Close the microcentrifuge lid.", String.valueOf(false)}},
                 // Step 6
-                {
-                        {"a", "Leave the LIG tube in tube rack at room temperature for 10 minutes.", String.valueOf(false)}
-                },
+                {{"a", "Leave the LIG tube in tube rack at room temperature for 10 minutes.", String.valueOf(false)}},
                 // Step 7
-                {
-                        {"a", "Open the freezer.", String.valueOf(false)},
-                        {"b", "Place the A+ and K+ tubes on the floating rack and move it to the freezer for later analysis.", String.valueOf(false)},
-                        {"c", "Close the freezer.", String.valueOf(false)}
-                }
-        };
+                {{"a", "Open the freezer.", String.valueOf(false)}, {"b", "Place the A+ and K+ tubes on the floating rack and move it to the freezer for later analysis.", String.valueOf(false)}, {"c", "Close the freezer.", String.valueOf(false)}}};
 
         // Update title
         Label stepTitle = (Label) instructionCommandPanel.lookup("#stepTitle");
@@ -1745,16 +1350,10 @@ public class LigationController implements Initializable {
 
         // Highlight style
         if (isHighlighted) {
-            item.setStyle(
-                    "-fx-background-color: #ffa726;" +
-                            "-fx-border-radius: 5;" +
-                            "-fx-background-radius: 5;"
-            );
+            item.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
             currentHighlightedInstruction = "instruction_" + stepNumber + "_" + letter;
         } else {
-            item.setStyle(
-                    "-fx-background-color: transparent;"
-            );
+            item.setStyle("-fx-background-color: transparent;");
         }
 
         // Letter circle
@@ -1802,11 +1401,7 @@ public class LigationController implements Initializable {
         }
 
         // Highlight current
-        item.setStyle(
-                "-fx-background-color: #ffa726;" +
-                        "-fx-border-radius: 5;" +
-                        "-fx-background-radius: 5;"
-        );
+        item.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
         currentHighlightedInstruction = item.getId();
 
         // Update circle label
@@ -1835,11 +1430,7 @@ public class LigationController implements Initializable {
         // Highlight current instruction
         HBox currentItem = (HBox) currentInstructionsList.lookup("#" + instructionId);
         if (currentItem != null) {
-            currentItem.setStyle(
-                    "-fx-background-color: #ffa726;" +
-                            "-fx-border-radius: 5;" +
-                            "-fx-background-radius: 5;"
-            );
+            currentItem.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
             currentHighlightedInstruction = instructionId;
 
             // Update circle label
