@@ -110,7 +110,7 @@ public class MSLabworkspace {
         labWorkspace.setPrefSize(1515, 1056);
         labWorkspace.setMinSize(1515, 1056);
         labWorkspace.setMaxSize(1515, 1056);
-        labWorkspace.setStyle("-fx-background-color: linear-gradient(to bottom, #0d5f7f 0%, #1a8ab5 50%);");
+        labWorkspace.setStyle("-fx-background-color: linear-gradient(to bottom, #003E6B, #005A89);");
 
         // Create bench surface
         Rectangle bench = new Rectangle(0, TABLE_Y, 1515, 1056 - TABLE_Y);

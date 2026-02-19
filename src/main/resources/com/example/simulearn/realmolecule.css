@@ -1,0 +1,269 @@
+/* Dark Theme CSS for Molecular Builder */
+
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* Scroll Pane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .corner {
+    -fx-background-color: #2a2a2a;
+}
+
+.scroll-bar {
+    -fx-background-color: #2a2a2a;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #4a4a4a;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #5a5a5a;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #2a2a2a;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+/* CheckBox */
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #4a4a4a;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #0d7377;
+    -fx-border-color: #14a6ac;
+}
+
+.check-box .mark {
+    -fx-background-color: white;
+}
+
+/* RadioButton */
+.radio-button {
+    -fx-text-fill: white;
+}
+
+.radio-button .radio {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #4a4a4a;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #0d7377;
+    -fx-border-color: #14a6ac;
+}
+
+.radio-button .dot {
+    -fx-background-color: white;
+}
+
+/* Separator */
+.separator .line {
+    -fx-border-color: #3a3a3a;
+    -fx-background-color: #3a3a3a;
+}
+
+/* Tooltip */
+.tooltip {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 12px;
+    -fx-padding: 8;
+}.card-button {
+     -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+     -fx-border-radius: 15;
+     -fx-border-width: 2;
+     -fx-border-color: #cccccc;
+     -fx-cursor: hand;
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.5, 0, 4);
+     -fx-padding: 10;
+     -fx-alignment: center;
+     -fx-font-weight: bold;
+ }
+
+/* Hover glow */
+.card-button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,150,255,0.6), 20, 0.5, 0, 4);
+}
+
+/* Pressed / active */
+.card-button:pressed {
+    -fx-translate-y: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.5, 0, 2);
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.button-74 {
+    -fx-background-color: #fbeee0;
+    -fx-border-color: #422800;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+    -fx-text-fill: #422800;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 25 10 25;
+    -fx-cursor: hand;
+
+    /* Shadow */
+    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 4, 4);
+}
+
+/* Hover */
+.button-74:hover {
+    -fx-background-color: white;
+}
+
+/* Pressed (active) */
+.button-74:pressed {
+    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 2, 2);
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+}
+
+.hbox {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-effect:
+        /* inset shadows (top depth) */
+            innershadow(gaussian, rgba(0,0,0,0.17), 25, 0, 0, -23),
+            innershadow(gaussian, rgba(0,0,0,0.15), 30, 0, 0, -36),
+            innershadow(gaussian, rgba(0,0,0,0.10), 40, 0, 0, -79),
+
+                /* outer shadows (bottom depth) */
+            dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 2),
+            dropshadow(gaussian, rgba(0,0,0,0.09), 2, 0, 0, 4),
+            dropshadow(gaussian, rgba(0,0,0,0.09), 4, 0, 0, 8),
+            dropshadow(gaussian, rgba(0,0,0,0.09), 8, 0, 0, 16),
+            dropshadow(gaussian, rgba(0,0,0,0.09), 16, 0, 0, 32);
+}
+.neu-button {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #cecece;
+    -fx-border-width: 2;
+
+    -fx-text-fill: #4d4d4d;
+    -fx-font-size: 18px;
+    -fx-padding: 15 40 15 40;
+
+    /* Neumorphism effect */
+    -fx-effect: innershadow(gaussian, #bcbcbc, 10, 0.4, 4, 4),
+    innershadow(gaussian, #ffffff, 10, 0.4, -4, -4);
+}
+.neu-button:hover {
+    -fx-effect:
+            innershadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
+            innershadow(gaussian, #ffffff, 5, 0.3, -2, -2),
+            dropshadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
+            dropshadow(gaussian, #ffffff, 5, 0.3, -2, -2);
+}
+.neu-button:focused {
+    -fx-background-insets: 0;
+}
+
+.button-33 {
+    -fx-background-color: #c2fbd7;
+    -fx-background-radius: 100;
+    -fx-text-fill: green;
+
+    -fx-font-size: 16px;
+    -fx-font-family: "System";
+
+    -fx-padding: 7 20 7 20;
+
+    /* shadow equivalent */
+    -fx-effect: dropshadow(three-pass-box, rgba(44,187,99,0.15), 16, 0.2, 0, 8);
+}
+
+/* hover effect */
+.button-33:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(44,187,99,0.35), 24, 0.3, 0, 12);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button-27 {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #1A1A1A;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 16 24;
+    -fx-cursor: hand;
+}
+
+.button-27:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0, 0, 8);
+    -fx-translate-y: -2;
+}
+
+.button-27:pressed {
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}
+
+
+

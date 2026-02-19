@@ -19,6 +19,7 @@ public class MenuController {
 
     @FXML
     private HBox cardHBox;
+
     @FXML
     public void initialize() {
         for (Node node : cardHBox.getChildren()) {
