@@ -51,6 +51,19 @@
                   </Button>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="240.0" prefWidth="1920.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onMultiMoleculeButtonClicked" prefHeight="263.0" prefWidth="353.0" styleClass="button-27">
+                     <graphic>
+                        <ImageView fitHeight="234.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/Benzene.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

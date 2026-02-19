@@ -17,7 +17,6 @@ public class chemistryMenuController {
     }
 
     @FXML
-
     public void onRealMoleculeButtonClicked(ActionEvent event) throws IOException {
         // Load FXML correctly
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/realMolecule.fxml"));
@@ -28,4 +27,17 @@ public class chemistryMenuController {
         stage.setMaximized(true);
         stage.show();
     }
+
+    @FXML
+    public void onMultiMoleculeButtonClicked(ActionEvent event) throws IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/MultiMoleculeView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+    }
+
 }
