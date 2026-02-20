@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER_RIGHT" onDragDetected="#onRealMoleculeButtonClicked" prefHeight="88.0" prefWidth="1920.0" spacing="50.0" stylesheets="@menu.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="120.0" text="Home">
+                  <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" prefHeight="51.0" prefWidth="120.0" text="Home">
                      <styleClass>
                         <String fx:value="card-button" />
                         <String fx:value="button-74" />

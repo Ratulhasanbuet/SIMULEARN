@@ -48,4 +48,15 @@ public class biologyMenuController {
         }
     }
 
+    @FXML
+    void onHomeButtonClicked(ActionEvent event) throws java.io.IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Menu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+    }
 }
