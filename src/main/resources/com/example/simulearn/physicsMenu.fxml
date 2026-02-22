@@ -38,10 +38,17 @@
             </HBox>
             <HBox prefHeight="350.0" prefWidth="958.0">
                <children>
-                  <HBox prefHeight="350.0" prefWidth="474.0" />
+                  <HBox prefHeight="350.0" prefWidth="474.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onLogicClick" prefHeight="270.0" prefWidth="474.0" text="Logic Circuit" textFill="#d421d7">
+                           <font>
+                              <Font name="System Italic" size="36.0" />
+                           </font>
+                        </Button>
+                     </children></HBox>
                   <HBox prefHeight="350.0" prefWidth="450.0">
                      <children>
-                        <Button onAction="#onBuoyancyClick" mnemonicParsing="false" prefHeight="270.0" prefWidth="450.0" text="Buoyancy" textFill="#a418a4">
+                        <Button mnemonicParsing="false" onAction="#onBuoyancyClick" prefHeight="270.0" prefWidth="450.0" text="Buoyancy" textFill="#a418a4">
                            <font>
                               <Font name="System Italic" size="36.0" />
                            </font>

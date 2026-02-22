@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="920.0" prefWidth="1531.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.FlameTestController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="919.0" prefWidth="1532.0">
+         <children>
+            <ImageView fitHeight="909.0" fitWidth="1531.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/chemistryMenu.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="280.0" layoutY="145.0" prefHeight="67.0" prefWidth="105.0" styleClass="button-74" text="Step: " textFill="#d72424">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="Instruction" layoutX="459.0" layoutY="145.0" prefHeight="67.0" prefWidth="836.0" styleClass="button-74" textFill="#d42020">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="258.0" fitWidth="226.0" layoutX="766.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/bunsenBurner.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="90.0" fitWidth="102.0" layoutX="274.0" layoutY="605.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/bowl.jpg" />
+               </image>
+            </ImageView>
+            <Ellipse fx:id="Salt" fill="#f3f6fa" layoutX="319.0" layoutY="638.0" radiusX="39.0" radiusY="12.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="181.0" fitWidth="172.0" layoutX="482.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/HCl.jpg" />
+               </image>
+            </ImageView>
+            <Circle fx:id="HCl" fill="#05294e" layoutX="563.0" layoutY="566.0" radius="8.0" stroke="#f2ebeb" strokeType="INSIDE" />
+            <Ellipse fx:id="flame" fill="#efb209" layoutX="893.0" layoutY="523.0" radiusX="14.0" radiusY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="WHITE" layoutX="879.0" layoutY="499.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="WHITE" layoutX="907.0" layoutY="499.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="WHITE" layoutX="867.0" layoutY="511.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Group fx:id="PtRod" layoutX="121.0" layoutY="235.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a49a7e" height="74.0" layoutX="-1.0355377197265625" layoutY="10.278167724609375" rotate="-45.0" stroke="BLACK" strokeType="INSIDE" width="16.0" />
+                  <Line endX="20.600006103515625" endY="127.00003051757812" layoutX="142.0" layoutY="73.0" startX="-107.40000915527344" startY="1.4000244140625" strokeWidth="5.0" />
+                  <Line fx:id="Tip" endX="20.600006103515625" endY="127.00003051757812" layoutX="152.0" layoutY="83.0" startX="7.800018310546875" startY="114.00003051757812" stroke="#f2eaea" strokeWidth="6.0" />
+               </children>
+            </Group>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
