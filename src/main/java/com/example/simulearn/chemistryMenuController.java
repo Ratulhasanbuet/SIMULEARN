@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
+import java.io.IOException;
 
 
 public class chemistryMenuController {
@@ -15,21 +15,40 @@ public class chemistryMenuController {
     public void initialize() {
 
     }
+
     @FXML
-    void FlameTestClick(ActionEvent event)
-    {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/FlameTest.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root , 1920,1080);
-            stage.setScene(scene);
-            stage.setMaximized(true);
-            stage.show();
+    public void onRealMoleculeButtonClicked(ActionEvent event) throws IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/realMolecule.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+    }
 
-        } catch (java.io.IOException e) {
-            System.out.println("Failed to open the window.");
+    @FXML
+    public void onMultiMoleculeButtonClicked(ActionEvent event) throws IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/MultiMoleculeView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+    }
 
-        }
+    @FXML
+    void onHomeButtonClicked(ActionEvent event) throws java.io.IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Menu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
     }
 }

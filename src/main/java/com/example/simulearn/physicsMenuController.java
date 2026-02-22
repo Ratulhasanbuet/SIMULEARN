@@ -37,24 +37,16 @@ public class physicsMenuController {
 
         }
     }
+
     @FXML
-    void onLogicClick(ActionEvent event)
-    {
-        try {
-            URL fxmlLocation = getClass().getResource("com/example/simulearn/LogicCircuit.fxml");
-            // Load FXML correctly
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LogicCircuit.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root , 1920,1080);
-            stage.setScene(scene);
-            stage.setMaximized(true);
-            stage.show();
-
-        } catch (java.io.IOException e) {
-            System.out.println("Failed to open the window.");
-
-        }
+    void onHomeButtonClicked(ActionEvent event) throws java.io.IOException {
+        // Load FXML correctly
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Menu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
     }
 }

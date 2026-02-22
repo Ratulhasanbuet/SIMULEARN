@@ -19,9 +19,9 @@
         </ImageView>
         <ScrollPane prefHeight="200.0" prefWidth="200.0">
             <content>
-                <VBox prefHeight="1139.0" prefWidth="1920.0">
+                <VBox fx:id="topBox" prefHeight="1139.0" prefWidth="1920.0">
                     <children>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                        <HBox fx:id="HBOX" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                             <children>
                                 <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="120.0" text="Home">
                                     <styleClass>
@@ -29,12 +29,24 @@
                                         <String fx:value="button-74" />
                                     </styleClass>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Login" />
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="About" />
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Exit">
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Login">
+                           <styleClass>
+                              <String fx:value="button-74" />
+                              <String fx:value="card-button" />
+                           </styleClass></Button>
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="About">
+                           <styleClass>
+                              <String fx:value="button-74" />
+                              <String fx:value="card-button" />
+                           </styleClass></Button>
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Exit">
                                     <HBox.margin>
                                         <Insets right="50.0" />
                                     </HBox.margin>
+                           <styleClass>
+                              <String fx:value="button-74" />
+                              <String fx:value="card-button" />
+                           </styleClass>
                                 </Button>
                             </children>
                         </HBox>
