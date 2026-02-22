@@ -57,6 +57,9 @@ public class MicropipettingSolutionController implements Initializable {
     private Button selectedButton = null;
     private MSLabworkspace msLabworkspace;
 
+    // Track if all protocol steps are completed
+    private boolean allStepsCompleted = false;
+
     // Lab workspace components
     private VBox instructionCommandPanel;
     private int currentProtocolStep = 1;
@@ -218,8 +221,10 @@ public class MicropipettingSolutionController implements Initializable {
         btnSummary = createNavButton("7", "SUMMARY");
 
         // Disable Results button initially - will enable after Step 4 completion
-        btnResults.setDisable(true);
-        btnResults.setOpacity(0.5);
+        if (!allStepsCompleted) {
+            btnResults.setDisable(true);
+            btnResults.setOpacity(0.5);
+        }
 
         // Set button actions
         btnContext.setOnAction(e -> {
@@ -2053,11 +2058,13 @@ public class MicropipettingSolutionController implements Initializable {
      * Enable the Results button after all protocol steps are complete
      */
     private void enableResultsButton() {
+        allStepsCompleted = true;
+
         if (btnResults != null) {
             btnResults.setDisable(false);
             btnResults.setOpacity(1.0);
 
-            // Show congratulatory message
+            // Show congratulatory message then auto-navigate to Results
             javafx.application.Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Congratulations!");
@@ -2068,6 +2075,16 @@ public class MicropipettingSolutionController implements Initializable {
                                 "to compare your predictions with your actual results and see how you did!"
                 );
                 alert.showAndWait();
+
+                // Auto-navigate to Results section after alert is dismissed
+                mainpanel.getChildren().clear();
+                mainpanel.getChildren().add(scrollPane);
+                scrollPane.setVisible(true);
+                scrollPane.setManaged(true);
+                javafx.scene.layout.VBox.setVgrow(scrollPane, javafx.scene.layout.Priority.ALWAYS);
+                updateScrollContent(getResultsContent());
+                resetToButtonView();
+                setSelectedButton(btnResults);
             });
 
             // Optional: Add a subtle highlight animation to draw attention

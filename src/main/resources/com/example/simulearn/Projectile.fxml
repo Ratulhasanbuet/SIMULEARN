@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="892.0" prefWidth="600.0" styleClass="root-pane" stylesheets="@Projectile.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.ProjectileController">
+
+    <!-- ══════════════════ TOP HEADER ══════════════════ -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0" styleClass="header">
+            <!-- Logo -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+            <Button mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="41.0" prefWidth="92.0" styleClass="badge-green" text="Back" />
+                <Label fx:id="headerIcon" styleClass="logo-icon" text="🏀" />
+                <VBox spacing="2">
+                    <Label styleClass="logo-title" text="PROJECTILE SIMULATOR" />
+                    <Label fx:id="headerSub" styleClass="logo-sub" text="Basketball · Air Resistance · 2D Physics" />
+                </VBox>
+            </HBox>
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS" />
+            <!-- Status badges -->
+            <HBox alignment="CENTER_RIGHT" spacing="12">
+                <Label fx:id="lblStatus" styleClass="badge-blue" text="READY" />
+                <Label fx:id="lblScore" styleClass="badge-orange" text="SCORE: 0" />
+                <Label fx:id="lblAttempts" styleClass="badge-green" text="ATTEMPTS: 0" />
+            </HBox>
+            <HBox.margin><Insets left="24" right="24" /></HBox.margin>
+        </HBox>
+    </top>
+
+    <!-- ══════════════════ CENTER CANVAS ══════════════════ -->
+    <center>
+        <StackPane fx:id="canvasWrap" styleClass="canvas-wrap">
+            <Canvas fx:id="simCanvas" />
+        </StackPane>
+    </center>
+
+    <!-- ══════════════════ RIGHT PANEL ══════════════════ -->
+    <right>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="side-scroll">
+            <VBox maxWidth="285" minWidth="285" styleClass="side-panel">
+
+                <!-- ── SPORT MODE ── -->
+                <VBox styleClass="panel-section">
+                    <Label styleClass="section-title" text="SPORT MODE" />
+                    <HBox spacing="6">
+                        <ToggleButton fx:id="btnBasketball" maxWidth="Infinity" onAction="#onModeBasketball" styleClass="mode-tab-active" text="🏀 Basketball" HBox.hgrow="ALWAYS" />
+                        <ToggleButton fx:id="btnBaseball" maxWidth="Infinity" onAction="#onModeBaseball" styleClass="mode-tab" text="⚾ Baseball" HBox.hgrow="ALWAYS" />
+                        <ToggleButton fx:id="btnHockey" maxWidth="Infinity" onAction="#onModeHockey" styleClass="mode-tab" text="🏒 Hockey" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                </VBox>
+
+                <!-- ── LAUNCH PARAMETERS ── -->
+                <VBox spacing="12" styleClass="panel-section">
+                    <Label styleClass="section-title" text="LAUNCH PARAMETERS" />
+
+                    <!-- Speed -->
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label styleClass="ctrl-name" text="🚀 Speed v₀" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblSpeed" styleClass="ctrl-val" text="24.0 ft/s" />
+                        </HBox>
+                        <Slider fx:id="slSpeed" blockIncrement="0.5" max="60" min="5" onMouseClicked="#onSliderChange" onMouseDragged="#onSliderChange" styleClass="slider-orange" value="24" />
+                    </VBox>
+
+                    <!-- Angle -->
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label styleClass="ctrl-name" text="📐 Angle θ" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblAngle" styleClass="ctrl-val" text="30.0°" />
+                        </HBox>
+                        <Slider fx:id="slAngle" blockIncrement="0.5" max="85" min="5" onMouseClicked="#onSliderChange" onMouseDragged="#onSliderChange" styleClass="slider-orange" value="30" />
+                    </VBox>
+
+                    <!-- Distance -->
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label styleClass="ctrl-name" text="↔ Horiz. dist" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblDist" styleClass="ctrl-val" text="16.0 ft" />
+                        </HBox>
+                        <Slider fx:id="slDist" blockIncrement="0.5" max="60" min="6" onMouseClicked="#onSliderChange" onMouseDragged="#onSliderChange" styleClass="slider-blue" value="16" />
+                    </VBox>
+
+                    <!-- Player height + figure -->
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label styleClass="ctrl-name" text="🏃 Player Height" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblPlayerH" styleClass="ctrl-val" text="6.8 ft" />
+                        </HBox>
+                        <!-- Mini canvas for animated figure -->
+                        <StackPane styleClass="figure-pane">
+                            <Canvas fx:id="figureCanvas" height="108" width="248" />
+                        </StackPane>
+                        <Slider fx:id="slPlayerH" blockIncrement="0.1" max="8" min="0.1" onMouseClicked="#onSliderChange" onMouseDragged="#onSliderChange" styleClass="slider-blue" value="6.8" />
+                    </VBox>
+                </VBox>
+
+                <!-- ── PHYSICS OPTIONS ── -->
+                <VBox spacing="8" styleClass="panel-section">
+                    <Label styleClass="section-title" text="PHYSICS OPTIONS" />
+                    <CheckBox fx:id="chkAir" selected="true" styleClass="check" text="💨 Air Resistance" />
+                    <CheckBox fx:id="chkTrail" onAction="#onToggleTrail" selected="true" styleClass="check" text="✨ Show Trail" />
+                    <CheckBox fx:id="chkDims" onAction="#onToggleDims" selected="true" styleClass="check" text="📏 Dimensions" />
+                    <CheckBox fx:id="chkVec" onAction="#onToggleVec" selected="true" styleClass="check" text="➡ Velocity Vector" />
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label styleClass="ctrl-name" text="💨 Drag coeff (Cd)" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblCd" styleClass="ctrl-val" text="0.47" />
+                        </HBox>
+                        <Slider fx:id="slCd" blockIncrement="0.01" max="1.5" min="0" onMouseClicked="#onSliderChange" onMouseDragged="#onSliderChange" styleClass="slider-orange" value="0.47" />
+                    </VBox>
+                </VBox>
+
+                <!-- ── LIVE TELEMETRY ── -->
+                <VBox spacing="8" styleClass="panel-section">
+                    <Label styleClass="section-title" text="LIVE TELEMETRY" />
+                    <GridPane hgap="8" vgap="8">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50" />
+                            <ColumnConstraints percentWidth="50" />
+                        </columnConstraints>
+                        <!-- Row 0 -->
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label styleClass="tele-label" text="SPEED" />
+                            <Label fx:id="tSpeed" styleClass="tele-val-orange" text="—" />
+                        </VBox>
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label styleClass="tele-label" text="HEIGHT" />
+                            <Label fx:id="tHeight" styleClass="tele-val-blue" text="—" />
+                        </VBox>
+                        <!-- Row 1 -->
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label styleClass="tele-label" text="HORIZ DIST" />
+                            <Label fx:id="tDist" styleClass="tele-val-blue" text="—" />
+                        </VBox>
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label styleClass="tele-label" text="FLIGHT TIME" />
+                            <Label fx:id="tTime" styleClass="tele-val-green" text="—" />
+                        </VBox>
+                        <!-- Row 2 -->
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <Label styleClass="tele-label" text="DRAG FORCE" />
+                            <Label fx:id="tDrag" styleClass="tele-val-blue" text="—" />
+                        </VBox>
+                        <VBox styleClass="tele-cell" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <Label styleClass="tele-label" text="ANGLE NOW" />
+                            <Label fx:id="tAngle" styleClass="tele-val-orange" text="—" />
+                        </VBox>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </VBox>
+
+                <!-- ── BUTTONS ── -->
+                <VBox alignment="CENTER" spacing="8" styleClass="panel-section">
+                    <HBox spacing="8">
+                        <Button fx:id="btnLaunch" maxWidth="Infinity" onAction="#onLaunch" styleClass="btn-launch" text="▶  LAUNCH" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnReset" maxWidth="Infinity" onAction="#onReset" styleClass="btn-reset" text="↺  RESET" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <Label styleClass="hint-label" text="SPACE = Launch   |   R = Reset" />
+                </VBox>
+
+                <!-- ── PHYSICS REFERENCE ── -->
+                <VBox spacing="0" styleClass="panel-section">
+                    <Label styleClass="section-title" text="PHYSICS REFERENCE" />
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="g (gravity)" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="32.2 ft/s²" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="Ball mass" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="1.37 lb" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="Ball radius" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="0.394 ft" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="Hoop height" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="10 ft" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="Hoop radius" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="0.75 ft" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="Air density ρ" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="0.00237 slug/ft³" /></HBox>
+                    <HBox styleClass="ref-row"><Label styleClass="ref-key" text="F_drag" /><Region HBox.hgrow="ALWAYS" /><Label styleClass="ref-val" text="½ρCdAv²" /></HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </right>
+
+</BorderPane>

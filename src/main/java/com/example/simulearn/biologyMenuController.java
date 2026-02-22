@@ -59,4 +59,23 @@ public class biologyMenuController {
         stage.setMaximized(true);
         stage.show();
     }
+
+    @FXML
+
+    void onPPCCButtonClicked(ActionEvent event) {
+        try {
+            // Load FXML correctly
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/PPCC.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 1920, 1080);
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.show();
+
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to open the window.");
+
+        }
+    }
 }

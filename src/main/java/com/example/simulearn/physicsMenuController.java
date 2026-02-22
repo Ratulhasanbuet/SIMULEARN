@@ -49,4 +49,21 @@ public class physicsMenuController {
         stage.setMaximized(true);
         stage.show();
     }
+
+    @FXML
+    void onProjectileButtonClicked(ActionEvent event) throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Projectile.fxml"));
+        Parent root=loader.load();
+        Scene scene = new Scene(root, 1200, 700);
+        scene.getStylesheets().add(getClass().getResource("/com/example/simulearn/Projectile.css").toExternalForm());
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        ProjectileController controller = loader.getController();
+        controller.onSceneReady(scene, stage);
+
+        stage.setTitle("🏀 Projectile Simulator");
+        stage.setMinWidth(900);
+        stage.setMinHeight(600);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

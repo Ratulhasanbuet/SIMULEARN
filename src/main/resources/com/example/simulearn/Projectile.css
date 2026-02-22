@@ -1,0 +1,297 @@
+/* ── Root ─────────────────────────────────────────── */
+.root-pane {
+    -fx-background-color: #0a0e14;
+    -fx-font-family: "Arial";
+}
+
+/* ── Header ───────────────────────────────────────── */
+.header {
+    -fx-background-color: #111822;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8 24 8 24;
+    -fx-min-height: 54;
+    -fx-pref-height: 54;
+}
+
+.logo-icon {
+    -fx-font-size: 22px;
+}
+
+.logo-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f97316;
+    -fx-font-family: "Arial";
+    -fx-letter-spacing: 2;
+}
+
+.logo-sub {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-font-family: "Courier New";
+}
+
+/* Badges */
+.badge-blue {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 11px;
+    -fx-padding: 3 10 3 10;
+    -fx-background-color: #0c2340;
+    -fx-text-fill: #38bdf8;
+    -fx-border-color: #38bdf8;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.badge-orange {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 11px;
+    -fx-padding: 3 10 3 10;
+    -fx-background-color: #431407;
+    -fx-text-fill: #f97316;
+    -fx-border-color: #f97316;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.badge-green {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 11px;
+    -fx-padding: 3 10 3 10;
+    -fx-background-color: #14532d;
+    -fx-text-fill: #22c55e;
+    -fx-border-color: #22c55e;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+/* ── Canvas wrap ──────────────────────────────────── */
+.canvas-wrap {
+    -fx-background-color: #0a0e14;
+}
+
+/* ── Side panel ───────────────────────────────────── */
+.side-scroll {
+    -fx-background: #111822;
+    -fx-background-color: #111822;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 0 0 0 1;
+}
+.side-scroll > .viewport {
+    -fx-background-color: #111822;
+}
+
+.side-panel {
+    -fx-background-color: #111822;
+    -fx-spacing: 0;
+}
+
+.panel-section {
+    -fx-padding: 14 16 14 16;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 0 0 1 0;
+    -fx-spacing: 10;
+}
+
+/* Section title */
+.section-title {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+}
+
+/* ── Mode tab buttons ─────────────────────────────── */
+.mode-tab {
+    -fx-background-color: #0d1520;
+    -fx-text-fill: #64748b;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 6 4 6 4;
+    -fx-cursor: hand;
+}
+.mode-tab:hover {
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #64748b;
+}
+.mode-tab-active {
+    -fx-background-color: #0c2340;
+    -fx-text-fill: #38bdf8;
+    -fx-border-color: #38bdf8;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 6 4 6 4;
+    -fx-cursor: hand;
+}
+
+/* ── Control labels ───────────────────────────────── */
+.ctrl-name {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #e2e8f0;
+}
+
+.ctrl-val {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 12px;
+    -fx-text-fill: #f97316;
+    -fx-background-color: #1e1008;
+    -fx-padding: 2 8 2 8;
+    -fx-border-color: #3a1a04;
+    -fx-border-width: 1;
+}
+
+/* ── Sliders ──────────────────────────────────────── */
+.slider-orange .track { -fx-background-color: #1e2d40; }
+.slider-orange .thumb {
+    -fx-background-color: #f97316;
+    -fx-effect: dropshadow(gaussian, #f9731688, 8, 0, 0, 0);
+}
+.slider-blue .track { -fx-background-color: #1e2d40; }
+.slider-blue .thumb {
+    -fx-background-color: #38bdf8;
+    -fx-effect: dropshadow(gaussian, #38bdf888, 8, 0, 0, 0);
+}
+
+/* ── Checkboxes ───────────────────────────────────── */
+.check {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #e2e8f0;
+    -fx-text-gap: 10;
+}
+.check .box {
+    -fx-background-color: #0d1520;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 1;
+}
+.check:selected .mark  { -fx-background-color: #38bdf8; }
+.check:selected .box   { -fx-background-color: #0c2340; -fx-border-color: #38bdf8; }
+
+/* ── Figure canvas pane ───────────────────────────── */
+.figure-pane {
+    -fx-background-color: #0d1520;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-min-height: 110;
+    -fx-pref-height: 110;
+}
+
+/* ── Telemetry ────────────────────────────────────── */
+.tele-cell {
+    -fx-background-color: #0d1520;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8 10 8 10;
+    -fx-spacing: 3;
+}
+.tele-label {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 9px;
+    -fx-text-fill: #64748b;
+}
+.tele-val-blue {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #38bdf8;
+}
+.tele-val-orange {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f97316;
+}
+.tele-val-green {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #22c55e;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn-launch {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, #f9731644, 15, 0, 0, 0);
+}
+.btn-launch:hover {
+    -fx-background-color: #fb923c;
+    -fx-effect: dropshadow(gaussian, #f9731688, 20, 0, 0, 0);
+}
+
+.btn-reset {
+    -fx-background-color: #1e2d40;
+    -fx-text-fill: #64748b;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+    -fx-border-color: #1e2d40;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+.btn-reset:hover {
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #64748b;
+}
+
+.hint-label {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-alignment: center;
+    -fx-max-width: Infinity;
+}
+
+/* ── Physics reference ────────────────────────────── */
+.ref-row {
+    -fx-padding: 3 0 3 0;
+    -fx-border-color: #151e29;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: center-left;
+}
+.ref-key {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+.ref-val {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 10px;
+    -fx-text-fill: #38bdf8;
+}
+
+/* ── ScrollBar ────────────────────────────────────── */
+.scroll-bar { -fx-background-color: #111822; }
+.scroll-bar .track { -fx-background-color: #0d1520; }
+.scroll-bar .thumb {
+    -fx-background-color: #1e2d40;
+    -fx-background-radius: 4;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button { -fx-background-color: #111822; }

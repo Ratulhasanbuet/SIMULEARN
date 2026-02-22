@@ -16,7 +16,7 @@
                 <Image url="@../../../Images/BiologyMenu.png" />
             </image>
         </ImageView>
-        <VBox prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" StackPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="1920.0" spacing="50.0">
                     <children>
@@ -40,12 +40,12 @@
                 </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="259.0" prefWidth="1920.0">
                <VBox.margin>
-                  <Insets top="200.0" />
+                  <Insets />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onAction="#onMicropipettingSolutionButtonClicked" prefHeight="256.0" prefWidth="406.0" styleClass="button-27">
+                  <Button mnemonicParsing="false" onAction="#onMicropipettingSolutionButtonClicked" prefHeight="266.0" prefWidth="450.0" styleClass="button-27">
                      <graphic>
-                        <ImageView fitHeight="208.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="224.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../Images/Micropipetting%20Solutions%20-%20visual%20selection.png" />
                            </image>
@@ -56,12 +56,12 @@
             </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="259.0" prefWidth="1920.0" stylesheets="@menu.css">
                     <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets />
                     </VBox.margin>
                     <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#ligationbuttonclicked" prefHeight="242.0" prefWidth="362.0" styleClass="button-27">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#ligationbuttonclicked" prefHeight="300.0" prefWidth="447.0" styleClass="button-27">
                      <graphic>
-                        <ImageView fitHeight="220.0" fitWidth="363.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="256.0" fitWidth="403.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../Images/DNA%20Ligation%20Simulation_%20Uniting%20Fragments%20for%20Gene%20Expression%20-%20visual%20selection.png" />
                            </image>
@@ -70,6 +70,19 @@
                         </Button>
                     </children>
                 </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="313.0" prefWidth="1920.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onPPCCButtonClicked" prefHeight="314.0" prefWidth="456.0" styleClass="button-27">
+                     <graphic>
+                        <ImageView fitHeight="241.0" fitWidth="412.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/Protein%20Purification%20from%20E.%20coli_%20A%20Simulation%20Guide%20-%20visual%20selection.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
             </children>
         </VBox>
     </children>
