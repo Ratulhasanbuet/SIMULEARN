@@ -22,7 +22,7 @@
                 </Button>
                 <Label prefHeight="53.0" prefWidth="552.0" text="MicropipettingSolution">
                     <font>
-                        <Font name="AdobeHebrew-Bold" size="36.0" />
+                        <Font name="Trebuchet MS" size="36.0" />
                     </font>
                 </Label>
             </children>

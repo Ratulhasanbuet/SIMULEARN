@@ -566,6 +566,49 @@
 .subject-card:hover .icon-shape-bio     { -fx-background-color: rgba(74,  222, 128, 0.22); }
 
 
+
+/* ══════════════════════════════════════════════════
+   STYLE 5 — Green Glow Button
+   Usage: styleClass="btn-glow-green"
+══════════════════════════════════════════════════ */
+
+.btn-glow-green {
+    -fx-background-color: linear-gradient(to bottom right, #22c55e, #16a34a);
+    -fx-text-fill: white;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 13 34 13 34;
+    -fx-background-radius: 10;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-effect:
+            dropshadow(gaussian, rgba(34, 197, 94, 0.55), 20, 0.40, 0, 4),
+            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
+}
+
+.btn-glow-green:hover {
+    -fx-background-color: linear-gradient(to bottom right, #4ade80, #22c55e);
+    -fx-effect:
+            dropshadow(gaussian, rgba(34, 197, 94, 0.85), 30, 0.55, 0, 0),
+            dropshadow(gaussian, rgba(34, 197, 94, 0.35), 55, 0.25, 0, 0),
+            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.btn-glow-green:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #16a34a, #15803d);
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-effect: dropshadow(gaussian, rgba(34, 197, 94, 0.35), 10, 0.25, 0, 2);
+}
+
+.btn-glow-green:focused {
+    -fx-background-insets: 0;
+}
+
+
 /* ══════════════════════════════════════════════════
    ABOUT PAGE STYLES
 ══════════════════════════════════════════════════ */
@@ -952,49 +995,70 @@
 }
 
 
-
-
 /* ══════════════════════════════════════════════════
-   STYLE 5 — Green Glow Button
-   Usage: styleClass="btn-glow-green"
+   USER CHIP — Logged-in navbar display
 ══════════════════════════════════════════════════ */
 
-.btn-glow-green {
-    -fx-background-color: linear-gradient(to bottom right, #22c55e, #16a34a);
-    -fx-text-fill: white;
-    -fx-font-family: "Trebuchet MS";
+.user-chip {
+    -fx-background-color: rgba(74, 222, 128, 0.10);
+    -fx-background-radius: 50;
+    -fx-border-color: rgba(74, 222, 128, 0.30);
+    -fx-border-width: 1.5;
+    -fx-border-radius: 50;
+    -fx-padding: 6 18 6 8;
+    -fx-cursor: default;
+}
+
+/* Circle avatar with first letter */
+.user-avatar {
+    -fx-background-color: #22c55e;
+    -fx-background-radius: 50;
+    -fx-text-fill: #0a1f10;
+    -fx-font-family: "Georgia";
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-padding: 13 34 13 34;
-    -fx-background-radius: 10;
-    -fx-border-width: 0;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+    -fx-min-width: 34;
+    -fx-min-height: 34;
+    -fx-max-width: 34;
+    -fx-max-height: 34;
+    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.50), 10, 0.3, 0, 0);
+}
+
+.user-chip-greeting {
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 10px;
+    -fx-text-fill: rgba(167, 243, 208, 0.45);
+}
+
+.user-chip-name {
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #86efac;
+}
+
+/* Logout button */
+.nav-btn-logout {
+    -fx-background-color: rgba(239, 68, 68, 0.10);
+    -fx-text-fill: #f87171;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18 8 18;
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(239, 68, 68, 0.28);
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
     -fx-cursor: hand;
-    -fx-effect:
-            dropshadow(gaussian, rgba(34, 197, 94, 0.55), 20, 0.40, 0, 4),
-            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
 }
-
-.btn-glow-green:hover {
-    -fx-background-color: linear-gradient(to bottom right, #4ade80, #22c55e);
-    -fx-effect:
-            dropshadow(gaussian, rgba(34, 197, 94, 0.85), 30, 0.55, 0, 0),
-            dropshadow(gaussian, rgba(34, 197, 94, 0.35), 55, 0.25, 0, 0),
-            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
-    -fx-scale-x: 1.04;
-    -fx-scale-y: 1.04;
+.nav-btn-logout:hover {
+    -fx-background-color: rgba(239, 68, 68, 0.22);
+    -fx-text-fill: #fca5a5;
+    -fx-border-color: rgba(239, 68, 68, 0.50);
 }
-
-.btn-glow-green:pressed {
-    -fx-background-color: linear-gradient(to bottom right, #16a34a, #15803d);
-    -fx-scale-x: 0.97;
-    -fx-scale-y: 0.97;
-    -fx-effect: dropshadow(gaussian, rgba(34, 197, 94, 0.35), 10, 0.25, 0, 2);
-}
-
-.btn-glow-green:focused {
-    -fx-background-insets: 0;
-}
-
+.nav-btn-logout:focused { -fx-background-insets: 0; }
 .button-74 {
     -fx-background-color: #fbeee0;
     -fx-border-color: #422800;

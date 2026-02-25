@@ -127,7 +127,8 @@ public class MicropipettingSolutionController implements Initializable {
 
         Label title = new Label("1. CONTEXT");
         title.setFont(Font.font("Arial", 32));
-        title.setStyle("-fx-text-fill: #1a5409;");
+        title.setStyle("-fx-text-fill: #1a5409;" +
+                "-fx-font-family: Georgia;");
         Separator underline = new Separator();
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
@@ -137,12 +138,14 @@ public class MicropipettingSolutionController implements Initializable {
         text.setWrapText(true);
         text.setFont(Font.font("Arial", 16));
         text.setLineSpacing(3);
-        text.setStyle("-fx-text-fill: #333333;");
+        text.setStyle("-fx-text-fill: #333333;"
+                + "-fx-font-family: Trebuchet MS;");
 
 
         Label howToTitle = new Label("HOW TO USE A MICROPIPETTE");
         howToTitle.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        howToTitle.setStyle("-fx-text-fill: #333333;");
+        howToTitle.setStyle("-fx-text-fill: #333333;" +
+                "-fx-font-family:Century Gothic;");
         howToTitle.setPadding(new Insets(20, 0, 10, 0));
 
         Separator underline2 = new Separator();

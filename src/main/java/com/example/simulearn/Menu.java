@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Menu extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        DatabaseHelper.initialize();      // tables create করবে
+        DatabaseHelper.initialize();
         SessionManager.tryAutoLogin();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Menu.class.getResource("/com/example/simulearn/Menu.fxml"));
