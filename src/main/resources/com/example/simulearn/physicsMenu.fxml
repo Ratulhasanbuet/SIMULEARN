@@ -1,76 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.physicsMenuController">
-   <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Images/physicsMenu.png" />
-         </image>
-      </ImageView>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-         <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="1920.0" spacing="50.0" stylesheets="@menu.css">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onLogicCircuitClicked" prefHeight="43.0" prefWidth="230.0" text="Logic Circuit">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" prefHeight="51.0" prefWidth="120.0" text="Home">
-                     <styleClass>
-                        <String fx:value="card-button" />
-                        <String fx:value="button-74" />
-                     </styleClass>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Login" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="About" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Exit">
-                     <HBox.margin>
-                        <Insets right="50.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="304.0" prefWidth="1920.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onBuoyancyClick" prefHeight="300.0" prefWidth="434.0" styleClass="button-27" textFill="#a418a4">
-                     <font>
-                        <Font name="System Italic" size="36.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="284.0" fitWidth="393.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/Buoyancy%20-%20visual%20selection.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="294.0" prefWidth="1920.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onProjectileButtonClicked" prefHeight="322.0" prefWidth="442.0" styleClass="button-27">
-                     <graphic>
-                        <ImageView fitHeight="282.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/Understanding%20Projectile%20Motion%20-%20visual%20selection.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<StackPane
+    prefHeight="1080.0"
+    prefWidth="1920.0"
+    stylesheets="@menu.css"
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.example.simulearn.physicsMenuController">
+
+    <children>
+
+        <ScrollPane styleClass="main-scroll" fitToWidth="true">
+            <content>
+
+                <VBox styleClass="page-root" spacing="0">
+
+                    <!-- ══════ NAVBAR ══════ -->
+                    <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="0">
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label styleClass="brand-icon" text="🌿"/>
+                            <Label styleClass="brand-name" text="SimuLearn"/>
+                        </HBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <HBox alignment="CENTER" spacing="6">
+                            <Button styleClass="nav-btn" mnemonicParsing="false"
+                                    onAction="#onHomeButtonClicked" text="Home"/>
+                            <Button styleClass="nav-btn" mnemonicParsing="false" text="About"/>
+                            <Button styleClass="nav-btn" mnemonicParsing="false" text="Login"/>
+                            <Button styleClass="nav-btn-exit" mnemonicParsing="false" text="Exit"/>
+                        </HBox>
+
+                        <HBox.margin>
+                            <Insets right="50.0"/>
+                        </HBox.margin>
+                    </HBox>
+
+                    <!-- ══════ PAGE HEADER ══════ -->
+                    <VBox styleClass="page-header" alignment="CENTER" spacing="12">
+
+                        <Label styleClass="hero-badge" text="⚡   Physics Simulations"/>
+
+                        <Label styleClass="hero-title" text="Physics"/>
+                        <Label styleClass="hero-title-accent" text="Lab Simulations"/>
+
+                        <Label styleClass="hero-subtitle" wrapText="true" maxWidth="800"
+                               text="Experience the laws of physics through interactive virtual experiments. From floating objects to flying projectiles — see it, feel it, understand it."/>
+
+                    </VBox>
+
+                    <!-- ══════ SIMULATION CARDS ══════ -->
+                    <VBox alignment="CENTER" spacing="14" styleClass="cards-section">
+
+                        <Label styleClass="section-title" text="Choose a Simulation"/>
+                        <Label styleClass="section-sub" text="Click any card to launch the simulation"/>
+
+                        <HBox alignment="CENTER" spacing="40" styleClass="cards-row">
+
+                            <!-- Buoyancy -->
+                            <Button mnemonicParsing="false"
+                                    onAction="#onBuoyancyClick"
+                                    styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                                        <ImageView fitHeight="200.0" fitWidth="320.0"
+                                                   pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/Buoyancy%20-%20visual%20selection.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-title" text="Buoyancy"/>
+                                            <Label styleClass="sim-card-desc" wrapText="true" maxWidth="300"
+                                                   text="Explore Archimedes' principle and discover why objects float or sink in fluids."/>
+                                            <Label styleClass="sim-card-tag-bio" text="🌊  Fluid Mechanics"/>
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Projectile Motion -->
+                            <Button mnemonicParsing="false"
+                                    onAction="#onProjectileButtonClicked"
+                                    styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                                        <ImageView fitHeight="200.0" fitWidth="320.0"
+                                                   pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/Understanding%20Projectile%20Motion%20-%20visual%20selection.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-title" text="Projectile Motion"/>
+                                            <Label styleClass="sim-card-desc" wrapText="true" maxWidth="300"
+                                                   text="Launch objects and analyze trajectories using real physics equations."/>
+                                            <Label styleClass="sim-card-tag-dna" text="🏀  Kinematics"/>
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Logic Circuit -->
+                            <Button mnemonicParsing="false"
+                                    onAction="#onLogicCircuitClicked"
+                                    styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                                        <ImageView fitHeight="200.0" fitWidth="320.0"
+                                                   pickOnBounds="true" preserveRatio="true">
+                                            <!-- No dedicated image found, using placeholder label -->
+                                        </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-icon-large" text="🔌"/>
+                                            <Label styleClass="sim-card-title" text="Logic Circuit"/>
+                                            <Label styleClass="sim-card-desc" wrapText="true" maxWidth="300"
+                                                   text="Build and simulate digital logic gates — AND, OR, NOT and beyond."/>
+                                            <Label styleClass="sim-card-tag-protein" text="💡  Electronics"/>
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                        </HBox>
+                    </VBox>
+
+                    <!-- ══════ FOOTER ══════ -->
+                    <HBox styleClass="footer" alignment="CENTER">
+                        <Label styleClass="footer-text" text="© 2025 SimuLearn  •  Made with ❤️ for curious minds"/>
+                    </HBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+
+    </children>
 </StackPane>

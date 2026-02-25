@@ -6,14 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class MenuController {
 
@@ -24,7 +21,6 @@ public class MenuController {
     public void initialize() {
         for (Node node : cardHBox.getChildren()) {
             if (node instanceof Button btn) {
-                // Optionally scale on hover
                 btn.setOnMouseEntered(e -> btn.setScaleX(1.05));
                 btn.setOnMouseEntered(e -> btn.setScaleY(1.05));
                 btn.setOnMouseExited(e -> {
@@ -33,32 +29,39 @@ public class MenuController {
                 });
             }
         }
+    }
 
+    @FXML
+    private void about(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/About.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to open About page.");
+        }
     }
 
     @FXML
     private void biology(ActionEvent event) {
-
         try {
-            // Load FXML correctly
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/biologyMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setMaximized(true);
             stage.show();
-
         } catch (java.io.IOException e) {
             System.out.println("Failed to open the window.");
-
         }
     }
 
     @FXML
     private void chemistry(ActionEvent event) {
-
         try {
-            // Load FXML correctly
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/chemistryMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -72,9 +75,7 @@ public class MenuController {
 
     @FXML
     private void math(ActionEvent event) {
-
         try {
-            // Load FXML correctly
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/mathMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -83,13 +84,11 @@ public class MenuController {
             stage.show();
         } catch (java.io.IOException e) {
             System.out.println("Failed to open the window.");
-
         }
     }
 
     @FXML
     private void physics(ActionEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/physicsMenu.fxml"));
             Parent root = loader.load();
@@ -102,8 +101,19 @@ public class MenuController {
         }
     }
 
-
+    @FXML
+    private void login(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/simulearn/Login.fxml")
+            );
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to open Login page.");
+        }
+    }
 }
-
-
-

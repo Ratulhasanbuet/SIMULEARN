@@ -26,6 +26,9 @@
                </font>
             </Label>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
 
         <!-- Main Content Area -->
@@ -49,6 +52,9 @@
                     </children>
                 </HBox>
             </content>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
         </ScrollPane>
     </children>
 </VBox>

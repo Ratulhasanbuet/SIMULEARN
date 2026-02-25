@@ -1,76 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.chemistryMenuController">
-   <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Images/physicsMenu.png" />
-         </image>
-      </ImageView>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <HBox alignment="CENTER_RIGHT" onDragDetected="#onRealMoleculeButtonClicked" prefHeight="88.0" prefWidth="1920.0" spacing="50.0" stylesheets="@menu.css">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onFlameTestClicked" prefHeight="54.0" prefWidth="350.0" text="Flame Test">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" prefHeight="51.0" prefWidth="120.0" text="Home">
-                     <styleClass>
-                        <String fx:value="card-button" />
-                        <String fx:value="button-74" />
-                     </styleClass>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Login" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="About" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="button-74" text="Exit">
-                     <HBox.margin>
-                        <Insets right="50.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="321.0" prefWidth="1920.0">
-               <VBox.margin>
-                  <Insets top="100.0" />
-               </VBox.margin>
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onRealMoleculeButtonClicked" prefHeight="263.0" prefWidth="353.0" styleClass="card-button">
-                     <graphic>
-                        <ImageView fitHeight="230.0" fitWidth="359.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/RealMolecule/tetrahedralgeometry.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="240.0" prefWidth="1920.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onMultiMoleculeButtonClicked" prefHeight="263.0" prefWidth="353.0" styleClass="button-27">
-                     <graphic>
-                        <ImageView fitHeight="234.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/Benzene.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.chemistryMenuController">
+
+    <children>
+
+        <ScrollPane fitToWidth="true" styleClass="main-scroll">
+            <content>
+
+                <VBox spacing="0" styleClass="page-root">
+
+                    <!-- ══════ NAVBAR ══════ -->
+                    <HBox alignment="CENTER_LEFT" spacing="0" styleClass="navbar">
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label styleClass="brand-icon" text="🌿" />
+                            <Label styleClass="brand-name" text="SimuLearn" />
+                        </HBox>
+
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <HBox alignment="CENTER" spacing="6">
+                            <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" styleClass="nav-btn" text="Home" />
+                            <Button mnemonicParsing="false" styleClass="nav-btn" text="About" />
+                            <Button mnemonicParsing="false" styleClass="nav-btn" text="Login" />
+                            <Button mnemonicParsing="false" styleClass="nav-btn-exit" text="Exit" />
+                        </HBox>
+
+                        <HBox.margin>
+                            <Insets right="50.0" />
+                        </HBox.margin>
+                    </HBox>
+
+                    <!-- ══════ PAGE HEADER ══════ -->
+                    <VBox alignment="CENTER" spacing="12" styleClass="page-header">
+
+                        <Label styleClass="hero-badge" text="🧪   Chemistry Simulations" />
+
+                        <Label styleClass="hero-title" text="Chemistry" />
+                        <Label styleClass="hero-title-accent" text="Lab Simulations" />
+
+                        <Label maxWidth="800" styleClass="hero-subtitle" text="Visualize molecules, observe reactions, and run experiments in a safe virtual chemistry lab. No goggles required." wrapText="true" />
+
+                    </VBox>
+
+                    <!-- ══════ SIMULATION CARDS ══════ -->
+                    <VBox alignment="CENTER" spacing="14" styleClass="cards-section">
+
+                        <Label styleClass="section-title" text="Choose a Simulation" />
+                        <Label styleClass="section-sub" text="Click any card to launch the simulation" />
+
+                        <HBox alignment="CENTER" spacing="40" styleClass="cards-row">
+
+                            <!-- Real Molecule -->
+                            <Button mnemonicParsing="false" onAction="#onRealMoleculeButtonClicked" styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                                        <ImageView fitHeight="366.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/Understanding%20VSEPR%20Theory%20-%20visual%20selection.png" />
+                                            </image>
+                                        </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-title" text="Real Molecule Viewer" />
+                                            <Label maxWidth="300" styleClass="sim-card-desc" text="Explore 3D molecular geometry — tetrahedral, linear, bent and more." wrapText="true" />
+                                            <Label styleClass="sim-card-tag-bio" text="🔬  Molecular Geometry" />
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Multi Molecule -->
+                            <Button mnemonicParsing="false" onAction="#onMultiMoleculeButtonClicked" styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                                        <ImageView fitHeight="389.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/Aromatic%20Organic%20and%20Inorganic%20Molecular%20View%20-%20visual%20selection.png" />
+                                 </image>
+                                        </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-title" text="Multi Molecule View" />
+                                            <Label maxWidth="300" styleClass="sim-card-desc" text="Compare and visualize multiple molecular structures side by side." wrapText="true" />
+                                            <Label styleClass="sim-card-tag-dna" text="⚗️  Organic Chemistry" />
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Flame Test -->
+                            <Button mnemonicParsing="false" onAction="#onFlameTestClicked" styleClass="sim-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
+                              <ImageView fitHeight="269.0" fitWidth="339.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/Flame%20Test%20of%20Compounds%20and%20Color%20Transitions%20-%20visual%20selection.png" />
+                                 </image>
+                              </ImageView>
+                                        <VBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="sim-card-title" text="Flame Test" />
+                                            <Label maxWidth="300" styleClass="sim-card-desc" text="Identify metal ions by the colour they produce in a flame — virtually and safely." wrapText="true" />
+                                            <Label styleClass="sim-card-tag-protein" text="💡  Analytical Chemistry" />
+                                        </VBox>
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                        </HBox>
+                    </VBox>
+
+                    <!-- ══════ FOOTER ══════ -->
+                    <HBox alignment="CENTER" styleClass="footer">
+                        <Label styleClass="footer-text" text="© 2025 SimuLearn  •  Made with ❤️ for curious minds" />
+                    </HBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+
+    </children>
 </StackPane>

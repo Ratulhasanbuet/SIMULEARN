@@ -1,124 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.MenuController">
+<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.MenuController">
+
     <children>
-        <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../Images/menuimage.png" />
-            </image>
-        </ImageView>
-        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+
+        <ScrollPane fitToWidth="true" styleClass="main-scroll">
             <content>
-                <VBox fx:id="topBox" prefHeight="1139.0" prefWidth="1920.0">
-                    <children>
-                        <HBox fx:id="HBOX" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-                            <children>
-                                <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="120.0" text="Home">
-                                    <styleClass>
-                                        <String fx:value="card-button" />
-                                        <String fx:value="button-74" />
-                                    </styleClass>
-                                </Button>
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Login">
-                           <styleClass>
-                              <String fx:value="button-74" />
-                              <String fx:value="card-button" />
-                           </styleClass></Button>
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="About">
-                           <styleClass>
-                              <String fx:value="button-74" />
-                              <String fx:value="card-button" />
-                           </styleClass></Button>
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Exit">
-                                    <HBox.margin>
-                                        <Insets right="50.0" />
-                                    </HBox.margin>
-                           <styleClass>
-                              <String fx:value="button-74" />
-                              <String fx:value="card-button" />
-                           </styleClass>
-                                </Button>
-                            </children>
+
+                <VBox spacing="0" styleClass="page-root">
+
+                    <!-- ══════ NAVBAR ══════ -->
+                    <HBox alignment="CENTER_LEFT" spacing="0" styleClass="navbar">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label styleClass="brand-icon" text="🌿" />
+                            <Label styleClass="brand-name" text="SimuLearn" />
                         </HBox>
-                        <HBox fx:id="cardHBox" alignment="CENTER" prefHeight="209.0" prefWidth="1920.0" spacing="30">
-                            <children>
-                                <!-- Spacer left -->
-                                <VBox prefWidth="50.0" />
-
-                                <!-- Physics Button -->
-                                <Button mnemonicParsing="false" onAction="#physics" styleClass="card-button" userData="Physics.fxml">
-                                    <graphic>
-                                        <ImageView fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../Images/physics_button.gif" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-
-                                <!-- Spacer -->
-                                <VBox prefWidth="30.0" />
-
-                                <!-- Math Button -->
-                                <Button mnemonicParsing="false" onAction="#math" styleClass="card-button" userData="Math.fxml">
-                                    <graphic>
-                                        <ImageView fitHeight="199.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../Images/math.gif" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-
-                                <!-- Spacer -->
-                                <VBox prefWidth="30.0" />
-
-                                <!-- Chemistry Button -->
-                                <Button mnemonicParsing="false" onAction="#chemistry" styleClass="card-button" userData="Chemistry.fxml">
-                                    <graphic>
-                                        <ImageView fitHeight="210.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../Images/Chemistry_button.gif" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-
-                                <!-- Spacer -->
-                                <VBox prefWidth="30.0" />
-
-                                <!-- Biology Button -->
-                                <Button mnemonicParsing="false" onAction="#biology" styleClass="card-button" userData="Biology.fxml">
-                                    <graphic>
-                                        <ImageView fitHeight="202.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../Images/biology_button.gif" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-
-                                <!-- Spacer right -->
-                                <VBox prefWidth="50.0" />
-                            </children>
-                     <VBox.margin>
-                        <Insets top="500.0" />
-                     </VBox.margin>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <HBox alignment="CENTER" spacing="6">
+                            <Button mnemonicParsing="false" styleClass="nav-btn" text="Home" />
+                            <Button mnemonicParsing="false" onAction="#about" styleClass="nav-btn" text="About" />
+                            <Button mnemonicParsing="false" onAction="#login" styleClass="nav-btn" text="Login" />
+                            <Button mnemonicParsing="false" styleClass="nav-btn-exit" text="Exit" />
                         </HBox>
+                        <HBox.margin>
+                            <Insets right="50.0" />
+                        </HBox.margin>
+                    </HBox>
 
-                    </children>
+                    <!-- ══════ HERO ══════ -->
+                    <VBox alignment="CENTER" spacing="18" styleClass="hero-section">
+                        <Label styleClass="hero-badge" text="🌱   Interactive Science Learning Platform" />
+                        <Label styleClass="hero-title" text="Explore. Simulate." />
+                        <Label styleClass="hero-title-accent" text="Understand." />
+                        <Label maxWidth="860" styleClass="hero-subtitle" text="SimuLearn brings complex science concepts to life through interactive simulations. Dive into Physics, Chemistry, Mathematics, and Biology — and truly understand how the world works." wrapText="true" />
+                        <HBox alignment="CENTER" spacing="50" styleClass="stats-row">
+                            <VBox alignment="CENTER" spacing="4">
+                                <Label styleClass="stat-number" text="12+" />
+                                <Label styleClass="stat-label" text="Simulations" />
+                            </VBox>
+                            <Label styleClass="stat-divider" text="|" />
+                            <VBox alignment="CENTER" spacing="4">
+                                <Label styleClass="stat-number" text="4" />
+                                <Label styleClass="stat-label" text="Subjects" />
+                            </VBox>
+                            <Label styleClass="stat-divider" text="|" />
+                            <VBox alignment="CENTER" spacing="4">
+                                <Label styleClass="stat-number" text="Free" />
+                                <Label styleClass="stat-label" text="Forever" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- ══════ CARDS ══════ -->
+                    <VBox alignment="CENTER" spacing="14" styleClass="cards-section">
+
+                        <Label styleClass="section-title" text="Choose Your Subject" />
+                        <Label styleClass="section-sub" text="Click a card to start exploring simulations" />
+
+                        <HBox fx:id="cardHBox" alignment="CENTER" spacing="36" styleClass="cards-row">
+
+                            <!-- ── Physics ── -->
+                            <Button mnemonicParsing="false" onAction="#physics" styleClass="subject-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
+
+                                        <!-- Geometric shape + emoji -->
+                                        <StackPane prefHeight="120" prefWidth="120" styleClass="icon-shape-physics">
+                                            <Label styleClass="card-icon-emoji" text="⚡" />
+                                        </StackPane>
+
+                                        <!-- Decorative dots row -->
+                                        <HBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="dot-physics" text=" " />
+                                            <Label styleClass="dot-physics" text=" " />
+                                            <Label styleClass="dot-physics" text=" " />
+                                        </HBox>
+
+                                        <Label styleClass="card-subject-title" text="Physics" />
+                                        <Label styleClass="card-subject-desc" text="Buoyancy, Projectile Motion, Logic Circuit &amp; more" wrapText="true" />
+                                        <Label styleClass="card-tag-physics" text="⚡  3 simulations" />
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- ── Mathematics ── -->
+                            <Button mnemonicParsing="false" onAction="#math" styleClass="subject-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
+
+                                        <StackPane prefHeight="120" prefWidth="120" styleClass="icon-shape-math">
+                                            <Label styleClass="card-icon-emoji" text="📐" />
+                                        </StackPane>
+
+                                        <HBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="dot-math" text=" " />
+                                            <Label styleClass="dot-math" text=" " />
+                                            <Label styleClass="dot-math" text=" " />
+                                        </HBox>
+
+                                        <Label styleClass="card-subject-title" text="Mathematics" />
+                                        <Label styleClass="card-subject-desc" text="Vector &amp; more" wrapText="true" />
+                                        <Label styleClass="card-tag-math" text="📐  3 simulations" />
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- ── Chemistry ── -->
+                            <Button mnemonicParsing="false" onAction="#chemistry" styleClass="subject-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
+
+                                        <StackPane prefHeight="120" prefWidth="120" styleClass="icon-shape-chem">
+                                            <Label styleClass="card-icon-emoji" text="🧪" />
+                                        </StackPane>
+
+                                        <HBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="dot-chem" text=" " />
+                                            <Label styleClass="dot-chem" text=" " />
+                                            <Label styleClass="dot-chem" text=" " />
+                                        </HBox>
+
+                                        <Label styleClass="card-subject-title" text="Chemistry" />
+                                        <Label styleClass="card-subject-desc" text="Molecular View, Multi Molecule, Flame Test &amp; more" wrapText="true" />
+                                        <Label styleClass="card-tag-chem" text="🧪  3 simulations" />
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- ── Biology ── -->
+                            <Button mnemonicParsing="false" onAction="#biology" styleClass="subject-card">
+                                <graphic>
+                                    <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
+
+                                        <StackPane prefHeight="120" prefWidth="120" styleClass="icon-shape-bio">
+                                            <Label styleClass="card-icon-emoji" text="🌿" />
+                                        </StackPane>
+
+                                        <HBox alignment="CENTER" spacing="6">
+                                            <Label styleClass="dot-bio" text=" " />
+                                            <Label styleClass="dot-bio" text=" " />
+                                            <Label styleClass="dot-bio" text=" " />
+                                        </HBox>
+
+                                        <Label styleClass="card-subject-title" text="Biology" />
+                                        <Label styleClass="card-subject-desc" text="Micropipetting, DNA Ligation, Protein Purification &amp; more" wrapText="true" />
+                                        <Label styleClass="card-tag-bio" text="🌿  3 simulations" />
+                                    </VBox>
+                                </graphic>
+                            </Button>
+
+                        </HBox>
+                    </VBox>
+
+                    <!-- ══════ FOOTER ══════ -->
+                    <HBox alignment="CENTER" styleClass="footer">
+                        <Label styleClass="footer-text" text="© 2026 SimuLearn  •  Made with ❤️ for curious minds" />
+                    </HBox>
+
                 </VBox>
             </content>
         </ScrollPane>
+
     </children>
 </StackPane>
