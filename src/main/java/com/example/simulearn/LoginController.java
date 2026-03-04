@@ -37,16 +37,27 @@ public class LoginController {
             return;
         }
 
-        // ── Success ───────────────────────────────────────
-        SessionManager.setCurrentUser(username);
-
-        if (rememberMe.isSelected()) {
-            String token = SessionManager.generateToken();
-            DatabaseHelper.saveRememberToken(username, token);
-            SessionManager.saveToken(token);
+        // ── Get user email for verification ───────────────
+        String userEmail = DatabaseHelper.getUserEmail(username);
+        if (userEmail == null) {
+            showError("Could not find email for this account.");
+            return;
         }
 
-        goToHome(event);
+        // ── Generate and send verification code ──────────
+        String verificationCode = EmailService.generateVerificationCode();
+        boolean sent = EmailService.sendVerificationCode(userEmail, verificationCode);
+
+        if (!sent) {
+            showError("Failed to send verification email. Please check your email settings.");
+            return;
+        }
+
+        // ── Save verification code ──────────────────────
+        DatabaseHelper.saveVerificationCode(userEmail, verificationCode);
+
+        // ── Success: Redirect to verification page ─────────
+        goToVerification(event, userEmail, username, false);
     }
 
     @FXML
@@ -84,6 +95,22 @@ public class LoginController {
             stage.show();
         } catch (java.io.IOException e) {
             System.out.println("Failed to go home: " + e.getMessage());
+        }
+    }
+
+    private void goToVerification(ActionEvent event, String email, String username, boolean isSignUp) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Verification.fxml"));
+            Parent root = loader.load();
+            VerificationController controller = loader.getController();
+            controller.initialize(email, username, isSignUp);
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            showError("Could not load verification page.");
         }
     }
 }

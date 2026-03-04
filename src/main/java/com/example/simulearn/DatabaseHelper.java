@@ -46,10 +46,21 @@ public class DatabaseHelper {
             );
             """;
 
+        String createVerificationCodes = """
+            CREATE TABLE IF NOT EXISTS verification_codes (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                email      TEXT    NOT NULL,
+                code       TEXT    NOT NULL,
+                created_at TEXT    DEFAULT (datetime('now')),
+                expires_at TEXT    NOT NULL
+            );
+            """;
+
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(createUsers);
             stmt.execute(createRemember);
+            stmt.execute(createVerificationCodes);
         } catch (SQLException e) {
             System.out.println("DB init error: " + e.getMessage());
         }
@@ -124,6 +135,20 @@ public class DatabaseHelper {
         } catch (SQLException e) { return false; }
     }
 
+    // ── Get email from username ──────────────────────────
+    public static String getUserEmail(String username) {
+        String sql = "SELECT email FROM users WHERE username = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getString("email");
+        } catch (SQLException e) {
+            System.out.println("Get email error: " + e.getMessage());
+        }
+        return null;
+    }
+
     // ── Save remember-me token ────────────────────────────
     public static void saveRememberToken(String username, String token) {
         String getUserId = "SELECT id FROM users WHERE username = ?";
@@ -171,6 +196,68 @@ public class DatabaseHelper {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Token delete error: " + e.getMessage());
+        }
+    }
+
+    // ── Verification Code Management ──────────────────────
+    public static void saveVerificationCode(String email, String code) {
+        // Generate expiry time (10 minutes from now)
+        String sql = """
+            INSERT INTO verification_codes (email, code, expires_at)
+            VALUES (?, ?, datetime('now', '+10 minutes'))
+            """;
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email.trim().toLowerCase());
+            ps.setString(2, code);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Verification code save error: " + e.getMessage());
+        }
+    }
+
+    // ── Verify code and delete it ────────────────────────
+    public static boolean verifyCode(String email, String code) {
+        String sql = """
+            SELECT 1 FROM verification_codes
+            WHERE email = ? AND code = ? AND datetime('now') < expires_at
+            """;
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email.trim().toLowerCase());
+            ps.setString(2, code);
+            if (ps.executeQuery().next()) {
+                // Delete the used code
+                deleteVerificationCode(email, code);
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Verification code check error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    // ── Delete verification code ─────────────────────────
+    private static void deleteVerificationCode(String email, String code) {
+        String sql = "DELETE FROM verification_codes WHERE email = ? AND code = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email.trim().toLowerCase());
+            ps.setString(2, code);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Verification code delete error: " + e.getMessage());
+        }
+    }
+
+    // ── Clean expired verification codes ──────────────────
+    public static void cleanExpiredCodes() {
+        String sql = "DELETE FROM verification_codes WHERE datetime('now') >= expires_at";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Clean expired codes error: " + e.getMessage());
         }
     }
 }

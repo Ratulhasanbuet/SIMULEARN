@@ -15,11 +15,16 @@ import javafx.stage.Stage;
 
 public class MenuController {
 
-    @FXML private HBox  cardHBox;
-    @FXML private HBox  loggedOutBox;
-    @FXML private HBox  loggedInBox;
-    @FXML private Label usernameLabel;
-    @FXML private Label userAvatarLabel;
+    @FXML
+    private HBox cardHBox;
+    @FXML
+    private HBox loggedOutBox;
+    @FXML
+    private HBox loggedInBox;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label userAvatarLabel;
 
     @FXML
     public void initialize() {
@@ -60,7 +65,6 @@ public class MenuController {
         }
     }
 
-    // ── Logout ────────────────────────────────────────────
     @FXML
     private void logout(ActionEvent event) {
         SessionManager.logout();
@@ -77,7 +81,6 @@ public class MenuController {
         }
     }
 
-    // ── Login ─────────────────────────────────────────────
     @FXML
     private void login(ActionEvent event) {
         try {
@@ -92,7 +95,7 @@ public class MenuController {
         }
     }
 
-    // ── About ─────────────────────────────────────────────
+
     @FXML
     private void about(ActionEvent event) {
         try {
@@ -107,7 +110,13 @@ public class MenuController {
         }
     }
 
-    // ── Subject pages ─────────────────────────────────────
+    @FXML
+    private void exit(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+
     @FXML
     private void biology(ActionEvent event) {
         try {

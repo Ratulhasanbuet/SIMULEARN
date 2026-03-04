@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.VerificationController">
+
+    <children>
+
+        <!-- Full page split layout -->
+        <HBox prefHeight="1080" prefWidth="1920" spacing="0">
+
+            <!-- ══ LEFT PANEL — Branding ══ -->
+            <VBox alignment="CENTER" prefHeight="1080" prefWidth="860" spacing="30" styleClass="auth-left-panel">
+
+                <Label styleClass="auth-brand-icon" text="✓" />
+                <Label styleClass="auth-brand-name" text="Verify Email" />
+                <Label maxWidth="500" styleClass="auth-brand-tagline" text="Complete your registration by entering the 6-digit code sent to your email" wrapText="true" />
+
+                <!-- Decorative subject pills -->
+                <VBox alignment="CENTER" spacing="14">
+                    <HBox alignment="CENTER" spacing="14">
+                        <Label styleClass="auth-pill-physics" text="⚡  Physics" />
+                        <Label styleClass="auth-pill-chem" text="🧪  Chemistry" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="14">
+                        <Label styleClass="auth-pill-math" text="📐  Mathematics" />
+                        <Label styleClass="auth-pill-bio" text="🌿  Biology" />
+                    </HBox>
+                </VBox>
+
+                <Label styleClass="auth-left-footer" text="Free · Offline · Interactive" />
+
+            </VBox>
+
+            <!-- ══ RIGHT PANEL — Verification Form ══ -->
+            <VBox alignment="CENTER" styleClass="auth-right-panel" HBox.hgrow="ALWAYS">
+
+                <VBox alignment="CENTER" spacing="0" styleClass="auth-card">
+
+                    <!-- Header -->
+                    <Label styleClass="auth-card-title" text="Email Verification" />
+                    <Label styleClass="auth-card-subtitle" text="Enter the 6-digit code sent to your email" />
+
+                    <VBox spacing="20" styleClass="auth-form">
+
+                        <!-- Email Display -->
+                        <Label fx:id="emailLabel" maxWidth="360" styleClass="auth-error" text="Code sent to: email@example.com" wrapText="true" />
+
+                        <!-- Code Input Fields -->
+                        <VBox alignment="CENTER" spacing="10">
+                            <Label styleClass="auth-field-label" text="Verification Code" />
+                            <HBox alignment="CENTER" spacing="10" styleClass="code-input-container">
+                                <TextField fx:id="codeField1" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                                <TextField fx:id="codeField2" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                                <TextField fx:id="codeField3" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                                <TextField fx:id="codeField4" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                                <TextField fx:id="codeField5" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                                <TextField fx:id="codeField6" maxWidth="50" prefWidth="50" promptText="0" styleClass="code-digit-input" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- Message label -->
+                        <Label fx:id="messageLabel" maxWidth="360" styleClass="auth-error" text="" wrapText="true" />
+
+                        <!-- Verify Button -->
+                        <Button fx:id="verifyButton" mnemonicParsing="false" onAction="#handleVerify" styleClass="btn-glow-green" text="Verify Code" />
+
+                        <!-- Resend Code -->
+                        <HBox alignment="CENTER" spacing="6">
+                            <Label styleClass="auth-switch-text" text="Didn't receive the code?" />
+                            <Button fx:id="resendButton" mnemonicParsing="false" onAction="#handleResend" styleClass="auth-link" text="Resend" />
+                        </HBox>
+
+                        <!-- Back to Login -->
+                        <HBox alignment="CENTER">
+                            <Button mnemonicParsing="false" onAction="#handleBackToLogin" styleClass="auth-link-muted" text="← Back" />
+                        </HBox>
+
+                    </VBox>
+
+                </VBox>
+
+            </VBox>
+
+        </HBox>
+
+    </children>
+</StackPane>
+

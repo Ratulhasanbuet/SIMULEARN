@@ -57,24 +57,22 @@ public class SignUpController {
             return;
         }
 
-        // ── Register ──────────────────────────────────────
-        boolean success = DatabaseHelper.registerUser(username, email, password);
+        // ── Send verification code FIRST (before saving to DB) ───────────
+        showSuccess("Sending verification code...");
 
-        if (!success) {
-            showError("Registration failed. Please try again.");
+        String verificationCode = EmailService.generateVerificationCode();
+        boolean sent = EmailService.sendVerificationCode(email, verificationCode);
+
+        if (!sent) {
+            showError("Failed to send verification email. Please check your email address.");
             return;
         }
 
-        // ── Auto-login after sign up ──────────────────────
-        SessionManager.setCurrentUser(username);
+        // ── Save verification code in DB ──────────────────
+        DatabaseHelper.saveVerificationCode(email, verificationCode);
 
-        if (rememberMe.isSelected()) {
-            String token = SessionManager.generateToken();
-            DatabaseHelper.saveRememberToken(username, token);
-            SessionManager.saveToken(token);
-        }
-
-        goToHome(event);
+        // ── Go to verification page, pass credentials for saving AFTER verify ─
+        goToVerification(event, email, username, password);
     }
 
     @FXML
@@ -117,6 +115,23 @@ public class SignUpController {
             stage.show();
         } catch (java.io.IOException e) {
             System.out.println("Failed to go home: " + e.getMessage());
+        }
+    }
+
+    // Pass password too so VerificationController can save to DB after verify
+    private void goToVerification(ActionEvent event, String email, String username, String password) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Verification.fxml"));
+            Parent root = loader.load();
+            VerificationController controller = loader.getController();
+            controller.initializeSignUp(email, username, password);
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            showError("Could not load verification page.");
         }
     }
 }

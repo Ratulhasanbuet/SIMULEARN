@@ -24,6 +24,7 @@ module com.example.simulearn {
 
     requires javafx.base;
     requires java.sql;
+    requires javax.mail.api;
     opens com.example.simulearn to javafx.fxml;
     exports com.example.simulearn;
 }

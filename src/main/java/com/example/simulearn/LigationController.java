@@ -1,5 +1,9 @@
 package com.example.simulearn;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +23,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -225,7 +230,7 @@ public class LigationController implements Initializable {
         int col = 0;
         int row = 0;
         for (String[] reagent : reagents) {
-            VBox item = createMaterialItem(reagent[0], reagent[1], reagent[2], 60, 80);
+            StackPane item = createMaterialItem(reagent[0], reagent[1], reagent[2], 60, 80);
             grid.add(item, col, row);
             col++;
             if (col == 4) {
@@ -251,7 +256,7 @@ public class LigationController implements Initializable {
         // Add pipettes
         int col = 0;
         for (String[] pipette : pipettes) {
-            VBox item = createMaterialItem(pipette[0], pipette[1], pipette[2], 70, 85);
+            StackPane item = createMaterialItem(pipette[0], pipette[1], pipette[2], 70, 85);
             grid.add(item, col, 0);
             col++;
         }
@@ -259,7 +264,7 @@ public class LigationController implements Initializable {
         // Add tip boxes
         col = 0;
         for (String[] tipBox : tipBoxes) {
-            VBox item = createMaterialItem(tipBox[0], tipBox[1], tipBox[2], 80, 70);
+            StackPane item = createMaterialItem(tipBox[0], tipBox[1], tipBox[2], 80, 70);
             grid.add(item, col, 1);
             col++;
         }
@@ -279,7 +284,7 @@ public class LigationController implements Initializable {
         int col = 0;
         int row = 0;
         for (String[] item : equipment) {
-            VBox equipItem = createMaterialItem(item[0], item[1], item[2], 80, 80);
+            StackPane equipItem = createMaterialItem(item[0], item[1], item[2], 80, 80);
             grid.add(equipItem, col, row);
             col++;
             if (col == 4) {
@@ -291,16 +296,35 @@ public class LigationController implements Initializable {
         return grid;
     }
 
-    private VBox createMaterialItem(String imagePath, String labelText, String accentColor, double imgWidth, double imgHeight) {
-        VBox container = new VBox(10);
-        container.setAlignment(Pos.CENTER);
-        container.setPrefSize(150, 180);
-        container.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;" + "-fx-cursor: hand;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
+    private StackPane createMaterialItem(String imagePath, String labelText,
+                                         String accentColor, double imgWidth, double imgHeight) {
+        // I use StackPane so info panel can overlay on top
+        StackPane mainContainer = new StackPane();
+        mainContainer.setMaxWidth(150);
+        mainContainer.setAlignment(Pos.TOP_CENTER);
+
+        // The card container (clickable image + label)
+        VBox cardContainer = new VBox(10);
+        cardContainer.setAlignment(Pos.CENTER);
+        cardContainer.setPrefSize(150, 180);
+        cardContainer.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-border-color: #d0d0d0;" +
+                        "-fx-border-width: 1;" +
+                        "-fx-border-radius: 8;" +
+                        "-fx-background-radius: 8;" +
+                        "-fx-padding: 15;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
+        );
 
         // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 100);
-        imageContainer.setStyle("-fx-background-color: #0d3d5c;" + "-fx-background-radius: 5;");
+        imageContainer.setStyle(
+                "-fx-background-color: #0d3d5c;" +
+                        "-fx-background-radius: 5;"
+        );
 
         // Load SVG using SVGLoader utility
         ImageView imageView = SVGLoader.loadSVG(imagePath, imgWidth, imgHeight, true);
@@ -326,13 +350,136 @@ public class LigationController implements Initializable {
         label.setMaxWidth(130);
         label.setStyle("-fx-text-fill: #333333;");
 
-        container.getChildren().addAll(imageContainer, label);
+        cardContainer.getChildren().addAll(imageContainer, label);
 
-        // Hover and click effects
-        addHoverEffects(container);
-        container.setOnMouseClicked(e -> showMaterialDetails(labelText));
+        // Create overlay info panel (initially hidden, positioned on top)
+        VBox infoPanel = createOverlayInfoPanel(labelText);
+        infoPanel.setTranslateY(-200); // Start above (hidden)
+        infoPanel.setOpacity(0);
+        infoPanel.setVisible(false);
+        StackPane.setAlignment(infoPanel, Pos.TOP_CENTER);
 
-        return container;
+        // Add both to main container (info panel on top)
+        mainContainer.getChildren().addAll(cardContainer, infoPanel);
+
+        // Hover effects on card
+        addHoverEffects(cardContainer);
+
+        // Click to show/hide overlay
+        final boolean[] isExpanded = {false};
+        cardContainer.setOnMouseClicked(e -> {
+            toggleOverlayPanel(infoPanel, isExpanded);
+            e.consume();
+        });
+
+        // Also allow clicking info panel to close it
+        infoPanel.setOnMouseClicked(e -> {
+            toggleOverlayPanel(infoPanel, isExpanded);
+            e.consume();
+        });
+
+        return mainContainer;
+    }
+    private void toggleOverlayPanel(VBox infoPanel, boolean[] isExpanded) {
+        isExpanded[0] = !isExpanded[0];
+
+        if (isExpanded[0]) {
+            // Show - slide down from top
+            infoPanel.setVisible(true);
+
+            Timeline showTimeline = new Timeline(
+                    new KeyFrame(
+                            Duration.ZERO,
+                            new KeyValue(infoPanel.translateYProperty(), -200),
+                            new KeyValue(infoPanel.opacityProperty(), 0)
+                    ),
+                    new KeyFrame(
+                            Duration.millis(400),
+                            new KeyValue(infoPanel.translateYProperty(), 0,
+                                    Interpolator.EASE_OUT),
+                            new KeyValue(infoPanel.opacityProperty(), 1)
+                    )
+            );
+            showTimeline.play();
+        } else {
+            // Hide - slide up to top
+            Timeline hideTimeline = new Timeline(
+                    new KeyFrame(
+                            Duration.ZERO,
+                            new KeyValue(infoPanel.translateYProperty(), 0),
+                            new KeyValue(infoPanel.opacityProperty(), 1)
+                    ),
+                    new KeyFrame(
+                            Duration.millis(400),
+                            new KeyValue(infoPanel.translateYProperty(), -200,
+                                    Interpolator.EASE_IN),
+                            new KeyValue(infoPanel.opacityProperty(), 0)
+                    )
+            );
+            hideTimeline.setOnFinished(e -> infoPanel.setVisible(false));
+            hideTimeline.play();
+        }
+    }
+
+
+    private VBox createOverlayInfoPanel(String materialName) {
+        VBox panel = new VBox(10);
+        panel.setPrefSize(150, 180);
+        panel.setPadding(new Insets(15));
+        panel.setStyle(
+                "-fx-background-color: rgba(26, 84, 144, 0.95);" + // Semi-transparent dark blue
+                        "-fx-border-color: #00aaff;" +
+                        "-fx-border-width: 2;" +
+                        "-fx-border-radius: 8;" +
+                        "-fx-background-radius: 8;" +
+                        "-fx-effect: dropshadow(gaussian, rgba(0,170,255,0.6), 20, 0, 0, 8);"
+        );
+
+        // Close hint (small X or tap indicator)
+        Label closeHint = new Label("✕");
+        closeHint.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        closeHint.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
+        closeHint.setAlignment(Pos.CENTER_RIGHT);
+        closeHint.setMaxWidth(Double.MAX_VALUE);
+
+        // Title
+        Label titleLabel = new Label(materialName);
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        titleLabel.setStyle("-fx-text-fill: white;");
+        titleLabel.setWrapText(true);
+        titleLabel.setMaxWidth(120);
+
+        // Separator line
+        Separator separator = new Separator();
+        separator.setStyle("-fx-background-color: rgba(255,255,255,0.3);");
+        separator.setPrefHeight(1);
+
+        // Description
+        String description = getMaterialDescription(materialName);
+        Label descLabel = new Label(description);
+        descLabel.setFont(Font.font("Arial", 10));
+        descLabel.setStyle("-fx-text-fill: white;");
+        descLabel.setWrapText(true);
+        descLabel.setMaxWidth(120);
+
+        // Wrap in ScrollPane for long content
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(descLabel);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPrefHeight(90);
+        scrollPane.setMaxHeight(90);
+        scrollPane.setStyle(
+                "-fx-background-color: transparent;" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-background: transparent;"
+        );
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+
+        panel.getChildren().addAll(closeHint, titleLabel, separator, scrollPane);
+        return panel;
     }
 
     private void addHoverEffects(VBox container) {
@@ -345,16 +492,6 @@ public class LigationController implements Initializable {
         });
     }
 
-    private void showMaterialDetails(String materialName) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Material Information");
-        alert.setHeaderText(materialName);
-
-        String details = getMaterialDescription(materialName);
-        alert.setContentText(details);
-
-        alert.showAndWait();
-    }
 
     private String getMaterialDescription(String materialName) {
         String cleanName = materialName.trim().replace("\n", " ");
@@ -564,11 +701,10 @@ public class LigationController implements Initializable {
         // Create all navigation buttons with circles
         btnContext = createNavButton("1", "CONTEXT");
         btnMaterials = createNavButton("2", "MATERIALS");
-        btnPredictions = createNavButton("3", "PREDICTIONS");
-        btnProtocol = createNavButton("4", "PROTOCOL");
-        btnResults = createNavButton("5", "RESULTS");
-        btnReflection = createNavButton("6", "REFLECTION");
-        btnSummary = createNavButton("7", "SUMMARY");
+        btnProtocol = createNavButton("3", "PROTOCOL");
+        btnResults = createNavButton("4", "RESULTS");
+        btnReflection = createNavButton("5", "REFLECTION");
+        btnSummary = createNavButton("6", "SUMMARY");
 
         // Set button actions
         btnContext.setOnAction(e -> {
@@ -597,13 +733,6 @@ public class LigationController implements Initializable {
             resetToButtonView();
         });
 
-//        btnPredictions.setOnAction(e -> {
-//            updateScrollContent(getPredictionsContent());
-//            setSelectedButton(btnPredictions);
-//            // EKHANE button panel replace hobe command list diye
-//            switchToCommandList();
-//        });
-//
         btnProtocol.setOnAction(e -> {
             setSelectedButton(btnProtocol);
 
@@ -665,7 +794,7 @@ public class LigationController implements Initializable {
         });
 
         // Add buttons with spacing
-        panel.getChildren().addAll(btnContext, createSpacer(20), btnMaterials, createSpacer(20), btnPredictions, createSpacer(20), btnProtocol, createSpacer(20), btnResults, createSpacer(20), btnReflection, createSpacer(20), btnSummary);
+        panel.getChildren().addAll(btnContext, createSpacer(20), btnMaterials, createSpacer(20), btnProtocol, createSpacer(20), btnResults, createSpacer(20), btnReflection, createSpacer(20), btnSummary);
 
         // Set initial selection
         setSelectedButton(btnContext);

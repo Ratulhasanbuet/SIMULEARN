@@ -401,8 +401,7 @@ public class MicropipettingSolutionController implements Initializable {
         if (btn != null) {
             HBox container = (HBox) btn.getUserData();
             if (container != null) {
-                container.setStyle("-fx-background-color: rgba(255,255,255,0.2); " +
-                        "-fx-background-radius: 5;");
+                container.getStyleClass().remove("neu-button");
             }
         }
     }
@@ -556,7 +555,7 @@ public class MicropipettingSolutionController implements Initializable {
         header.getChildren().addAll(circleStack, titleLabel, spacer, notesBtn);
         Button protocolButton = new Button();
         protocolButton.setGraphic(header);
-        protocolButton.getStyleClass().add("button-33");
+        protocolButton.getStyleClass().add("nav-btn-active");
 
 
         protocolButton.setOnAction(e -> {
