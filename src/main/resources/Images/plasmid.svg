@@ -73,7 +73,7 @@
   </g>
   
   <!-- Text -->
-  <text x="30" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+  <text x="30" y="175" font-family="DM Sans Medium, sans-serif" font-size="18" font-weight="bold" fill="white">
     ΔΣ SIMULATION
   </text>
 </svg>

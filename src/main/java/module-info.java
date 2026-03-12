@@ -17,6 +17,7 @@ module com.example.simulearn {
     requires java.desktop;
     requires java.xml;
 
+
     // Batik - minimum required
     requires transitive batik.transcoder;
     requires transitive batik.codec;
@@ -27,4 +28,36 @@ module com.example.simulearn {
     requires javax.mail.api;
     opens com.example.simulearn to javafx.fxml;
     exports com.example.simulearn;
+    exports com.example.simulearn.SimuLearn.Biology.Ligation;
+    opens com.example.simulearn.SimuLearn.Biology.Ligation to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Biology.MicropipettingSolution;
+    opens com.example.simulearn.SimuLearn.Biology.MicropipettingSolution to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Biology.PPCC;
+    opens com.example.simulearn.SimuLearn.Biology.PPCC to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Chemistry.RealMolecule;
+    opens com.example.simulearn.SimuLearn.Chemistry.RealMolecule to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Chemistry.MultiMolecule;
+    opens com.example.simulearn.SimuLearn.Chemistry.MultiMolecule to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Physics.Projectile;
+    opens com.example.simulearn.SimuLearn.Physics.Projectile to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Chemistry;
+    opens com.example.simulearn.SimuLearn.Chemistry to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Biology;
+    opens com.example.simulearn.SimuLearn.Biology to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Chemistry.FlameTest;
+    opens com.example.simulearn.SimuLearn.Chemistry.FlameTest to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Physics.Buoyancy;
+    opens com.example.simulearn.SimuLearn.Physics.Buoyancy to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Physics.LogicCircuit;
+    opens com.example.simulearn.SimuLearn.Physics.LogicCircuit to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Physics;
+    opens com.example.simulearn.SimuLearn.Physics to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Math.Vector;
+    opens com.example.simulearn.SimuLearn.Math.Vector to javafx.fxml;
+    exports com.example.simulearn.SimuLearn.Math;
+    opens com.example.simulearn.SimuLearn.Math to javafx.fxml;
+    exports com.example.simulearn.SimuLearn;
+    opens com.example.simulearn.SimuLearn to javafx.fxml;
+    exports com.example.simulearn.Information;
+    opens com.example.simulearn.Information to javafx.fxml;
 }

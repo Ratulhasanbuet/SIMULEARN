@@ -1,5 +1,6 @@
 package com.example.simulearn;
 
+import com.example.simulearn.Information.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

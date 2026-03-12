@@ -1,16 +1,1148 @@
+/*!* ═══════════════════════════════════════════════════*/
+/*   SimuLearn — Warm Charcoal Theme*/
+/*   Dark charcoal · Amber gold accents · Scientific*/
+/*═══════════════════════════════════════════════════ *!*/
+
+/*!* ── Page root — deep forest gradient ── *!*/
+/*.page-root {*/
+/*    -fx-background-color: linear-gradient(*/
+/*            from 0% 0% to 0% 100%,*/
+/*            #0f0e0c 0%,*/
+/*            #141210 35%,*/
+/*            #110f0d 65%,*/
+/*            #0d0c0a 100%*/
+/*    );*/
+/*    -fx-min-height: 1080;*/
+/*    -fx-pref-width: 1920;*/
+/*}*/
+
+/*!* ── ScrollPane transparent ── *!*/
+/*.main-scroll {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-background: transparent;*/
+/*    -fx-border-width: 0;*/
+/*    -fx-padding: 0;*/
+/*}*/
+/*.main-scroll > .viewport {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.main-scroll > .scroll-bar:vertical {*/
+/*    -fx-opacity: 0.25;*/
+/*}*/
+/*.main-scroll > .scroll-bar:horizontal {*/
+/*    -fx-opacity: 0;*/
+/*}*/
+
+/*!* ══════════════════════════*/
+/*   NAVBAR*/
+/*══════════════════════════ *!*/
+/*.navbar {*/
+/*    -fx-padding: 16 50 16 50;*/
+/*    -fx-background-color: rgba(14, 13, 11, 0.94);*/
+/*    -fx-border-color: transparent transparent rgba(251, 191, 36, 0.10) transparent;*/
+/*    -fx-border-width: 0 0 1 0;*/
+/*    -fx-min-height: 68;*/
+/*}*/
+
+/*.brand-icon {*/
+/*    -fx-icon-color: #fbbf24;*/
+/*    -fx-icon-size: 28px;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.5), 18, 0.5, 0, 0),*/
+/*    dropshadow(gaussian, rgba(245, 158, 11, 0.25), 38, 0.25, 0, 0);*/
+/*}*/
+
+/*.brand-name {*/
+/*    -fx-font-family: "DM Serif Display";*/
+/*    -fx-font-size: 25px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*}*/
+
+/*.nav-btn {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.50);*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-padding: 9 18 9 18;*/
+/*    -fx-background-radius: 8;*/
+/*    -fx-cursor: hand;*/
+/*    -fx-border-width: 0;*/
+/*}*/
+/*.nav-btn:hover {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.09);*/
+/*    -fx-text-fill: #fde68a;*/
+/*}*/
+/*.nav-btn:focused { -fx-background-insets: 0; }*/
+
+/*.nav-btn-active {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.09);*/
+/*    -fx-text-fill: #fcd34d;*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 9 18 9 18;*/
+/*    -fx-background-radius: 8;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 8;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*.nav-btn-active:focused { -fx-background-insets: 0; }*/
+
+/*.nav-btn-exit {*/
+/*    -fx-background-color: rgba(239, 68, 68, 0.10);*/
+/*    -fx-text-fill: #f87171;*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 9 22 9 22;*/
+/*    -fx-background-radius: 8;*/
+/*    -fx-border-color: rgba(239, 68, 68, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 8;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*.nav-btn-exit:hover {*/
+/*    -fx-background-color: rgba(239, 68, 68, 0.22);*/
+/*    -fx-text-fill: #fca5a5;*/
+/*}*/
+/*.nav-btn-exit:focused { -fx-background-insets: 0; }*/
+
+/*!* ══════════════════════════*/
+/*   HERO*/
+/*══════════════════════════ *!*/
+/*.hero-section {*/
+/*    -fx-padding: 75 80 50 80;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.hero-badge {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-padding: 7 22 7 22;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*.hero-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 68px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251,191,36,0.20), 30, 0.2, 0, 0);*/
+/*}*/
+
+/*.hero-title-accent {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 68px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fbbf24;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251,191,36,0.50), 38, 0.30, 0, 0);*/
+/*}*/
+
+/*.hero-subtitle {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 18px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.72);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 4;*/
+/*}*/
+
+/*!* Stats bar *!*/
+/*.stats-row {*/
+/*    -fx-padding: 20 70 20 70;*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.05);*/
+/*    -fx-background-radius: 18;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.12);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 18;*/
+/*}*/
+
+/*.stat-number {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 32px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fbbf24;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.stat-label {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.50);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.stat-divider {*/
+/*    -fx-text-fill: rgba(251, 191, 36, 0.15);*/
+/*    -fx-font-size: 26px;*/
+/*}*/
+
+/*!* ══════════════════════════*/
+/*   CARDS SECTION*/
+/*══════════════════════════ *!*/
+/*.cards-section {*/
+/*    -fx-padding: 18 80 80 80;*/
+/*}*/
+
+/*.section-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 30px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.section-sub {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.40);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.cards-row {*/
+/*    -fx-padding: 16 0 0 0;*/
+/*}*/
+
+/*!* ── Subject Card ── *!*/
+/*.subject-card {*/
+/*    -fx-background-color: rgba(22, 20, 16, 0.70);*/
+/*    -fx-background-radius: 22;*/
+/*    -fx-border-radius: 22;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.15);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-padding: 0;*/
+/*    -fx-cursor: hand;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(0, 10, 4, 0.65), 28, 0.25, 0, 10);*/
+/*}*/
+
+/*.subject-card:hover {*/
+/*    -fx-background-color: rgba(32, 28, 20, 0.85);*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.55);*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.38), 36, 0.28, 0, 0),*/
+/*            dropshadow(gaussian, rgba(0, 10, 4, 0.45), 18, 0.18, 0, 8);*/
+/*    -fx-scale-x: 1.04;*/
+/*    -fx-scale-y: 1.04;*/
+/*}*/
+
+/*.subject-card:pressed {*/
+/*    -fx-scale-x: 0.97;*/
+/*    -fx-scale-y: 0.97;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251, 191, 36, 0.15), 8, 0.12, 0, 2);*/
+/*}*/
+
+/*.subject-card:focused { -fx-background-insets: 0; }*/
+
+/*!* ── Card inner ── *!*/
+/*.card-inner {*/
+/*    -fx-padding: 34 48 34 48;*/
+/*    -fx-min-width: 265;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.card-subject-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 21px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.card-subject-desc {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.58);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 2;*/
+/*}*/
+
+/*!* Physics — amber/gold *!*/
+/*.card-tag-physics {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fcd34d;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* Math — violet *!*/
+/*.card-tag-math {*/
+/*    -fx-background-color: rgba(167, 139, 250, 0.10);*/
+/*    -fx-text-fill: #c4b5fd;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(167, 139, 250, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* Chemistry — teal *!*/
+/*.card-tag-chem {*/
+/*    -fx-background-color: rgba(34, 211, 238, 0.10);*/
+/*    -fx-text-fill: #67e8f9;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(34, 211, 238, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* Biology — green *!*/
+/*.card-tag-bio {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* ══════════════════════════*/
+/*   FOOTER*/
+/*══════════════════════════ *!*/
+/*.footer {*/
+/*    -fx-padding: 22 50 22 50;*/
+/*    -fx-background-color: rgba(3, 9, 5, 0.55);*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.07) transparent transparent transparent;*/
+/*    -fx-border-width: 1 0 0 0;*/
+/*}*/
+
+/*.footer-text {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.28);*/
+/*    -fx-text-alignment: CENTER;*/
+/*}*/
+
+/*!* ══════════════════════════════════════*/
+/*   BIOLOGY MENU — Simulation Cards*/
+/*   (shared menu.css — appended styles)*/
+/*══════════════════════════════════════ *!*/
+
+/*!* Page header (biology sub-page) *!*/
+/*.page-header {*/
+/*    -fx-padding: 60 80 40 80;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*!* Simulation card button *!*/
+/*.sim-card {*/
+/*    -fx-background-color: rgba(22, 20, 16, 0.70);*/
+/*    -fx-background-radius: 22;*/
+/*    -fx-border-radius: 22;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.15);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-padding: 0;*/
+/*    -fx-cursor: hand;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(0, 10, 4, 0.65), 28, 0.25, 0, 10);*/
+/*}*/
+
+/*.sim-card:hover {*/
+/*    -fx-background-color: rgba(32, 28, 20, 0.85);*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.55);*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.38), 36, 0.28, 0, 0),*/
+/*            dropshadow(gaussian, rgba(0, 10, 4, 0.45), 18, 0.18, 0, 8);*/
+/*    -fx-scale-x: 1.03;*/
+/*    -fx-scale-y: 1.03;*/
+/*}*/
+
+/*.sim-card:pressed {*/
+/*    -fx-scale-x: 0.97;*/
+/*    -fx-scale-y: 0.97;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251, 191, 36, 0.15), 8, 0.12, 0, 2);*/
+/*}*/
+
+/*.sim-card:focused { -fx-background-insets: 0; }*/
+
+/*!* Card inner VBox *!*/
+/*.sim-card-inner {*/
+/*    -fx-padding: 28 36 28 36;*/
+/*    -fx-min-width: 340;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*!* Image clip area inside card *!*/
+/*.sim-card-image {*/
+/*    -fx-background-radius: 14;*/
+/*}*/
+
+/*.sim-card-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 19px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.sim-card-desc {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.58);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 2;*/
+/*}*/
+
+/*!* Tags *!*/
+/*.sim-card-tag-bio {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*.sim-card-tag-dna {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fcd34d;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*.sim-card-tag-protein {*/
+/*    -fx-background-color: rgba(34, 211, 238, 0.10);*/
+/*    -fx-text-fill: #67e8f9;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-padding: 5 14 5 14;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(34, 211, 238, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* large icon fallback for cards without images *!*/
+/*.sim-card-icon-large {*/
+/*    -fx-font-size: 72px;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-padding: 20 0 10 0;*/
+/*}*/
+
+/*!* ══════════════════════════════════════*/
+/*   MAIN MENU — Large Glowing Card Icons*/
+/*══════════════════════════════════════ *!*/
+
+/*!* Base icon style *!*/
+/*.card-icon-physics,*/
+/*.card-icon-math,*/
+/*.card-icon-chem,*/
+/*.card-icon-bio {*/
+/*    -fx-font-size: 80px;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-padding: 10 0 10 0;*/
+/*}*/
+
+/*!* Physics — amber/yellow glow *!*/
+/*.card-icon-physics {*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.90), 28, 0.5, 0, 0),*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.40), 55, 0.3, 0, 0);*/
+/*}*/
+
+/*!* Math — violet/purple glow *!*/
+/*.card-icon-math {*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(167, 139, 250, 0.90), 28, 0.5, 0, 0),*/
+/*            dropshadow(gaussian, rgba(167, 139, 250, 0.40), 55, 0.3, 0, 0);*/
+/*}*/
+
+/*!* Chemistry — teal/cyan glow *!*/
+/*.card-icon-chem {*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(34, 211, 238, 0.90), 28, 0.5, 0, 0),*/
+/*            dropshadow(gaussian, rgba(34, 211, 238, 0.40), 55, 0.3, 0, 0);*/
+/*}*/
+
+/*!* Biology — green glow *!*/
+/*.card-icon-bio {*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.90), 28, 0.5, 0, 0),*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.40), 55, 0.3, 0, 0);*/
+/*}*/
+
+/*!* ══════════════════════════════════════════*/
+/*   MAIN MENU — Geometric Shape + Emoji Icons*/
+/*══════════════════════════════════════════ *!*/
+
+/*!* Shared emoji label on top of shape *!*/
+/*.card-icon-emoji {*/
+/*    -fx-font-size: 52px;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-text-alignment: CENTER;*/
+/*}*/
+
+/*!* ── Physics shape — amber circle with layered rings ── *!*/
+/*.icon-shape-physics {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.12);*/
+/*    -fx-background-radius: 60;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.55), rgba(251, 191, 36, 0.18);*/
+/*    -fx-border-width: 2.5, 1;*/
+/*    -fx-border-radius: 60, 68;*/
+/*    -fx-border-insets: 0, -10;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.65), 22, 0.45, 0, 0),*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.25), 45, 0.20, 0, 0);*/
+/*}*/
+
+/*!* ── Math shape — violet/indigo circle ── *!*/
+/*.icon-shape-math {*/
+/*    -fx-background-color: rgba(167, 139, 250, 0.12);*/
+/*    -fx-background-radius: 60;*/
+/*    -fx-border-color: rgba(167, 139, 250, 0.55), rgba(167, 139, 250, 0.18);*/
+/*    -fx-border-width: 2.5, 1;*/
+/*    -fx-border-radius: 60, 68;*/
+/*    -fx-border-insets: 0, -10;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(167, 139, 250, 0.65), 22, 0.45, 0, 0),*/
+/*            dropshadow(gaussian, rgba(167, 139, 250, 0.25), 45, 0.20, 0, 0);*/
+/*}*/
+
+/*!* ── Chemistry shape — cyan/teal circle ── *!*/
+/*.icon-shape-chem {*/
+/*    -fx-background-color: rgba(34, 211, 238, 0.12);*/
+/*    -fx-background-radius: 60;*/
+/*    -fx-border-color: rgba(34, 211, 238, 0.55), rgba(34, 211, 238, 0.18);*/
+/*    -fx-border-width: 2.5, 1;*/
+/*    -fx-border-radius: 60, 68;*/
+/*    -fx-border-insets: 0, -10;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(34, 211, 238, 0.65), 22, 0.45, 0, 0),*/
+/*            dropshadow(gaussian, rgba(34, 211, 238, 0.25), 45, 0.20, 0, 0);*/
+/*}*/
+
+/*!* ── Biology shape — green circle ── *!*/
+/*.icon-shape-bio {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.12);*/
+/*    -fx-background-radius: 60;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.55), rgba(251, 191, 36, 0.18);*/
+/*    -fx-border-width: 2.5, 1;*/
+/*    -fx-border-radius: 60, 68;*/
+/*    -fx-border-insets: 0, -10;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.65), 22, 0.45, 0, 0),*/
+/*            dropshadow(gaussian, rgba(251, 191, 36, 0.25), 45, 0.20, 0, 0);*/
+/*}*/
+
+/*!* ── Decorative dot indicators below shape ── *!*/
+/*.dot-physics, .dot-math, .dot-chem, .dot-bio {*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-min-width: 7;*/
+/*    -fx-min-height: 7;*/
+/*    -fx-max-width: 7;*/
+/*    -fx-max-height: 7;*/
+/*}*/
+/*.dot-physics  { -fx-background-color: rgba(251, 191, 36,  0.65); }*/
+/*.dot-math     { -fx-background-color: rgba(167, 139, 250, 0.65); }*/
+/*.dot-chem     { -fx-background-color: rgba(34,  211, 238, 0.65); }*/
+/*.dot-bio      { -fx-background-color: rgba(251,191,36, 0.65); }*/
+
+/*!* Brighten the shape a little on card hover *!*/
+/*.subject-card:hover .icon-shape-physics { -fx-background-color: rgba(251, 191, 36,  0.22); }*/
+/*.subject-card:hover .icon-shape-math    { -fx-background-color: rgba(167, 139, 250, 0.22); }*/
+/*.subject-card:hover .icon-shape-chem    { -fx-background-color: rgba(34,  211, 238, 0.22); }*/
+/*.subject-card:hover .icon-shape-bio     { -fx-background-color: rgba(74,  222, 128, 0.22); }*/
+
+
+
+/*!* ══════════════════════════════════════════════════*/
+/*   STYLE 5 — Green Glow Button*/
+/*   Usage: styleClass="btn-glow-green"*/
+/*══════════════════════════════════════════════════ *!*/
+
+/*.btn-glow-green {*/
+/*    -fx-background-color: linear-gradient(to bottom right, #f59e0b, #d97706);*/
+/*    -fx-text-fill: #1c1009;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 15px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 13 34 13 34;*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-border-width: 0;*/
+/*    -fx-cursor: hand;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(245, 158, 11, 0.55), 20, 0.40, 0, 4),*/
+/*            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);*/
+/*}*/
+
+/*.btn-glow-green:hover {*/
+/*    -fx-background-color: linear-gradient(to bottom right, #fbbf24, #f59e0b);*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(245, 158, 11, 0.85), 30, 0.55, 0, 0),*/
+/*            dropshadow(gaussian, rgba(245, 158, 11, 0.35), 55, 0.25, 0, 0),*/
+/*            dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);*/
+/*    -fx-scale-x: 1.04;*/
+/*    -fx-scale-y: 1.04;*/
+/*}*/
+
+/*.btn-glow-green:pressed {*/
+/*    -fx-background-color: linear-gradient(to bottom right, #d97706, #b45309);*/
+/*    -fx-scale-x: 0.97;*/
+/*    -fx-scale-y: 0.97;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.35), 10, 0.25, 0, 2);*/
+/*}*/
+
+/*.btn-glow-green:focused {*/
+/*    -fx-background-insets: 0;*/
+/*}*/
+
+
+/*!* ══════════════════════════════════════════════════*/
+/*   ABOUT PAGE STYLES*/
+/*══════════════════════════════════════════════════ *!*/
+
+/*!* Active nav button *!*/
+/*.nav-btn-active {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.12);*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.40);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 8;*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*!* Hero area *!*/
+/*.about-hero {*/
+/*    -fx-padding: 70 80 40 80;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*!* Content sections *!*/
+/*.about-section {*/
+/*    -fx-padding: 20 160 40 160;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.about-section-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 26px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.about-body {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 16px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.75);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 5;*/
+/*}*/
+
+/*!* Subject mini cards *!*/
+/*.about-subject-card {*/
+/*    -fx-background-color: rgba(22, 20, 16, 0.70);*/
+/*    -fx-background-radius: 18;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.15);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-border-radius: 18;*/
+/*    -fx-padding: 28 32 28 32;*/
+/*    -fx-min-width: 240;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(0,10,4,0.50), 18, 0.2, 0, 6);*/
+/*}*/
+
+/*.about-subject-icon {*/
+/*    -fx-font-size: 40px;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-text-alignment: CENTER;*/
+/*}*/
+
+/*.about-subject-name {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 18px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*.about-subject-detail {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.58);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 2;*/
+/*}*/
+
+/*!* Feature cards *!*/
+/*.about-feature-card {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.05);*/
+/*    -fx-background-radius: 14;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.12);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 14;*/
+/*    -fx-padding: 24 28 24 28;*/
+/*    -fx-min-width: 220;*/
+/*    -fx-max-width: 260;*/
+/*}*/
+
+/*.about-feature-icon {*/
+/*    -fx-font-size: 30px;*/
+/*}*/
+
+/*.about-feature-title,*/
+/*.about-feature-desc-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 16px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*}*/
+
+/*.about-feature-desc {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.60);*/
+/*    -fx-line-spacing: 2;*/
+/*}*/
+
+/*!* Tech badges *!*/
+/*.about-tech-row {*/
+/*    -fx-padding: 8 0 0 0;*/
+/*}*/
+
+/*.about-tech-badge {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 7 18 7 18;*/
+/*    -fx-background-radius: 8;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.25);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 8;*/
+/*}*/
+
+/*!* Back button section *!*/
+/*.about-back-section {*/
+/*    -fx-padding: 20 0 50 0;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+
+/*!* ══════════════════════════════════════════════════*/
+/*   AUTH PAGES — Login & Sign Up*/
+/*══════════════════════════════════════════════════ *!*/
+
+/*!* ── Left branding panel ── *!*/
+/*.auth-left-panel {*/
+/*    -fx-background-color: linear-gradient(*/
+/*            from 0% 0% to 0% 100%,*/
+/*            #030d06 0%,*/
+/*            #110f0d 60%,*/
+/*            #0d0c0a 100%*/
+/*    );*/
+/*    -fx-border-color: transparent rgba(251,191,36,0.10) transparent transparent;*/
+/*    -fx-border-width: 0 1 0 0;*/
+/*    -fx-padding: 60 80 60 80;*/
+/*}*/
+
+/*.auth-brand-icon {*/
+/*    -fx-font-size: 72px;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.45), 38, 0.45, 0, 0),*/
+/*    dropshadow(gaussian, rgba(245, 158, 11, 0.22), 65, 0.22, 0, 0);*/
+/*}*/
+
+/*.auth-brand-name {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 52px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251,191,36,0.30), 20, 0.2, 0, 0);*/
+/*}*/
+
+/*.auth-brand-tagline {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 17px;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.65);*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-line-spacing: 4;*/
+/*}*/
+
+/*.auth-left-footer {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(251,191,36,0.45);*/
+/*    -fx-padding: 20 0 0 0;*/
+/*}*/
+
+/*!* Subject pills on left panel *!*/
+/*.auth-pill-physics {*/
+/*    -fx-background-color: rgba(251,191,36,0.10);*/
+/*    -fx-text-fill: #fcd34d;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 8 20 8 20;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251,191,36,0.28);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+/*.auth-pill-chem {*/
+/*    -fx-background-color: rgba(34,211,238,0.10);*/
+/*    -fx-text-fill: #67e8f9;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 8 20 8 20;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(34,211,238,0.28);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+/*.auth-pill-math {*/
+/*    -fx-background-color: rgba(167,139,250,0.10);*/
+/*    -fx-text-fill: #c4b5fd;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 8 20 8 20;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(167,139,250,0.28);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+/*.auth-pill-bio {*/
+/*    -fx-background-color: rgba(251,191,36,0.10);*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 8 20 8 20;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251,191,36,0.28);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 50;*/
+/*}*/
+
+/*!* ── Right panel ── *!*/
+/*.auth-right-panel {*/
+/*    -fx-background-color: #0f0e0c;*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+/*!* ── Auth card ── *!*/
+/*.auth-card {*/
+/*    -fx-background-color: rgba(24,20,14,0.93);*/
+/*    -fx-background-radius: 22;*/
+/*    -fx-border-color: rgba(251,191,36,0.16);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-border-radius: 22;*/
+/*    -fx-padding: 48 56 48 56;*/
+/*    -fx-min-width: 440;*/
+/*    -fx-max-width: 480;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(0,10,4,0.70), 40, 0.3, 0, 12),*/
+/*            dropshadow(gaussian, rgba(251,191,36,0.08), 60, 0.2, 0, 0);*/
+/*}*/
+
+/*.auth-card-title {*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 30px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-padding: 0 0 6 0;*/
+/*}*/
+
+/*.auth-card-subtitle {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.50);*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-padding: 0 0 28 0;*/
+/*}*/
+
+/*!* ── Form ── *!*/
+/*.auth-form {*/
+/*    -fx-pref-width: 360;*/
+/*}*/
+
+/*.auth-field-label {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.70);*/
+/*}*/
+
+/*.auth-input {*/
+/*    -fx-background-color: rgba(255,255,255,0.04);*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-border-color: rgba(251,191,36,0.20);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-border-radius: 10;*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-prompt-text-fill: rgba(253, 230, 138,0.30);*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-padding: 12 16 12 16;*/
+/*    -fx-pref-height: 46;*/
+/*}*/
+
+/*.auth-input:focused {*/
+/*    -fx-border-color: rgba(251,191,36,0.65);*/
+/*    -fx-background-color: rgba(251,191,36,0.05);*/
+/*    -fx-effect: dropshadow(gaussian, rgba(251,191,36,0.25), 12, 0.3, 0, 0);*/
+/*}*/
+
+/*!* ── Checkbox ── *!*/
+/*.auth-checkbox {*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.65);*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*}*/
+/*.auth-checkbox .box {*/
+/*    -fx-background-color: rgba(255,255,255,0.04);*/
+/*    -fx-border-color: rgba(251,191,36,0.30);*/
+/*    -fx-border-radius: 4;*/
+/*    -fx-background-radius: 4;*/
+/*}*/
+/*.auth-checkbox:selected .box {*/
+/*    -fx-background-color: #f59e0b;*/
+/*    -fx-border-color: #f59e0b;*/
+/*}*/
+/*.auth-checkbox:selected .mark {*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+/*!* ── Error label ── *!*/
+/*.auth-error {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: #f87171;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-min-height: 18;*/
+/*}*/
+
+/*!* ── Submit button full width ── *!*/
+/*.auth-submit-btn {*/
+/*    -fx-pref-width: 10000;*/
+/*    -fx-max-width: infinity;*/
+/*    -fx-pref-height: 48;*/
+/*    -fx-font-size: 16px;*/
+/*}*/
+
+/*!* ── Divider ── *!*/
+/*.auth-divider-row {*/
+/*    -fx-padding: 4 0 4 0;*/
+/*}*/
+/*.auth-divider-line {*/
+/*    -fx-background-color: rgba(251,191,36,0.12);*/
+/*    -fx-pref-height: 1;*/
+/*    -fx-max-height: 1;*/
+/*}*/
+/*.auth-divider-text {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.35);*/
+/*}*/
+
+/*!* ── Switch / link text ── *!*/
+/*.auth-switch-text {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.50);*/
+/*}*/
+/*.auth-link {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-text-fill: #fbbf24;*/
+/*    -fx-underline: false;*/
+/*    -fx-border-width: 0;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*.auth-link:hover {*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-underline: true;*/
+/*}*/
+/*.auth-link-muted {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 12px;*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.30);*/
+/*    -fx-underline: false;*/
+/*    -fx-border-width: 0;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*.auth-link-muted:hover {*/
+/*    -fx-text-fill: rgba(253, 230, 138,0.60);*/
+/*}*/
+
+
+/*!* ══════════════════════════════════════════════════*/
+/*   USER CHIP — Logged-in navbar display*/
+/*══════════════════════════════════════════════════ *!*/
+
+/*.user-chip {*/
+/*    -fx-background-color: rgba(251, 191, 36, 0.10);*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.30);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-border-radius: 50;*/
+/*    -fx-padding: 6 18 6 8;*/
+/*    -fx-cursor: default;*/
+/*}*/
+
+/*!* Circle avatar with first letter *!*/
+/*.user-avatar {*/
+/*    -fx-background-color: #f59e0b;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-text-fill: #1c1009;*/
+/*    -fx-font-family: "Georgia";*/
+/*    -fx-font-size: 15px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-alignment: CENTER;*/
+/*    -fx-text-alignment: CENTER;*/
+/*    -fx-min-width: 34;*/
+/*    -fx-min-height: 34;*/
+/*    -fx-max-width: 34;*/
+/*    -fx-max-height: 34;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.50), 10, 0.3, 0, 0);*/
+/*}*/
+
+/*.user-chip-greeting {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 10px;*/
+/*    -fx-text-fill: rgba(253, 230, 138, 0.45);*/
+/*}*/
+
+/*.user-chip-name {*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #fde68a;*/
+/*}*/
+
+/*!* Logout button *!*/
+/*.nav-btn-logout {*/
+/*    -fx-background-color: rgba(239, 68, 68, 0.10);*/
+/*    -fx-text-fill: #f87171;*/
+/*    -fx-font-family: "Trebuchet MS";*/
+/*    -fx-font-size: 13px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 8 18 8 18;*/
+/*    -fx-background-radius: 8;*/
+/*    -fx-border-color: rgba(239, 68, 68, 0.28);*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 8;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*.nav-btn-logout:hover {*/
+/*    -fx-background-color: rgba(239, 68, 68, 0.22);*/
+/*    -fx-text-fill: #fca5a5;*/
+/*    -fx-border-color: rgba(239, 68, 68, 0.50);*/
+/*}*/
+/*.nav-btn-logout:focused { -fx-background-insets: 0; }*/
+/*.button-74 {*/
+/*    -fx-background-color: #fbeee0;*/
+/*    -fx-border-color: #422800;*/
+/*    -fx-border-width: 2;*/
+/*    -fx-border-radius: 30;*/
+/*    -fx-background-radius: 30;*/
+
+/*    -fx-text-fill: #422800;*/
+/*    -fx-font-size: 18px;*/
+/*    -fx-font-weight: bold;*/
+
+/*    -fx-padding: 10 25 10 25;*/
+/*    -fx-cursor: hand;*/
+
+/*    !* Shadow *!*/
+/*    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 4, 4);*/
+/*}*/
+
+/*!* Hover *!*/
+/*.button-74:hover {*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+/*!* Pressed (active) *!*/
+/*.button-74:pressed {*/
+/*    -fx-effect: dropshadow(gaussian, #422800, 0, 0, 2, 2);*/
+/*    -fx-translate-x: 2;*/
+/*    -fx-translate-y: 2;*/
+/*}*/
+/*.neu-button {*/
+/*    -fx-background-color: #1a1814;*/
+/*    -fx-background-radius: 50;*/
+/*    -fx-border-radius: 50;*/
+/*    -fx-border-color: rgba(251, 191, 36, 0.28);*/
+/*    -fx-border-width: 1.5;*/
+/*    -fx-text-fill: #fde68a;*/
+/*    -fx-font-size: 18px;*/
+/*    -fx-padding: 15 40 15 40;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(0,0,0,0.55), 10, 0.4, 4, 4),*/
+/*            dropshadow(gaussian, rgba(245, 158, 11, 0.3), 10, 0.3, -3, -3);*/
+/*}*/
+/*.neu-button:hover {*/
+/*    -fx-border-color: rgba(245, 158, 11, 0.65);*/
+/*    -fx-text-fill: #fef3c7;*/
+/*    -fx-effect:*/
+/*            dropshadow(gaussian, rgba(0,0,0,0.45), 8, 0.3, 3, 3),*/
+/*            dropshadow(gaussian, rgba(245, 158, 11, 0.3), 16, 0.3, -2, -2);*/
+/*}*/
+/*.neu-button:focused {*/
+/*    -fx-background-insets: 0;*/
+/*}*/
+
 /* ═══════════════════════════════════════════════════
-   SimuLearn — Nature / Forest Green Theme
-   Deep forest dark — no white backgrounds
+   SimuLearn — Slate Cyan Theme
+   Deep teal dark · Electric cyan accents · Lab feel
 ═══════════════════════════════════════════════════ */
 
 /* ── Page root — deep forest gradient ── */
 .page-root {
     -fx-background-color: linear-gradient(
             from 0% 0% to 0% 100%,
-            #050f08 0%,
-            #071510 35%,
-            #061209 65%,
-            #040c07 100%
+            #030d10 0%,
+            #051218 35%,
+            #041014 65%,
+            #030b0f 100%
     );
     -fx-min-height: 1080;
     -fx-pref-width: 1920;
@@ -38,27 +1170,29 @@
 ══════════════════════════ */
 .navbar {
     -fx-padding: 16 50 16 50;
-    -fx-background-color: rgba(4, 12, 6, 0.90);
-    -fx-border-color: transparent transparent rgba(74, 222, 128, 0.10) transparent;
+    -fx-background-color: rgba(3, 9, 14, 0.93);
+    -fx-border-color: transparent transparent rgba(34, 211, 238, 0.10) transparent;
     -fx-border-width: 0 0 1 0;
     -fx-min-height: 68;
 }
 
 .brand-icon {
-    -fx-font-size: 27px;
-    -fx-text-fill: #4ade80;
+    -fx-icon-color: #22d3ee;
+    -fx-icon-size: 28px;
+    -fx-effect: dropshadow(gaussian, rgba(6, 182, 212, 0.5), 18, 0.5, 0, 0),
+    dropshadow(gaussian, rgba(6, 182, 212, 0.25), 38, 0.25, 0, 0);
 }
 
 .brand-name {
     -fx-font-family: "Georgia";
     -fx-font-size: 25px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
 }
 
 .nav-btn {
     -fx-background-color: transparent;
-    -fx-text-fill: rgba(167, 243, 208, 0.70);
+    -fx-text-fill: rgba(207, 250, 254, 0.70);
     -fx-font-size: 14px;
     -fx-font-family: "Trebuchet MS";
     -fx-padding: 9 18 9 18;
@@ -67,8 +1201,8 @@
     -fx-border-width: 0;
 }
 .nav-btn:hover {
-    -fx-background-color: rgba(74, 222, 128, 0.09);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34, 211, 238, 0.09);
+    -fx-text-fill: #67e8f9;
 }
 .nav-btn:focused { -fx-background-insets: 0; }
 
@@ -100,13 +1234,13 @@
 }
 
 .hero-badge {
-    -fx-background-color: rgba(74, 222, 128, 0.10);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-text-fill: #67e8f9;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
     -fx-padding: 7 22 7 22;
     -fx-background-radius: 50;
-    -fx-border-color: rgba(74, 222, 128, 0.25);
+    -fx-border-color: rgba(34, 211, 238, 0.25);
     -fx-border-width: 1;
     -fx-border-radius: 50;
 }
@@ -115,26 +1249,26 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 68px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
-    -fx-effect: dropshadow(gaussian, rgba(74,222,128,0.20), 30, 0.2, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.20), 30, 0.2, 0, 0);
 }
 
 .hero-title-accent {
     -fx-font-family: "Georgia";
     -fx-font-size: 68px;
     -fx-font-weight: bold;
-    -fx-text-fill: #4ade80;
+    -fx-text-fill: #22d3ee;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
-    -fx-effect: dropshadow(gaussian, rgba(74,222,128,0.50), 38, 0.30, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.50), 38, 0.30, 0, 0);
 }
 
 .hero-subtitle {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 18px;
-    -fx-text-fill: rgba(167, 243, 208, 0.72);
+    -fx-text-fill: rgba(207, 250, 254, 0.72);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 4;
@@ -143,9 +1277,9 @@
 /* Stats bar */
 .stats-row {
     -fx-padding: 20 70 20 70;
-    -fx-background-color: rgba(74, 222, 128, 0.05);
+    -fx-background-color: rgba(34, 211, 238, 0.05);
     -fx-background-radius: 18;
-    -fx-border-color: rgba(74, 222, 128, 0.12);
+    -fx-border-color: rgba(34, 211, 238, 0.12);
     -fx-border-width: 1;
     -fx-border-radius: 18;
 }
@@ -154,7 +1288,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 32px;
     -fx-font-weight: bold;
-    -fx-text-fill: #4ade80;
+    -fx-text-fill: #22d3ee;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -162,13 +1296,13 @@
 .stat-label {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 12px;
-    -fx-text-fill: rgba(167, 243, 208, 0.50);
+    -fx-text-fill: rgba(207, 250, 254, 0.50);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
 
 .stat-divider {
-    -fx-text-fill: rgba(74, 222, 128, 0.15);
+    -fx-text-fill: rgba(34, 211, 238, 0.15);
     -fx-font-size: 26px;
 }
 
@@ -183,7 +1317,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -191,7 +1325,7 @@
 .section-sub {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(167, 243, 208, 0.40);
+    -fx-text-fill: rgba(207, 250, 254, 0.40);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -202,10 +1336,10 @@
 
 /* ── Subject Card ── */
 .subject-card {
-    -fx-background-color: rgba(5, 20, 10, 0.65);
+    -fx-background-color: rgba(4, 16, 22, 0.68);
     -fx-background-radius: 22;
     -fx-border-radius: 22;
-    -fx-border-color: rgba(74, 222, 128, 0.15);
+    -fx-border-color: rgba(34, 211, 238, 0.15);
     -fx-border-width: 1.5;
     -fx-padding: 0;
     -fx-cursor: hand;
@@ -213,10 +1347,10 @@
 }
 
 .subject-card:hover {
-    -fx-background-color: rgba(10, 35, 18, 0.80);
-    -fx-border-color: rgba(74, 222, 128, 0.55);
+    -fx-background-color: rgba(6, 26, 36, 0.84);
+    -fx-border-color: rgba(34, 211, 238, 0.55);
     -fx-effect:
-            dropshadow(gaussian, rgba(74, 222, 128, 0.38), 36, 0.28, 0, 0),
+            dropshadow(gaussian, rgba(34, 211, 238, 0.38), 36, 0.28, 0, 0),
             dropshadow(gaussian, rgba(0, 10, 4, 0.45), 18, 0.18, 0, 8);
     -fx-scale-x: 1.04;
     -fx-scale-y: 1.04;
@@ -225,7 +1359,7 @@
 .subject-card:pressed {
     -fx-scale-x: 0.97;
     -fx-scale-y: 0.97;
-    -fx-effect: dropshadow(gaussian, rgba(74, 222, 128, 0.15), 8, 0.12, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.15), 8, 0.12, 0, 2);
 }
 
 .subject-card:focused { -fx-background-insets: 0; }
@@ -241,7 +1375,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 21px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -249,7 +1383,7 @@
 .card-subject-desc {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167, 243, 208, 0.58);
+    -fx-text-fill: rgba(207, 250, 254, 0.58);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 2;
@@ -296,13 +1430,13 @@
 
 /* Biology — green */
 .card-tag-bio {
-    -fx-background-color: rgba(74, 222, 128, 0.10);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-text-fill: #67e8f9;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 12px;
     -fx-padding: 5 14 5 14;
     -fx-background-radius: 50;
-    -fx-border-color: rgba(74, 222, 128, 0.25);
+    -fx-border-color: rgba(34, 211, 238, 0.25);
     -fx-border-width: 1;
     -fx-border-radius: 50;
 }
@@ -313,14 +1447,14 @@
 .footer {
     -fx-padding: 22 50 22 50;
     -fx-background-color: rgba(3, 9, 5, 0.55);
-    -fx-border-color: rgba(74, 222, 128, 0.07) transparent transparent transparent;
+    -fx-border-color: rgba(34, 211, 238, 0.07) transparent transparent transparent;
     -fx-border-width: 1 0 0 0;
 }
 
 .footer-text {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167, 243, 208, 0.28);
+    -fx-text-fill: rgba(207, 250, 254, 0.28);
     -fx-text-alignment: CENTER;
 }
 
@@ -337,10 +1471,10 @@
 
 /* Simulation card button */
 .sim-card {
-    -fx-background-color: rgba(5, 20, 10, 0.65);
+    -fx-background-color: rgba(4, 16, 22, 0.68);
     -fx-background-radius: 22;
     -fx-border-radius: 22;
-    -fx-border-color: rgba(74, 222, 128, 0.15);
+    -fx-border-color: rgba(34, 211, 238, 0.15);
     -fx-border-width: 1.5;
     -fx-padding: 0;
     -fx-cursor: hand;
@@ -348,10 +1482,10 @@
 }
 
 .sim-card:hover {
-    -fx-background-color: rgba(10, 35, 18, 0.80);
-    -fx-border-color: rgba(74, 222, 128, 0.55);
+    -fx-background-color: rgba(6, 26, 36, 0.84);
+    -fx-border-color: rgba(34, 211, 238, 0.55);
     -fx-effect:
-            dropshadow(gaussian, rgba(74, 222, 128, 0.38), 36, 0.28, 0, 0),
+            dropshadow(gaussian, rgba(34, 211, 238, 0.38), 36, 0.28, 0, 0),
             dropshadow(gaussian, rgba(0, 10, 4, 0.45), 18, 0.18, 0, 8);
     -fx-scale-x: 1.03;
     -fx-scale-y: 1.03;
@@ -360,7 +1494,7 @@
 .sim-card:pressed {
     -fx-scale-x: 0.97;
     -fx-scale-y: 0.97;
-    -fx-effect: dropshadow(gaussian, rgba(74, 222, 128, 0.15), 8, 0.12, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.15), 8, 0.12, 0, 2);
 }
 
 .sim-card:focused { -fx-background-insets: 0; }
@@ -381,7 +1515,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 19px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -389,7 +1523,7 @@
 .sim-card-desc {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167, 243, 208, 0.58);
+    -fx-text-fill: rgba(207, 250, 254, 0.58);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 2;
@@ -397,13 +1531,13 @@
 
 /* Tags */
 .sim-card-tag-bio {
-    -fx-background-color: rgba(74, 222, 128, 0.10);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-text-fill: #67e8f9;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 12px;
     -fx-padding: 5 14 5 14;
     -fx-background-radius: 50;
-    -fx-border-color: rgba(74, 222, 128, 0.25);
+    -fx-border-color: rgba(34, 211, 238, 0.25);
     -fx-border-width: 1;
     -fx-border-radius: 50;
 }
@@ -479,8 +1613,8 @@
 /* Biology — green glow */
 .card-icon-bio {
     -fx-effect:
-            dropshadow(gaussian, rgba(74, 222, 128, 0.90), 28, 0.5, 0, 0),
-            dropshadow(gaussian, rgba(74, 222, 128, 0.40), 55, 0.3, 0, 0);
+            dropshadow(gaussian, rgba(34, 211, 238, 0.90), 28, 0.5, 0, 0),
+            dropshadow(gaussian, rgba(34, 211, 238, 0.40), 55, 0.3, 0, 0);
 }
 
 /* ══════════════════════════════════════════
@@ -535,15 +1669,15 @@
 
 /* ── Biology shape — green circle ── */
 .icon-shape-bio {
-    -fx-background-color: rgba(74, 222, 128, 0.12);
+    -fx-background-color: rgba(34, 211, 238, 0.12);
     -fx-background-radius: 60;
-    -fx-border-color: rgba(74, 222, 128, 0.55), rgba(74, 222, 128, 0.18);
+    -fx-border-color: rgba(34, 211, 238, 0.55), rgba(34, 211, 238, 0.18);
     -fx-border-width: 2.5, 1;
     -fx-border-radius: 60, 68;
     -fx-border-insets: 0, -10;
     -fx-effect:
-            dropshadow(gaussian, rgba(74, 222, 128, 0.65), 22, 0.45, 0, 0),
-            dropshadow(gaussian, rgba(74, 222, 128, 0.25), 45, 0.20, 0, 0);
+            dropshadow(gaussian, rgba(34, 211, 238, 0.65), 22, 0.45, 0, 0),
+            dropshadow(gaussian, rgba(34, 211, 238, 0.25), 45, 0.20, 0, 0);
 }
 
 /* ── Decorative dot indicators below shape ── */
@@ -557,7 +1691,7 @@
 .dot-physics  { -fx-background-color: rgba(251, 191, 36,  0.65); }
 .dot-math     { -fx-background-color: rgba(167, 139, 250, 0.65); }
 .dot-chem     { -fx-background-color: rgba(34,  211, 238, 0.65); }
-.dot-bio      { -fx-background-color: rgba(74,  222, 128, 0.65); }
+.dot-bio      { -fx-background-color: rgba(34,211,238, 0.65); }
 
 /* Brighten the shape a little on card hover */
 .subject-card:hover .icon-shape-physics { -fx-background-color: rgba(251, 191, 36,  0.22); }
@@ -573,7 +1707,7 @@
 ══════════════════════════════════════════════════ */
 
 .btn-glow-green {
-    -fx-background-color: linear-gradient(to bottom right, #22c55e, #16a34a);
+    -fx-background-color: linear-gradient(to bottom right, #06b6d4, #0891b2);
     -fx-text-fill: white;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 15px;
@@ -583,25 +1717,25 @@
     -fx-border-width: 0;
     -fx-cursor: hand;
     -fx-effect:
-            dropshadow(gaussian, rgba(34, 197, 94, 0.55), 20, 0.40, 0, 4),
+            dropshadow(gaussian, rgba(6, 182, 212, 0.55), 20, 0.40, 0, 4),
             dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
 }
 
 .btn-glow-green:hover {
-    -fx-background-color: linear-gradient(to bottom right, #4ade80, #22c55e);
+    -fx-background-color: linear-gradient(to bottom right, #22d3ee, #06b6d4);
     -fx-effect:
-            dropshadow(gaussian, rgba(34, 197, 94, 0.85), 30, 0.55, 0, 0),
-            dropshadow(gaussian, rgba(34, 197, 94, 0.35), 55, 0.25, 0, 0),
+            dropshadow(gaussian, rgba(6, 182, 212, 0.85), 30, 0.55, 0, 0),
+            dropshadow(gaussian, rgba(6, 182, 212, 0.35), 55, 0.25, 0, 0),
             dropshadow(gaussian, rgba(0, 0, 0, 0.30), 8, 0.20, 0, 3);
     -fx-scale-x: 1.04;
     -fx-scale-y: 1.04;
 }
 
 .btn-glow-green:pressed {
-    -fx-background-color: linear-gradient(to bottom right, #16a34a, #15803d);
+    -fx-background-color: linear-gradient(to bottom right, #0891b2, #0e7490);
     -fx-scale-x: 0.97;
     -fx-scale-y: 0.97;
-    -fx-effect: dropshadow(gaussian, rgba(34, 197, 94, 0.35), 10, 0.25, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(6, 182, 212, 0.35), 10, 0.25, 0, 2);
 }
 
 .btn-glow-green:focused {
@@ -615,11 +1749,11 @@
 
 /* Active nav button */
 .nav-btn-active {
-    -fx-background-color: rgba(74, 222, 128, 0.12);
-    -fx-border-color: rgba(74, 222, 128, 0.40);
+    -fx-background-color: rgba(34, 211, 238, 0.12);
+    -fx-border-color: rgba(34, 211, 238, 0.40);
     -fx-border-width: 1;
     -fx-border-radius: 8;
-    -fx-text-fill: #86efac;
+    -fx-text-fill: #67e8f9;
     -fx-font-weight: bold;
 }
 
@@ -639,7 +1773,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -647,7 +1781,7 @@
 .about-body {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 16px;
-    -fx-text-fill: rgba(167, 243, 208, 0.75);
+    -fx-text-fill: rgba(207, 250, 254, 0.75);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 5;
@@ -655,9 +1789,9 @@
 
 /* Subject mini cards */
 .about-subject-card {
-    -fx-background-color: rgba(5, 20, 10, 0.65);
+    -fx-background-color: rgba(4, 16, 22, 0.68);
     -fx-background-radius: 18;
-    -fx-border-color: rgba(74, 222, 128, 0.15);
+    -fx-border-color: rgba(34, 211, 238, 0.15);
     -fx-border-width: 1.5;
     -fx-border-radius: 18;
     -fx-padding: 28 32 28 32;
@@ -675,7 +1809,7 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
 }
@@ -683,7 +1817,7 @@
 .about-subject-detail {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167, 243, 208, 0.58);
+    -fx-text-fill: rgba(207, 250, 254, 0.58);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 2;
@@ -691,9 +1825,9 @@
 
 /* Feature cards */
 .about-feature-card {
-    -fx-background-color: rgba(74, 222, 128, 0.05);
+    -fx-background-color: rgba(34, 211, 238, 0.05);
     -fx-background-radius: 14;
-    -fx-border-color: rgba(74, 222, 128, 0.12);
+    -fx-border-color: rgba(34, 211, 238, 0.12);
     -fx-border-width: 1;
     -fx-border-radius: 14;
     -fx-padding: 24 28 24 28;
@@ -710,13 +1844,13 @@
     -fx-font-family: "Georgia";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
 }
 
 .about-feature-desc {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167, 243, 208, 0.60);
+    -fx-text-fill: rgba(207, 250, 254, 0.60);
     -fx-line-spacing: 2;
 }
 
@@ -726,14 +1860,14 @@
 }
 
 .about-tech-badge {
-    -fx-background-color: rgba(74, 222, 128, 0.10);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-text-fill: #67e8f9;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-padding: 7 18 7 18;
     -fx-background-radius: 8;
-    -fx-border-color: rgba(74, 222, 128, 0.25);
+    -fx-border-color: rgba(34, 211, 238, 0.25);
     -fx-border-width: 1;
     -fx-border-radius: 8;
 }
@@ -754,31 +1888,32 @@
     -fx-background-color: linear-gradient(
             from 0% 0% to 0% 100%,
             #030d06 0%,
-            #061209 60%,
-            #040c07 100%
+            #041014 60%,
+            #030b0f 100%
     );
-    -fx-border-color: transparent rgba(74,222,128,0.10) transparent transparent;
+    -fx-border-color: transparent rgba(34,211,238,0.10) transparent transparent;
     -fx-border-width: 0 1 0 0;
     -fx-padding: 60 80 60 80;
 }
 
 .auth-brand-icon {
     -fx-font-size: 72px;
-    -fx-effect: dropshadow(gaussian, rgba(74,222,128,0.70), 35, 0.4, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(6, 182, 212, 0.45), 38, 0.45, 0, 0),
+    dropshadow(gaussian, rgba(6, 182, 212, 0.22), 65, 0.22, 0, 0);
 }
 
 .auth-brand-name {
     -fx-font-family: "Georgia";
     -fx-font-size: 52px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
-    -fx-effect: dropshadow(gaussian, rgba(74,222,128,0.30), 20, 0.2, 0, 0);
+    -fx-text-fill: #ecfeff;
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.30), 20, 0.2, 0, 0);
 }
 
 .auth-brand-tagline {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 17px;
-    -fx-text-fill: rgba(167,243,208,0.65);
+    -fx-text-fill: rgba(207, 250, 254,0.65);
     -fx-text-alignment: CENTER;
     -fx-alignment: CENTER;
     -fx-line-spacing: 4;
@@ -787,7 +1922,7 @@
 .auth-left-footer {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(74,222,128,0.45);
+    -fx-text-fill: rgba(34,211,238,0.45);
     -fx-padding: 20 0 0 0;
 }
 
@@ -829,29 +1964,29 @@
     -fx-border-radius: 50;
 }
 .auth-pill-bio {
-    -fx-background-color: rgba(74,222,128,0.10);
-    -fx-text-fill: #86efac;
+    -fx-background-color: rgba(34,211,238,0.10);
+    -fx-text-fill: #67e8f9;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-padding: 8 20 8 20;
     -fx-background-radius: 50;
-    -fx-border-color: rgba(74,222,128,0.28);
+    -fx-border-color: rgba(34,211,238,0.28);
     -fx-border-width: 1;
     -fx-border-radius: 50;
 }
 
 /* ── Right panel ── */
 .auth-right-panel {
-    -fx-background-color: #060f08;
+    -fx-background-color: #030e14;
     -fx-alignment: CENTER;
 }
 
 /* ── Auth card ── */
 .auth-card {
-    -fx-background-color: rgba(8,22,12,0.90);
+    -fx-background-color: rgba(4,18,24,0.92);
     -fx-background-radius: 22;
-    -fx-border-color: rgba(74,222,128,0.16);
+    -fx-border-color: rgba(34,211,238,0.16);
     -fx-border-width: 1.5;
     -fx-border-radius: 22;
     -fx-padding: 48 56 48 56;
@@ -859,14 +1994,14 @@
     -fx-max-width: 480;
     -fx-effect:
             dropshadow(gaussian, rgba(0,10,4,0.70), 40, 0.3, 0, 12),
-            dropshadow(gaussian, rgba(74,222,128,0.08), 60, 0.2, 0, 0);
+            dropshadow(gaussian, rgba(34,211,238,0.08), 60, 0.2, 0, 0);
 }
 
 .auth-card-title {
     -fx-font-family: "Georgia";
     -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-text-fill: #d1fae5;
+    -fx-text-fill: #ecfeff;
     -fx-alignment: CENTER;
     -fx-padding: 0 0 6 0;
 }
@@ -874,7 +2009,7 @@
 .auth-card-subtitle {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(167,243,208,0.50);
+    -fx-text-fill: rgba(207, 250, 254,0.50);
     -fx-alignment: CENTER;
     -fx-padding: 0 0 28 0;
 }
@@ -888,17 +2023,17 @@
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-text-fill: rgba(167,243,208,0.70);
+    -fx-text-fill: rgba(207, 250, 254,0.70);
 }
 
 .auth-input {
     -fx-background-color: rgba(255,255,255,0.04);
     -fx-background-radius: 10;
-    -fx-border-color: rgba(74,222,128,0.20);
+    -fx-border-color: rgba(34,211,238,0.20);
     -fx-border-width: 1.5;
     -fx-border-radius: 10;
-    -fx-text-fill: #d1fae5;
-    -fx-prompt-text-fill: rgba(167,243,208,0.30);
+    -fx-text-fill: #ecfeff;
+    -fx-prompt-text-fill: rgba(207, 250, 254,0.30);
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
     -fx-padding: 12 16 12 16;
@@ -906,26 +2041,26 @@
 }
 
 .auth-input:focused {
-    -fx-border-color: rgba(74,222,128,0.65);
-    -fx-background-color: rgba(74,222,128,0.05);
-    -fx-effect: dropshadow(gaussian, rgba(74,222,128,0.25), 12, 0.3, 0, 0);
+    -fx-border-color: rgba(34,211,238,0.65);
+    -fx-background-color: rgba(34,211,238,0.05);
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.25), 12, 0.3, 0, 0);
 }
 
 /* ── Checkbox ── */
 .auth-checkbox {
-    -fx-text-fill: rgba(167,243,208,0.65);
+    -fx-text-fill: rgba(207, 250, 254,0.65);
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
 }
 .auth-checkbox .box {
     -fx-background-color: rgba(255,255,255,0.04);
-    -fx-border-color: rgba(74,222,128,0.30);
+    -fx-border-color: rgba(34,211,238,0.30);
     -fx-border-radius: 4;
     -fx-background-radius: 4;
 }
 .auth-checkbox:selected .box {
-    -fx-background-color: #22c55e;
-    -fx-border-color: #22c55e;
+    -fx-background-color: #06b6d4;
+    -fx-border-color: #06b6d4;
 }
 .auth-checkbox:selected .mark {
     -fx-background-color: white;
@@ -954,44 +2089,44 @@
     -fx-padding: 4 0 4 0;
 }
 .auth-divider-line {
-    -fx-background-color: rgba(74,222,128,0.12);
+    -fx-background-color: rgba(34,211,238,0.12);
     -fx-pref-height: 1;
     -fx-max-height: 1;
 }
 .auth-divider-text {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 12px;
-    -fx-text-fill: rgba(167,243,208,0.35);
+    -fx-text-fill: rgba(207, 250, 254,0.35);
 }
 
 /* ── Switch / link text ── */
 .auth-switch-text {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: rgba(167,243,208,0.50);
+    -fx-text-fill: rgba(207, 250, 254,0.50);
 }
 .auth-link {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 13px;
-    -fx-text-fill: #4ade80;
+    -fx-text-fill: #22d3ee;
     -fx-underline: false;
     -fx-border-width: 0;
     -fx-cursor: hand;
 }
 .auth-link:hover {
-    -fx-text-fill: #86efac;
+    -fx-text-fill: #67e8f9;
     -fx-underline: true;
 }
 .auth-link-muted {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 12px;
-    -fx-text-fill: rgba(167,243,208,0.30);
+    -fx-text-fill: rgba(207, 250, 254,0.30);
     -fx-underline: false;
     -fx-border-width: 0;
     -fx-cursor: hand;
 }
 .auth-link-muted:hover {
-    -fx-text-fill: rgba(167,243,208,0.60);
+    -fx-text-fill: rgba(207, 250, 254,0.60);
 }
 
 
@@ -1000,9 +2135,9 @@
 ══════════════════════════════════════════════════ */
 
 .user-chip {
-    -fx-background-color: rgba(74, 222, 128, 0.10);
+    -fx-background-color: rgba(34, 211, 238, 0.10);
     -fx-background-radius: 50;
-    -fx-border-color: rgba(74, 222, 128, 0.30);
+    -fx-border-color: rgba(34, 211, 238, 0.30);
     -fx-border-width: 1.5;
     -fx-border-radius: 50;
     -fx-padding: 6 18 6 8;
@@ -1011,7 +2146,7 @@
 
 /* Circle avatar with first letter */
 .user-avatar {
-    -fx-background-color: #22c55e;
+    -fx-background-color: #06b6d4;
     -fx-background-radius: 50;
     -fx-text-fill: #0a1f10;
     -fx-font-family: "Georgia";
@@ -1029,14 +2164,14 @@
 .user-chip-greeting {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 10px;
-    -fx-text-fill: rgba(167, 243, 208, 0.45);
+    -fx-text-fill: rgba(207, 250, 254, 0.45);
 }
 
 .user-chip-name {
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-text-fill: #86efac;
+    -fx-text-fill: #67e8f9;
 }
 
 /* Logout button */
@@ -1089,28 +2224,246 @@
     -fx-translate-y: 2;
 }
 .neu-button {
-    -fx-background-color: #e0e0e0;
+    -fx-background-color: #04141a;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
-    -fx-border-color: #cecece;
-    -fx-border-width: 2;
-
-    -fx-text-fill: #4d4d4d;
+    -fx-border-color: rgba(34, 211, 238, 0.28);
+    -fx-border-width: 1.5;
+    -fx-text-fill: #67e8f9;
     -fx-font-size: 18px;
     -fx-padding: 15 40 15 40;
-
-    /* Neumorphism effect */
-    -fx-effect: innershadow(gaussian, #bcbcbc, 10, 0.4, 4, 4),
-    innershadow(gaussian, #ffffff, 10, 0.4, -4, -4);
+    -fx-effect:
+            dropshadow(gaussian, rgba(0,0,0,0.55), 10, 0.4, 4, 4),
+            dropshadow(gaussian, rgba(6, 182, 212, 0.3), 10, 0.3, -3, -3);
 }
 .neu-button:hover {
+    -fx-border-color: rgba(6, 182, 212, 0.65);
+    -fx-text-fill: #ecfeff;
     -fx-effect:
-            innershadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
-            innershadow(gaussian, #ffffff, 5, 0.3, -2, -2),
-            dropshadow(gaussian, #bcbcbc, 5, 0.3, 2, 2),
-            dropshadow(gaussian, #ffffff, 5, 0.3, -2, -2);
+            dropshadow(gaussian, rgba(0,0,0,0.45), 8, 0.3, 3, 3),
+            dropshadow(gaussian, rgba(6, 182, 212, 0.3), 16, 0.3, -2, -2);
 }
 .neu-button:focused {
     -fx-background-insets: 0;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   SIMULATION PAGE — Ligation / shared sim layout classes
+   Cyan theme — matches navbar/menu design language
+═══════════════════════════════════════════════════════════════ */
+
+/* Page title in navbar */
+.sim-page-title {
+    -fx-font-family: "Outfit";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ecfeff;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.28), 16, 0.2, 0, 0);
+}
+
+/* Full content area background */
+.sim-content-root {
+    -fx-background-color: #041016;
+}
+
+/* Lab workspace panel — transparent, lab draws its own bg */
+.sim-workspace-panel {
+    -fx-background-color: transparent;
+}
+
+/* Instruction sidebar — dark teal panel like subject cards */
+.sim-sidebar {
+    -fx-background-color: rgba(4, 12, 18, 0.95);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(34, 211, 238, 0.18);
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.55), 24, 0.2, 0, 4);
+}
+
+/* ── Section heading inside sidebar/panels ── */
+.sim-section-title {
+    -fx-font-family: "Outfit";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #22d3ee;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.22), 12, 0.2, 0, 0);
+}
+
+.sim-section-underline {
+    -fx-background-color: #22d3ee;
+    -fx-pref-height: 2;
+    -fx-background-radius: 2;
+    -fx-opacity: 0.7;
+}
+
+/* ── Body text inside panels ── */
+.sim-body-text {
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #cffafe;
+    -fx-wrap-text: true;
+}
+
+.sim-muted-text {
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(207, 250, 254, 0.55);
+}
+
+/* ── Info box (tip/note box) ── */
+.sim-info-box {
+    -fx-background-color: rgba(34, 211, 238, 0.07);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(34, 211, 238, 0.22);
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-padding: 14;
+}
+
+/* ── Content card (white card replacement) ── */
+.sim-card {
+    -fx-background-color: rgba(4, 18, 26, 0.92);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(34, 211, 238, 0.16);
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.40), 16, 0.2, 0, 4);
+    -fx-padding: 20;
+}
+
+/* ── Quiz option — unselected ── */
+.sim-option {
+    -fx-background-color: rgba(4, 18, 26, 0.85);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(34, 211, 238, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-padding: 14;
+    -fx-cursor: hand;
+}
+
+.sim-option:hover {
+    -fx-background-color: rgba(34, 211, 238, 0.08);
+    -fx-border-color: rgba(34, 211, 238, 0.32);
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.14), 12, 0.2, 0, 2);
+}
+
+/* ── Quiz option — selected ── */
+.sim-option-selected {
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-background-radius: 10;
+    -fx-border-color: #22d3ee;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-padding: 14;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.35), 14, 0.2, 0, 4);
+}
+
+/* ── Nav buttons (Prev / Next) ── */
+.sim-btn-prev {
+    -fx-background-color: rgba(34, 211, 238, 0.07);
+    -fx-text-fill: #67e8f9;
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-color: rgba(34, 211, 238, 0.30);
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.sim-btn-prev:hover {
+    -fx-background-color: rgba(34, 211, 238, 0.13);
+    -fx-border-color: rgba(34, 211, 238, 0.55);
+}
+
+.sim-btn-next {
+    -fx-background-color: #06b6d4;
+    -fx-text-fill: white;
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(6, 182, 212, 0.40), 10, 0.3, 0, 2);
+}
+
+.sim-btn-next:hover {
+    -fx-background-color: #22d3ee;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.55), 14, 0.35, 0, 2);
+}
+
+/* ── Submit button — inactive ── */
+.sim-btn-submit-inactive {
+    -fx-background-color: rgba(34, 211, 238, 0.09);
+    -fx-text-fill: rgba(207, 250, 254, 0.38);
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 14px;
+    -fx-padding: 10 30;
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(34, 211, 238, 0.16);
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-cursor: hand;
+}
+
+/* ── Submit button — active ── */
+.sim-btn-submit {
+    -fx-background-color: #06b6d4;
+    -fx-text-fill: white;
+    -fx-font-family: "DM Sans ExtraBold";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(6, 182, 212, 0.45), 12, 0.3, 0, 2);
+}
+
+.sim-btn-submit:hover {
+    -fx-background-color: #22d3ee;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.58), 16, 0.35, 0, 2);
+}
+
+/* ── Progress bar ── */
+.sim-progress-bar {
+    -fx-accent: #22d3ee;
+}
+
+/* ── Step indicator dot (active highlight) ── */
+.sim-step-active {
+    -fx-background-color: rgba(34, 211, 238, 0.16);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(34, 211, 238, 0.30);
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+/* ── Correct / Wrong feedback (keep semantic colors) ── */
+.sim-correct {
+    -fx-background-color: rgba(39, 174, 96, 0.12);
+    -fx-border-color: #27ae60;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 14;
+}
+
+.sim-wrong {
+    -fx-background-color: rgba(231, 76, 60, 0.12);
+    -fx-border-color: #e74c3c;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 14;
+}
+
+.sim-feedback-correct { -fx-text-fill: #2ecc71; -fx-font-family: "DM Sans ExtraBold"; }
+.sim-feedback-wrong   { -fx-text-fill: #e74c3c; -fx-font-family: "DM Sans ExtraBold"; }

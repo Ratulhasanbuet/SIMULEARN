@@ -1,7 +1,7 @@
 /* ── Root ─────────────────────────────────────────── */
 .root-pane {
     -fx-background-color: #0a0e14;
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
 }
 
 /* ── Header ───────────────────────────────────────── */
@@ -22,7 +22,7 @@
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #f97316;
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
     -fx-letter-spacing: 2;
 }
 
@@ -137,7 +137,7 @@
 
 /* ── Control labels ───────────────────────────────── */
 .ctrl-name {
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-text-fill: #e2e8f0;
@@ -167,7 +167,7 @@
 
 /* ── Checkboxes ───────────────────────────────────── */
 .check {
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-text-fill: #e2e8f0;
@@ -230,7 +230,7 @@
 .btn-launch {
     -fx-background-color: #f97316;
     -fx-text-fill: white;
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 10;
@@ -246,7 +246,7 @@
 .btn-reset {
     -fx-background-color: #1e2d40;
     -fx-text-fill: #64748b;
-    -fx-font-family: "Arial";
+    -fx-font-family: "DM Sans Medium";
     -fx-font-size: 14px;
     -fx-padding: 10;
     -fx-cursor: hand;

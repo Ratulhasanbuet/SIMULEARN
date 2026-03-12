@@ -1,50 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<VBox fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.LigationController">
+<VBox fx:id="mainContainer" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.simulearn.SimuLearn.Biology.Ligation.LigationController">
+
     <children>
-        <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="1920.0" spacing="50.0" styleClass="hbox">
-            <children>
-                <Button mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="57.0" prefWidth="123.0" styleClass="button-74" text="Back">
-                    <HBox.margin>
-                        <Insets left="30.0" />
-                    </HBox.margin>
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Button>
-                <Label prefHeight="44.0" prefWidth="470.0" text="Ligating  DNA Fragments">
-                    <font>
-                        <Font name="AdobeHebrew-Bold" size="36.0" />
-                    </font>
-                </Label>
-            </children>
+
+        <!-- NAVBAR -->
+        <HBox alignment="CENTER_LEFT" spacing="0" styleClass="navbar">
+
+            <!-- Brand -->
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <FontIcon iconLiteral="mdi2d-dna" styleClass="brand-icon"/>
+                <Label styleClass="brand-name" text="SimuLearn"/>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Page title -->
+            <Label styleClass="sim-page-title" text="Ligating DNA Fragments">
+                <font>
+                    <Font name="FontAwesome" size="12.0"/>
+                </font>
+            </Label>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Back button -->
+            <HBox alignment="CENTER" spacing="6">
+                <Button mnemonicParsing="false" onAction="#onBackButtonClicked" styleClass="btn-glow-green"
+                        text="Back"/>
+            </HBox>
+
+            <HBox.margin>
+                <Insets right="50.0"/>
+            </HBox.margin>
         </HBox>
-        <ScrollPane prefHeight="1062.0" prefWidth="1920.0">
+
+        <!-- MAIN CONTENT -->
+        <ScrollPane fitToWidth="false" prefHeight="1008.0" prefWidth="1920.0" styleClass="main-scroll"
+                    VBox.vgrow="ALWAYS">
             <content>
-                <HBox prefHeight="1056.0" prefWidth="1916.0">
+                <HBox prefHeight="1000.0" prefWidth="1916.0" styleClass="sim-content-root">
                     <children>
-                        <VBox fx:id="mainpanel" prefHeight="1056.0" prefWidth="1515.0">
+
+                        <VBox fx:id="mainpanel" prefHeight="1000.0" prefWidth="1515.0">
                             <HBox.margin>
-                                <Insets bottom="15.0" right="15.0" top="15.0" />
-                            </HBox.margin></VBox>
-                        <VBox fx:id="instruction" prefHeight="1056.0" prefWidth="388.0">
+                                <Insets bottom="15.0" right="12.0" top="15.0"/>
+                            </HBox.margin>
+                        </VBox>
+
+                        <VBox fx:id="instruction" prefHeight="1000.0" prefWidth="388.0" styleClass="sim-sidebar">
                             <HBox.margin>
-                                <Insets bottom="15.0" left="7.0" right="5.0" top="15.0" />
-                            </HBox.margin></VBox>
+                                <Insets bottom="15.0" left="7.0" right="8.0" top="15.0"/>
+                            </HBox.margin>
+                        </VBox>
+
                     </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+                    <padding>
+                        <Insets top="10.0"/>
+                    </padding>
                 </HBox>
             </content>
         </ScrollPane>
+
     </children>
 </VBox>

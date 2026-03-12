@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SignUpController">
+<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.Information.SignUpController">
 
     <children>
 
