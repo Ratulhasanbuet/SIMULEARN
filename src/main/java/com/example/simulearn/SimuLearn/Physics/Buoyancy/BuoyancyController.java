@@ -6,7 +6,10 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -15,6 +18,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static javafx.scene.paint.Color.*;
@@ -87,7 +91,15 @@ public class BuoyancyController {
         t.setCycleCount(1);
         t.play();
     }
-
+    @FXML
+    void onBackButtonClicked() throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/physicsMenu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) Liquid.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setMaximized(true);
+        stage.show();
+    }
     private void resetPositionOnChange() {
         Material.getTransforms().clear();
         Material.setTranslateX(0);
@@ -118,6 +130,9 @@ public class BuoyancyController {
         double vectorLength = buoyancyVector.getEndY() - buoyancyVector.getStartY();
         double weightLength = weightVector.getEndY() - weightVector.getStartY();
         double scale = weightLength / vectorLength;
+
+        if(MaterialDensity>LiquidDensity)
+            scale=scale*LiquidDensity/MaterialDensity;
 
         ScaleTransition st = new ScaleTransition(Duration.seconds(time), buoyancyVector);
         st.setToY(scale);
@@ -291,10 +306,10 @@ public class BuoyancyController {
                 vectorTransition(ttWeightArrow, 233);
 
                 TranslateTransition ttBuoyancy = new TranslateTransition(Duration.seconds(2), buoyancyVector);
-                vectorTransition(ttBuoyancy, 233);
+                vectorTransition(ttBuoyancy, 233 + 6.5*MaterialDensity/LiquidDensity);
 
                 TranslateTransition ttBuoyancyArrow = new TranslateTransition(Duration.seconds(2), buoyancyArrow);
-                vectorTransition(ttBuoyancyArrow, 233- weightLength+vectorLength+30);
+                vectorTransition(ttBuoyancyArrow, 200 + 10*MaterialDensity/LiquidDensity -29*LiquidDensity/MaterialDensity);
 
                 double animationSpeed = (70 + y) / 2;
                 double liquidRiseTime = y / animationSpeed;

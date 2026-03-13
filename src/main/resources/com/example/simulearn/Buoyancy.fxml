@@ -18,10 +18,10 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane fx:id="rootPane" prefHeight="800.0" prefWidth="1439.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.Buoyancy.BuoyancyController">
+<AnchorPane fx:id="rootPane" prefHeight="936.0" prefWidth="1623.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.Buoyancy.BuoyancyController">
 
    <children>
-      <ImageView fitHeight="809.0" fitWidth="1500.0" layoutX="5.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1017.0" fitWidth="1669.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Images/BuoyancyBG.png" />
          </image>
@@ -82,7 +82,7 @@
             <Font size="18.0" />
          </font></Button>
 
-      <Button fx:id="hideBtn" layoutX="180" layoutY="20" onAction="#hideExplanation" styleClass="button-74" style="-fx-background-color: #E81123; -fx-text-fill: white;" text="Hide Explanation" visible="false" />
+      <Button fx:id="hideBtn" layoutX="180" layoutY="20" onAction="#hideExplanation" style="-fx-background-color: #E81123; -fx-text-fill: white;" styleClass="button-74" text="Hide Explanation" visible="false" />
 
       <VBox fx:id="explanationBox" layoutX="20" layoutY="60" spacing="12" style="-fx-background-color: #f8f8f8; -fx-padding: 15; -fx-border-radius: 8; -fx-border-color: #cccccc; -fx-pref-width: 560;" visible="false">
 
@@ -121,5 +121,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="114.0" layoutY="625.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="56.0" prefWidth="94.0" styleClass="button-74" text="Back" />
    </children>
 </AnchorPane>

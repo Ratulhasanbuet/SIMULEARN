@@ -1,8 +1,11 @@
 package com.example.simulearn.SimuLearn.Physics.LogicCircuit;
 
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,6 +18,7 @@ import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -33,6 +37,15 @@ public class LogicCircuitController {
     private ArrayList<NodePoint> Nodes = new ArrayList<>();
     private ArrayList<NodePoint> secondaryNodes = new ArrayList<>();
     NodePoint lastNode;
+    @FXML
+    void onBackButtonClicked() throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/physicsMenu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) addNodeButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setMaximized(true);
+        stage.show();
+    }
     @FXML
     private void initialize()
     {
@@ -71,6 +84,15 @@ public class LogicCircuitController {
         lastNode=nodePoint;
         isUsedNode.add(false);
         currentMode=ToolMode.NONE;
+        node.setOnMouseEntered(e1 -> {
+            node.setScaleX(2);
+            node.setScaleY(2);
+        });
+
+        node.setOnMouseExited(e1 -> {
+            node.setScaleX(1);
+            node.setScaleY(1);
+        });
         node.setOnMouseClicked(ev -> handleNodeClick(node));
     }
     @FXML
@@ -170,6 +192,15 @@ public class LogicCircuitController {
         NodePoint nodePoint = new NodePoint(node,label,bool,c);
         secondaryNodes.add(nodePoint);
         lastNode=nodePoint;
+        node.setOnMouseEntered(e1 -> {
+            node.setScaleX(2);
+            node.setScaleY(2);
+        });
+
+        node.setOnMouseExited(e1 -> {
+            node.setScaleX(1);
+            node.setScaleY(1);
+        });
         node.setOnMouseClicked(ev -> handleNodeClick(node));
         Group gate;
         line1.setStroke(Color.RED);
@@ -270,6 +301,15 @@ public class LogicCircuitController {
         node.setCenterY(ext.getEndY());
         node.setRadius(4);
         node.setFill(Color.BLACK);
+        node.setOnMouseEntered(e1 -> {
+            node.setScaleX(2);
+            node.setScaleY(2);
+        });
+
+        node.setOnMouseExited(e1 -> {
+            node.setScaleX(1);
+            node.setScaleY(1);
+        });
         node.setOnMouseClicked(ev -> handleNodeClick(node));
         pane.getChildren().addAll(node,label);
         NodePoint nodePoint = new NodePoint(node,label,bool,c);
@@ -332,6 +372,15 @@ public class LogicCircuitController {
         node.setCenterY(y);
         node.setRadius(4);
         node.setFill(Color.BLACK);
+        node.setOnMouseEntered(e1 -> {
+            node.setScaleX(2);
+            node.setScaleY(2);
+        });
+
+        node.setOnMouseExited(e1 -> {
+            node.setScaleX(1);
+            node.setScaleY(1);
+        });
         node.setOnMouseClicked(ev -> handleNodeClick(node));
         pane.getChildren().addAll(node,label);
         NodePoint nodePoint = new NodePoint(node,label,bool,c);

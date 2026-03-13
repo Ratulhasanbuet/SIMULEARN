@@ -3,7 +3,10 @@ package com.example.simulearn.SimuLearn.Math.Vector;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -34,6 +38,15 @@ public class vectorController {
     private Group sumVector;
     private boolean resultantChanged;
     @FXML private CheckBox components;
+    @FXML
+    void onBackButtonClicked() throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/mathMenu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) components.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setMaximized(true);
+        stage.show();
+    }
     @FXML
     public void initialize() {
         quizGroup = new ToggleGroup();

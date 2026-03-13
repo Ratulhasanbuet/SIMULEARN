@@ -142,7 +142,7 @@ public class MenuController {
             stage.setMaximized(true);
             stage.show();
         } catch (java.io.IOException e) {
-            System.out.println("Failed to open the window.");
+            e.printStackTrace(); // This will tell you if it's a "File Not Found" or a "Controller Error"
         }
     }
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onMouseClicked="#NodeAddition" prefHeight="936.0" prefWidth="1548.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.LogicCircuit.LogicCircuitController">
+<AnchorPane onMouseClicked="#NodeAddition" prefHeight="936.0" prefWidth="1548.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.LogicCircuit.LogicCircuitController">
    <children>
       <Button fx:id="addNodeButton" layoutX="1246.0" layoutY="22.0" mnemonicParsing="false" onAction="#onAddNode" prefHeight="65.0" prefWidth="238.0" styleClass="button-74" stylesheets="@menu.css" text="Add node">
       </Button>
@@ -56,7 +56,10 @@
       </Button>
       <Button fx:id="ToggleButton" layoutX="1289.0" layoutY="176.0" mnemonicParsing="false" onAction="#onToggle" prefHeight="51.0" prefWidth="150.0" styleClass="button-74" text="Toggle" />
       <Button layoutX="1289.0" layoutY="242.0" mnemonicParsing="false" onAction="#onReset" prefHeight="51.0" prefWidth="150.0" styleClass="button-74" text="Reset" />
-      <AnchorPane fx:id="pane" layoutY="1.0" prefHeight="936.0" prefWidth="1239.0" />
+      <AnchorPane fx:id="pane" layoutY="1.0" prefHeight="936.0" prefWidth="1239.0">
+         <children>
+            <Button layoutX="114.0" layoutY="48.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="51.0" prefWidth="118.0" styleClass="button-74" text="Back" />
+         </children></AnchorPane>
       <Button layoutX="1246.0" layoutY="110.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="51.0" prefWidth="238.0" styleClass="button-74" text="Connect Bulb" />
    </children>
 </AnchorPane>

@@ -1,13 +1,18 @@
 package com.example.simulearn.SimuLearn.Chemistry.FlameTest;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 
 public class FlameTestController {
     private Salt sample;
@@ -37,6 +42,20 @@ public class FlameTestController {
     private boolean dippedInHCl;
     private boolean isRodTouching(Node target) {
         return PtRod.getBoundsInParent().intersects(target.getBoundsInParent());
+    }
+    @FXML
+    private void onBackButtonClicked(ActionEvent event) {
+        try {
+            // Load FXML correctly
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/chemistryMenu.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to open the window.");
+        }
     }
     private void updateInstruction()
     {

@@ -10,10 +10,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
-
 <?import javafx.geometry.Insets?>
-<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/25"
+<StackPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Chemistry.chemistryMenuController">
 
     <children>
@@ -95,7 +93,7 @@
                                         <ImageView fitHeight="366.0" fitWidth="329.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../Images/Understanding%20VSEPR%20Theory%20-%20visual%20selection.png"/>
+                                                <Image url="@../../../Images/Understanding VSEPR Theory - visual selection.png"/>
                                             </image>
                                         </ImageView>
                                         <VBox alignment="CENTER" spacing="6">
@@ -117,7 +115,7 @@
                                         <ImageView fitHeight="389.0" fitWidth="319.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../Images/Aromatic%20Organic%20and%20Inorganic%20Molecular%20View%20-%20visual%20selection.png"/>
+                                                <Image url="@../../../Images/Aromatic Organic and Inorganic Molecular View - visual selection.png"/>
                                             </image>
                                         </ImageView>
                                         <VBox alignment="CENTER" spacing="6">
@@ -138,7 +136,7 @@
                                         <ImageView fitHeight="269.0" fitWidth="339.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../Images/Flame%20Test%20of%20Compounds%20and%20Color%20Transitions%20-%20visual%20selection.png"/>
+                                                <Image url="@../../../Images/Flame Test of Compounds and Color Transitions - visual selection.png"/>
                                             </image>
                                         </ImageView>
                                         <VBox alignment="CENTER" spacing="6">
