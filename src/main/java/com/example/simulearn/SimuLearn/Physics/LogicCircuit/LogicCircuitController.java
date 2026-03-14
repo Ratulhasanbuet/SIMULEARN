@@ -1,7 +1,9 @@
 package com.example.simulearn.SimuLearn.Physics.LogicCircuit;
 
 
+import com.example.simulearn.SimuLearn.Math.Euler.EulerController;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -67,6 +69,20 @@ public class LogicCircuitController {
         addNodeButton.setText("Adding Node");
     }
     private void AddNode(MouseEvent e){
+        double x = e.getX();
+        double y = e.getY();
+
+        // Translate to scene coordinates
+        double sceneX = e.getSceneX();
+        double sceneY = e.getSceneY();
+
+        // Get drawing pane bounds in scene coordinates
+        Bounds bounds = pane.localToScene(pane.getBoundsInLocal());
+        if(!bounds.contains(sceneX,sceneY))
+        {
+            currentMode= ToolMode.NONE;
+            return;
+        }
         Circle node = new Circle();
         Label label = new Label();
         label.setLayoutX(e.getX());

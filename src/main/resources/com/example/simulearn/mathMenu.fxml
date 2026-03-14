@@ -103,7 +103,7 @@
                             </Button>
 
                             <!-- Card 2 — Placeholder (add onAction + image later) -->
-                            <Button mnemonicParsing="false" styleClass="sim-card">
+                            <Button onAction="#eulerClicked" mnemonicParsing="false" styleClass="sim-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
                                         <!-- TODO: replace emoji with ImageView when image is ready -->

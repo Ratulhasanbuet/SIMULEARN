@@ -26,6 +26,7 @@ module com.example.simulearn {
     requires javafx.base;
     requires java.sql;
     requires javax.mail.api;
+    requires annotations;
     opens com.example.simulearn to javafx.fxml;
     exports com.example.simulearn;
     exports com.example.simulearn.SimuLearn.Biology.Ligation;
@@ -60,4 +61,5 @@ module com.example.simulearn {
     opens com.example.simulearn.SimuLearn to javafx.fxml;
     exports com.example.simulearn.Information;
     opens com.example.simulearn.Information to javafx.fxml;
+    opens com.example.simulearn.SimuLearn.Math.Euler to javafx.fxml;
 }
