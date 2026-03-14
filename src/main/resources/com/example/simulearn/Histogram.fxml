@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="886.0" prefWidth="1279.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Histogram.HistogramController">
+   <children>
+      <VBox prefHeight="886.0" prefWidth="245.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="250.0" text="       Simulation Settings" textAlignment="CENTER" textFill="#23bf25">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="15.0" prefWidth="246.0" />
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="246.0" text="Unsorted Data Input">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="dataInputArea" prefHeight="255.0" prefWidth="246.0" promptText="10, 12, 14, " wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="76.0" prefHeight="51.0" prefWidth="246.0" text="Number of Bins">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="binSpinner" prefHeight="42.0" prefWidth="246.0">
+               <effect>
+                  <Blend />
+               </effect>
+            </Spinner>
+            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="382.0" prefHeight="36.0" prefWidth="246.0" text="Bar Theme" textFill="#23c714">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="barColorPicker" prefHeight="37.0" prefWidth="246.0">
+               <value>
+                  <Color red="0.8526315689086914" green="0.07894736528396606" blue="0.07894736528396606" />
+               </value>
+            </ColorPicker>
+            <Button mnemonicParsing="false" onAction="#onRunClicked" prefHeight="62.0" prefWidth="246.0" styleClass="button-27" text="Run" />
+            <Separator prefHeight="22.0" prefWidth="246.0" />
+            <Button layoutX="10.0" layoutY="549.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="246.0" styleClass="button-27" text="Reset">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="524.0" layoutY="-5.0" prefHeight="91.0" prefWidth="350.0" text="Histogram generator" textFill="#19cc0f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="1102.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBackButtonClicked" styleClass="button-27" text="Back" />
+      <BarChart fx:id="histogramChart" layoutX="271.0" layoutY="93.0" prefHeight="590.0" prefWidth="903.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

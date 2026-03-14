@@ -1,7 +1,6 @@
 package com.example.simulearn.SimuLearn.Physics.LogicCircuit;
 
 
-import com.example.simulearn.SimuLearn.Math.Euler.EulerController;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;

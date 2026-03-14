@@ -121,7 +121,7 @@
                             </Button>
 
                             <!-- Card 3 — Placeholder (add onAction + image later) -->
-                            <Button mnemonicParsing="false" styleClass="sim-card">
+                            <Button onAction="#HistogramClicked" mnemonicParsing="false" styleClass="sim-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
                                         <!-- TODO: replace emoji with ImageView when image is ready -->

@@ -62,4 +62,5 @@ module com.example.simulearn {
     exports com.example.simulearn.Information;
     opens com.example.simulearn.Information to javafx.fxml;
     opens com.example.simulearn.SimuLearn.Math.Euler to javafx.fxml;
+    opens com.example.simulearn.SimuLearn.Math.Histogram to javafx.fxml;
 }

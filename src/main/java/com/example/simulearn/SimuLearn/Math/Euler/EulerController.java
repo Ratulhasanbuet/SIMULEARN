@@ -1,8 +1,5 @@
 package com.example.simulearn.SimuLearn.Math.Euler;
 
-import com.example.simulearn.SimuLearn.Physics.LogicCircuit.Gate;
-import com.example.simulearn.SimuLearn.Physics.LogicCircuit.LogicCircuitController;
-import com.example.simulearn.SimuLearn.Physics.LogicCircuit.NodePoint;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
