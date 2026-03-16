@@ -49,6 +49,7 @@ public class HistogramController {
     }
     private void processData()
     {
+        numericData.clear();
         String rawData = dataInputArea.getText();
 
         binCount = binSpinner.getValue();
@@ -134,5 +135,12 @@ public class HistogramController {
         for (XYChart.Data<String, Number> data : series.getData()) {
             data.getNode().setStyle("-fx-bar-fill: " + webColor + ";");
         }
+    }
+    @FXML
+    private void onReset(){
+        CategoryAxis xAxis = (CategoryAxis) histogramChart.getXAxis();
+        histogramChart.setAnimated(false); // Keeps layout stable
+        histogramChart.getData().clear();  // Wipe old data
+        xAxis.getCategories().clear();
     }
 }

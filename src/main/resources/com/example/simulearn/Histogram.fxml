@@ -57,7 +57,7 @@
             </ColorPicker>
             <Button mnemonicParsing="false" onAction="#onRunClicked" prefHeight="62.0" prefWidth="246.0" styleClass="button-27" text="Run" />
             <Separator prefHeight="22.0" prefWidth="246.0" />
-            <Button layoutX="10.0" layoutY="549.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="246.0" styleClass="button-27" text="Reset">
+            <Button layoutX="10.0" layoutY="549.0" mnemonicParsing="false" onAction="#onReset" prefHeight="63.0" prefWidth="246.0" styleClass="button-27" text="Reset">
                <font>
                   <Font size="18.0" />
                </font>
