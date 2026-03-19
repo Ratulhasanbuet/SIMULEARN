@@ -93,7 +93,6 @@ public class VerificationController {
             showError("Invalid or expired verification code. Please try again.");
             return;
         }
-
         // ── Code is valid ─────────────────────────────────
         if (isSignUp && pendingPassword != null) {
             // Save user to DB now (after verification)

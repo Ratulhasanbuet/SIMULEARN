@@ -56,7 +56,6 @@ public class SignUpController {
             showError("An account with this email already exists.");
             return;
         }
-
         // ── Send verification code FIRST (before saving to DB) ───────────
         showSuccess("Sending verification code...");
 

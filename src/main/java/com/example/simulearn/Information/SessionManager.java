@@ -1,5 +1,7 @@
 package com.example.simulearn.Information;
 
+import com.example.simulearn.Session;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -75,11 +77,13 @@ public class SessionManager {
      * Returns the username if auto-login succeeded, else null.
      */
     public static String tryAutoLogin() {
+
         String token = loadToken();
         if (token == null) return null;
         String username = DatabaseHelper.getUserFromToken(token);
         if (username != null) {
             setCurrentUser(username);
+            Session.username=username;
         } else {
             clearToken(); // stale token
         }

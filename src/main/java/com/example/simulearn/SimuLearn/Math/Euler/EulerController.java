@@ -154,25 +154,24 @@ public class EulerController {
         });
         node.setOnMouseClicked(ev -> handleNodeClick(node));
     }
+    private boolean linesIntersect(double x1, double y1, double x2, double y2,
+                                   double x3, double y3, double x4, double y4) {
+        double det = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
+        if (det == 0) return false; // parallel lines
+        double t = ((x3 - x1) * (y4 - y3) - (y3 - y1) * (x4 - x3)) / det;
+        double u = ((x3 - x1) * (y2 - y1) - (y3 - y1) * (x2 - x1)) / det;
+        return t > 0 && t < 1 && u > 0 && u < 1; // intersection inside segments
+    }
     private boolean isIntersecting(Line a,Line b)
     {
-        Shape intersection = Shape.intersect(a,b);
+        // ignore edges sharing a node
+        if (a.getStartX() == b.getStartX() && a.getStartY() == b.getStartY()) return false;
+        if (a.getStartX() == b.getEndX() && a.getStartY() == b.getEndY()) return false;
+        if (a.getEndX() == b.getStartX() && a.getEndY() == b.getStartY()) return false;
+        if (a.getEndX() == b.getEndX() && a.getEndY() == b.getEndY()) return false;
 
-        // If bounds are valid, there is an intersection
-        if (intersection.getBoundsInLocal().getWidth() != -1) {
-            double ix = intersection.getBoundsInLocal().getMinX();
-            double iy = intersection.getBoundsInLocal().getMinY();
-
-            // Check if intersection is at any endpoint
-            if (isEndpoint(ix, iy, a.getStartX(), a.getStartY()) ||
-                    isEndpoint(ix, iy, a.getEndX(), a.getEndY()) ||
-                    isEndpoint(ix, iy, b.getStartX(), b.getStartY()) ||
-                    isEndpoint(ix, iy, b.getEndX(), b.getEndY())) {
-                return false; // touching at endpoint is fine
-            }
-            return true; // proper intersection
-        }
-        return false;
+        return linesIntersect(a.getStartX(), a.getStartY(), a.getEndX(), a.getEndY(),
+                b.getStartX(), b.getStartY(), b.getEndX(), b.getEndY());
     }
     private static boolean isEndpoint(double ix, double iy, double ex, double ey) {
         double epsilon = 8;

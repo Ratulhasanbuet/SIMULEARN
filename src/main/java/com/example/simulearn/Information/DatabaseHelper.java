@@ -1,5 +1,7 @@
 package com.example.simulearn.Information;
 
+import com.example.simulearn.Session;
+
 import java.sql.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -263,5 +265,28 @@ public class DatabaseHelper {
         } catch (SQLException e) {
             System.out.println("Clean expired codes error: " + e.getMessage());
         }
+    }
+    public static java.util.List<String> getAllUsernames() {
+        java.util.List<String> usernames = new java.util.ArrayList<>();
+        String sql = "SELECT username FROM users ORDER BY username ASC";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                String username = rs.getString("username");
+
+                // Skip current logged-in user
+                if (!username.equals(SessionManager.getCurrentUser())) {
+                    usernames.add(username);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Get all usernames error: " + e.getMessage());
+        }
+
+        return usernames;
     }
 }

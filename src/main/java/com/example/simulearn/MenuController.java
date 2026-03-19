@@ -14,6 +14,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Properties;
+
+import static com.example.simulearn.Information.SessionManager.loadToken;
+
 public class MenuController {
 
     @FXML
@@ -26,6 +30,12 @@ public class MenuController {
     private Label usernameLabel;
     @FXML
     private Label userAvatarLabel;
+
+    private chatClient client;
+
+    public void setClient(chatClient client) {
+        this.client = client;
+    }
 
     @FXML
     public void initialize() {
@@ -168,6 +178,24 @@ public class MenuController {
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setMaximized(true);
+            stage.show();
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to open the window.");
+        }
+    }
+    @FXML
+    private void onChatClicked(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/chatView.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            double width = stage.getWidth();
+            double height = stage.getHeight();
+
+            stage.setScene(new Scene(root, width, height));
             stage.show();
         } catch (java.io.IOException e) {
             System.out.println("Failed to open the window.");

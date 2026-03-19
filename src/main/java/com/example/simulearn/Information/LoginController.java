@@ -1,6 +1,9 @@
 
 package com.example.simulearn.Information;
 
+import com.example.simulearn.MenuController;
+import com.example.simulearn.Session;
+import com.example.simulearn.chatClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +25,7 @@ public class LoginController {
     private CheckBox rememberMe;
     @FXML
     private Label errorLabel;
-
+    private  chatClient client = null;
     @FXML
     void handleLogin(ActionEvent event) {
         String input = usernameField.getText().trim();
@@ -61,7 +64,15 @@ public class LoginController {
         }
 
         DatabaseHelper.saveVerificationCode(userEmail, verificationCode);
+
         goToVerification(event, userEmail, username, false);
+        try {
+            //Session.username=username;
+            Session.client = new chatClient();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -91,6 +102,7 @@ public class LoginController {
     private void goToHome(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Menu.fxml"));
+
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
