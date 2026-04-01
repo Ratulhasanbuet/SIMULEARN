@@ -42,32 +42,58 @@ public class chatController {
 
     @FXML
     public void initialize() {
-        String user = SessionManager.tryAutoLogin();
+        refreshUserListWithUnread();
 
-        //if (user != null) {
-            userList.getItems().clear();
-            userList.getItems().addAll(getAllUsernames());
-        //}
-        // Auto-select first user if list is not empty
-        if (!userList.getItems().isEmpty()) {
-            userList.getSelectionModel().selectFirst();
-            currentChatUser = userList.getItems().get(0);
-        }
+        sendButton.setDisable(true);
 
-        // Disable send button if no user is selected
-        sendButton.setDisable(currentChatUser == null);
-
-        // Listen for selection changes
         userList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             currentChatUser = newVal;
             sendButton.setDisable(newVal == null);
-            chatBox.getChildren().clear(); // optional: clear previous chat
+
+            if (newVal != null) {
+                String cleanName = newVal.replaceAll("\\s*\\(\\d+\\)$", "").trim();
+                loadChatHistory(cleanName);
+                DatabaseHelper.markMessagesAsRead(cleanName, SessionManager.getCurrentUser());
+                refreshUserListWithUnread();
+            }
         });
 
-        // Start listening for incoming messages
+        // Single selectFirst — the listener above handles loadChatHistory
+        if (!userList.getItems().isEmpty()) {
+            userList.getSelectionModel().selectFirst();
+            currentChatUser = userList.getItems().get(0);
+            sendButton.setDisable(false);
+        }
+
         startListening();
     }
+    private void loadChatHistory(String otherUser) {
+        String me = SessionManager.getCurrentUser();
+        System.out.println("=== loadChatHistory ===");
+        System.out.println("me: " + me);
+        System.out.println("otherUser: " + otherUser);
 
+        List<String[]> history = DatabaseHelper.getMessagesBetween(me, otherUser);
+        System.out.println("messages found: " + history.size());
+
+        chatBox.getChildren().clear();
+        for (String[] msg : history) {
+            String sender = msg[0];
+            String text = msg[1];
+            boolean isMine = sender.equals(me);
+            addMessage(isMine ? "Me" : sender, text, isMine);
+        }
+    }
+    private void refreshUserListWithUnread() {
+        String me = SessionManager.getCurrentUser();
+        userList.getItems().clear();
+
+        for (String username : getAllUsernames()) {
+            int unread = DatabaseHelper.getUnreadCount(me, username);
+            String display = unread > 0 ? username + " (" + unread + ")" : username;
+            userList.getItems().add(display);
+        }
+    }
     private void startListening() {
         new Thread(() -> {
             try {
@@ -88,11 +114,15 @@ public class chatController {
     }
 
     private void receiveMessage(String sender, String text) {
-        // Only display message if it's for the currently selected chat
-        if (sender.equals(currentChatUser)) {
+        String activeChatUser = currentChatUser != null
+                ? currentChatUser.replaceAll("\\s*\\(\\d+\\)$", "").trim()
+                : null;
+
+        if (sender.equals(activeChatUser)) {
             addMessage(sender, text, false);
         } else {
-            // Optional: highlight user in list to indicate unread message
+            // Refresh list to show new unread count
+            Platform.runLater(this::refreshUserListWithUnread);
         }
     }
 
@@ -122,26 +152,22 @@ public class chatController {
         stage.show();
     }
 
-    @FXML
-    private void onAttachClicked() {
-        // Implement file attachment later
-    }
 
     @FXML
     private void onSendClicked() {
-        if (currentChatUser == null) return; // no user selected
+        if (currentChatUser == null) return;
+
+        // Strip unread badge before sending
+        String receiver = currentChatUser.replaceAll("\\s*\\(\\d+\\)$", "").trim();
 
         String text = messageField.getText().trim();
         if (text.isEmpty()) return;
 
-        // Send message via client
         if (Session.client != null) {
-            Session.client.sendMessage(currentChatUser, text);
+            Session.client.sendMessage(receiver, text);
         }
 
-        // Display in UI
         addMessage("Me", text, true);
-
         messageField.clear();
     }
 }

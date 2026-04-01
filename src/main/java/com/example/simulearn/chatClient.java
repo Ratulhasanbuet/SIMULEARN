@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import static com.example.simulearn.Information.DatabaseHelper.DB_PATH;
+
 public class chatClient {
 
     private Socket socket;
@@ -14,20 +16,28 @@ public class chatClient {
     private PrintWriter out;
 
     public chatClient() throws Exception {
-        // Connect to server
-        String serverIP = "192.168.0.105"; // Server's LAN IP
-        Socket socket = new Socket(serverIP, 5000);
-        //socket = new Socket("localhost", 5000);
+        String serverIP = "localhost";
+
+        System.out.println("Connecting to server...");
+
+        this.socket = new Socket(serverIP, 5000); // ✅ FIXED
+
+        System.out.println("Connected!");
 
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
 
-        // Send current username (from remember-me / session)
         out.println(SessionManager.getCurrentUser());
 
         new Thread(this::listenToServer).start();
     }
-
+    public static void main(String[] args) {
+        try {
+            chatClient client = new chatClient();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     // Send message to another user
     public void sendMessage(String receiver, String text) {
         out.println("SEND|" + SessionManager.getCurrentUser() + "|" + receiver + "|" + text);

@@ -6,11 +6,12 @@ import java.sql.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.io.File;
-
+import java.util.ArrayList;
+import java.util.List;
 public class DatabaseHelper {
 
     private static final String DB_DIR = System.getProperty("user.home") + File.separator + ".simulearn";
-    private static final String DB_PATH = DB_DIR + File.separator + "simulearn.db";
+    public static final String DB_PATH = DB_DIR + File.separator + "simulearn.db";
     private static final String URL = "jdbc:sqlite:" + DB_PATH;
 
     // ── Singleton connection ──────────────────────────────
@@ -28,6 +29,7 @@ public class DatabaseHelper {
 
     // ── Create tables on first run ────────────────────────
     public static void initialize() {
+        createMessagesTable();
         String createUsers = """
                 CREATE TABLE IF NOT EXISTS users (
                     id         INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -288,5 +290,84 @@ public class DatabaseHelper {
         }
 
         return usernames;
+    }
+    // In DatabaseHelper.java
+    public static void createMessagesTable() {
+        String sql = """
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender TEXT NOT NULL,
+            receiver TEXT NOT NULL,
+            text TEXT NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+            is_read INTEGER DEFAULT 0
+        )
+    """;
+        try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveMessage(String sender, String receiver, String text) {
+        String sql = "INSERT INTO messages (sender, receiver, text) VALUES (?, ?, ?)";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, sender);
+            ps.setString(2, receiver);
+            ps.setString(3, text);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<String[]> getMessagesBetween(String user1, String user2) {
+        System.out.println("=== getMessagesBetween ===");
+        System.out.println("user1: " + user1);
+        System.out.println("user2: " + user2);
+
+        String sql = """
+        SELECT sender, text, timestamp FROM messages
+        WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)
+        ORDER BY timestamp ASC
+    """;
+        List<String[]> messages = new ArrayList<>();
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user1); ps.setString(2, user2);
+            ps.setString(3, user2); ps.setString(4, user1);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                messages.add(new String[]{rs.getString("sender"), rs.getString("text"), rs.getString("timestamp")});
+            }
+            System.out.println("rows returned: " + messages.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return messages;
+    }
+
+    public static void markMessagesAsRead(String sender, String receiver) {
+        String sql = "UPDATE messages SET is_read = 1 WHERE sender = ? AND receiver = ?";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, sender);
+            ps.setString(2, receiver);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int getUnreadCount(String receiver, String sender) {
+        String sql = "SELECT COUNT(*) FROM messages WHERE receiver = ? AND sender = ? AND is_read = 0";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, receiver);
+            ps.setString(2, sender);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

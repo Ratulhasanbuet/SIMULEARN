@@ -1,5 +1,7 @@
 package com.example.simulearn;
 
+import com.example.simulearn.Information.DatabaseHelper;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -8,12 +10,15 @@ import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.example.simulearn.Information.DatabaseHelper.DB_PATH;
+
 public class chatServer {
 
     // Thread-safe map of online clients
     private static Map<String, PrintWriter> clients = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws Exception {
+        DatabaseHelper.createMessagesTable();
         ServerSocket serverSocket = new ServerSocket(5000);
         System.out.println("Chat server started on port 5000...");
 
@@ -61,12 +66,32 @@ public class chatServer {
                         String receiver = parts[2];
                         String text = parts[3];
 
+                        System.out.println("=== SERVER RECEIVED SEND ===");
+                        System.out.println("sender: [" + sender + "]");
+                        System.out.println("receiver: [" + receiver + "]");
+                        System.out.println("text: [" + text + "]");
+
+                        DatabaseHelper.saveMessage(sender, receiver, text);
+
+                        System.out.println("=== CHECKING DB CONTENT ===");
+                        try (var conn = DatabaseHelper.getConnection();
+                             var stmt = conn.createStatement();
+                             var rs = stmt.executeQuery("SELECT sender, receiver, text FROM messages")) {
+
+                            while (rs.next()) {
+                                System.out.println(
+                                        "[" + rs.getString("sender") + "] -> [" +
+                                                rs.getString("receiver") + "] : " +
+                                                rs.getString("text")
+                                );
+                            }
+                        }
+
+                        System.out.println("=== END DB CHECK ===");
+
                         PrintWriter receiverOut = clients.get(receiver);
                         if (receiverOut != null) {
                             receiverOut.println("MSG|" + sender + "|" + text);
-                        } else {
-                            // Optionally store in DB for offline delivery
-                            System.out.println("User " + receiver + " is offline. Message not sent.");
                         }
                     }
                 }

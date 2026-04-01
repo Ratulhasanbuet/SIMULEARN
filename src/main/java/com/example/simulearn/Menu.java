@@ -14,6 +14,13 @@ import java.io.IOException;
 public class Menu extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        new Thread(() -> {
+            try {
+                chatServer.main(new String[]{}); // starts server
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
         DatabaseHelper.initialize();
         SessionManager.tryAutoLogin();
 
