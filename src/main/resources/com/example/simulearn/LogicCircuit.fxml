@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onMouseClicked="#NodeAddition" prefHeight="936.0" prefWidth="1548.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.LogicCircuit.LogicCircuitController">
+<AnchorPane fx:id="rootPane" onMouseClicked="#NodeAddition" prefHeight="936.0" prefWidth="1548.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.LogicCircuit.LogicCircuitController">
    <children>
+      <Label layoutX="250.0" layoutY="29.0" prefHeight="51.0" prefWidth="504.0" styleClass="sim-card-title" text="Logic Circuit Simulator" />
       <Button fx:id="addNodeButton" layoutX="1246.0" layoutY="22.0" mnemonicParsing="false" onAction="#onAddNode" prefHeight="65.0" prefWidth="238.0" styleClass="button-74" stylesheets="@menu.css" text="Add node">
       </Button>
       <Button fx:id="AndButton" layoutX="1265.0" layoutY="303.0" mnemonicParsing="false" onAction="#onANDGate" prefHeight="66.0" prefWidth="187.0" styleClass="button-74">
@@ -56,10 +58,8 @@
       </Button>
       <Button fx:id="ToggleButton" layoutX="1289.0" layoutY="176.0" mnemonicParsing="false" onAction="#onToggle" prefHeight="51.0" prefWidth="150.0" styleClass="button-74" text="Toggle" />
       <Button layoutX="1289.0" layoutY="242.0" mnemonicParsing="false" onAction="#onReset" prefHeight="51.0" prefWidth="150.0" styleClass="button-74" text="Reset" />
-      <AnchorPane fx:id="pane" layoutY="1.0" prefHeight="936.0" prefWidth="1239.0">
-         <children>
-            <Button layoutX="114.0" layoutY="48.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="51.0" prefWidth="118.0" styleClass="button-74" text="Back" />
-         </children></AnchorPane>
+      <AnchorPane fx:id="pane" layoutX="1.0" layoutY="-3.0" prefHeight="841.0" prefWidth="1247.0" />
       <Button layoutX="1246.0" layoutY="110.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="51.0" prefWidth="238.0" styleClass="button-74" text="Connect Bulb" />
+      <Button fx:id="BackButton" layoutX="774.0" layoutY="29.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="51.0" prefWidth="118.0" styleClass="button-74" text="Back" />
    </children>
 </AnchorPane>

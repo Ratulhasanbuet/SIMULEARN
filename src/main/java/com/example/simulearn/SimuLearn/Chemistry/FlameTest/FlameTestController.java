@@ -44,6 +44,11 @@ public class FlameTestController {
         return PtRod.getBoundsInParent().intersects(target.getBoundsInParent());
     }
     @FXML
+    private void onResetButtonClicked(ActionEvent e)
+    {
+        initialize();
+    }
+    @FXML
     private void onBackButtonClicked(ActionEvent event) {
         try {
             // Load FXML correctly
@@ -75,8 +80,9 @@ public class FlameTestController {
     public void initialize() {
         int i = (int)(Math.random() * 10);
         sample = salts[i];
+        flame.setFill(Color.web("#efb209"));
         // important boolean states
-        updateInstruction();
+        Instruction.setText("Dip the Pt rod in HCl");
         saltTaken=false;
         dippedInHCl=false;
         Tip.setVisible(false);

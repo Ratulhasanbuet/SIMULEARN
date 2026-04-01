@@ -82,7 +82,6 @@ public class HistogramController {
         int[] frequencies = new int[binCount];
 
         for (double value : numericData) {
-            // Calculate which bin the value belongs to
             int binIndex = (int) ((value - min) / binWidth);
 
             // If value is exactly the 'max', it might go out of bounds (e.g., index 4 on 4 bins)

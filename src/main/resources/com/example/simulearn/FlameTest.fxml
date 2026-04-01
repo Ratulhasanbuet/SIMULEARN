@@ -15,13 +15,8 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="1626.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Chemistry.FlameTest.FlameTestController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="955.0" prefWidth="1629.0">
+    <AnchorPane fx:id="rootPane" minHeight="0.0" minWidth="0.0" prefHeight="955.0" prefWidth="1629.0">
          <children>
-            <ImageView fitHeight="1016.0" fitWidth="1707.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Images/chemistryMenu.png" />
-               </image>
-            </ImageView>
             <Label layoutX="280.0" layoutY="145.0" prefHeight="67.0" prefWidth="105.0" styleClass="button-74" text="Step: " textFill="#d72424">
                <font>
                   <Font size="24.0" />
@@ -60,7 +55,13 @@
                   <Line fx:id="Tip" endX="20.600006103515625" endY="127.00003051757812" layoutX="152.0" layoutY="83.0" startX="7.800018310546875" startY="114.00003051757812" stroke="#f2eaea" strokeWidth="6.0" />
                </children>
             </Group>
-            <Button layoutX="97.0" layoutY="145.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="62.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+            <Button layoutX="1042.0" layoutY="27.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="62.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+            <Label alignment="BASELINE_CENTER" layoutX="692.0" layoutY="27.0" prefHeight="63.0" prefWidth="243.0" styleClass="sim-page-title" text="Flame Test">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="106.0" layoutY="147.0" mnemonicParsing="false" onAction="#onResetButtonClicked" prefHeight="62.0" prefWidth="109.0" styleClass="button-74" text="Reset" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

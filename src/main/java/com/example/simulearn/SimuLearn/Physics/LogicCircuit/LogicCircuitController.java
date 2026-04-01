@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 public class LogicCircuitController {
     ImageView bulbView=null;
+    @FXML
+    private Button BackButton;
     private Image bulbOn;
     private Image bulbOff;
     private ArrayList<NodePoint> selectedNodes = new ArrayList<>();
@@ -603,8 +605,10 @@ public class LogicCircuitController {
     private void onReset()
     {
         // Remove everything except the bulb and plug
-        pane.getChildren().clear();
-
+        pane.getChildren().removeIf(node ->
+                !(node == bulbView) && !(node == BackButton)
+        );
+        bulbView.setVisible(false);
         // Clear internal data
         selectedNodes.clear();
         Nodes.clear();

@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#NodeAddition" prefHeight="925.0" prefWidth="1348.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Euler.EulerController">
+<AnchorPane fx:id="rootPane" onMouseClicked="#NodeAddition" prefHeight="925.0" prefWidth="1348.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Euler.EulerController">
    <children>
       <AnchorPane fx:id="faceLayer" prefHeight="926.0" prefWidth="1108.0" />
-      <Button fx:id="addNodeButton" layoutX="1154.0" layoutY="56.0" mnemonicParsing="false" onAction="#onAddNode" styleClass="button-74" text="Add Vertex" />
+      <Button fx:id="addNodeButton" layoutX="1154.0" layoutY="55.0" mnemonicParsing="false" onAction="#onAddNode" styleClass="button-74" text="Add Vertex" />
       <Button fx:id="addEdgeButton" layoutX="1154.0" layoutY="127.0" mnemonicParsing="false" onAction="#onAddEdge" prefHeight="47.0" prefWidth="150.0" styleClass="button-74" text="Add Edge" />
       <AnchorPane fx:id="pane" layoutY="-1.0" prefHeight="926.0" prefWidth="1089.0">
          <children>

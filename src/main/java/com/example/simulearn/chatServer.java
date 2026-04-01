@@ -38,7 +38,7 @@ public class chatServer {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 
-                // 1️⃣ Read username from client
+                //  Read username from client
                 username = in.readLine();
 
                 // Optional: validate username in DB here

@@ -25,7 +25,6 @@ public class chatClient {
         // Send current username (from remember-me / session)
         out.println(SessionManager.getCurrentUser());
 
-        // Optional: start a listener thread if you want to handle messages in backend
         new Thread(this::listenToServer).start();
     }
 

@@ -21,17 +21,12 @@
 <AnchorPane fx:id="rootPane" prefHeight="936.0" prefWidth="1623.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Physics.Buoyancy.BuoyancyController">
 
    <children>
-      <ImageView fitHeight="1017.0" fitWidth="1669.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Images/BuoyancyBG.png" />
-         </image>
-      </ImageView>
       <Label layoutX="280.0" layoutY="154.0" text="Select Material:">
          <font>
             <Font size="18.0" />
          </font></Label>
       <ChoiceBox fx:id="MaterialChoiceBox" layoutX="419.0" layoutY="153.0" onAction="#onMaterialSelected" prefHeight="30.0" prefWidth="150" />
-      <Button layoutX="965.0" layoutY="24.0" mnemonicParsing="false" onAction="#onResetSelected" styleClass="button-74" text="Reset" textFill="#d90bcf">
+      <Button layoutX="1245.0" layoutY="20.0" mnemonicParsing="false" onAction="#onResetSelected" styleClass="button-74" text="Reset" textFill="#d90bcf">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -40,7 +35,7 @@
             <Font size="18.0" />
          </font></Label>
       <ChoiceBox fx:id="LiquidChoiceBox" layoutX="991.0" layoutY="152.0" onAction="#onLiquidSelected" prefHeight="30.0" prefWidth="150.0" />
-      <Button layoutX="419.0" layoutY="24.0" mnemonicParsing="false" onAction="#onDropBallSelected" styleClass="button-74" text="Drop Ball" textFill="#950ea6">
+      <Button layoutX="328.0" layoutY="365.0" mnemonicParsing="false" onAction="#onDropBallSelected" styleClass="button-74" text="Drop Ball" textFill="#950ea6">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -121,6 +116,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="114.0" layoutY="625.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="56.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+      <Button layoutX="1053.0" layoutY="22.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="56.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+      <Label layoutX="646.0" layoutY="28.0" prefHeight="44.0" prefWidth="229.0" styleClass="sim-page-title" text="Buoyancy Simulator" />
    </children>
 </AnchorPane>

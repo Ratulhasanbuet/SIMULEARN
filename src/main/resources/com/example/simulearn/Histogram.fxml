@@ -15,27 +15,27 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="886.0" prefWidth="1279.0" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Histogram.HistogramController">
+<AnchorPane prefHeight="886.0" prefWidth="1279.0" styleClass="vbox-colored" stylesheets="@realmolecule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Histogram.HistogramController">
    <children>
-      <VBox prefHeight="886.0" prefWidth="245.0">
+      <VBox prefHeight="886.0" prefWidth="245.0" styleClass="vbox-colored">
          <children>
-            <Label prefHeight="50.0" prefWidth="250.0" text="       Simulation Settings" textAlignment="CENTER" textFill="#23bf25">
+            <Label prefHeight="50.0" prefWidth="250.0" styleClass="sim-card-title" text="       Simulation Settings" textAlignment="CENTER" textFill="#23bf25">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Separator prefHeight="15.0" prefWidth="246.0" />
-            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="246.0" text="Unsorted Data Input">
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="246.0" styleClass="sim-card-title" text="Unsorted Data Input">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="dataInputArea" prefHeight="255.0" prefWidth="246.0" promptText="10, 12, 14, " wrapText="true">
+            <TextArea fx:id="dataInputArea" prefHeight="255.0" prefWidth="169.0" promptText="10, 12, 14, " wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </TextArea>
-            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="76.0" prefHeight="51.0" prefWidth="246.0" text="Number of Bins">
+            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="76.0" prefHeight="51.0" prefWidth="246.0" styleClass="sim-card-title" text="Number of Bins">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Blend />
                </effect>
             </Spinner>
-            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="382.0" prefHeight="36.0" prefWidth="246.0" text="Bar Theme" textFill="#23c714">
+            <Label alignment="BASELINE_CENTER" layoutX="10.0" layoutY="382.0" prefHeight="36.0" prefWidth="246.0" styleClass="sim-card-title" text="Bar Theme" textFill="#23c714">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -64,12 +64,12 @@
             </Button>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="524.0" layoutY="-5.0" prefHeight="91.0" prefWidth="350.0" text="Histogram generator" textFill="#19cc0f">
+      <Label alignment="CENTER" layoutX="524.0" layoutY="-5.0" prefHeight="91.0" prefWidth="350.0" styleClass="sim-card-title" text="Histogram generator" textFill="#19cc0f">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="1102.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBackButtonClicked" styleClass="button-27" text="Back" />
+      <Button layoutX="980.0" layoutY="17.0" mnemonicParsing="false" onAction="#onBackButtonClicked" styleClass="button-74" text="Back" />
       <BarChart fx:id="histogramChart" layoutX="271.0" layoutY="93.0" prefHeight="590.0" prefWidth="903.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />

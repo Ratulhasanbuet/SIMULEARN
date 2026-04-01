@@ -1,5 +1,34 @@
 /* Dark Theme CSS for Molecular Builder */
+.vbox-colored {
+    -fx-background-color: #0c2340; /* Full VBox background */
+    -fx-background-radius: 6; /* Rounded corners */
+    -fx-border-color: #38bdf8; /* Optional border line */
+    -fx-border-width: 1;
+    -fx-border-radius:6;
+}
+    #rootPane {
+    /* Outer theme color (border illusion) */
+    -fx-background-color: #0c2340, white;
 
+    /* First layer = border, second = content */
+    -fx-background-insets: 0, 100;
+
+    /* Rounded corners */
+    -fx-background-radius: 6, 4;
+
+    /* Optional border line */
+    -fx-border-color: #38bdf8;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+.sim-card-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ecfeff;
+    -fx-text-alignment: CENTER;
+    -fx-alignment: CENTER;
+}
 .root {
     -fx-font-family: "Segoe UI", DM Sans ExtraBold, sans-serif;
     -fx-font-size: 13px;

@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1413.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Vector.vectorController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="926.0" prefWidth="1544.0" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simulearn.SimuLearn.Math.Vector.vectorController">
    <content>
-      <AnchorPane prefHeight="814.0" prefWidth="1413.0">
+      <AnchorPane fx:id="rootPane" prefHeight="925.0" prefWidth="1546.0">
          <children>
             <VBox fx:id="questionBox" layoutX="423.0" layoutY="187.0" prefHeight="574.0" prefWidth="574.0">
                <children>
@@ -46,7 +46,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="65.0" layoutY="209.0" mnemonicParsing="false" onAction="#undoVector" prefHeight="58.0" prefWidth="278.0" styleClass="button-74" text="Remove Last Vector" textFill="#ef1212">
+            <Button layoutX="107.0" layoutY="209.0" mnemonicParsing="false" onAction="#undoVector" prefHeight="58.0" prefWidth="236.0" styleClass="button-74" text="Remove Last Vector" textFill="#ef1212">
                <font>
                   <Font size="18.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <Button fx:id="explanationButton" layoutX="603.0" layoutY="39.0" mnemonicParsing="false" onAction="#onExplanation" prefHeight="66.0" prefWidth="270.0" styleClass="button-74" text="Show Explanation" textFill="#d41212">
+            <Button fx:id="explanationButton" layoutX="108.0" layoutY="441.0" mnemonicParsing="false" onAction="#onExplanation" prefHeight="66.0" prefWidth="227.0" styleClass="button-74" text="Show Explanation" textFill="#d41212">
                <font>
                   <Font size="18.0" />
                </font>
@@ -71,7 +71,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="133.0" layoutY="349.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="26.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+            <Button layoutX="860.0" layoutY="34.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="26.0" prefWidth="94.0" styleClass="button-74" text="Back" />
+            <Label layoutX="348.0" layoutY="32.0" prefHeight="55.0" prefWidth="420.0" styleClass="about-section-title" text="Vector Resultant Simulation" />
          </children>
       </AnchorPane>
    </content>

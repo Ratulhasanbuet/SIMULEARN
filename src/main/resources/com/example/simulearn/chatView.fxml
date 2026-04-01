@@ -50,7 +50,6 @@
          <padding>
             <Insets bottom="10" left="10" right="10" top="10" />
          </padding>
-         <Button fx:id="attachButton" onAction="#onAttachClicked" styleClass="button-27" text="Attach" />
 
          <TextArea fx:id="messageField" prefHeight="80" wrapText="true" HBox.hgrow="ALWAYS" />
          <Button fx:id="sendButton" layoutX="1009.0" layoutY="20.0" onAction="#onSendClicked" styleClass="button-27" text="Send" />
