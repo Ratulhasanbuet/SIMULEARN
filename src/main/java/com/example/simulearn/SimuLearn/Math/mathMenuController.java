@@ -41,7 +41,6 @@ public class mathMenuController {
         }
     }
 
-
     @FXML
     void onHomeButtonClicked(ActionEvent event) {
         try {
@@ -105,7 +104,6 @@ public class mathMenuController {
         stage.close();
     }
 
-
     @FXML
     void vectorClicked(ActionEvent event) {
         try {
@@ -119,6 +117,7 @@ public class mathMenuController {
             System.out.println("Failed to open the window.");
         }
     }
+
     @FXML
     void eulerClicked(ActionEvent event) {
         try {
@@ -132,6 +131,7 @@ public class mathMenuController {
             e.printStackTrace();
         }
     }
+
     @FXML
     void HistogramClicked(ActionEvent event) {
         try {

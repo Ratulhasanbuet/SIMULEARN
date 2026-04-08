@@ -25,7 +25,6 @@ import static com.example.simulearn.SimuLearn.Physics.Projectile.PhysicsConstant
 
 public class ProjectileController {
 
-    // ── FXML injections ────────────────────────────────────────────────────
 
     @FXML
     void onBackButtonClicked() throws java.io.IOException {
@@ -36,6 +35,7 @@ public class ProjectileController {
         stage.setMaximized(true);
         stage.show();
     }
+
     @FXML
     private StackPane canvasWrap;
     @FXML
@@ -43,53 +43,53 @@ public class ProjectileController {
     @FXML
     private Canvas figureCanvas;
 
-    // Header
+
     @FXML
     private Label headerIcon, headerSub;
     @FXML
     private Label lblStatus, lblScore, lblAttempts;
 
-    // Mode tabs
+
     @FXML
     private ToggleButton btnBasketball, btnBaseball, btnHockey;
 
-    // Sliders + value labels
+
     @FXML
     private Slider slSpeed, slAngle, slDist, slPlayerH, slCd;
     @FXML
     private Label lblSpeed, lblAngle, lblDist, lblPlayerH, lblCd;
 
-    // Physics checkboxes
+
     @FXML
     private CheckBox chkAir, chkTrail, chkDims, chkVec;
 
-    // Telemetry labels
+
     @FXML
     private Label tSpeed, tHeight, tDist, tTime, tDrag, tAngle;
 
-    // ── Model ────────────────────────────────────────────────────────────
+
     private final SimState state = new SimState();
     private final PhysicsEngine engine = new PhysicsEngine(state);
     private SceneRenderer renderer;
     private ProjectileMode currentMode = ProjectileMode.BASKETBALL;
 
-    // ── Called by App after scene is ready ──────────────────────────────
+
     public void onSceneReady(Scene scene, Stage stage) {
         renderer = new SceneRenderer(simCanvas, state);
 
-        // Bind canvas size to its parent
+
         simCanvas.widthProperty().bind(canvasWrap.widthProperty());
         simCanvas.heightProperty().bind(canvasWrap.heightProperty());
         simCanvas.widthProperty().addListener(e -> recalcAndDraw());
         simCanvas.heightProperty().addListener(e -> recalcAndDraw());
 
-        // Keyboard shortcuts
+
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) onLaunch();
             if (e.getCode() == KeyCode.R) onReset();
         });
 
-        // Wire slider value listeners
+
         slSpeed.valueProperty().addListener((o, ov, nv) -> {
             lblSpeed.setText(f1(nv) + " ft/s");
             recalcAndDraw();
@@ -110,14 +110,13 @@ public class ProjectileController {
         });
         slCd.valueProperty().addListener((o, ov, nv) -> lblCd.setText(String.format("%.2f", nv.doubleValue())));
 
-        // Apply initial mode defaults
+
         applyMode(ProjectileMode.BASKETBALL);
 
-        // Start animation loop
+
         startLoop();
     }
 
-    // ── FXML event handlers ───────────────────────────────────────────────
 
     @FXML
     private void onSliderChange() {
@@ -181,12 +180,12 @@ public class ProjectileController {
         setStatus("READY", "#38bdf8", "#0c2340");
     }
 
-    // ── Mode switching ────────────────────────────────────────────────────
+
     private void applyMode(ProjectileMode m) {
         currentMode = m;
         state.mode = m;
 
-        // Tab styles
+
         btnBasketball.setStyle(modeTabStyle(m == ProjectileMode.BASKETBALL));
         btnBaseball.setStyle(modeTabStyle(m == ProjectileMode.BASEBALL));
         btnHockey.setStyle(modeTabStyle(m == ProjectileMode.HOCKEY));
@@ -195,11 +194,11 @@ public class ProjectileController {
         btnBaseball.setSelected(m == ProjectileMode.BASEBALL);
         btnHockey.setSelected(m == ProjectileMode.HOCKEY);
 
-        // Header
+
         headerIcon.setText(m.icon);
         headerSub.setText(m.label + " · Air Resistance · 2D Physics");
 
-        // Slider defaults (suppress listener re-entry with a flag guard handled by updateWorld)
+
         slSpeed.setValue(m.defaultSpeed);
         slAngle.setValue(m.defaultAngle);
         slDist.setValue(m.defaultDist);
@@ -210,7 +209,7 @@ public class ProjectileController {
         drawFigure();
     }
 
-    // ── World geometry update ─────────────────────────────────────────────
+
     private void updateWorld() {
         double dist = slDist.getValue();
         state.mode = currentMode;
@@ -234,7 +233,7 @@ public class ProjectileController {
         renderer.draw(slAngle.getValue());
     }
 
-    // ── Animation loop ────────────────────────────────────────────────────
+
     private void startLoop() {
         new AnimationTimer() {
             @Override
@@ -257,7 +256,7 @@ public class ProjectileController {
         }.start();
     }
 
-    // ── Telemetry update ──────────────────────────────────────────────────
+
     private void updateTelemetry() {
         tSpeed.setText(state.running ? String.format("%.1f ft/s", state.telSpeed) : "—");
         tHeight.setText(String.format("%.2f ft", state.telHeight));
@@ -269,7 +268,7 @@ public class ProjectileController {
                 ? String.format("%.1f°", state.telAngle) : "—");
     }
 
-    // ── Player figure mini-canvas ─────────────────────────────────────────
+
     private void drawFigure() {
         double h = slPlayerH == null ? 6.8 : slPlayerH.getValue();
         double minH = 0.1, maxH = 8.0;
@@ -293,14 +292,14 @@ public class ProjectileController {
 
         double hip = feet - figH * 0.35, shoulder = feet - figH * 0.72;
 
-        // Legs
+
         g.setStroke(Color.web("#1e3a5f"));
         g.setLineWidth(4);
         g.setLineCap(StrokeLineCap.ROUND);
         g.strokeLine(cx, hip, cx - 7, feet);
         g.strokeLine(cx, hip, cx + 6, feet);
 
-        // Sport-specific torso colour
+
         String torsoColor = switch (currentMode) {
             case BASKETBALL -> "#dc2626";
             case BASEBALL -> "#dc2626";
@@ -309,7 +308,7 @@ public class ProjectileController {
         g.setFill(Color.web(torsoColor));
         g.fillRoundRect(cx - 8, shoulder, 16, hip - shoulder, 4, 4);
 
-        // Jersey label
+
         String jerseyNum = switch (currentMode) {
             case BASKETBALL -> "23";
             case BASEBALL -> "P";
@@ -320,27 +319,27 @@ public class ProjectileController {
         g.setTextAlign(TextAlignment.CENTER);
         g.fillText(jerseyNum, cx, shoulder + (hip - shoulder) * .6);
 
-        // Raised arm
+
         double armAngle = -Math.toRadians(slAngle == null ? 45 : slAngle.getValue());
         double armLen = figH * 0.28;
         g.setStroke(Color.web("#d4a76a"));
         g.setLineWidth(3);
         g.strokeLine(cx - 4, shoulder + 4, cx - 4 + armLen * Math.cos(Math.PI + armAngle * .7),
                 shoulder + 4 + armLen * Math.sin(armAngle * .7));
-        // Other arm
+
         g.strokeLine(cx + 4, shoulder + 4, cx + 10, shoulder + 20);
 
-        // Head
+
         double headR = figH * 0.1;
         g.setFill(Color.web("#d4a76a"));
         g.fillOval(cx - headR, head, headR * 2, headR * 2);
 
-        // Hockey helmet
+
         if (currentMode == ProjectileMode.HOCKEY) {
             g.setFill(Color.web("#1e1e1e"));
             g.fillArc(cx - headR, head - headR * .3, headR * 2, headR * 2, 0, 200, ArcType.CHORD);
         }
-        // Baseball cap
+
         if (currentMode == ProjectileMode.BASEBALL) {
             g.setFill(Color.web("#1e3a5f"));
             g.fillArc(cx - headR, head - headR * .2, headR * 2, headR * 2, 0, 180, ArcType.CHORD);
@@ -348,7 +347,7 @@ public class ProjectileController {
 
         g.setLineCap(StrokeLineCap.BUTT);
 
-        // Height annotation
+
         double lineX = cx + 26;
         g.setStroke(Color.web("#38bdf8"));
         g.setLineWidth(1);
@@ -363,7 +362,7 @@ public class ProjectileController {
         g.fillText(String.format("%.1f ft", h), lineX + 6, (feet + head) / 2 + 4);
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────
+
     private String f1(Number n) {
         return String.format("%.1f", n.doubleValue());
     }
@@ -388,4 +387,3 @@ public class ProjectileController {
                 "-fx-font-size:11;-fx-font-weight:bold;-fx-padding:6 4;-fx-cursor:hand;";
     }
 }
-

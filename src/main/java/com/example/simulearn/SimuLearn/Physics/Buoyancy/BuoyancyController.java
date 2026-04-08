@@ -82,15 +82,15 @@ public class BuoyancyController {
     @FXML
     private Label buoyancy;
     private ToggleGroup quizGroup;
-    //private double initialLayoutX;
-    //private double initialLayoutY;
+
     private Group arrow;
-    // scale
+
     private void vectorTransition(TranslateTransition t, double Y) {
         t.setByY(Y);
         t.setCycleCount(1);
         t.play();
     }
+
     @FXML
     void onBackButtonClicked() throws java.io.IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/physicsMenu.fxml"));
@@ -100,6 +100,7 @@ public class BuoyancyController {
         stage.setMaximized(true);
         stage.show();
     }
+
     private void resetPositionOnChange() {
         Material.getTransforms().clear();
         Material.setTranslateX(0);
@@ -118,10 +119,7 @@ public class BuoyancyController {
         buoyancyArrow.setTranslateY(0);
         buoyancyVector.setVisible(false);
         buoyancyArrow.setVisible(false);
-        /*arrow.setLayoutX(initialLayoutX); // store these values at creation
-        arrow.setLayoutY(initialLayoutY);
-        arrow.setTranslateX(0);
-        arrow.setTranslateY(0);*/
+
         buoyancyArrow.setFill(WHITESMOKE);
         buoyancyVector.setStroke(WHITESMOKE);
     }
@@ -131,8 +129,8 @@ public class BuoyancyController {
         double weightLength = weightVector.getEndY() - weightVector.getStartY();
         double scale = weightLength / vectorLength;
 
-        if(MaterialDensity>LiquidDensity)
-            scale=scale*LiquidDensity/MaterialDensity;
+        if (MaterialDensity > LiquidDensity)
+            scale = scale * LiquidDensity / MaterialDensity;
 
         ScaleTransition st = new ScaleTransition(Duration.seconds(time), buoyancyVector);
         st.setToY(scale);
@@ -141,11 +139,11 @@ public class BuoyancyController {
     }
 
     private void waterLevelRise(double rise, double time) {
-        if(showVector.isSelected()) {
+        if (showVector.isSelected()) {
             buoyancyVector.setVisible(true);
             buoyancyVector.setStroke(BLUE);
         }
-        //buoyancyArrow.setFill(BLUE);
+
         buoyancyScale(time);
         double increment1 = rise / 100;
 
@@ -153,12 +151,12 @@ public class BuoyancyController {
                 new KeyFrame(Duration.seconds(time / 100), e -> {
                     double h = Liquid.getHeight();
                     Liquid.setHeight(h + increment1);
-                    Liquid.setY(Liquid.getY() - increment1); // move up
+                    Liquid.setY(Liquid.getY() - increment1);
                 })
         );
         liquidTimeline.setCycleCount(100);
         liquidTimeline.setOnFinished(e -> {
-            if(showVector.isSelected()) {
+            if (showVector.isSelected()) {
                 buoyancyArrow.setFill(BLUE);
                 buoyancyArrow.setVisible(true);
             }
@@ -173,11 +171,7 @@ public class BuoyancyController {
 
     @FXML
     private void initialize() {
-        // Populate ChoiceBoxes
-        /*arrow = new Group(buoyancyVector, buoyancyArrow);
-        initialLayoutX = arrow.getLayoutX();
-        initialLayoutY = arrow.getLayoutY();
-        rootPane.getChildren().add(arrow);*/
+
         weight.setVisible(false);
         buoyancy.setVisible(false);
         quizGroup = new ToggleGroup();
@@ -236,7 +230,6 @@ public class BuoyancyController {
         liquidCreated = false;
         ballDropped = false;
 
-        // resetting ball position
         Material.getTransforms().clear();
         Material.setTranslateX(0);
         Material.setTranslateY(0);
@@ -255,10 +248,7 @@ public class BuoyancyController {
         buoyancyArrow.setTranslateY(0);
         buoyancyVector.setVisible(false);
         buoyancyArrow.setVisible(false);
-        /*arrow.setLayoutX(initialLayoutX); // store these values at creation
-        arrow.setLayoutY(initialLayoutY);
-        arrow.setTranslateX(0);
-        arrow.setTranslateY(0);*/
+
     }
 
     @FXML
@@ -295,7 +285,7 @@ public class BuoyancyController {
             if (MaterialDensity > LiquidDensity) {
                 TranslateTransition tt = new TranslateTransition(Duration.seconds(2), Material);
                 double y = 57;
-                tt.setByY(233); // move 233 pixels downward (use relative motion)
+                tt.setByY(233);
                 tt.setCycleCount(1);
                 tt.play();
 
@@ -306,22 +296,22 @@ public class BuoyancyController {
                 vectorTransition(ttWeightArrow, 233);
 
                 TranslateTransition ttBuoyancy = new TranslateTransition(Duration.seconds(2), buoyancyVector);
-                vectorTransition(ttBuoyancy, 233 + 6.5*MaterialDensity/LiquidDensity);
+                vectorTransition(ttBuoyancy, 233 + 6.5 * MaterialDensity / LiquidDensity);
 
                 TranslateTransition ttBuoyancyArrow = new TranslateTransition(Duration.seconds(2), buoyancyArrow);
-                vectorTransition(ttBuoyancyArrow, 200 + 10*MaterialDensity/LiquidDensity -29*LiquidDensity/MaterialDensity);
+                vectorTransition(ttBuoyancyArrow, 200 + 10 * MaterialDensity / LiquidDensity - 29 * LiquidDensity / MaterialDensity);
 
                 double animationSpeed = (70 + y) / 2;
                 double liquidRiseTime = y / animationSpeed;
-                double t = 2 - liquidRiseTime; // seconds to wait before starting liquid
-                Timeline delay = new Timeline(new KeyFrame(Duration.seconds(t), e -> waterLevelRise(y / 3, liquidRiseTime/3)));
+                double t = 2 - liquidRiseTime;
+                Timeline delay = new Timeline(new KeyFrame(Duration.seconds(t), e -> waterLevelRise(y / 3, liquidRiseTime / 3)));
                 delay.play();
                 ballDropped = true;
 
             } else if (MaterialDensity == LiquidDensity) {
                 TranslateTransition tt = new TranslateTransition(Duration.seconds(2), Material);
                 double y = 40;
-                tt.setByY(137); // move pixels downward (use relative motion)
+                tt.setByY(137);
                 tt.setCycleCount(1);
                 tt.play();
 
@@ -335,11 +325,11 @@ public class BuoyancyController {
                 vectorTransition(ttBuoyancy, 137);
 
                 TranslateTransition ttBuoyancyArrow = new TranslateTransition(Duration.seconds(2), buoyancyArrow);
-                vectorTransition(ttBuoyancyArrow, 137- weightLength+vectorLength+30);
+                vectorTransition(ttBuoyancyArrow, 137 - weightLength + vectorLength + 30);
 
                 double animationSpeed = 142.0 / 2;
                 double liquidRiseTime = y / animationSpeed;
-                double t = 2 - liquidRiseTime; // seconds to wait before starting liquid
+                double t = 2 - liquidRiseTime;
                 Timeline delay = new Timeline(new KeyFrame(Duration.seconds(t), e -> waterLevelRise(y / 3, liquidRiseTime)));
                 delay.play();
                 ballDropped = true;
@@ -347,7 +337,7 @@ public class BuoyancyController {
             } else {
                 TranslateTransition tt = new TranslateTransition(Duration.seconds(2), Material);
                 double y = MaterialDensity / LiquidDensity * 2 * Material.getRadius();
-                tt.setByY(95 + y - y / 3); // move pixels downward (use relative motion)
+                tt.setByY(95 + y - y / 3);
                 tt.setCycleCount(1);
                 tt.play();
 
@@ -364,34 +354,30 @@ public class BuoyancyController {
 
                 double animationSpeed = (95 + y - y / 3) / 2;
                 double liquidRiseTime = (y / 3) / animationSpeed;
-                double t = 2 - liquidRiseTime; // seconds to wait before starting liquid
+                double t = 2 - liquidRiseTime;
                 Timeline delay = new Timeline(new KeyFrame(Duration.seconds(t), e -> waterLevelRise(y / 3, liquidRiseTime)));
                 delay.play();
                 ballDropped = true;
             }
         }
     }
+
     @FXML
-    private void onCheckBoxSelected()
-    {
-        if(showVector.isSelected())
-        {
+    private void onCheckBoxSelected() {
+        if (showVector.isSelected()) {
             weightVector.setVisible(true);
             weightArrow.setVisible(true);
             weightVector.setStroke(RED);
             weightArrow.setFill(RED);
             weight.setVisible(true);
             buoyancy.setVisible(true);
-            if(ballDropped)
-            {
+            if (ballDropped) {
                 buoyancyVector.setVisible(true);
                 buoyancyVector.setStroke(BLUE);
                 buoyancyArrow.setVisible(true);
                 buoyancyArrow.setFill(BLUE);
             }
-        }
-        else
-        {
+        } else {
             weightVector.setVisible(false);
             weightArrow.setVisible(false);
             buoyancyVector.setVisible(false);
@@ -400,6 +386,7 @@ public class BuoyancyController {
             buoyancy.setVisible(false);
         }
     }
+
     @FXML
     private void showExplanation() {
         explanationBox.setVisible(true);

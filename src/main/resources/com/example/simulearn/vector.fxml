@@ -23,7 +23,6 @@
                      <Text style="-fx-font-size: 14;" text="When two or more vectors are added their resultant vector is formed. The sum of x component of all the vectors will be equal to that of the resultant vector. The y component of the resultant will be equal to the sum of all y components of the vectors." wrappingWidth="520" />
                   </TextFlow>
                   <Separator />
-                  <!-- QUIZ -->
                   <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="🧩 Quick Quiz" />
 
                   <Label prefHeight="86.0" prefWidth="574.0" style="-fx-font-size: 14;" text="Suppose there are n vectors of equal magnitude. If they maintain same angle between adjacent vectors, at what angle will the resultant be null vector?" wrapText="true" />

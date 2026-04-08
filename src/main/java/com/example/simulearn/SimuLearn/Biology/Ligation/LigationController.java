@@ -1,4 +1,3 @@
-
 package com.example.simulearn.SimuLearn.Biology.Ligation;
 
 import com.example.simulearn.SimuLearn.QuizQuestion;
@@ -35,7 +34,7 @@ public class LigationController implements Initializable {
     @FXML
     private void onBackButtonClicked(ActionEvent event) {
         try {
-            // Load FXML correctly
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/biologyMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -47,7 +46,6 @@ public class LigationController implements Initializable {
         }
     }
 
-
     @FXML
     private VBox mainpanel;
     @FXML
@@ -57,24 +55,21 @@ public class LigationController implements Initializable {
     private ScrollPane scrollPane;
     private boolean isPredictionExpanded = false;
 
-    // Selection tracking
     private Button selectedButton = null;
 
     private LigationLabWorkspace ligationLabWorkspace;
 
-    // Button references
     private Button btnContext, btnMaterials, btnPredictions, btnProtocol, btnResults, btnReflection, btnSummary;
-    // Lab workspace components
+
     private VBox instructionCommandPanel;
     private int currentProtocolStep = 1;
     private final int TOTAL_PROTOCOL_STEPS = 7;
     private VBox currentInstructionsList;
     private String currentHighlightedInstruction = null;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//      setupLayoutofMainPanel();
+
         setupLayout();
     }
 
@@ -88,11 +83,10 @@ public class LigationController implements Initializable {
         updateScrollContent(getContextContent());
 
         instruction.setPadding(new Insets(20));
-        instruction.setStyle("-fx-background-color: rgba(4,12,18,0.95);" +"-fx-border-color: rgba(34,211,238,0.18);" +"-fx-border-radius: 14;" +"-fx-background-radius: 14;" +"-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 24, 0.2, 0, 4);");
+        instruction.setStyle("-fx-background-color: rgba(4,12,18,0.95);" + "-fx-border-color: rgba(34,211,238,0.18);" + "-fx-border-radius: 14;" + "-fx-background-radius: 14;" + "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 24, 0.2, 0, 4);");
         instruction.setPrefWidth(400);
         instruction.setMinWidth(400);
 
-        //create initial button panel
         buttonPanel = createButtonPanel();
         instruction.getChildren().add(buttonPanel);
         mainpanel.setAlignment(Pos.TOP_RIGHT);
@@ -104,7 +98,6 @@ public class LigationController implements Initializable {
         scrollPane.setContent(content);
     }
 
-    // Content creation methods
     private VBox getContextContent() {
         VBox content = new VBox(20);
         content.setPadding(new Insets(40));
@@ -117,7 +110,6 @@ public class LigationController implements Initializable {
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
-
 
         Label text = new Label("In this simulation, you will learn how to unite two DNA " + "fragments using a technique called ligation. You will use an enzyme to join" + " fragments created from a previous restriction digest of the pKAN-R and pARA " + "plasmids in order to assemble all the components necessary for gene expression" + " and plasmid replication. Ligating the DNA fragments from the digested pKAN-R " + "and pARA plasmids will lead to multiple recombinant plasmids, but only one of " + "the products is the recombinant plasmid that you need — the pARA-R plasmid.");
         text.setWrapText(true);
@@ -136,16 +128,13 @@ public class LigationController implements Initializable {
         goalText.setLineSpacing(3);
         goalText.setStyle("-fx-text-fill: #333333;");
 
-
         ImageView plasmidImage = SVGLoader.loadSVG("/Images/LigationImage/equipment/ligating_dna_fragments.svg", 650, 400);
 
-        // Image container with styling
         StackPane imageContainer = new StackPane(plasmidImage);
         imageContainer.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 9;" + "-fx-background-radius: 5;" + "-fx-padding: 10;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         imageContainer.setMaxWidth(600);
         imageContainer.setPrefHeight(300);
         imageContainer.setPadding(new Insets(10, 0, 10, 0));
-
 
         Label heading2 = new Label("How does DNA ligase work?");
         heading2.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
@@ -166,24 +155,20 @@ public class LigationController implements Initializable {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("2. MATERIALS");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(250);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Info box
         Label infoText = new Label("Click on the images to learn more about them.");
         infoText.setFont(Font.font("DM Sans Medium", 14));
         infoText.setStyle("-fx-background-color: #e8f4f8;" + "-fx-padding: 15;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
         infoText.setMaxWidth(600);
 
-        // === REAGENTS SECTION ===
         Label reagentsTitle = new Label("REAGENTS");
         reagentsTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         reagentsTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -194,7 +179,6 @@ public class LigationController implements Initializable {
 
         GridPane reagentsGrid = createReagentsGrid();
 
-        // === MICROPIPETTING EQUIPMENT SECTION ===
         Label micropipettingTitle = new Label("MICROPIPETTING EQUIPMENT");
         micropipettingTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         micropipettingTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -205,14 +189,12 @@ public class LigationController implements Initializable {
 
         GridPane micropipettingGrid = createMicropipettingGrid();
 
-        // === OTHER EQUIPMENT SECTION ===
         Label otherEquipmentTitle = new Label("OTHER EQUIPMENT");
         otherEquipmentTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         otherEquipmentTitle.setStyle("-fx-text-fill: #1a5490;");
 
         GridPane otherEquipmentGrid = createOtherEquipmentGrid();
 
-        // Add all components
         content.getChildren().addAll(title, underline, infoText, new VBox(5, reagentsTitle, reagentsSubtitle), reagentsGrid, new VBox(5, micropipettingTitle, micropipettingSubtitle), micropipettingGrid, otherEquipmentTitle, otherEquipmentGrid);
 
         return content;
@@ -224,7 +206,6 @@ public class LigationController implements Initializable {
         grid.setVgap(15);
         grid.setPadding(new Insets(20, 0, 20, 0));
 
-        // Reagent items - SVG paths
         String[][] reagents = {{"/Images/LigationImage/reagents/K+-close.svg", "Digested pKAN-R\n(K+)", "#4a90e2"}, {"/Images/LigationImage/reagents/A+-close.svg", "Digested pARA\n(A+)", "#e24a4a"}, {"/Images/LigationImage/reagents/5XB-close.svg", "Ligation Buffer\n(5XB) Solution", "#50c878"}, {"/Images/LigationImage/reagents/LIG-close.svg", "DNA Ligase (LIG)\nSolution", "#9b59b6"}, {"/Images/LigationImage/reagents/dH20-close.svg", "Distilled Water\n(dH₂O)", "#3498db"}};
 
         int col = 0;
@@ -248,12 +229,10 @@ public class LigationController implements Initializable {
         grid.setVgap(15);
         grid.setPadding(new Insets(20, 0, 20, 0));
 
-        // Micropipetting items - SVG paths
         String[][] pipettes = {{"/Images/LigationImage/pipettes/P2.svg", "P2 Pipette", "#ff6b6b"}, {"/Images/LigationImage/pipettes/P20.svg", "P20 Pipette", "#ffd93d"}, {"/Images/LigationImage/pipettes/P200.svg", "P200 Pipette", "#6bcf7f"}, {"/Images/LigationImage/pipettes/P1000.svg", "P1000 Pipette", "#4d96ff"}};
 
         String[][] tipBoxes = {{"/Images/LigationImage/tipboxes/P2_Tip_Box.svg", "P2 Tip Box", "#ff6b6b"}, {"/Images/LigationImage/tipboxes/P20_Tip_Box.svg", "P20 Tip Box", "#ffd93d"}, {"/Images/LigationImage/tipboxes/P200_Tip_Box.svg", "P200 Tip Box", "#6bcf7f"}, {"/Images/LigationImage/tipboxes/P1000_Tip_Box.svg", "P1000 Tip Box", "#4d96ff"}};
 
-        // Add pipettes
         int col = 0;
         for (String[] pipette : pipettes) {
             StackPane item = createMaterialItem(pipette[0], pipette[1], pipette[2], 70, 85);
@@ -261,7 +240,6 @@ public class LigationController implements Initializable {
             col++;
         }
 
-        // Add tip boxes
         col = 0;
         for (String[] tipBox : tipBoxes) {
             StackPane item = createMaterialItem(tipBox[0], tipBox[1], tipBox[2], 80, 70);
@@ -278,7 +256,6 @@ public class LigationController implements Initializable {
         grid.setVgap(15);
         grid.setPadding(new Insets(20, 0, 20, 0));
 
-        // Equipment items - SVG paths
         String[][] equipment = {{"/Images/LigationImage/equipment/Microcentrifuge.svg", "Microcentrifuge", "#7f8c8d"}, {"/Images/LigationImage/equipment/Trash.svg", "Trash", "#95a5a6"}, {"/Images/LigationImage/equipment/floating-solution-tube-rack-empty.svg", "Floating Tube\nRack", "#95a5a6"}, {"/Images/LigationImage/equipment/freezer-closed.svg", "Freezer", "#3498db"}, {"/Images/LigationImage/equipment/Water Bath.svg", "Water Bath", "#e74c3c"}, {"/Images/LigationImage/equipment/Ice_Bucket.svg", "Ice Bucket", "#3498db"}, {"/Images/LigationImage/equipment/vortex.svg", "Vortex", "#16a085"}};
 
         int col = 0;
@@ -298,12 +275,11 @@ public class LigationController implements Initializable {
 
     private StackPane createMaterialItem(String imagePath, String labelText,
                                          String accentColor, double imgWidth, double imgHeight) {
-        // I use StackPane so info panel can overlay on top
+
         StackPane mainContainer = new StackPane();
         mainContainer.setMaxWidth(150);
         mainContainer.setAlignment(Pos.TOP_CENTER);
 
-        // The card container (clickable image + label)
         VBox cardContainer = new VBox(10);
         cardContainer.setAlignment(Pos.CENTER);
         cardContainer.setPrefSize(150, 180);
@@ -318,7 +294,6 @@ public class LigationController implements Initializable {
                         "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
         );
 
-        // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 100);
         imageContainer.setStyle(
@@ -326,7 +301,6 @@ public class LigationController implements Initializable {
                         "-fx-background-radius: 5;"
         );
 
-        // Load SVG using SVGLoader utility
         ImageView imageView = SVGLoader.loadSVG(imagePath, imgWidth, imgHeight, true);
 
         if (imageView != null) {
@@ -336,13 +310,12 @@ public class LigationController implements Initializable {
             imageView.setSmooth(true);
             imageContainer.getChildren().add(imageView);
         } else {
-            // Fallback: create a colored circle
+
             Circle placeholder = new Circle(30);
             placeholder.setFill(Color.web(accentColor));
             imageContainer.getChildren().add(placeholder);
         }
 
-        // Label
         Label label = new Label(labelText);
         label.setFont(Font.font("DM Sans Medium", FontWeight.SEMI_BOLD, 12));
         label.setTextAlignment(TextAlignment.CENTER);
@@ -352,27 +325,22 @@ public class LigationController implements Initializable {
 
         cardContainer.getChildren().addAll(imageContainer, label);
 
-        // Create overlay info panel (initially hidden, positioned on top)
         VBox infoPanel = createOverlayInfoPanel(labelText);
-        infoPanel.setTranslateY(-200); // Start above (hidden)
+        infoPanel.setTranslateY(-200);
         infoPanel.setOpacity(0);
         infoPanel.setVisible(false);
         StackPane.setAlignment(infoPanel, Pos.TOP_CENTER);
 
-        // Add both to main container (info panel on top)
         mainContainer.getChildren().addAll(cardContainer, infoPanel);
 
-        // Hover effects on card
         addHoverEffects(cardContainer);
 
-        // Click to show/hide overlay
         final boolean[] isExpanded = {false};
         cardContainer.setOnMouseClicked(e -> {
             toggleOverlayPanel(infoPanel, isExpanded);
             e.consume();
         });
 
-        // Also allow clicking info panel to close it
         infoPanel.setOnMouseClicked(e -> {
             toggleOverlayPanel(infoPanel, isExpanded);
             e.consume();
@@ -385,7 +353,7 @@ public class LigationController implements Initializable {
         isExpanded[0] = !isExpanded[0];
 
         if (isExpanded[0]) {
-            // Show - slide down from top
+
             infoPanel.setVisible(true);
 
             Timeline showTimeline = new Timeline(
@@ -403,7 +371,7 @@ public class LigationController implements Initializable {
             );
             showTimeline.play();
         } else {
-            // Hide - slide up to top
+
             Timeline hideTimeline = new Timeline(
                     new KeyFrame(
                             Duration.ZERO,
@@ -422,13 +390,12 @@ public class LigationController implements Initializable {
         }
     }
 
-
     private VBox createOverlayInfoPanel(String materialName) {
         VBox panel = new VBox(10);
         panel.setPrefSize(150, 180);
         panel.setPadding(new Insets(15));
         panel.setStyle(
-                "-fx-background-color: rgba(26, 84, 144, 0.95);" + // Semi-transparent dark blue
+                "-fx-background-color: rgba(26, 84, 144, 0.95);" +
                         "-fx-border-color: #00aaff;" +
                         "-fx-border-width: 2;" +
                         "-fx-border-radius: 8;" +
@@ -436,26 +403,22 @@ public class LigationController implements Initializable {
                         "-fx-effect: dropshadow(gaussian, rgba(0,170,255,0.6), 20, 0, 0, 8);"
         );
 
-        // Close hint (small X or tap indicator)
         Label closeHint = new Label("✕");
         closeHint.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         closeHint.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         closeHint.setAlignment(Pos.CENTER_RIGHT);
         closeHint.setMaxWidth(Double.MAX_VALUE);
 
-        // Title
         Label titleLabel = new Label(materialName);
         titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
         titleLabel.setStyle("-fx-text-fill: white;");
         titleLabel.setWrapText(true);
         titleLabel.setMaxWidth(120);
 
-        // Separator line
         Separator separator = new Separator();
         separator.setStyle("-fx-background-color: rgba(255,255,255,0.3);");
         separator.setPrefHeight(1);
 
-        // Description
         String description = getMaterialDescription(materialName);
         Label descLabel = new Label(description);
         descLabel.setFont(Font.font("DM Sans Medium", 10));
@@ -463,7 +426,6 @@ public class LigationController implements Initializable {
         descLabel.setWrapText(true);
         descLabel.setMaxWidth(120);
 
-        // Wrap in ScrollPane for long content
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(descLabel);
         scrollPane.setFitToWidth(true);
@@ -493,11 +455,9 @@ public class LigationController implements Initializable {
         });
     }
 
-
     private String getMaterialDescription(String materialName) {
         String cleanName = materialName.trim().replace("\n", " ");
 
-        // Reagents
         if (cleanName.contains("Digested pKAN-R")) {
             return "Contains digested pKAN-R plasmids, restriction enzymes, and restriction buffer.";
         } else if (cleanName.contains("Digested pARA")) {
@@ -508,10 +468,7 @@ public class LigationController implements Initializable {
             return "Contains the enzyme that can make covalent bonds between DNA fragments. Requires appropriate buffer to function properly. Labeled with a purple label.";
         } else if (cleanName.contains("Distilled Water")) {
             return "Sterile distilled water used to dilute the reagents to the proper concentration and prevent unwanted chemical reactions, and fill the balance tube for the centrifuge. Labeled with a blue label.";
-        }
-
-        // Micropipettes
-        else if (cleanName.contains("P2 Pipette")) {
+        } else if (cleanName.contains("P2 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 0.2 and 2 microliters.";
         } else if (cleanName.contains("P20 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 2 and 20 microliters.";
@@ -519,10 +476,7 @@ public class LigationController implements Initializable {
             return "Used to draw up and dispense volumes of liquid between 20 and 200 microliters.";
         } else if (cleanName.contains("P1000 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 200 and 1000 microliters.";
-        }
-
-        // Tip Boxes
-        else if (cleanName.contains("P2 Tip Box")) {
+        } else if (cleanName.contains("P2 Tip Box")) {
             return "Filled with P2 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
         } else if (cleanName.contains("P20 Tip Box")) {
             return "Filled with P20 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
@@ -530,10 +484,7 @@ public class LigationController implements Initializable {
             return "Filled with P200 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
         } else if (cleanName.contains("P1000 Tip Box")) {
             return "Filled with P1000 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
-        }
-
-        // Other Equipment
-        else if (cleanName.contains("Microcentrifuge")) {
+        } else if (cleanName.contains("Microcentrifuge")) {
             return "Motor-driven centrifuge that spins samples at high speed to collect liquid at the bottom of the tube for easy transfer.";
         } else if (cleanName.contains("Trash")) {
             return "Used to dispose of any non-hazardous waste resulting from the experiment, including micropipette tips.";
@@ -557,34 +508,28 @@ public class LigationController implements Initializable {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("7. SUMMARY");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Introduction text
         Label introText = new Label("It is important to summarize your methodology and observations after you have " + "completed an experiment. Please view a recap of this simulation and tips " + "regarding ligating DNA fragments below.");
         introText.setWrapText(true);
         introText.setFont(Font.font("DM Sans Medium", 16));
         introText.setStyle("-fx-text-fill: #333333;");
         introText.setMaxWidth(650);
 
-        // Learning outcomes box
         VBox learningBox = createLearningOutcomesBox();
 
-        // Takeaway messages section
         Label takeawayTitle = new Label("Takeaway messages");
         takeawayTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 20));
         takeawayTitle.setStyle("-fx-text-fill: #1a5490;");
         takeawayTitle.setPadding(new Insets(20, 0, 10, 0));
 
-        // Takeaway items
         VBox takeawayItems = createTakeawayItems();
 
         content.getChildren().addAll(title, underline, introText, learningBox, takeawayTitle, takeawayItems);
@@ -597,13 +542,11 @@ public class LigationController implements Initializable {
         box.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 25;");
         box.setMaxWidth(650);
 
-        // Main heading
         Label heading = new Label("In this simulation, you learned how to ligate DNA fragments from a " + "restriction digest using DNA ligase. You should be able to predict " + "possible recombinant plasmids that can occur during the ligation " + "process. The simulation explored how to:");
         heading.setWrapText(true);
         heading.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         heading.setStyle("-fx-text-fill: #1a5490;");
 
-        // Learning points with checkmarks
         VBox points = new VBox(12);
 
         points.getChildren().addAll(createChecklistItem("Model different recombinant plasmids."), createChecklistItem("Inactivate restriction enzymes."), createChecklistItem("Prepare and incubate a ligation reaction."));
@@ -616,13 +559,11 @@ public class LigationController implements Initializable {
         HBox item = new HBox(10);
         item.setAlignment(Pos.TOP_LEFT);
 
-        // Blue checkmark circle
         Circle checkCircle = new Circle(10);
         checkCircle.setFill(Color.web("#4a90e2"));
         checkCircle.setStroke(Color.web("#3a7bc8"));
         checkCircle.setStrokeWidth(1);
 
-        // Checkmark symbol (✓)
         Label checkmark = new Label("✓");
         checkmark.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         checkmark.setStyle("-fx-text-fill: white;");
@@ -630,7 +571,6 @@ public class LigationController implements Initializable {
         StackPane checkIcon = new StackPane(checkCircle, checkmark);
         checkIcon.setPrefSize(20, 20);
 
-        // Text
         Label itemText = new Label(text);
         itemText.setFont(Font.font("DM Sans Medium", 15));
         itemText.setStyle("-fx-text-fill: #333333;");
@@ -645,7 +585,6 @@ public class LigationController implements Initializable {
         VBox container = new VBox(15);
         container.setMaxWidth(750);
 
-        // Takeaway messages data: [image_path, message_text]
         String[][] takeaways = {{"/Images/LigationImage/equipment/waterBath.svg", "When setting up the water bath, always make sure there is enough distilled water and the lid is closed to reduce evaporation."}, {"/Images/LigationImage/equipment/degree.svg", "It is always a good idea to confirm the temperature of the water with a thermometer, even if there is a digital temperature reading on the water bath."}, {"/Images/LigationImage/equipment/Ice_Bucket.svg", "Make sure you always keep DNA ligase enzymes and ligation buffer on ice or on a cold block to prevent protein degradation."}, {"/Images/LigationImage/equipment/2tube.svg", "Make sure your DNA ligase and ligation buffer are completely defrosted before use."}};
 
         for (String[] takeaway : takeaways) {
@@ -662,12 +601,10 @@ public class LigationController implements Initializable {
         container.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 8;" + "-fx-background-radius: 8;" + "-fx-padding: 15;");
         container.setPrefHeight(120);
 
-        // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 90);
         imageContainer.setStyle("-fx-background-color: #0d3d5c;" + "-fx-background-radius: 5;");
 
-        // Load SVG image
         ImageView imageView = SVGLoader.loadSVG(imagePath, 80, 80);
 
         if (imageView != null) {
@@ -678,7 +615,6 @@ public class LigationController implements Initializable {
             imageContainer.getChildren().add(imageView);
         }
 
-        // Message text
         Label message = new Label(messageText);
         message.setWrapText(true);
         message.setFont(Font.font("DM Sans Medium", 15));
@@ -686,7 +622,6 @@ public class LigationController implements Initializable {
         message.setMaxWidth(580);
         message.setLineSpacing(3);
 
-        // Set HBox to grow with text
         HBox.setHgrow(message, Priority.ALWAYS);
 
         container.getChildren().addAll(imageContainer, message);
@@ -699,8 +634,6 @@ public class LigationController implements Initializable {
         panel.setAlignment(Pos.TOP_LEFT);
         panel.setPadding(new Insets(16, 12, 16, 12));
 
-
-        // Create all navigation buttons with circles
         btnContext = createNavButton("1", "CONTEXT");
         btnMaterials = createNavButton("2", "MATERIALS");
         btnProtocol = createNavButton("3", "PROTOCOL");
@@ -708,9 +641,8 @@ public class LigationController implements Initializable {
         btnReflection = createNavButton("5", "REFLECTION");
         btnSummary = createNavButton("6", "SUMMARY");
 
-        // Set button actions
         btnContext.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -723,7 +655,7 @@ public class LigationController implements Initializable {
         });
 
         btnMaterials.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -738,26 +670,22 @@ public class LigationController implements Initializable {
         btnProtocol.setOnAction(e -> {
             setSelectedButton(btnProtocol);
 
-            // Hide scrollPane and show LabWorkspace
             scrollPane.setVisible(false);
             scrollPane.setManaged(false);
 
-            // Create and add LabWorkspace
             if (ligationLabWorkspace == null) {
                 ligationLabWorkspace = new LigationLabWorkspace(this);
             }
 
-            // Remove scrollPane if present and add labWorkspace
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(ligationLabWorkspace.getLabWorkspace());
             VBox.setVgrow(ligationLabWorkspace.getLabWorkspace(), Priority.ALWAYS);
 
-            // Show instruction panel
             resetToLabView();
         });
 
         btnResults.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -770,7 +698,7 @@ public class LigationController implements Initializable {
         });
 
         btnReflection.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -783,7 +711,7 @@ public class LigationController implements Initializable {
         });
 
         btnSummary.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -795,25 +723,23 @@ public class LigationController implements Initializable {
             resetToButtonView();
         });
 
-        // Add buttons with spacing
         panel.getChildren().addAll(btnContext, createSpacer(8), btnMaterials, createSpacer(8), btnProtocol, createSpacer(8), btnResults, createSpacer(8), btnReflection, createSpacer(8), btnSummary);
 
-        // Set initial selection
         setSelectedButton(btnContext);
 
         return panel;
     }
 
     private Button createNavButton(String number, String text) {
-        // Icon map for each section
+
         String icon = switch (text) {
-            case "CONTEXT"    -> "📋";
-            case "MATERIALS"  -> "🧪";
-            case "PROTOCOL"   -> "⚗️";
-            case "RESULTS"    -> "📊";
+            case "CONTEXT" -> "📋";
+            case "MATERIALS" -> "🧪";
+            case "PROTOCOL" -> "⚗️";
+            case "RESULTS" -> "📊";
             case "REFLECTION" -> "💡";
-            case "SUMMARY"    -> "📝";
-            default           -> "•";
+            case "SUMMARY" -> "📝";
+            default -> "•";
         };
 
         Button btn = new Button(icon + "  " + text);
@@ -831,7 +757,6 @@ public class LigationController implements Initializable {
                         "-fx-cursor: hand;"
         );
 
-        // Hover effect via mouse events
         btn.setOnMouseEntered(e -> {
             if (btn != selectedButton) {
                 btn.setStyle(
@@ -859,15 +784,12 @@ public class LigationController implements Initializable {
             }
         });
 
-        btn.setUserData(btn); // store self
+        btn.setUserData(btn);
         return btn;
     }
 
-    /**
-     * Set a button as selected (highlighted)
-     */
     private void setSelectedButton(Button btn) {
-        // Clear previous selection styling
+
         if (selectedButton != null) {
             selectedButton.setStyle(
                     "-fx-background-color: rgba(4, 18, 26, 0.70);" +
@@ -880,7 +802,6 @@ public class LigationController implements Initializable {
             );
         }
 
-        // Apply active/selected style
         selectedButton = btn;
         if (btn != null) {
             btn.setStyle(
@@ -930,49 +851,39 @@ public class LigationController implements Initializable {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("6. REFLECTION");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Introduction text
         Label text = new Label("Let's look at what you learned from this simulation. Please click on your answer " + "to each of the following questions to save them in your notebook.");
         text.setFont(Font.font("DM Sans Medium", 16));
         text.setWrapText(true);
         text.setStyle("-fx-text-fill: #333333;");
         text.setMaxWidth(650);
 
-        // Questions container
         VBox questionsContainer = new VBox(20);
 
-        // Question 1
-        QuizQuestion q1 = createQuizQuestion(1, "What do you think is the main purpose of this simulation?", new String[]{"To differentiate between restriction enzymes and DNA ligase.", "To model the process of ligation.", "To verify that the correct recombinant plasmid has formed."}, 1, // Correct answer index (B - second option)
-                "What skill did you practice during this simulation?", 2  // Attempts allowed
+        QuizQuestion q1 = createQuizQuestion(1, "What do you think is the main purpose of this simulation?", new String[]{"To differentiate between restriction enzymes and DNA ligase.", "To model the process of ligation.", "To verify that the correct recombinant plasmid has formed."}, 1,
+                "What skill did you practice during this simulation?", 2
         );
 
-        // Question 2
-        QuizQuestion q2 = createQuizQuestion(2, "Why are the K+ and A+ tubes placed in an 80°C water bath before ligation?", new String[]{"To warm up the ligation buffer.", "To defrost the frozen samples of DNA.", "To inactivate the restriction enzymes."}, 2, // Correct answer index (C - third option)
+        QuizQuestion q2 = createQuizQuestion(2, "Why are the K+ and A+ tubes placed in an 80°C water bath before ligation?", new String[]{"To warm up the ligation buffer.", "To defrost the frozen samples of DNA.", "To inactivate the restriction enzymes."}, 2,
                 null, 2);
 
-        // Question 3
-        QuizQuestion q3 = createQuizQuestion(3, "What is the function of DNA ligase when building a recombinant plasmid?", new String[]{"It replicates the DNA molecules.", "It catalyzes the joining of DNA fragments.", "It adds nucleotides to the DNA fragments."}, 1, // Correct answer index (B)
+        QuizQuestion q3 = createQuizQuestion(3, "What is the function of DNA ligase when building a recombinant plasmid?", new String[]{"It replicates the DNA molecules.", "It catalyzes the joining of DNA fragments.", "It adds nucleotides to the DNA fragments."}, 1,
                 null, 2);
 
-        // Question 4
-        QuizQuestion q4 = createQuizQuestion(4, "Why do enzymes need to be stored at cold temperatures?", new String[]{"To avoid protein denaturation.", "To increase enzyme activity.", "To consolidate samples in the solution tubes."}, 0, // Correct answer index (A)
+        QuizQuestion q4 = createQuizQuestion(4, "Why do enzymes need to be stored at cold temperatures?", new String[]{"To avoid protein denaturation.", "To increase enzyme activity.", "To consolidate samples in the solution tubes."}, 0,
                 null, 2);
 
-        // Question 5
-        QuizQuestion q5 = createQuizQuestion(5, "Can any two DNA fragments be joined together?", new String[]{"Yes, if the fragments were cut with the same restriction enzyme.", "No, the ligase looks for a specific sequence and can only join fragments with that sequence.", "Maybe, ligase can connect any two fragments if enough energy is added to the reaction."}, 0, // Correct answer index (A)
+        QuizQuestion q5 = createQuizQuestion(5, "Can any two DNA fragments be joined together?", new String[]{"Yes, if the fragments were cut with the same restriction enzyme.", "No, the ligase looks for a specific sequence and can only join fragments with that sequence.", "Maybe, ligase can connect any two fragments if enough energy is added to the reaction."}, 0,
                 null, 3);
 
-        // Feedback Question (separate section)
         Label feedbackTitle = new Label("FEEDBACK QUESTION");
         feedbackTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 24));
         feedbackTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -1007,15 +918,6 @@ public class LigationController implements Initializable {
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-//        Label text = new Label("In this simulation, DNA ligase was used to join the DNA fragments resulting from the restriction digest of pKAN-R and pARA to create the recombinant pARA-R plasmid. Remember that multiple combinations of fragments can form when the fragments have complementary sticky ends.\n" + "\n" + "\n" + "Below you can view a closeup of your LIG tube to see whether your experiment has worked and you have produced circular plasmids from the fragments in the K+ and A+ tubes. If your experiment has failed, you will have only fragments in your LIG tube and no circular plasmids.\n" + "\n" + "\n" + "It is important to note that you will not normally be able to see anything in your LIG tube due to the microscopic size of DNA fragments and plasmids. The next experimental step is to run a gel with your stored solutions (LIG, A+ and K+) to verify whether you have successfully ligated the correct fragments to create the desired pARA-R plasmid.");
-//        text.setFont(Font.font("DM Sans Medium", 16));
-//        text.setWrapText(true);
-//        text.setFont(Font.font("DM Sans Medium", 16));
-//        text.setLineSpacing(3);
-//
-//        Label text2 = new Label("Possible Plasmid ");
-//        text2.setFont(Font.font("DM Sans Medium", 16));
-//        text2.setStyle("-fx-text-fill: #1a5490;");
         ImageView possibleplasimid = createImageView("/Images/LigationImage/equipment/results-en.png", 400, 720);
 
         Label text = new Label("In this simulation, DNA ligase was used to join the DNA fragments resulting from the restriction digest of pKAN-R and pARA to create the recombinant pARA-R plasmid. Remember that multiple combinations of fragments can form when the fragments have complementary sticky ends.\n\n\nBelow you can view a closeup of your LIG tube to see whether your experiment has worked and you have produced circular plasmids from the fragments in the K+ and A+ tubes. If your experiment has failed, you will have only fragments in your LIG tube and no circular plasmids.\n\n\nIt is important to note that you will not normally be able to see anything in your LIG tube due to the microscopic size of DNA fragments and plasmids. The next experimental step is to run a gel with your stored solutions (LIG, A+ and K+) to verify whether you have successfully ligated the correct fragments to create the desired pARA-R plasmid.");
@@ -1028,7 +930,6 @@ public class LigationController implements Initializable {
         text2.setFont(Font.font("DM Sans Medium", 16));
         text2.setStyle("-fx-text-fill: #1a5490;");
 
-        // Image container with styling
         StackPane imageContainer = new StackPane(possibleplasimid);
         imageContainer.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 7;" + "-fx-background-radius: 5;" + "-fx-padding: 10;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         imageContainer.setMaxWidth(750);
@@ -1040,18 +941,14 @@ public class LigationController implements Initializable {
     }
 
     private void switchToInstructionPanel() {
-        // Remove button panel
+
         instruction.getChildren().clear();
 
-        // Create and add instruction panel
         instructionCommandPanel = createInstructionCommandPanel();
         instruction.getChildren().add(instructionCommandPanel);
 
-        // Load first step
         loadProtocolStep(1);
 
-        // Update main content to show lab workspace
-        // updateScrollContent(getProtocolLabContent());  eta baki ase kora
     }
 
     private VBox createInstructionCommandPanel() {
@@ -1059,13 +956,10 @@ public class LigationController implements Initializable {
         panel.setPadding(new Insets(15));
         panel.setAlignment(Pos.TOP_LEFT);
 
-        // Header with circle and title
         HBox header = createProtocolHeader();
 
-        // Progress bar and step indicator
         HBox progressSection = createProgressSection();
 
-        // Step title
         Label stepTitleLabel = new Label();
         stepTitleLabel.setId("stepTitle");
         stepTitleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 15));
@@ -1073,7 +967,6 @@ public class LigationController implements Initializable {
         stepTitleLabel.setWrapText(true);
         stepTitleLabel.setMaxWidth(350);
 
-        // Scroll pane for instructions
         ScrollPane instructionsScroll = new ScrollPane();
         instructionsScroll.setFitToWidth(true);
         instructionsScroll.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
@@ -1083,7 +976,6 @@ public class LigationController implements Initializable {
         currentInstructionsList.setId("instructionsList");
         instructionsScroll.setContent(currentInstructionsList);
 
-        // Navigation buttons
         HBox navigationButtons = createNavigationButtons();
 
         panel.getChildren().addAll(header, progressSection, stepTitleLabel, instructionsScroll, navigationButtons);
@@ -1096,7 +988,6 @@ public class LigationController implements Initializable {
         header.setAlignment(Pos.CENTER_LEFT);
         header.setPadding(new Insets(5, 0, 5, 0));
 
-        // Circle with number
         Circle circle = new Circle(18);
         circle.setFill(Color.web("#1a5490"));
         circle.setStroke(Color.WHITE);
@@ -1108,12 +999,10 @@ public class LigationController implements Initializable {
 
         StackPane circleStack = new StackPane(circle, numberLabel);
 
-        // Title
         Label titleLabel = new Label("PROTOCOL");
         titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 20));
         titleLabel.setStyle("-fx-text-fill: #1a5490;");
 
-        // Notes button (right side)
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
@@ -1125,22 +1014,6 @@ public class LigationController implements Initializable {
         Button protocolButton = new Button();
         protocolButton.setGraphic(header);
         protocolButton.getStyleClass().add("nav-btn-active");
-//        protocolButton.setStyle(
-//                "-fx-background-color: #c2fbd7; " +
-//                        "-fx-background-radius: 100; " +
-//                        "-fx-text-fill: green; " +
-//                        "-fx-font-size: 16px; " +
-//                        "-fx-padding: 7 20; " +
-//                        "-fx-cursor: hand;"
-//        );
-
-//        btnResults.setOnAction(e -> {
-//            updateScrollContent(getResultsContent());
-//            scrollPane.setVisible(true);
-//            scrollPane.setManaged(true);
-//            setSelectedButton(btnResults);
-//            resetToButtonView();
-//        });
 
         protocolButton.setOnAction(e -> {
             instruction.getChildren().clear();
@@ -1151,7 +1024,6 @@ public class LigationController implements Initializable {
             updateScrollContent(getMaterialsContent());
 
         });
-
 
         HBox header1 = new HBox(12);
         header1.setAlignment(Pos.CENTER_LEFT);
@@ -1166,14 +1038,12 @@ public class LigationController implements Initializable {
         section.setAlignment(Pos.CENTER_LEFT);
         section.setPadding(new Insets(5, 0, 10, 0));
 
-        // Progress bar
         ProgressBar progressBar = new ProgressBar(0);
         progressBar.setId("protocolProgressBar");
         progressBar.setPrefWidth(280);
         progressBar.setPrefHeight(8);
         progressBar.setStyle("-fx-accent: #1a5490;");
 
-        // Step indicator
         Label stepIndicator = new Label("1/7");
         stepIndicator.setId("stepIndicator");
         stepIndicator.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
@@ -1189,14 +1059,12 @@ public class LigationController implements Initializable {
         navButtons.setAlignment(Pos.CENTER);
         navButtons.setPadding(new Insets(10, 0, 5, 0));
 
-        // Previous button
         Button previousBtn = new Button("◀ Previous");
         previousBtn.setId("previousBtn");
         previousBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
         previousBtn.setStyle("-fx-background-color: white;" + "-fx-text-fill: #1a5490;" + "-fx-border-color: #1a5490;" + "-fx-border-width: 2;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;" + "-fx-padding: 8 20;" + "-fx-cursor: hand;");
         previousBtn.setOnAction(e -> handlePreviousStep());
 
-        // Circle button (1.a, 2.b, etc)
         Circle stepCircle = new Circle(18);
         stepCircle.setFill(Color.web("#1a5490"));
         stepCircle.setStroke(Color.WHITE);
@@ -1209,7 +1077,6 @@ public class LigationController implements Initializable {
 
         StackPane circleBtn = new StackPane(stepCircle, stepLabel);
 
-        // Next button
         Button nextBtn = new Button("Next ▶");
         nextBtn.setId("nextBtn");
         nextBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
@@ -1221,12 +1088,9 @@ public class LigationController implements Initializable {
         return navButtons;
     }
 
-// ========== STEP LOADING ==========
-
     private void loadProtocolStep(int stepNumber) {
         currentProtocolStep = stepNumber;
 
-        // Update progress
         ProgressBar progressBar = (ProgressBar) instructionCommandPanel.lookup("#protocolProgressBar");
         if (progressBar != null) {
             progressBar.setProgress((double) (stepNumber - 1) / TOTAL_PROTOCOL_STEPS);
@@ -1237,16 +1101,13 @@ public class LigationController implements Initializable {
             stepIndicator.setText(stepNumber + "/7");
         }
 
-        // Update step title and instructions
         updateStepContent(stepNumber);
 
-        // Update Previous button state
         Button previousBtn = (Button) instructionCommandPanel.lookup("#previousBtn");
         if (previousBtn != null) {
             previousBtn.setDisable(stepNumber == 1);
         }
 
-        // Update Next button state
         Button nextBtn = (Button) instructionCommandPanel.lookup("#nextBtn");
         if (nextBtn != null) {
             nextBtn.setDisable(stepNumber == TOTAL_PROTOCOL_STEPS);
@@ -1254,33 +1115,30 @@ public class LigationController implements Initializable {
     }
 
     private void updateStepContent(int stepNumber) {
-        // Step titles
+
         String[] stepTitles = {"1. Heat inactivate the restriction enzymes in the restriction digests.", "2. Set the volume of the P20 micropipette.", "3. Pipette restriction digests into the reaction tubes.", "4. Pipette additional reagents into the reaction tubes.", "5. Spin the reaction tubes.", "6. Incubate the reaction tubes.", "7. Store the ligation product."};
 
-        // All instructions for each step
         String[][][] allInstructions = {
-                // Step 1
+
                 {{"a", "Use the temperature setting to set the water bath temperature to 80°C.", String.valueOf(false)}, {"b", "Move the K+ and A+ tubes to the floating tube rack.", String.valueOf(false)}, {"c", "Open the water bath.", String.valueOf(false)}, {"d", "Move the rack containing the K+ and A+ tubes to the water bath.", String.valueOf(false)}, {"e", "Close the water bath.", String.valueOf(false)}, {"f", "Use the buttons on the water bath interface to set the timer for 20 minutes. Press start to begin the timer.", String.valueOf(false)}, {"g", "After 20 minutes, remove the floating solution tube rack from the water bath.", String.valueOf(false)}},
-                // Step 2
+
                 {{"a", "Pick up the P20 micropipette from the micropipette rack.", String.valueOf(false)}, {"b", "Use the volume setting to set the volume to 4µl and click Save volume.", String.valueOf(false)}, {"c", "Open the P20 tip box.", String.valueOf(false)}, {"d", "Move the P20 micropipette onto the P20 tip box to attach a tip.", String.valueOf(false)}, {"e", "Close the P20 tip box.", String.valueOf(false)}},
-                // Step 3
+
                 {{"a", "Open the A+ tube.", String.valueOf(false)}, {"b", "Pick up and move the micropipette so that the tip is above the A+ tube.", String.valueOf(false)}, {"c", "Draw up the A+ solution by pressing the plunger down until it reaches the first stop.", String.valueOf(false)}, {"d", "Close the A+ solution tube.", String.valueOf(false)}, {"e", "Open the LIG tube.", String.valueOf(false)}, {"f", "Dispense the A+ solution into the LIG tube by holding down the plunger until it reaches the second stop.", String.valueOf(false)}, {"g", "Move the micropipette over the trash can and use the eject icon to eject the tip.", String.valueOf(false)}, {"h", "Follow the same micropipetting procedure to dispense 4µl of the K+ solution into the LIG tube.", String.valueOf(false)}},
-                // Step 4
+
                 {{"a", "Follow the same micropipetting procedure to dispense 3µl of the ligation buffer from the 5XB tube into the LIG tube.", String.valueOf(false)}, {"b", "Follow the micropipetting procedure to dispense 2µl of distilled water from the dH₂O tube into the LIG tube.", String.valueOf(false)}, {"c", "Use the vortex to mix the solution in the LIG tube.", String.valueOf(false)}},
-                // Step 5
+
                 {{"a", "Open the microcentrifuge.", String.valueOf(false)}, {"b", "Place the LIG tube in the microcentrifuge.", String.valueOf(false)}, {"c", "Fill the balance tube with dH₂O so that it matches the total volume of the LIG tube (18µl).", String.valueOf(false)}, {"d", "Place the balance tube in the microcentrifuge opposite the LIG tube to balance it.", String.valueOf(false)}, {"e", "Close the microcentrifuge.", String.valueOf(false)}, {"f", "Press the pulse button to spin the tubes.", String.valueOf(false)}, {"g", "Once the spin is complete, open the microcentrifuge.", String.valueOf(false)}, {"h", "Move the LIG tube back to the tube rack.", String.valueOf(false)}, {"i", "Close the microcentrifuge lid.", String.valueOf(false)}},
-                // Step 6
+
                 {{"a", "Leave the LIG tube in tube rack at room temperature for 10 minutes.", String.valueOf(false)}},
-                // Step 7
+
                 {{"a", "Open the freezer.", String.valueOf(false)}, {"b", "Place the A+ and K+ tubes on the floating rack and move it to the freezer for later analysis.", String.valueOf(false)}, {"c", "Close the freezer.", String.valueOf(false)}}};
 
-        // Update title
         Label stepTitle = (Label) instructionCommandPanel.lookup("#stepTitle");
         if (stepTitle != null) {
             stepTitle.setText(stepTitles[stepNumber - 1]);
         }
 
-        // Clear and populate instructions
         currentInstructionsList.getChildren().clear();
 
         String[][] instructions = allInstructions[stepNumber - 1];
@@ -1288,13 +1146,12 @@ public class LigationController implements Initializable {
         for (int i = 0; i < instructions.length; i++) {
             String letter = instructions[i][0];
             String text = instructions[i][1];
-            boolean isHighlighted = i == 0; // First instruction highlighted by default
+            boolean isHighlighted = i == 0;
 
             HBox instructionItem = createInstructionItem(letter, text, isHighlighted, stepNumber);
             currentInstructionsList.getChildren().add(instructionItem);
         }
 
-        // Update circle label
         Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
         if (circleLabel != null) {
             circleLabel.setText(stepNumber + "." + instructions[0][0]);
@@ -1307,7 +1164,6 @@ public class LigationController implements Initializable {
         item.setPadding(new Insets(10));
         item.setId("instruction_" + stepNumber + "_" + letter);
 
-        // Highlight style
         if (isHighlighted) {
             item.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
             currentHighlightedInstruction = "instruction_" + stepNumber + "_" + letter;
@@ -1315,7 +1171,6 @@ public class LigationController implements Initializable {
             item.setStyle("-fx-background-color: transparent;");
         }
 
-        // Letter circle
         Circle circle = new Circle(14);
         circle.setFill(Color.web("#1a5490"));
         circle.setStroke(Color.WHITE);
@@ -1329,7 +1184,6 @@ public class LigationController implements Initializable {
         letterCircle.setMinSize(28, 28);
         letterCircle.setMaxSize(28, 28);
 
-        // Text
         Label instructionText = new Label(text);
         instructionText.setFont(Font.font("DM Sans Medium", 12));
         instructionText.setStyle("-fx-text-fill: #ffffff;");
@@ -1337,21 +1191,19 @@ public class LigationController implements Initializable {
         instructionText.setMaxWidth(280);
         HBox.setHgrow(instructionText, Priority.ALWAYS);
 
-        // Edit icon (pencil)
         Label editIcon = new Label("✏");
         editIcon.setFont(Font.font("DM Sans Medium", 12));
         editIcon.setStyle("-fx-text-fill: #1a5490; -fx-cursor: hand;");
 
         item.getChildren().addAll(letterCircle, instructionText, editIcon);
 
-        // Click to highlight
         item.setOnMouseClicked(e -> highlightInstruction(item, stepNumber + "." + letter));
 
         return item;
     }
 
     private void highlightInstruction(HBox item, String instructionId) {
-        // Remove previous highlight
+
         if (currentHighlightedInstruction != null) {
             HBox prevItem = (HBox) currentInstructionsList.lookup("#" + currentHighlightedInstruction);
             if (prevItem != null) {
@@ -1359,11 +1211,9 @@ public class LigationController implements Initializable {
             }
         }
 
-        // Highlight current
         item.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
         currentHighlightedInstruction = item.getId();
 
-        // Update circle label
         Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
         if (circleLabel != null) {
             circleLabel.setText(instructionId);
@@ -1375,10 +1225,8 @@ public class LigationController implements Initializable {
             return;
         }
 
-        // Find and highlight the instruction
         String instructionId = "instruction_" + stepNumber + "_" + subStep;
 
-        // Remove previous highlight
         if (currentHighlightedInstruction != null) {
             HBox prevItem = (HBox) currentInstructionsList.lookup("#" + currentHighlightedInstruction);
             if (prevItem != null) {
@@ -1386,13 +1234,11 @@ public class LigationController implements Initializable {
             }
         }
 
-        // Highlight current instruction
         HBox currentItem = (HBox) currentInstructionsList.lookup("#" + instructionId);
         if (currentItem != null) {
             currentItem.setStyle("-fx-background-color: #ffa726;" + "-fx-border-radius: 5;" + "-fx-background-radius: 5;");
             currentHighlightedInstruction = instructionId;
 
-            // Update circle label
             Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
             if (circleLabel != null) {
                 circleLabel.setText(stepNumber + "." + subStep);
@@ -1400,11 +1246,9 @@ public class LigationController implements Initializable {
         }
     }
 
-// ========== NAVIGATION HANDLERS ==========
-
     private void handlePreviousStep() {
         if (currentProtocolStep == 1) {
-            // Go back to button panel
+
             resetToButtonView();
         } else {
             loadProtocolStep(currentProtocolStep - 1);
@@ -1420,11 +1264,9 @@ public class LigationController implements Initializable {
     private void resetToLabView() {
         instruction.getChildren().clear();
 
-        // Create lab instruction panel
         instructionCommandPanel = createInstructionCommandPanel();
         instruction.getChildren().add(instructionCommandPanel);
 
-        // Load step 1
         loadProtocolStep(1);
     }
 

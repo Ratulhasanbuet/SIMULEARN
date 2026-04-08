@@ -8,17 +8,14 @@ public class MoleculeGraph {
     private final List<MoleculeBond> bonds = new ArrayList<>();
     private int nextId = 0;
 
-    // ── Atom management ───────────────────────────────────────────────────────
-
     public MoleculeAtom addAtom(String symbol) {
         MoleculeAtom a = new MoleculeAtom(nextId++, symbol);
         atoms.add(a);
         return a;
     }
-    // ── Bond management ───────────────────────────────────────────────────────
 
     public MoleculeBond addBond(MoleculeAtom a, MoleculeAtom b, int order) {
-        // update if already bonded
+
         for (MoleculeBond existing : bonds) {
             if (existing.connects(a, b)) {
                 existing.order = order;
@@ -32,6 +29,11 @@ public class MoleculeGraph {
         return bond;
     }
 
-    public List<MoleculeAtom> getAtoms() { return Collections.unmodifiableList(atoms); }
-    public int atomCount() { return atoms.size(); }
+    public List<MoleculeAtom> getAtoms() {
+        return Collections.unmodifiableList(atoms);
+    }
+
+    public int atomCount() {
+        return atoms.size();
+    }
 }

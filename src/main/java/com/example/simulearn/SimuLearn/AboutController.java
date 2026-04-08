@@ -27,7 +27,7 @@ public class AboutController {
         String user = SessionManager.getCurrentUser();
 
         if (user != null && !user.isEmpty()) {
-            // Logged in — show user chip
+
             loggedOutBox.setVisible(false);
             loggedOutBox.setManaged(false);
             loggedInBox.setVisible(true);
@@ -35,7 +35,7 @@ public class AboutController {
             usernameLabel.setText(user);
             userAvatarLabel.setText(String.valueOf(user.charAt(0)).toUpperCase());
         } else {
-            // Not logged in — show login button
+
             loggedOutBox.setVisible(true);
             loggedOutBox.setManaged(true);
             loggedInBox.setVisible(false);
@@ -90,6 +90,7 @@ public class AboutController {
     private void about(ActionEvent event) {
 
     }
+
     @FXML
     private void exit(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

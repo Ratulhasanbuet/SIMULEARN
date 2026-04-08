@@ -1,8 +1,5 @@
 package com.example.simulearn.SimuLearn;
 
-/**
- * Helper class to store delta values for drag operations
- */
 public class Delta {
     public double x;
     public double y;

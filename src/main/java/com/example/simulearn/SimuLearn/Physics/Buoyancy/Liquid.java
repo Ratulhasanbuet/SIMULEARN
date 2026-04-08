@@ -1,6 +1,5 @@
 package com.example.simulearn.SimuLearn.Physics.Buoyancy;
 
-
 import javafx.scene.paint.Color;
 
 public class Liquid {
@@ -14,8 +13,15 @@ public class Liquid {
         this.color = color;
     }
 
-    // Getters
-    public String getName() { return name; }
-    public double getDensity() { return density; }
-    public Color getColor() { return color; }
+    public String getName() {
+        return name;
+    }
+
+    public double getDensity() {
+        return density;
+    }
+
+    public Color getColor() {
+        return color;
+    }
 }

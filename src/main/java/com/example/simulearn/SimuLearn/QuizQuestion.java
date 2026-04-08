@@ -13,7 +13,6 @@ import javafx.scene.text.FontWeight;
 import java.util.ArrayList;
 import java.util.List;
 
-// Inner class to handle quiz questions
 public class QuizQuestion {
     private VBox questionBox;
     private ToggleGroup toggleGroup;
@@ -47,13 +46,13 @@ public class QuizQuestion {
         );
         questionBox.setMaxWidth(700);
 
-        // Question text
+
         Label question = new Label(questionNum + ". " + questionText);
         question.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         question.setStyle("-fx-text-fill: #1a5490;");
         question.setWrapText(true);
 
-        // Options
+
         toggleGroup = new ToggleGroup();
         VBox optionsContainer = new VBox(10);
 
@@ -63,7 +62,7 @@ public class QuizQuestion {
             optionsContainer.getChildren().add(optionBox);
         }
 
-        // Bottom section (attempts + submit button)
+
         HBox bottomSection = new HBox(20);
         bottomSection.setAlignment(Pos.CENTER_LEFT);
 
@@ -84,7 +83,7 @@ public class QuizQuestion {
         );
         submitButton.setDisable(true);
 
-        // Enable submit when an option is selected
+
         toggleGroup.selectedToggleProperty().addListener((obs, old, newVal) -> {
             if (newVal != null && !answered) {
                 submitButton.setDisable(false);
@@ -125,7 +124,7 @@ public class QuizQuestion {
         );
         box.setPrefHeight(60);
 
-        // Letter circle
+
         Circle circle = new Circle(20);
         circle.setFill(Color.WHITE);
         circle.setStroke(Color.web("#333333"));
@@ -137,7 +136,7 @@ public class QuizQuestion {
 
         StackPane circleStack = new StackPane(circle, letterLabel);
 
-        // Option text
+
         Label optionLabel = new Label(optionText);
         optionLabel.setFont(Font.font("DM Sans Medium", 15));
         optionLabel.setStyle("-fx-text-fill: #333333;");
@@ -148,17 +147,17 @@ public class QuizQuestion {
 
         box.getChildren().addAll(circleStack, optionLabel);
 
-        // Radio button (invisible, just for toggle group)
+
         RadioButton radioButton = new RadioButton();
         radioButton.setToggleGroup(toggleGroup);
         radioButton.setVisible(false);
         radioButton.setUserData(index);
 
-        // Click handler
+
         box.setOnMouseClicked(e -> {
             if (!answered) {
                 radioButton.setSelected(true);
-                // Highlight selected option
+
                 for (HBox optBox : optionBoxes) {
                     optBox.setStyle(
                             "-fx-background-color: #f9f9f9;" +
@@ -194,7 +193,7 @@ public class QuizQuestion {
         int selectedIndex = (int) selectedToggle.getUserData();
 
         if (isFeedback) {
-            // For feedback question, just mark as answered
+
             answered = true;
             submitButton.setDisable(true);
             submitButton.setText("Submitted");
@@ -204,7 +203,7 @@ public class QuizQuestion {
                             "-fx-padding: 10 30;" +
                             "-fx-background-radius: 5;"
             );
-            // Highlight selected option in blue
+
             optionBoxes.get(selectedIndex).setStyle(
                     "-fx-background-color: #d4e6f1;" +
                             "-fx-border-color: #00aaff;" +
@@ -214,25 +213,25 @@ public class QuizQuestion {
                             "-fx-padding: 15;"
             );
         } else {
-            // For quiz questions
+
             if (selectedIndex == correctAnswerIndex) {
-                // Correct answer - show green
+
                 answered = true;
                 showFeedback(selectedIndex, true);
                 submitButton.setDisable(true);
             } else {
-                // Wrong answer - show red
+
                 attemptsLeft--;
                 attemptsLabel.setText("Attempts left: " + attemptsLeft);
                 showFeedback(selectedIndex, false);
 
                 if (attemptsLeft <= 0) {
-                    // No more attempts - show correct answer
+
                     answered = true;
                     showCorrectAnswer();
                     submitButton.setDisable(true);
                 } else {
-                    // Reset selection for retry
+
                     toggleGroup.selectToggle(null);
                     submitButton.setDisable(true);
                     submitButton.setStyle(
@@ -251,7 +250,7 @@ public class QuizQuestion {
         HBox selectedBox = optionBoxes.get(selectedIndex);
 
         if (correct) {
-            // Green checkmark
+
             Circle checkCircle = new Circle(15);
             checkCircle.setFill(Color.web("#27ae60"));
             checkCircle.setStroke(Color.web("#229954"));
@@ -273,7 +272,7 @@ public class QuizQuestion {
                             "-fx-padding: 15;"
             );
 
-            // Show feedback text if available
+
             if (feedbackText != null) {
                 Label feedback = new Label("Feedback: " + feedbackText);
                 feedback.setFont(Font.font("DM Sans Medium", FontPosture.ITALIC, 14));
@@ -283,7 +282,7 @@ public class QuizQuestion {
                 questionBox.getChildren().add(questionBox.getChildren().size() - 1, feedback);
             }
         } else {
-            // Red X
+
             Circle xCircle = new Circle(15);
             xCircle.setFill(Color.web("#e74c3c"));
             xCircle.setStroke(Color.web("#c0392b"));

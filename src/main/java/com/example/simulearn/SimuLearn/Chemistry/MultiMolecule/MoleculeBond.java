@@ -4,7 +4,7 @@ public class MoleculeBond {
 
     public final MoleculeAtom a1;
     public final MoleculeAtom a2;
-    public int order; // 1=single, 2=double, 3=triple
+    public int order;
 
     public MoleculeBond(MoleculeAtom a1, MoleculeAtom a2, int order) {
         this.a1 = a1;

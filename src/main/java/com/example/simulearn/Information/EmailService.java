@@ -5,24 +5,15 @@ import javax.mail.internet.*;
 import java.util.Properties;
 import java.util.Random;
 
-/**
- * EmailService handles sending verification codes to user emails.
- * Configure your email credentials in the config file or environment variables.
- */
 public class EmailService {
 
-    // Gmail configuration - you can modify these
     private static final String SENDER_EMAIL = "simulearn0@gmail.com";
-    private static final String SENDER_PASSWORD = "vfzrpkrjlurovewa"; // spaces ছাড়া
+    private static final String SENDER_PASSWORD = "vfzrpkrjlurovewa";
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final String SMTP_PORT = "587";
 
-    /**
-     * Send verification code to user email
-     */
     public static boolean sendVerificationCode(String recipientEmail, String verificationCode) {
         try {
-            // Setup mail properties
             Properties props = new Properties();
             props.put("mail.smtp.host", SMTP_HOST);
             props.put("mail.smtp.port", SMTP_PORT);
@@ -32,7 +23,6 @@ public class EmailService {
             props.put("mail.smtp.connectiontimeout", "5000");
             props.put("mail.smtp.timeout", "5000");
 
-            // Create session with authentication
             Session session = Session.getInstance(props, new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
@@ -46,15 +36,13 @@ public class EmailService {
                     return new PasswordAuthentication(SENDER_EMAIL, SENDER_PASSWORD);
                 }
             });
-            session.setDebug(true); // <-- enables debug output
+            session.setDebug(true);
 
-            // Create message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(SENDER_EMAIL));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
             message.setSubject("SimuLearn Email Verification Code");
 
-            // Create HTML email body
             String emailBody =
                     "<html>" +
                             "<head>" +
@@ -92,7 +80,6 @@ public class EmailService {
 
             message.setContent(emailBody, "text/html; charset=utf-8");
 
-            // Send email
             Transport.send(message);
             System.out.println("Verification email sent to: " + recipientEmail);
             return true;
@@ -104,9 +91,6 @@ public class EmailService {
         }
     }
 
-    /**
-     * Generate a random 6-digit verification code
-     */
     public static String generateVerificationCode() {
         Random random = new Random();
         int code = 100000 + random.nextInt(900000);

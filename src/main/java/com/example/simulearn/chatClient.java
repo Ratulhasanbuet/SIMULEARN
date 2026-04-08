@@ -20,7 +20,7 @@ public class chatClient {
 
         System.out.println("Connecting to server...");
 
-        this.socket = new Socket(serverIP, 5000); // ✅ FIXED
+        this.socket = new Socket(serverIP, 5000);
 
         System.out.println("Connected!");
 
@@ -31,6 +31,7 @@ public class chatClient {
 
         new Thread(this::listenToServer).start();
     }
+
     public static void main(String[] args) {
         try {
             chatClient client = new chatClient();
@@ -38,34 +39,35 @@ public class chatClient {
             e.printStackTrace();
         }
     }
-    // Send message to another user
+
     public void sendMessage(String receiver, String text) {
         out.println("SEND|" + SessionManager.getCurrentUser() + "|" + receiver + "|" + text);
     }
 
-    // Listener to handle messages (optional backend processing)
+
     private void listenToServer() {
         try {
             String line;
             while ((line = in.readLine()) != null) {
-                // Example: you can log messages or forward to controller
+
                 if (line.startsWith("MSG|")) {
                     String[] parts = line.split("\\|", 3);
                     String sender = parts[1];
                     String text = parts[2];
                     System.out.println(sender + ": " + text);
                 }
-                // USERLIST messages can now be ignored here
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Disconnect client
+
     public void disconnect() {
         try {
             socket.close();
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 }

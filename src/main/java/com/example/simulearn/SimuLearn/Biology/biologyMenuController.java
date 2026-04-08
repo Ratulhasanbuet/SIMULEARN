@@ -39,7 +39,6 @@ public class biologyMenuController {
         }
     }
 
-
     @FXML
     void onHomeButtonClicked(ActionEvent event) {
         try {
@@ -102,7 +101,6 @@ public class biologyMenuController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     void ligationbuttonclicked(ActionEvent event) {

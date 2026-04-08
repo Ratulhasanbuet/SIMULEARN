@@ -10,36 +10,40 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * VerificationController handles email verification flow after login/signup.
- * For signup: user is saved to DB only AFTER successful verification.
- * For login:  session is set only AFTER successful verification.
- */
 public class VerificationController {
 
-    @FXML private TextField codeField1;
-    @FXML private TextField codeField2;
-    @FXML private TextField codeField3;
-    @FXML private TextField codeField4;
-    @FXML private TextField codeField5;
-    @FXML private TextField codeField6;
+    @FXML
+    private TextField codeField1;
+    @FXML
+    private TextField codeField2;
+    @FXML
+    private TextField codeField3;
+    @FXML
+    private TextField codeField4;
+    @FXML
+    private TextField codeField5;
+    @FXML
+    private TextField codeField6;
 
-    @FXML private Label  messageLabel;
-    @FXML private Label  emailLabel;
-    @FXML private Button verifyButton;
-    @FXML private Button resendButton;
+    @FXML
+    private Label messageLabel;
+    @FXML
+    private Label emailLabel;
+    @FXML
+    private Button verifyButton;
+    @FXML
+    private Button resendButton;
 
-    private String  userEmail;
-    private String  username;
-    private String  pendingPassword; // only set during signup
+    private String userEmail;
+    private String username;
+    private String pendingPassword;
     private boolean isSignUp = false;
-    private long    resendCooldownEnd = 0;
+    private long resendCooldownEnd = 0;
 
-    // ── Called from LoginController ───────────────────────
     public void initialize(String email, String username, boolean isSignUp) {
         this.userEmail = email;
-        this.username  = username;
-        this.isSignUp  = isSignUp;
+        this.username = username;
+        this.isSignUp = isSignUp;
 
         if (emailLabel != null) {
             emailLabel.setText("Verification code has been sent to: " + email);
@@ -47,12 +51,11 @@ public class VerificationController {
         setupCodeFields();
     }
 
-    // ── Called from SignUpController (passes password too) ─
     public void initializeSignUp(String email, String username, String password) {
-        this.userEmail       = email;
-        this.username        = username;
+        this.userEmail = email;
+        this.username = username;
         this.pendingPassword = password;
-        this.isSignUp        = true;
+        this.isSignUp = true;
 
         if (emailLabel != null) {
             emailLabel.setText("Verification code has been sent to: " + email);
@@ -93,9 +96,9 @@ public class VerificationController {
             showError("Invalid or expired verification code. Please try again.");
             return;
         }
-        // ── Code is valid ─────────────────────────────────
+
         if (isSignUp && pendingPassword != null) {
-            // Save user to DB now (after verification)
+
             boolean saved = DatabaseHelper.registerUser(username, userEmail, pendingPassword);
             if (!saved) {
                 showError("Could not complete registration. Username or email may already exist.");
@@ -103,14 +106,13 @@ public class VerificationController {
             }
         }
 
-        // Set session
         SessionManager.setCurrentUser(username);
         showSuccess("Email verified successfully! Redirecting...");
 
-        // Navigate to home after brief pause
         try {
             Thread.sleep(1000);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
         goToHome(event);
     }
 
@@ -125,7 +127,7 @@ public class VerificationController {
         }
 
         String newCode = EmailService.generateVerificationCode();
-        boolean sent   = EmailService.sendVerificationCode(userEmail, newCode);
+        boolean sent = EmailService.sendVerificationCode(userEmail, newCode);
 
         if (sent) {
             DatabaseHelper.saveVerificationCode(userEmail, newCode);
@@ -154,7 +156,6 @@ public class VerificationController {
         }
     }
 
-    // ── Helpers ───────────────────────────────────────────
     private void showError(String msg) {
         messageLabel.setStyle("-fx-text-fill: #f87171;");
         messageLabel.setText(msg);
@@ -166,8 +167,12 @@ public class VerificationController {
     }
 
     private void clearCodeFields() {
-        codeField1.clear(); codeField2.clear(); codeField3.clear();
-        codeField4.clear(); codeField5.clear(); codeField6.clear();
+        codeField1.clear();
+        codeField2.clear();
+        codeField3.clear();
+        codeField4.clear();
+        codeField5.clear();
+        codeField6.clear();
         codeField1.requestFocus();
     }
 

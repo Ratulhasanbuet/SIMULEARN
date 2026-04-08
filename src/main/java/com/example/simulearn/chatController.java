@@ -58,7 +58,7 @@ public class chatController {
             }
         });
 
-        // Single selectFirst — the listener above handles loadChatHistory
+
         if (!userList.getItems().isEmpty()) {
             userList.getSelectionModel().selectFirst();
             currentChatUser = userList.getItems().get(0);
@@ -67,6 +67,7 @@ public class chatController {
 
         startListening();
     }
+
     private void loadChatHistory(String otherUser) {
         String me = SessionManager.getCurrentUser();
         System.out.println("=== loadChatHistory ===");
@@ -84,6 +85,7 @@ public class chatController {
             addMessage(isMine ? "Me" : sender, text, isMine);
         }
     }
+
     private void refreshUserListWithUnread() {
         String me = SessionManager.getCurrentUser();
         userList.getItems().clear();
@@ -94,6 +96,7 @@ public class chatController {
             userList.getItems().add(display);
         }
     }
+
     private void startListening() {
         new Thread(() -> {
             try {
@@ -121,13 +124,13 @@ public class chatController {
         if (sender.equals(activeChatUser)) {
             addMessage(sender, text, false);
         } else {
-            // Refresh list to show new unread count
+
             Platform.runLater(this::refreshUserListWithUnread);
         }
     }
 
     private void addMessage(String sender, String text, boolean isMine) {
-        Label label = new Label(sender+": \n"+text);
+        Label label = new Label(sender + ": \n" + text);
         label.setWrapText(true);
         label.setStyle("-fx-padding:8; -fx-background-radius:10;" +
                 (isMine ? "-fx-background-color:#d6eaf8;" : "-fx-background-color:#f1f2f6;"));
@@ -137,7 +140,7 @@ public class chatController {
 
         chatBox.getChildren().add(container);
 
-        // Scroll to bottom
+
         chatScrollPane.layout();
         chatScrollPane.setVvalue(1.0);
     }
@@ -152,12 +155,11 @@ public class chatController {
         stage.show();
     }
 
-
     @FXML
     private void onSendClicked() {
         if (currentChatUser == null) return;
 
-        // Strip unread badge before sending
+
         String receiver = currentChatUser.replaceAll("\\s*\\(\\d+\\)$", "").trim();
 
         String text = messageField.getText().trim();

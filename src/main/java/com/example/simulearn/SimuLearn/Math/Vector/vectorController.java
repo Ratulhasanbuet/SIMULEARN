@@ -1,6 +1,5 @@
 package com.example.simulearn.SimuLearn.Math.Vector;
 
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,24 +19,31 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class vectorController {
-    @FXML private VBox questionBox;
-    @FXML private Button explanationButton;
-    private Group resultantX,resultantY;
+    @FXML
+    private VBox questionBox;
+    @FXML
+    private Button explanationButton;
+    private Group resultantX, resultantY;
     private Stack<Group> vectorStack = new Stack<>();
     private Stack<Group> Xcomponent = new Stack<>();
     private Stack<Group> Ycomponent = new Stack<>();
-    @FXML private AnchorPane graph;
-    @FXML AnchorPane pane;
-    private Line tempLine; // temporary preview line
+    @FXML
+    private AnchorPane graph;
+    @FXML
+    AnchorPane pane;
+    private Line tempLine;
     private Polygon arrowHead;
     private double startX, startY;
-    @FXML private Label text;
-    private double originX,originY;
-    private double vx ;
+    @FXML
+    private Label text;
+    private double originX, originY;
+    private double vx;
     private double vy;
     private Group sumVector;
     private boolean resultantChanged;
-    @FXML private CheckBox components;
+    @FXML
+    private CheckBox components;
+
     @FXML
     void onBackButtonClicked() throws java.io.IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/mathMenu.fxml"));
@@ -47,6 +53,7 @@ public class vectorController {
         stage.setMaximized(true);
         stage.show();
     }
+
     @FXML
     public void initialize() {
         quizGroup = new ToggleGroup();
@@ -56,8 +63,8 @@ public class vectorController {
         optionD.setToggleGroup(quizGroup);
         questionBox.setVisible(false);
 
-        resultantChanged=false;
-        vx = vy =0;
+        resultantChanged = false;
+        vx = vy = 0;
         Platform.runLater(() -> {
             drawGraph();
             enableVectorDrawing();
@@ -66,27 +73,28 @@ public class vectorController {
             graph.setPrefSize(w, h);
             graph.setMinSize(w, h);
             graph.setMaxSize(w, h);
-            originX = graph.getWidth()/2 - 5;
-            originY = graph.getHeight()/2 - 6.4;
+            originX = graph.getWidth() / 2 - 5;
+            originY = graph.getHeight() / 2 - 6.4;
         });
     }
+
     private void enableVectorDrawing() {
         graph.setOnMousePressed(this::handleMousePressed);
         graph.setOnMouseDragged(this::handleMouseDragged);
         graph.setOnMouseReleased(this::handleMouseReleased);
     }
+
     private void handleMousePressed(MouseEvent e) {
         graph.getChildren().remove(sumVector);
         graph.getChildren().remove(resultantX);
         graph.getChildren().remove(resultantY);
-        resultantChanged=true;
+        resultantChanged = true;
         startX = e.getX();
         startY = e.getY();
 
         tempLine = new Line(startX, startY, startX, startY);
         tempLine.setStroke(Color.DARKRED);
         tempLine.setStrokeWidth(2);
-
 
         arrowHead = new Polygon();
         arrowHead.setFill(Color.DARKRED);
@@ -101,7 +109,7 @@ public class vectorController {
 
         tempLine.setEndX(endX);
         tempLine.setEndY(endY);
-        updateArrowHead(startX, startY, endX, endY,arrowHead);
+        updateArrowHead(startX, startY, endX, endY, arrowHead);
     }
 
     private void handleMouseReleased(MouseEvent e) {
@@ -112,11 +120,11 @@ public class vectorController {
         double angle = Math.atan2(dy, dx);
         double sin = Math.sin(angle);
         double cos = Math.cos(angle);
-        double len = Math.sqrt(dx*dx + dy*dy);
+        double len = Math.sqrt(dx * dx + dy * dy);
         vx += len * cos;
         vy += len * sin;
-        updateArrowHead(startX, startY, endX, endY,arrowHead);
-        // Optional: convert to graph coordinates (center origin)
+        updateArrowHead(startX, startY, endX, endY, arrowHead);
+
         double graphX1 = startX - originX;
         double graphY1 = originY - startY;
         double graphX2 = endX - originX;
@@ -128,7 +136,7 @@ public class vectorController {
         showComp();
     }
 
-    private void updateArrowHead(double x1, double y1, double x2, double y2,Polygon targetArrowHead) {
+    private void updateArrowHead(double x1, double y1, double x2, double y2, Polygon targetArrowHead) {
         double arrowLength = 10;
         double arrowWidth = 7;
 
@@ -149,12 +157,12 @@ public class vectorController {
 
         targetArrowHead.getPoints().setAll(x2, y2, xLeft, yLeft, xRight, yRight);
     }
-    private void drawGraph()
-    {
+
+    private void drawGraph() {
         double width = graph.getWidth();
         double height = graph.getHeight();
         double cellSize = 5.35;
-        // Light grid lines
+
         for (int i = 0; i <= width; i += cellSize) {
             Line vLine = new Line(i, 0, i, height);
             vLine.setStroke(Color.LIGHTGRAY);
@@ -166,7 +174,6 @@ public class vectorController {
             graph.getChildren().add(hLine);
         }
 
-        // Thicker major lines (every 100 px)
         for (int i = 0; i <= width; i += cellSize * 5) {
             Line majorV = new Line(i, 0, i, height);
             majorV.setStroke(Color.GRAY);
@@ -180,7 +187,6 @@ public class vectorController {
             graph.getChildren().add(majorH);
         }
 
-        // Center axes (optional)
         Line xAxis = new Line(0, height / 2 - cellSize, width, height / 2 - cellSize);
         xAxis.setStroke(Color.RED);
         xAxis.setStrokeWidth(1.5);
@@ -190,27 +196,27 @@ public class vectorController {
 
         graph.getChildren().addAll(xAxis, yAxis);
 
-        // Set preferred size so ScrollPane knows how large it is
         graph.setPrefSize(width, height);
     }
+
     @FXML
     private void onReset() {
         graph.getChildren().clear();
         drawGraph();
         text.setText("");
-        while(!vectorStack.empty())
+        while (!vectorStack.empty())
             vectorStack.pop();
-        while(!Xcomponent.empty())
+        while (!Xcomponent.empty())
             Xcomponent.pop();
         while (!Ycomponent.empty())
             Ycomponent.pop();
-        vx = vy =0;
-        resultantChanged=false;
+        vx = vy = 0;
+        resultantChanged = false;
     }
+
     @FXML
-    private void undoVector()
-    {
-        resultantChanged=true;
+    private void undoVector() {
+        resultantChanged = true;
         graph.getChildren().remove(sumVector);
         Group group = vectorStack.pop();
         graph.getChildren().remove(group);
@@ -218,9 +224,9 @@ public class vectorController {
         for (var node : group.getChildren()) {
             if (node instanceof Line line) {
                 double dx = line.getEndX() - line.getStartX();
-                vx -=dx;
+                vx -= dx;
                 double dy = line.getEndY() - line.getStartY();
-                vy-=dy;
+                vy -= dy;
             }
         }
         group = Xcomponent.pop();
@@ -229,72 +235,65 @@ public class vectorController {
         graph.getChildren().remove(group);
         graph.getChildren().remove(resultantX);
         graph.getChildren().remove(resultantY);
-        if(vectorStack.empty())
+        if (vectorStack.empty())
             onReset();
         else {
             showSum();
             showComp();
         }
     }
+
     @FXML
-    private void showSum()
-    {
-        if(!resultantChanged)
+    private void showSum() {
+        if (!resultantChanged)
             return;
         graph.getChildren().remove(sumVector);
         graph.getChildren().remove(resultantX);
         graph.getChildren().remove(resultantY);
-        tempLine = new Line(originX, originY,originX+vx,originY+vy );
+        tempLine = new Line(originX, originY, originX + vx, originY + vy);
         tempLine.setStroke(Color.YELLOWGREEN);
         tempLine.setStrokeWidth(2);
 
-
         arrowHead = new Polygon();
-        updateArrowHead(originX,originY,originX+vx,originY+vy,arrowHead);
+        updateArrowHead(originX, originY, originX + vx, originY + vy, arrowHead);
         arrowHead.setFill(Color.YELLOWGREEN);
         sumVector = new Group(tempLine, arrowHead);
         graph.getChildren().add(sumVector);
-        // for the resultant
-        if(components.isSelected())
-        {
-            tempLine = new Line(originX, originY,originX+vx,originY);
+
+        if (components.isSelected()) {
+            tempLine = new Line(originX, originY, originX + vx, originY);
             tempLine.setStroke(Color.BLACK);
             tempLine.setStrokeWidth(2);
             arrowHead = new Polygon();
-            updateArrowHead(originX,originY,originX+vx,originY,arrowHead);
+            updateArrowHead(originX, originY, originX + vx, originY, arrowHead);
             arrowHead.setFill(Color.BLACK);
             resultantX = new Group(tempLine, arrowHead);
             graph.getChildren().add(resultantX);
-            tempLine = new Line(originX, originY,originX,originY+vy);
+            tempLine = new Line(originX, originY, originX, originY + vy);
             tempLine.setStroke(Color.PURPLE);
             tempLine.setStrokeWidth(2);
             arrowHead = new Polygon();
-            updateArrowHead(originX,originY,originX,originY+vy,arrowHead);
+            updateArrowHead(originX, originY, originX, originY + vy, arrowHead);
             arrowHead.setFill(Color.PURPLE);
             resultantY = new Group(tempLine, arrowHead);
             graph.getChildren().add(resultantY);
-        }
-        else
-        {
+        } else {
             graph.getChildren().remove(resultantX);
             graph.getChildren().remove(resultantY);
         }
-        resultantChanged=false;
+        resultantChanged = false;
     }
+
     @FXML
-    private void showComp()
-    {
-        if(components.isSelected())
+    private void showComp() {
+        if (components.isSelected())
             showComponents();
-        else
-        {
-            while (!Xcomponent.empty())
-            {
+        else {
+            while (!Xcomponent.empty()) {
                 Group group = Xcomponent.pop();
                 graph.getChildren().remove(group);
             }
-            while (!Ycomponent.empty())
-            {
+            while (!Ycomponent.empty()) {
                 Group group = Ycomponent.pop();
                 graph.getChildren().remove(group);
             }
@@ -302,11 +301,11 @@ public class vectorController {
             graph.getChildren().remove(resultantY);
         }
     }
-    private void showComponents()
-    {
+
+    private void showComponents() {
         while (!Xcomponent.empty()) {
-           Group group = Xcomponent.pop();
-           graph.getChildren().remove(group);
+            Group group = Xcomponent.pop();
+            graph.getChildren().remove(group);
         }
         while (!Ycomponent.empty()) {
             Group group = Ycomponent.pop();
@@ -318,79 +317,76 @@ public class vectorController {
         while (!vectorStack.empty())
             vectors.add(vectorStack.pop());
         int i;
-        for(i=0;i<vectors.size();i++)
-        {
-            for(var node : vectors.get(i).getChildren())
-            {
-                if(node instanceof Line line)
-                {
+        for (i = 0; i < vectors.size(); i++) {
+            for (var node : vectors.get(i).getChildren()) {
+                if (node instanceof Line line) {
                     double dx = line.getEndX() - line.getStartX();
-                    tempLine = new Line(originX, originY,originX+dx,originY);
+                    tempLine = new Line(originX, originY, originX + dx, originY);
                     tempLine.setStroke(Color.BLACK);
                     tempLine.setStrokeWidth(2);
 
                     arrowHead = new Polygon();
-                    updateArrowHead(originX,originY,originX+dx,originY,arrowHead);
+                    updateArrowHead(originX, originY, originX + dx, originY, arrowHead);
                     arrowHead.setFill(Color.BLACK);
-                    Group component= new Group(tempLine, arrowHead);
+                    Group component = new Group(tempLine, arrowHead);
                     graph.getChildren().add(component);
                     Xcomponent.push(component);
 
                     double dy = line.getEndY() - line.getStartY();
-                    tempLine = new Line(originX, originY,originX,originY+dy);
+                    tempLine = new Line(originX, originY, originX, originY + dy);
                     tempLine.setStroke(Color.PURPLE);
                     tempLine.setStrokeWidth(2);
 
                     arrowHead = new Polygon();
-                    updateArrowHead(originX,originY,originX,originY+dy,arrowHead);
+                    updateArrowHead(originX, originY, originX, originY + dy, arrowHead);
                     arrowHead.setFill(Color.PURPLE);
-                    component= new Group(tempLine, arrowHead);
+                    component = new Group(tempLine, arrowHead);
                     graph.getChildren().add(component);
                     Ycomponent.push(component);
                 }
             }
         }
-        tempLine = new Line(originX, originY,originX+vx,originY);
+        tempLine = new Line(originX, originY, originX + vx, originY);
         tempLine.setStroke(Color.BLACK);
         tempLine.setStrokeWidth(2);
         arrowHead = new Polygon();
-        updateArrowHead(originX,originY,originX+vx,originY,arrowHead);
+        updateArrowHead(originX, originY, originX + vx, originY, arrowHead);
         arrowHead.setFill(Color.BLACK);
         resultantX = new Group(tempLine, arrowHead);
         graph.getChildren().add(resultantX);
-        tempLine = new Line(originX, originY,originX,originY+vy);
+        tempLine = new Line(originX, originY, originX, originY + vy);
         tempLine.setStroke(Color.PURPLE);
         tempLine.setStrokeWidth(2);
         arrowHead = new Polygon();
-        updateArrowHead(originX,originY,originX,originY+vy,arrowHead);
+        updateArrowHead(originX, originY, originX, originY + vy, arrowHead);
         arrowHead.setFill(Color.PURPLE);
         resultantY = new Group(tempLine, arrowHead);
         graph.getChildren().add(resultantY);
-        for(i= vectors.size() - 1; i>=0;i--)
-        {
+        for (i = vectors.size() - 1; i >= 0; i--) {
             vectorStack.push(vectors.get(i));
         }
 
     }
+
     @FXML
-    private void onExplanation()
-    {
-        if(explanationButton.getText().equals("Show Explanation")) {
+    private void onExplanation() {
+        if (explanationButton.getText().equals("Show Explanation")) {
             graph.setVisible(false);
             explanationButton.setText("Hide Explanation");
             questionBox.setVisible(true);
-        }
-        else
-        {
+        } else {
             questionBox.setVisible(false);
             graph.setVisible(true);
             explanationButton.setText("Show Explanation");
         }
     }
-    @FXML private Label resultLabel;
+
+    @FXML
+    private Label resultLabel;
     @FXML
     private RadioButton optionA, optionB, optionC, optionD;
     private ToggleGroup quizGroup;
+
     @FXML
     private void checkAnswer() {
         if (optionB.isSelected()) {

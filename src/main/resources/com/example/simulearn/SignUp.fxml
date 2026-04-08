@@ -16,7 +16,6 @@
 
         <HBox prefHeight="1080" prefWidth="1920" spacing="0">
 
-            <!-- ══ LEFT PANEL ══ -->
             <VBox alignment="CENTER" prefHeight="1080" prefWidth="860" spacing="30" styleClass="auth-left-panel">
 
                 <Label styleClass="auth-brand-icon" text="🌿" />
@@ -38,7 +37,6 @@
 
             </VBox>
 
-            <!-- ══ RIGHT PANEL — Sign Up Form ══ -->
             <VBox alignment="CENTER" styleClass="auth-right-panel" HBox.hgrow="ALWAYS">
 
                 <VBox alignment="CENTER" spacing="0" styleClass="auth-card">
@@ -48,39 +46,32 @@
 
                     <VBox spacing="18" styleClass="auth-form">
 
-                        <!-- Username -->
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Username" />
                             <TextField fx:id="usernameField" promptText="Choose a username" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Email -->
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Email" />
                             <TextField fx:id="emailField" promptText="Enter your email address" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Password -->
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Password" />
                             <PasswordField fx:id="passwordField" promptText="Create a password" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Confirm Password -->
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Confirm Password" />
                             <PasswordField fx:id="confirmPasswordField" promptText="Re-enter your password" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Remember Me -->
                         <HBox alignment="CENTER_LEFT" spacing="10">
                             <CheckBox fx:id="rememberMe" styleClass="auth-checkbox" text="Keep me signed in" />
                         </HBox>
 
-                        <!-- Error / Success label -->
                         <Label fx:id="messageLabel" maxWidth="360" styleClass="auth-error" text="" wrapText="true" />
 
-                        <!-- Sign Up Button -->
                         <Button mnemonicParsing="false" onAction="#handleSignUp" styleClass="btn-glow-green" text="Create Account →" />
 
                         <HBox alignment="CENTER" spacing="6">

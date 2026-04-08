@@ -40,28 +40,28 @@ public class MenuController {
     @FXML
     public void initialize() {
 
-        // ── Show correct navbar state based on login ──────
+
         String user = SessionManager.getCurrentUser();
 
         if (user != null && !user.isEmpty()) {
-            // Logged in — show user chip
+
             loggedOutBox.setVisible(false);
             loggedOutBox.setManaged(false);
             loggedInBox.setVisible(true);
             loggedInBox.setManaged(true);
 
             usernameLabel.setText(user);
-            // First letter of username as avatar
+
             userAvatarLabel.setText(String.valueOf(user.charAt(0)).toUpperCase());
         } else {
-            // Not logged in — show login button
+
             loggedOutBox.setVisible(true);
             loggedOutBox.setManaged(true);
             loggedInBox.setVisible(false);
             loggedInBox.setManaged(false);
         }
 
-        // ── Card hover scale ──────────────────────────────
+
         for (Node node : cardHBox.getChildren()) {
             if (node instanceof Button btn) {
                 btn.setOnMouseEntered(e -> {
@@ -79,7 +79,7 @@ public class MenuController {
     @FXML
     private void logout(ActionEvent event) {
         SessionManager.logout();
-        // Reload this page so navbar resets to logged-out
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/Menu.fxml"));
             Parent root = loader.load();
@@ -106,7 +106,6 @@ public class MenuController {
         }
     }
 
-
     @FXML
     private void about(ActionEvent event) {
         try {
@@ -126,7 +125,6 @@ public class MenuController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     private void biology(ActionEvent event) {
@@ -152,7 +150,7 @@ public class MenuController {
             stage.setMaximized(true);
             stage.show();
         } catch (java.io.IOException e) {
-            e.printStackTrace(); // This will tell you if it's a "File Not Found" or a "Controller Error"
+            e.printStackTrace();
         }
     }
 
@@ -183,8 +181,9 @@ public class MenuController {
             System.out.println("Failed to open the window.");
         }
     }
+
     @FXML
-    private void onChatClicked(ActionEvent event){
+    private void onChatClicked(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/chatView.fxml"));
 

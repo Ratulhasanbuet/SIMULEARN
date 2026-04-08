@@ -33,7 +33,7 @@ public class MicropipettingSolutionController implements Initializable {
     @FXML
     private void onBackButtonClicked(ActionEvent event) {
         try {
-            // Load FXML correctly
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/biologyMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -52,46 +52,38 @@ public class MicropipettingSolutionController implements Initializable {
 
     private ScrollPane scrollPane;
     private VBox buttonPanel;
-    // Button references
+
     private Button btnContext, btnMaterials, btnPredictions, btnProtocol, btnResults, btnReflection, btnSummary;
 
-    // Selection tracking
     private Button selectedButton = null;
     private MSLabworkspace msLabworkspace;
 
-    // Track if all protocol steps are completed
     private boolean allStepsCompleted = false;
 
-    // Lab workspace components
     private VBox instructionCommandPanel;
     private int currentProtocolStep = 1;
     private final int TOTAL_PROTOCOL_STEPS = 4;
     private VBox currentInstructionsList;
     private String currentHighlightedInstruction = null;
 
-    // Step completion tracking
     private int activeStep = 1;
     private String activeSubStep = "a";
 
-    // Map to track completion of each step (key format: "1_a", "1_b", etc.)
     private java.util.HashMap<String, Boolean> stepCompletionMap = new java.util.HashMap<>();
 
-    // Define the sequence of sub-steps for each main step
     private final String[][] STEP_SEQUENCES = {
-            {"a", "b", "c", "d", "e"},  // Step 1: a, b, c, d, e
-            {"a", "b", "c", "d"},        // Step 2: a, b, c, d
-            {"a", "b", "c", "d"},        // Step 3: a, b, c, d
-            {"a", "b", "c"}              // Step 4: a, b, c
+            {"a", "b", "c", "d", "e"},
+            {"a", "b", "c", "d"},
+            {"a", "b", "c", "d"},
+            {"a", "b", "c"}
     };
 
-    // Prediction circles state - stored as percentage of max radius (0.0 to 1.0)
-    private double[] predictionSizes = {0.2, 0.3, 0.15, 0.1}; // Initial sizes for A, B, C, D
+    private double[] predictionSizes = {0.2, 0.3, 0.15, 0.1};
 
-    // Store actual prediction radius values in pixels for result comparison
-    private double[] predictionRadiusA = new double[1]; // Stores radius for circle A
-    private double[] predictionRadiusB = new double[1]; // Stores radius for circle B
-    private double[] predictionRadiusC = new double[1]; // Stores radius for circle C
-    private double[] predictionRadiusD = new double[1]; // Stores radius for circle D
+    private double[] predictionRadiusA = new double[1];
+    private double[] predictionRadiusB = new double[1];
+    private double[] predictionRadiusC = new double[1];
+    private double[] predictionRadiusD = new double[1];
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpLayout();
@@ -107,11 +99,10 @@ public class MicropipettingSolutionController implements Initializable {
         updateScrollContent(getContextContent());
 
         instruction.setPadding(new Insets(20));
-        instruction.setStyle("-fx-background-color: rgba(4,12,18,0.95);" +"-fx-border-color: rgba(34,211,238,0.18);" +"-fx-border-radius: 14;" +"-fx-background-radius: 14;" +"-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 24, 0.2, 0, 4);");
+        instruction.setStyle("-fx-background-color: rgba(4,12,18,0.95);" + "-fx-border-color: rgba(34,211,238,0.18);" + "-fx-border-radius: 14;" + "-fx-background-radius: 14;" + "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 24, 0.2, 0, 4);");
         instruction.setPrefWidth(400);
         instruction.setMinWidth(400);
 
-        //create initial button panel
         buttonPanel = createButtonPanel();
         instruction.getChildren().add(buttonPanel);
         mainpanel.setAlignment(Pos.TOP_RIGHT);
@@ -122,7 +113,6 @@ public class MicropipettingSolutionController implements Initializable {
         scrollPane.setContent(content);
     }
 
-    // Content creation methods
     private VBox getContextContent() {
         VBox content = new VBox(20);
         content.setPadding(new Insets(40));
@@ -143,7 +133,6 @@ public class MicropipettingSolutionController implements Initializable {
         text.setStyle("-fx-text-fill: #333333;"
                 + "-fx-font-family: Trebuchet MS;");
 
-
         Label howToTitle = new Label("HOW TO USE A MICROPIPETTE");
         howToTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         howToTitle.setStyle("-fx-text-fill: #333333;" +
@@ -154,7 +143,6 @@ public class MicropipettingSolutionController implements Initializable {
         underline2.setMaxWidth(660);
         underline2.setPrefHeight(2);
         underline2.setStyle("-fx-background-color: #333333;");
-//        Images/MSImages/Context1-en.svg
 
         VBox imageBox1 = createImageBox("Adding a tip",
                 SVGLoader.loadSVG("/Images/MSImages/Context1-en.svg", 150, 600));
@@ -165,7 +153,6 @@ public class MicropipettingSolutionController implements Initializable {
         VBox imageBox4 = createImageBox("Expelling liquid",
                 SVGLoader.loadSVG("/Images/MSImages/Context4-en.svg", 150, 600));
 
-        // HBox for all 4 images
         HBox imagesRow = new HBox(0);
         imagesRow.setStyle(
                 "-fx-background-color: white;" +
@@ -190,7 +177,6 @@ public class MicropipettingSolutionController implements Initializable {
         box.setPrefWidth(185);
         box.setMaxWidth(185);
 
-        // Heading label
         Label headingLabel = new Label(heading);
         headingLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 13));
         headingLabel.setTextFill(Color.WHITE);
@@ -200,7 +186,6 @@ public class MicropipettingSolutionController implements Initializable {
         headingLabel.setWrapText(true);
         headingLabel.setStyle("-fx-background-color: #2B5F7F;");
 
-        // Image container
         StackPane imagePane = new StackPane(image);
         imagePane.setStyle("-fx-background-color: #2B5F7F;");
         imagePane.setPadding(new Insets(10));
@@ -216,8 +201,6 @@ public class MicropipettingSolutionController implements Initializable {
         panel.setAlignment(Pos.TOP_LEFT);
         panel.setPadding(new Insets(16, 12, 16, 12));
 
-
-        // Create all navigation buttons with circles
         btnContext = createNavButton("1", "CONTEXT");
         btnMaterials = createNavButton("2", "MATERIALS");
         btnPredictions = createNavButton("3", "PREDICTIONS");
@@ -226,15 +209,13 @@ public class MicropipettingSolutionController implements Initializable {
         btnReflection = createNavButton("6", "REFLECTION");
         btnSummary = createNavButton("7", "SUMMARY");
 
-        // Disable Results button initially - will enable after Step 4 completion
         if (!allStepsCompleted) {
             btnResults.setDisable(true);
             btnResults.setOpacity(0.5);
         }
 
-        // Set button actions
         btnContext.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -247,7 +228,7 @@ public class MicropipettingSolutionController implements Initializable {
         });
 
         btnMaterials.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -260,7 +241,7 @@ public class MicropipettingSolutionController implements Initializable {
         });
 
         btnPredictions.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -275,26 +256,22 @@ public class MicropipettingSolutionController implements Initializable {
         btnProtocol.setOnAction(e -> {
             setSelectedButton(btnProtocol);
 
-            // Hide scrollPane and show LabWorkspace
             scrollPane.setVisible(false);
             scrollPane.setManaged(false);
 
-            // Create and add LabWorkspace
             if (msLabworkspace == null) {
                 msLabworkspace = new MSLabworkspace(this);
             }
 
-            // Remove scrollPane if present and add labWorkspace
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(msLabworkspace.getMSLabWorkspace());
             VBox.setVgrow(msLabworkspace.getMSLabWorkspace(), Priority.ALWAYS);
 
-            // Show instruction panel
             resetToLabView();
         });
 
         btnResults.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -307,7 +284,7 @@ public class MicropipettingSolutionController implements Initializable {
         });
 
         btnReflection.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -320,7 +297,7 @@ public class MicropipettingSolutionController implements Initializable {
         });
 
         btnSummary.setOnAction(e -> {
-            // Restore scrollPane
+
             mainpanel.getChildren().clear();
             mainpanel.getChildren().add(scrollPane);
             scrollPane.setVisible(true);
@@ -332,7 +309,6 @@ public class MicropipettingSolutionController implements Initializable {
             resetToButtonView();
         });
 
-        // Add buttons with spacing
         panel.getChildren().addAll(
                 btnContext,
                 createSpacer(20),
@@ -348,58 +324,21 @@ public class MicropipettingSolutionController implements Initializable {
                 createSpacer(20),
                 btnSummary);
 
-        // Set initial selection
         setSelectedButton(btnContext);
 
         return panel;
     }
 
-//    private Button createNavButton(String number, String text) {
-//        HBox container = new HBox(12);
-//        container.setAlignment(Pos.CENTER_LEFT);
-//        container.setPadding(new Insets(8, 15, 8, 15));
-//        container.setStyle("-fx-background-color: transparent;");
-//
-//        // Number circle
-//        Circle circle = new Circle(15);
-//        circle.setFill(Color.web("#ffffff"));
-//        circle.setStroke(Color.WHITE);
-//        circle.setStrokeWidth(2);
-//
-//        Label numberLabel = new Label(number);
-//        numberLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
-//        numberLabel.setTextFill(Color.WHITE);
-//
-//        // Stack circle and number
-//        StackPane circleStack = new StackPane();
-//        circleStack.getChildren().addAll(circle, numberLabel);
-//
-//        //Button text
-//        Button btn = new Button(text);
-//        btn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 15));
-//        btn.setTextFill(Color.WHITE);
-//        btn.getStyleClass().add("neu-button");
-//        btn.setMaxWidth(Double.MAX_VALUE);
-//        btn.setAlignment(Pos.CENTER_LEFT);
-//        HBox.setHgrow(btn, Priority.ALWAYS);
-//
-//        // Store container reference in button's userData
-//        btn.setUserData(container);
-//        container.getChildren().addAll(circleStack, btn);
-//        return btn;
-//
-//    }
-
     private Button createNavButton(String number, String text) {
-        // Icon map for each section
+
         String icon = switch (text) {
-            case "CONTEXT"    -> "📋";
-            case "MATERIALS"  -> "🧪";
-            case "PROTOCOL"   -> "⚗️";
-            case "RESULTS"    -> "📊";
+            case "CONTEXT" -> "📋";
+            case "MATERIALS" -> "🧪";
+            case "PROTOCOL" -> "⚗️";
+            case "RESULTS" -> "📊";
             case "REFLECTION" -> "💡";
-            case "SUMMARY"    -> "📝";
-            default           -> "•";
+            case "SUMMARY" -> "📝";
+            default -> "•";
         };
 
         Button btn = new Button(icon + "  " + text);
@@ -417,7 +356,6 @@ public class MicropipettingSolutionController implements Initializable {
                         "-fx-cursor: hand;"
         );
 
-        // Hover effect via mouse events
         btn.setOnMouseEntered(e -> {
             if (btn != selectedButton) {
                 btn.setStyle(
@@ -445,65 +383,42 @@ public class MicropipettingSolutionController implements Initializable {
             }
         });
 
-        btn.setUserData(btn); // store self
+        btn.setUserData(btn);
         return btn;
     }
 
+    private void setSelectedButton(Button btn) {
 
-//    private void setSelectedButton(Button btn) {
-//        // Clear previous selection
-//        if (selectedButton != null) {
-//            HBox prevContainer = (HBox) selectedButton.getUserData();
-//            if (prevContainer != null) {
-//                prevContainer.setStyle("-fx-background-color: transparent;");
-//            }
-//        }
-//
-//        // Set new selection
-//        selectedButton = btn;
-//        if (btn != null) {
-//            HBox container = (HBox) btn.getUserData();
-//            if (container != null) {
-//                container.getStyleClass().remove("neu-button");
-//            }
-//        }
-//    }
-private void setSelectedButton(Button btn) {
-    // Clear previous selection styling
-    if (selectedButton != null) {
-        selectedButton.setStyle(
-                "-fx-background-color: rgba(4, 18, 26, 0.70);" +
-                        "-fx-background-radius: 10;" +
-                        "-fx-border-color: rgba(34, 211, 238, 0.18);" +
-                        "-fx-border-width: 1;" +
-                        "-fx-border-radius: 10;" +
-                        "-fx-text-fill: rgba(207, 250, 254, 0.70);" +
-                        "-fx-cursor: hand;"
-        );
+        if (selectedButton != null) {
+            selectedButton.setStyle(
+                    "-fx-background-color: rgba(4, 18, 26, 0.70);" +
+                            "-fx-background-radius: 10;" +
+                            "-fx-border-color: rgba(34, 211, 238, 0.18);" +
+                            "-fx-border-width: 1;" +
+                            "-fx-border-radius: 10;" +
+                            "-fx-text-fill: rgba(207, 250, 254, 0.70);" +
+                            "-fx-cursor: hand;"
+            );
+        }
+
+        selectedButton = btn;
+        if (btn != null) {
+            btn.setStyle(
+                    "-fx-background-color: rgba(34, 211, 238, 0.14);" +
+                            "-fx-background-radius: 10;" +
+                            "-fx-border-color: #22d3ee;" +
+                            "-fx-border-width: 1.5;" +
+                            "-fx-border-radius: 10;" +
+                            "-fx-text-fill: #ecfeff;" +
+                            "-fx-font-weight: bold;" +
+                            "-fx-cursor: hand;" +
+                            "-fx-effect: dropshadow(gaussian, rgba(34,211,238,0.22), 10, 0.2, 0, 2);"
+            );
+        }
     }
-
-    // Apply active/selected style
-    selectedButton = btn;
-    if (btn != null) {
-        btn.setStyle(
-                "-fx-background-color: rgba(34, 211, 238, 0.14);" +
-                        "-fx-background-radius: 10;" +
-                        "-fx-border-color: #22d3ee;" +
-                        "-fx-border-width: 1.5;" +
-                        "-fx-border-radius: 10;" +
-                        "-fx-text-fill: #ecfeff;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-cursor: hand;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(34,211,238,0.22), 10, 0.2, 0, 2);"
-        );
-    }
-}
-
 
     private void resetToButtonView() {
-//        if (!isPredictionExpanded)
-//            return;
-//        isPredictionExpanded = false;
+
         instruction.getChildren().clear();
         buttonPanel = createButtonPanel();
         instruction.getChildren().add(buttonPanel);
@@ -520,13 +435,10 @@ private void setSelectedButton(Button btn) {
         panel.setPadding(new Insets(15));
         panel.setAlignment(Pos.TOP_LEFT);
 
-        // Header with circle and title
         HBox header = createProtocolHeader();
 
-        // Progress bar and step indicator
         HBox progressSection = createProgressSection();
 
-        // Step title
         Label stepTitleLabel = new Label();
         stepTitleLabel.setId("stepTitle");
         stepTitleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 15));
@@ -534,7 +446,6 @@ private void setSelectedButton(Button btn) {
         stepTitleLabel.setWrapText(true);
         stepTitleLabel.setMaxWidth(350);
 
-        // Scroll pane for instructions
         ScrollPane instructionsScroll = new ScrollPane();
         instructionsScroll.setFitToWidth(true);
         instructionsScroll.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
@@ -545,7 +456,6 @@ private void setSelectedButton(Button btn) {
         currentInstructionsList.setId("instructionsList");
         instructionsScroll.setContent(currentInstructionsList);
 
-        // Navigation buttons
         HBox navigationButtons = createNavigationButtons();
 
         panel.getChildren().addAll(
@@ -564,7 +474,6 @@ private void setSelectedButton(Button btn) {
         navButtons.setAlignment(Pos.CENTER);
         navButtons.setPadding(new Insets(10, 0, 5, 0));
 
-        // Previous button
         Button previousBtn = new Button("◀ Previous");
         previousBtn.setId("previousBtn");
         previousBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
@@ -580,7 +489,6 @@ private void setSelectedButton(Button btn) {
         );
         previousBtn.setOnAction(e -> handlePreviousStep());
 
-        // Circle button (1.a, 2.b, etc)
         Circle stepCircle = new Circle(18);
         stepCircle.setFill(Color.web("#1a5490"));
         stepCircle.setStroke(Color.WHITE);
@@ -593,7 +501,6 @@ private void setSelectedButton(Button btn) {
 
         StackPane circleBtn = new StackPane(stepCircle, stepLabel);
 
-        // Next button
         Button nextBtn = new Button("Next ▶");
         nextBtn.setId("nextBtn");
         nextBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
@@ -617,7 +524,6 @@ private void setSelectedButton(Button btn) {
         header.setAlignment(Pos.CENTER_LEFT);
         header.setPadding(new Insets(5, 0, 5, 0));
 
-        // Circle with number
         Circle circle = new Circle(18);
         circle.setFill(Color.web("#1a5490"));
         circle.setStroke(Color.WHITE);
@@ -629,12 +535,10 @@ private void setSelectedButton(Button btn) {
 
         StackPane circleStack = new StackPane(circle, numberLabel);
 
-        // Title
         Label titleLabel = new Label("PROTOCOL");
         titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 20));
         titleLabel.setStyle("-fx-text-fill: #1a5490;");
 
-        // Notes button (right side)
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
@@ -651,7 +555,6 @@ private void setSelectedButton(Button btn) {
         protocolButton.setGraphic(header);
         protocolButton.getStyleClass().add("nav-btn-active");
 
-
         protocolButton.setOnAction(e -> {
             instruction.getChildren().clear();
             buttonPanel = createButtonPanel();
@@ -661,7 +564,6 @@ private void setSelectedButton(Button btn) {
             updateScrollContent(getMaterialsContent());
 
         });
-
 
         HBox header1 = new HBox(12);
         header1.setAlignment(Pos.CENTER_LEFT);
@@ -676,14 +578,12 @@ private void setSelectedButton(Button btn) {
         section.setAlignment(Pos.CENTER_LEFT);
         section.setPadding(new Insets(5, 0, 10, 0));
 
-        // Progress bar
         ProgressBar progressBar = new ProgressBar(0);
         progressBar.setId("protocolProgressBar");
         progressBar.setPrefWidth(280);
         progressBar.setPrefHeight(8);
         progressBar.setStyle("-fx-accent: #1a5490;");
 
-        // Step indicator
         Label stepIndicator = new Label("1/4");
         stepIndicator.setId("stepIndicator");
         stepIndicator.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
@@ -694,15 +594,12 @@ private void setSelectedButton(Button btn) {
         return section;
     }
 
-
     private void resetToLabView() {
         instruction.getChildren().clear();
 
-        // Create lab instruction panel
         instructionCommandPanel = createInstructionCommandPanel();
         instruction.getChildren().add(instructionCommandPanel);
 
-        // Load step 1
         loadProtocolStep(1);
     }
 
@@ -711,18 +608,15 @@ private void setSelectedButton(Button btn) {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("3. PREDICTIONS");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(300);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Description text
         Label descText = new Label("During this simulation, you will be dispensing different volumes of liquid red dye with a micropipette onto a blotting paper. How do you think the different volumes will influence the size of red circles you expect to see on the blotting paper? Make your predictions here by adjusting the controls to make each circle larger or smaller.");
         descText.setWrapText(true);
         descText.setFont(Font.font("DM Sans Medium", 16));
@@ -730,13 +624,11 @@ private void setSelectedButton(Button btn) {
         descText.setStyle("-fx-text-fill: #333333;");
         descText.setMaxWidth(700);
 
-        // Estimate title
         Label estimateTitle = new Label("Estimate the size of each blot if you set the micropipette to:");
         estimateTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         estimateTitle.setStyle("-fx-text-fill: #333333;");
         estimateTitle.setPadding(new Insets(20, 0, 10, 0));
 
-        // Create the prediction circles container
         HBox predictionBox = createPredictionCircles();
 
         content.getChildren().addAll(title, underline, descText, estimateTitle, predictionBox);
@@ -756,11 +648,9 @@ private void setSelectedButton(Button btn) {
                         "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
         );
 
-        // SAMPLE circle (fixed, no controls)
         VBox sampleBox = createFixedCircle("10µl", "SAMPLE", 0.15);
         container.getChildren().add(sampleBox);
 
-        // Adjustable circles A, B, C, D
         String[] labels = {"20µl", "15µl", "7.5µl", "2µl"};
         String[] names = {"A", "B", "C", "D"};
 
@@ -777,29 +667,24 @@ private void setSelectedButton(Button btn) {
         box.setAlignment(Pos.CENTER);
         box.setPrefWidth(120);
 
-        // Volume label
         Label volLabel = new Label(volumeLabel);
         volLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         volLabel.setStyle("-fx-text-fill: #333333;");
 
-        // Circle container
         double outerRadius = 50;
         StackPane circleStack = new StackPane();
         circleStack.setPrefSize(outerRadius * 2, outerRadius * 2);
 
-        // Outer black circle
         Circle outerCircle = new Circle(outerRadius);
         outerCircle.setFill(Color.TRANSPARENT);
         outerCircle.setStroke(Color.BLACK);
         outerCircle.setStrokeWidth(2);
 
-        // Inner red circle (fixed)
         Circle innerCircle = new Circle(outerRadius * fillRatio);
         innerCircle.setFill(Color.RED);
 
         circleStack.getChildren().addAll(outerCircle, innerCircle);
 
-        // Name label
         Label nameLabel = new Label(name);
         nameLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         nameLabel.setStyle("-fx-text-fill: #333333;");
@@ -813,36 +698,29 @@ private void setSelectedButton(Button btn) {
         box.setAlignment(Pos.CENTER);
         box.setPrefWidth(120);
 
-        // Volume label
         Label volLabel = new Label(volumeLabel);
         volLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         volLabel.setStyle("-fx-text-fill: #333333;");
 
-        // Circle container
         double outerRadius = 50;
         StackPane circleStack = new StackPane();
         circleStack.setPrefSize(outerRadius * 2, outerRadius * 2);
 
-        // Outer black circle
         Circle outerCircle = new Circle(outerRadius);
         outerCircle.setFill(Color.TRANSPARENT);
         outerCircle.setStroke(Color.BLACK);
         outerCircle.setStrokeWidth(2);
 
-        // Inner red circle (adjustable)
         Circle innerCircle = new Circle(outerRadius * predictionSizes[index]);
         innerCircle.setFill(Color.RED);
 
-        // Initialize stored prediction radius
         storePredictionRadius(index, innerCircle.getRadius());
 
         circleStack.getChildren().addAll(outerCircle, innerCircle);
 
-        // Control buttons row
         HBox controlsRow = new HBox(10);
         controlsRow.setAlignment(Pos.CENTER);
 
-        // Minus button
         Button minusBtn = new Button("-");
         minusBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         minusBtn.setPrefSize(35, 35);
@@ -853,20 +731,17 @@ private void setSelectedButton(Button btn) {
                         "-fx-cursor: hand;"
         );
         minusBtn.setOnAction(e -> {
-            if (predictionSizes[index] > 0.05) { // Minimum size
+            if (predictionSizes[index] > 0.05) {
                 predictionSizes[index] -= 0.05;
                 double newRadius = outerRadius * predictionSizes[index];
                 innerCircle.setRadius(newRadius);
 
-                // Store the radius value for result comparison
                 storePredictionRadius(index, newRadius);
             }
         });
 
-        // Small dot (visual separator)
         Circle dot = new Circle(3, Color.RED);
 
-        // Plus button
         Button plusBtn = new Button("+");
         plusBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         plusBtn.setPrefSize(35, 35);
@@ -877,19 +752,17 @@ private void setSelectedButton(Button btn) {
                         "-fx-cursor: hand;"
         );
         plusBtn.setOnAction(e -> {
-            if (predictionSizes[index] < 1.0) { // Maximum size (up to outer circle)
+            if (predictionSizes[index] < 1.0) {
                 predictionSizes[index] += 0.05;
                 double newRadius = outerRadius * predictionSizes[index];
                 innerCircle.setRadius(newRadius);
 
-                // Store the radius value for result comparison
                 storePredictionRadius(index, newRadius);
             }
         });
 
         controlsRow.getChildren().addAll(minusBtn, dot, plusBtn);
 
-        // Name label
         Label nameLabel = new Label(name);
         nameLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         nameLabel.setStyle("-fx-text-fill: #333333;");
@@ -903,18 +776,15 @@ private void setSelectedButton(Button btn) {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("2. MATERIALS");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(250);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Info box
         Label infoText = new Label("Click on the images to learn more about them.");
         infoText.setFont(Font.font("DM Sans Medium", 14));
         infoText.setStyle(
@@ -927,7 +797,6 @@ private void setSelectedButton(Button btn) {
         );
         infoText.setMaxWidth(600);
 
-        // === REAGENTS SECTION ===
         Label reagentsTitle = new Label("REAGENTS");
         reagentsTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         reagentsTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -938,8 +807,6 @@ private void setSelectedButton(Button btn) {
 
         GridPane reagentsGrid = createReagentsGrid();
 
-
-        // === MICROPIPETTING EQUIPMENT SECTION ===
         Label micropipettingTitle = new Label("MICROPIPETTING EQUIPMENT");
         micropipettingTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         micropipettingTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -950,7 +817,6 @@ private void setSelectedButton(Button btn) {
 
         GridPane micropipettingGrid = createMicropipettingGrid();
 
-        // === EQUIPMENT SECTION ===
         Label equipmentTitle = new Label("EQUIPMENT");
         equipmentTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 18));
         equipmentTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -1009,7 +875,6 @@ private void setSelectedButton(Button btn) {
                 {"/Images/MSImages/tipboxes/P1000_Tip_Box.svg", "P1000 Tip Box", "#4d96ff"}
         };
 
-        // Add pipettes
         int col = 0;
         for (String[] pipette : pipettes) {
             StackPane item = createMaterialItem(pipette[0], pipette[1], pipette[2], 70, 85);
@@ -1017,7 +882,6 @@ private void setSelectedButton(Button btn) {
             col++;
         }
 
-        // Add tip boxes
         col = 0;
         for (String[] tipBox : tipBoxes) {
             StackPane item = createMaterialItem(tipBox[0], tipBox[1], tipBox[2], 80, 70);
@@ -1036,7 +900,6 @@ private void setSelectedButton(Button btn) {
 
         String[][] reagents = {{"/Images/MSImages/RedDye-close.svg", "Red Dye Solution", "#4a90e2"}};
 
-
         int col = 0;
         int row = 0;
         for (String[] reagent : reagents) {
@@ -1053,12 +916,11 @@ private void setSelectedButton(Button btn) {
 
     private StackPane createMaterialItem(String imagePath, String labelText,
                                          String accentColor, double imgWidth, double imgHeight) {
-        // I use StackPane so info panel can overlay on top
+
         StackPane mainContainer = new StackPane();
         mainContainer.setMaxWidth(150);
         mainContainer.setAlignment(Pos.TOP_CENTER);
 
-        // The card container (clickable image + label)
         VBox cardContainer = new VBox(10);
         cardContainer.setAlignment(Pos.CENTER);
         cardContainer.setPrefSize(150, 180);
@@ -1073,7 +935,6 @@ private void setSelectedButton(Button btn) {
                         "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);"
         );
 
-        // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 100);
         imageContainer.setStyle(
@@ -1081,7 +942,6 @@ private void setSelectedButton(Button btn) {
                         "-fx-background-radius: 5;"
         );
 
-        // Load SVG using SVGLoader utility
         ImageView imageView = SVGLoader.loadSVG(imagePath, imgWidth, imgHeight, true);
 
         if (imageView != null) {
@@ -1091,13 +951,12 @@ private void setSelectedButton(Button btn) {
             imageView.setSmooth(true);
             imageContainer.getChildren().add(imageView);
         } else {
-            // Fallback: create a colored circle
+
             Circle placeholder = new Circle(30);
             placeholder.setFill(Color.web(accentColor));
             imageContainer.getChildren().add(placeholder);
         }
 
-        // Label
         Label label = new Label(labelText);
         label.setFont(Font.font("DM Sans Medium", FontWeight.SEMI_BOLD, 12));
         label.setTextAlignment(TextAlignment.CENTER);
@@ -1107,27 +966,22 @@ private void setSelectedButton(Button btn) {
 
         cardContainer.getChildren().addAll(imageContainer, label);
 
-        // Create overlay info panel (initially hidden, positioned on top)
         VBox infoPanel = createOverlayInfoPanel(labelText);
-        infoPanel.setTranslateY(-200); // Start above (hidden)
+        infoPanel.setTranslateY(-200);
         infoPanel.setOpacity(0);
         infoPanel.setVisible(false);
         StackPane.setAlignment(infoPanel, Pos.TOP_CENTER);
 
-        // Add both to main container (info panel on top)
         mainContainer.getChildren().addAll(cardContainer, infoPanel);
 
-        // Hover effects on card
         addHoverEffects(cardContainer);
 
-        // Click to show/hide overlay
         final boolean[] isExpanded = {false};
         cardContainer.setOnMouseClicked(e -> {
             toggleOverlayPanel(infoPanel, isExpanded);
             e.consume();
         });
 
-        // Also allow clicking info panel to close it
         infoPanel.setOnMouseClicked(e -> {
             toggleOverlayPanel(infoPanel, isExpanded);
             e.consume();
@@ -1141,7 +995,7 @@ private void setSelectedButton(Button btn) {
         panel.setPrefSize(150, 180);
         panel.setPadding(new Insets(15));
         panel.setStyle(
-                "-fx-background-color: rgba(26, 84, 144, 0.95);" + // Semi-transparent dark blue
+                "-fx-background-color: rgba(26, 84, 144, 0.95);" +
                         "-fx-border-color: #00aaff;" +
                         "-fx-border-width: 2;" +
                         "-fx-border-radius: 8;" +
@@ -1149,26 +1003,22 @@ private void setSelectedButton(Button btn) {
                         "-fx-effect: dropshadow(gaussian, rgba(0,170,255,0.6), 20, 0, 0, 8);"
         );
 
-        // Close hint (small X or tap indicator)
         Label closeHint = new Label("✕");
         closeHint.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         closeHint.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         closeHint.setAlignment(Pos.CENTER_RIGHT);
         closeHint.setMaxWidth(Double.MAX_VALUE);
 
-        // Title
         Label titleLabel = new Label(materialName);
         titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
         titleLabel.setStyle("-fx-text-fill: white;");
         titleLabel.setWrapText(true);
         titleLabel.setMaxWidth(120);
 
-        // Separator line
         Separator separator = new Separator();
         separator.setStyle("-fx-background-color: rgba(255,255,255,0.3);");
         separator.setPrefHeight(1);
 
-        // Description
         String description = getMaterialDescription(materialName);
         Label descLabel = new Label(description);
         descLabel.setFont(Font.font("DM Sans Medium", 10));
@@ -1176,7 +1026,6 @@ private void setSelectedButton(Button btn) {
         descLabel.setWrapText(true);
         descLabel.setMaxWidth(120);
 
-        // Wrap in ScrollPane for long content
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(descLabel);
         scrollPane.setFitToWidth(true);
@@ -1200,7 +1049,7 @@ private void setSelectedButton(Button btn) {
         isExpanded[0] = !isExpanded[0];
 
         if (isExpanded[0]) {
-            // Show - slide down from top
+
             infoPanel.setVisible(true);
 
             Timeline showTimeline = new Timeline(
@@ -1218,7 +1067,7 @@ private void setSelectedButton(Button btn) {
             );
             showTimeline.play();
         } else {
-            // Hide - slide up to top
+
             Timeline hideTimeline = new Timeline(
                     new KeyFrame(
                             Duration.ZERO,
@@ -1268,13 +1117,9 @@ private void setSelectedButton(Button btn) {
     private String getMaterialDescription(String materialName) {
         String cleanName = materialName.trim().replace("\n", " ");
 
-        // Reagents
         if (cleanName.contains("Red Dye Solution")) {
             return "Red dye in tube.";
-        }
-
-        // Micropipettes
-        else if (cleanName.contains("P2 Pipette")) {
+        } else if (cleanName.contains("P2 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 0.2 and 2 microliters.";
         } else if (cleanName.contains("P20 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 2 and 20 microliters.";
@@ -1282,10 +1127,7 @@ private void setSelectedButton(Button btn) {
             return "Used to draw up and dispense volumes of liquid between 20 and 200 microliters.";
         } else if (cleanName.contains("P1000 Pipette")) {
             return "Used to draw up and dispense volumes of liquid between 200 and 1000 microliters.";
-        }
-
-        // Tip Boxes
-        else if (cleanName.contains("P2 Tip Box")) {
+        } else if (cleanName.contains("P2 Tip Box")) {
             return "Filled with P2 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
         } else if (cleanName.contains("P20 Tip Box")) {
             return "Filled with P20 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
@@ -1293,10 +1135,7 @@ private void setSelectedButton(Button btn) {
             return "Filled with P200 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
         } else if (cleanName.contains("P1000 Tip Box")) {
             return "Filled with P1000 tips. Tips are attached to the micropipette and discarded after single use to avoid contamination between transfers.";
-        }
-
-        // Other Equipment
-        else if (cleanName.contains("Trash")) {
+        } else if (cleanName.contains("Trash")) {
             return "Waste container. Used to dispose of any non-hazardous waste resulting from the experiment, including micropipette tips.";
         } else if (cleanName.contains("Blotting Paper")) {
             return "Used to practice dispensing different volumes from a micropipette. Divided into four sections labeled A, B, C and D.";
@@ -1309,18 +1148,15 @@ private void setSelectedButton(Button btn) {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("5. RESULTS");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Introduction text
         Label introText = new Label(
                 "Look at the relative size difference between your micropipetted circles. You " +
                         "should be able to see that accuracy of the liquid transferred is very important " +
@@ -1335,13 +1171,10 @@ private void setSelectedButton(Button btn) {
         introText.setStyle("-fx-text-fill: #333333;");
         introText.setMaxWidth(700);
 
-        // Predicted Results Section
         VBox predictedSection = createPredictedResultsSection();
 
-        // Actual Results Section
         VBox actualSection = createActualResultsSection();
 
-        // Ideal Results Section
         VBox idealSection = createIdealResultsSection();
 
         content.getChildren().addAll(
@@ -1369,7 +1202,6 @@ private void setSelectedButton(Button btn) {
         sectionDesc.setFont(Font.font("DM Sans Medium", 14));
         sectionDesc.setStyle("-fx-text-fill: #666666;");
 
-        // Create circles container
         HBox circlesContainer = new HBox(30);
         circlesContainer.setAlignment(Pos.CENTER);
         circlesContainer.setPadding(new Insets(20));
@@ -1397,22 +1229,18 @@ private void setSelectedButton(Button btn) {
         sectionDesc.setFont(Font.font("DM Sans Medium", 14));
         sectionDesc.setStyle("-fx-text-fill: #666666;");
 
-        // Create circles container
         HBox circlesContainer = new HBox(30);
         circlesContainer.setAlignment(Pos.CENTER);
         circlesContainer.setPadding(new Insets(20));
 
-        // Get actual results from blotting paper (via MSLabworkspace)
         String[] circleNames = {"A", "B", "C", "D"};
         String[] volumes = {"0µl", "0µl", "0µl", "0µl"};
 
-        // We'll need to get actual radius from blotting paper
-        // For now, using default values - will be updated when integrated with MSLabworkspace
         double[] actualRadii = new double[4];
         if (msLabworkspace != null) {
             for (int i = 0; i < 4; i++) {
                 double radius = msLabworkspace.getBlottingPaperRadius(circleNames[i]);
-                // Convert radius back to approximate percentage (max radius is 35)
+
                 actualRadii[i] = Math.min(radius / 35.0, 1.0);
             }
         }
@@ -1439,14 +1267,11 @@ private void setSelectedButton(Button btn) {
         sectionDesc.setFont(Font.font("DM Sans Medium", 14));
         sectionDesc.setStyle("-fx-text-fill: #666666;");
 
-        // Create circles container
         HBox circlesContainer = new HBox(30);
         circlesContainer.setAlignment(Pos.CENTER);
         circlesContainer.setPadding(new Insets(20));
 
-        // Ideal volumes: A=20µl, B=15µl, C=7.5µl, D=2µl
-        // Scale: 20µl = 100% (1.0), proportional for others
-        double[] idealSizes = {1.0, 0.75, 0.375, 0.1};  // 20µl, 15µl, 7.5µl, 2µl
+        double[] idealSizes = {1.0, 0.75, 0.375, 0.1};
         String[] labels = {"A | 20µl", "B | 15µl", "C | 7.5µl", "D | 2µl"};
 
         for (int i = 0; i < 4; i++) {
@@ -1467,26 +1292,22 @@ private void setSelectedButton(Button btn) {
         StackPane circleStack = new StackPane();
         circleStack.setPrefSize(outerRadius * 2 + 20, outerRadius * 2 + 20);
 
-        // Outer black circle
         Circle outerCircle = new Circle(outerRadius);
         outerCircle.setFill(Color.TRANSPARENT);
         outerCircle.setStroke(Color.BLACK);
         outerCircle.setStrokeWidth(2);
 
-        // Inner red circle
         Circle innerCircle = new Circle(outerRadius * fillRatio);
         innerCircle.setFill(Color.RED);
 
         circleStack.getChildren().addAll(outerCircle, innerCircle);
 
-        // Label below circle
         Label circleLabel = new Label(label);
         circleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
         circleLabel.setStyle("-fx-text-fill: #333333;");
 
         box.getChildren().addAll(circleStack, circleLabel);
 
-        // Add "Incorrect!" badge if needed
         if (showIncorrect && fillRatio > 0.01) {
             Label incorrectBadge = new Label("Incorrect!");
             incorrectBadge.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 11));
@@ -1510,18 +1331,15 @@ private void setSelectedButton(Button btn) {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("6. REFLECTION");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(300);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Introduction text
         Label text = new Label(
                 "Let's look at what you learned from this simulation. Please click on your answer " +
                         "to each of the following questions to save them in your notebook."
@@ -1532,7 +1350,6 @@ private void setSelectedButton(Button btn) {
         text.setMaxWidth(700);
         text.setLineSpacing(3);
 
-        // Question 1
         QuizQuestion q1 = createQuizQuestion(
                 1,
                 "What do you think is the main purpose of this simulation?",
@@ -1542,12 +1359,11 @@ private void setSelectedButton(Button btn) {
                         "To learn the correct way to handle a micropipette in a laboratory.",
                         "To practice making solutions of different concentrations."
                 },
-                2, // Correct answer index (C - third option)
+                2,
                 "What specific skill did you practice during this simulation?",
-                3  // Attempts allowed
+                3
         );
 
-        // Question 2
         QuizQuestion q2 = createQuizQuestion(
                 2,
                 "What volume should be set on a P20 micropipette to measure 18.5 microliters?",
@@ -1557,12 +1373,11 @@ private void setSelectedButton(Button btn) {
                         "1.85",
                         "0.185"
                 },
-                1, // Correct answer index (B - 185)
+                1,
                 "How many decimal places are displayed on a P20 micropipette?",
                 3
         );
 
-        // Question 3
         QuizQuestion q3 = createQuizQuestion(
                 3,
                 "If the window on a P20 micropipette displays the numbers \"1 5 5\" from top to bottom, what volume will be measured?",
@@ -1571,12 +1386,11 @@ private void setSelectedButton(Button btn) {
                         "15.5 microliters",
                         "155 microliters"
                 },
-                1, // Correct answer index (B - 15.5 microliters)
+                1,
                 "Can a P20 measure this volume of liquid?",
                 3
         );
 
-        // Question 4
         QuizQuestion q4 = createQuizQuestion(
                 4,
                 "What is the main purpose of disposable tips on a micropipette?",
@@ -1585,12 +1399,11 @@ private void setSelectedButton(Button btn) {
                         "To reach into small tubes.",
                         "To make the micropipettes measure larger volumes."
                 },
-                0, // Correct answer index (A)
+                0,
                 "Disposable tips cannot change the volume range of a micropipette.",
                 3
         );
 
-        // Question 5
         QuizQuestion q5 = createQuizQuestion(
                 5,
                 "What happens if you press the plunger of a micropipette past the first stop when drawing up liquid?",
@@ -1599,12 +1412,11 @@ private void setSelectedButton(Button btn) {
                         "You will draw up less liquid than you wanted.",
                         "It will have no effect on the volume you draw up."
                 },
-                0, // Correct answer index (A)
+                0,
                 "The second stop is used when expelling liquid, not when drawing it up.",
                 3
         );
 
-        // Feedback Question (separate section)
         Label feedbackTitle = new Label("FEEDBACK QUESTION");
         feedbackTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 24));
         feedbackTitle.setStyle("-fx-text-fill: #1a5490;");
@@ -1652,18 +1464,15 @@ private void setSelectedButton(Button btn) {
         content.setPadding(new Insets(40));
         content.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Title
         Label title = new Label("7. SUMMARY");
         title.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 32));
         title.setStyle("-fx-text-fill: #1a5490;");
 
-        // Underline
         Separator underline = new Separator();
         underline.setMaxWidth(200);
         underline.setStyle("-fx-background-color: #00aaff;");
         underline.setPrefHeight(3);
 
-        // Introduction text
         Label introText = new Label(
                 "It is always good to summarize your methodology and observations after you have completed an experiment. Please view a recap of this simulation and takeaway messages regarding micropipetting below."
         );
@@ -1672,16 +1481,13 @@ private void setSelectedButton(Button btn) {
         introText.setStyle("-fx-text-fill: #333333;");
         introText.setMaxWidth(650);
 
-        // Learning outcomes box
         VBox learningBox = createLearningOutcomesBox();
 
-        // Takeaway messages section
         Label takeawayTitle = new Label("Takeaway messages");
         takeawayTitle.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 20));
         takeawayTitle.setStyle("-fx-text-fill: #1a5490;");
         takeawayTitle.setPadding(new Insets(20, 0, 10, 0));
 
-        // Takeaway items
         VBox takeawayItems = createTakeawayItems();
 
         content.getChildren().addAll(
@@ -1708,7 +1514,6 @@ private void setSelectedButton(Button btn) {
         );
         box.setMaxWidth(650);
 
-        // Main heading
         Label heading = new Label(
                 "In this simulation, you learned the correct way to use a micropipette in a lab. This is a crucial technique that is used frequently in molecular biology. The simulation explored how to:"
         );
@@ -1716,7 +1521,6 @@ private void setSelectedButton(Button btn) {
         heading.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
         heading.setStyle("-fx-text-fill: #1a5490;");
 
-        // Learning points with checkmarks
         VBox points = new VBox(12);
 
         points.getChildren().addAll(
@@ -1735,13 +1539,11 @@ private void setSelectedButton(Button btn) {
         HBox item = new HBox(10);
         item.setAlignment(Pos.TOP_LEFT);
 
-        // Blue checkmark circle
         Circle checkCircle = new Circle(10);
         checkCircle.setFill(Color.web("#4a90e2"));
         checkCircle.setStroke(Color.web("#3a7bc8"));
         checkCircle.setStrokeWidth(1);
 
-        // Checkmark symbol (✓)
         Label checkmark = new Label("✓");
         checkmark.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
         checkmark.setStyle("-fx-text-fill: white;");
@@ -1749,7 +1551,6 @@ private void setSelectedButton(Button btn) {
         StackPane checkIcon = new StackPane(checkCircle, checkmark);
         checkIcon.setPrefSize(20, 20);
 
-        // Text
         Label itemText = new Label(text);
         itemText.setFont(Font.font("DM Sans Medium", 15));
         itemText.setStyle("-fx-text-fill: #333333;");
@@ -1764,7 +1565,6 @@ private void setSelectedButton(Button btn) {
         VBox container = new VBox(15);
         container.setMaxWidth(750);
 
-        // Takeaway messages data: [image_path, message_text]
         String[][] takeaways = {
                 {
                         "/Images/MSImages/tip2.svg",
@@ -1801,7 +1601,6 @@ private void setSelectedButton(Button btn) {
         );
         container.setPrefHeight(120);
 
-        // Image container with dark blue background
         StackPane imageContainer = new StackPane();
         imageContainer.setPrefSize(120, 90);
         imageContainer.setStyle(
@@ -1809,7 +1608,6 @@ private void setSelectedButton(Button btn) {
                         "-fx-background-radius: 5;"
         );
 
-        // Load SVG image
         ImageView imageView = SVGLoader.loadSVG(imagePath, 80, 80);
 
         if (imageView != null) {
@@ -1820,7 +1618,6 @@ private void setSelectedButton(Button btn) {
             imageContainer.getChildren().add(imageView);
         }
 
-        // Message text
         Label message = new Label(messageText);
         message.setWrapText(true);
         message.setFont(Font.font("DM Sans Medium", 15));
@@ -1828,19 +1625,16 @@ private void setSelectedButton(Button btn) {
         message.setMaxWidth(580);
         message.setLineSpacing(3);
 
-        // Set HBox to grow with text
         HBox.setHgrow(message, Priority.ALWAYS);
 
         container.getChildren().addAll(imageContainer, message);
 
         return container;
     }
-    // ========== STEP LOADING ==========
 
     private void loadProtocolStep(int stepNumber) {
         currentProtocolStep = stepNumber;
 
-        // Update progress
         ProgressBar progressBar = (ProgressBar) instructionCommandPanel.lookup("#protocolProgressBar");
         if (progressBar != null) {
             progressBar.setProgress((double) stepNumber / TOTAL_PROTOCOL_STEPS);
@@ -1851,16 +1645,13 @@ private void setSelectedButton(Button btn) {
             stepIndicator.setText(stepNumber + "/" + TOTAL_PROTOCOL_STEPS);
         }
 
-        // Update step title and instructions
         updateStepContent(stepNumber);
 
-        // Update Previous button state
         Button previousBtn = (Button) instructionCommandPanel.lookup("#previousBtn");
         if (previousBtn != null) {
             previousBtn.setDisable(stepNumber == 1);
         }
 
-        // Update Next button state
         Button nextBtn = (Button) instructionCommandPanel.lookup("#nextBtn");
         if (nextBtn != null) {
             nextBtn.setDisable(stepNumber == TOTAL_PROTOCOL_STEPS);
@@ -1868,7 +1659,7 @@ private void setSelectedButton(Button btn) {
     }
 
     private void updateStepContent(int stepNumber) {
-        // Step titles
+
         String[] stepTitles = {
                 "1. Set the volume on the P20 micropipette.",
                 "2. Draw up the red dye into the micropipette.",
@@ -1876,9 +1667,8 @@ private void setSelectedButton(Button btn) {
                 "4. Pipette different volumes of red dye onto the blotting paper.",
         };
 
-        // All instructions for each step
         String[][][] allInstructions = {
-                // Step 1
+
                 {
                         {"a", "Select the P20 micropipette.", String.valueOf(false)},
                         {"b", "Select the volume setting to set the volume to 20 μl and then select Save volume.", String.valueOf(false)},
@@ -1886,21 +1676,21 @@ private void setSelectedButton(Button btn) {
                         {"d", "Move the P20 micropipette onto the P20 tip box to attach a tip.", String.valueOf(false)},
                         {"e", "Select the P20 tip box to close it.", String.valueOf(false)},
                 },
-                // Step 2
+
                 {
                         {"a", "Select the red dye solution tube to open it.", String.valueOf(false)},
                         {"b", "Select the micropipette and place it in the red dye solution.", String.valueOf(false)},
                         {"c", "Draw up the red dye by first pushing down the plunger until it reaches the first stop and slowly releasing the plunger.", String.valueOf(false)},
                         {"d", "Close the red dye solution tube.", String.valueOf(false)},
                 },
-                // Step 3
+
                 {
                         {"a", "Move the micropipette to circle A on the blotting paper to dispense the red dye.", String.valueOf(false)},
                         {"b", "Dispense the red dye by holding down the plunger until it reaches the second stop and slowly releasing it.", String.valueOf(false)},
                         {"c", "Move the micropipette over the trash can and press on the eject mechanism to eject the tip.", String.valueOf(false)},
                         {"d", "Select the P20 micropipette and place it back onto the rack.", String.valueOf(false)},
                 },
-                // Step 4
+
                 {
                         {"a", "In circle B on the blotting paper, follow the same process as before to dispense 15 μl of red dye.", String.valueOf(false)},
                         {"b", "In circle C on the blotting paper, follow the same process as before to dispense 7.5 μl of red dye.", String.valueOf(false)},
@@ -1908,13 +1698,11 @@ private void setSelectedButton(Button btn) {
                 },
         };
 
-        // Update title
         Label stepTitle = (Label) instructionCommandPanel.lookup("#stepTitle");
         if (stepTitle != null) {
             stepTitle.setText(stepTitles[stepNumber - 1]);
         }
 
-        // Clear and populate instructions
         currentInstructionsList.getChildren().clear();
 
         String[][] instructions = allInstructions[stepNumber - 1];
@@ -1922,13 +1710,12 @@ private void setSelectedButton(Button btn) {
         for (int i = 0; i < instructions.length; i++) {
             String letter = instructions[i][0];
             String text = instructions[i][1];
-            boolean isHighlighted = i == 0; // First instruction highlighted by default
+            boolean isHighlighted = i == 0;
 
             HBox instructionItem = createInstructionItem(letter, text, isHighlighted, stepNumber);
             currentInstructionsList.getChildren().add(instructionItem);
         }
 
-        // Update circle label
         Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
         if (circleLabel != null) {
             circleLabel.setText(stepNumber + "." + instructions[0][0]);
@@ -1941,7 +1728,6 @@ private void setSelectedButton(Button btn) {
         item.setPadding(new Insets(10));
         item.setId("instruction_" + stepNumber + "_" + letter);
 
-        // Highlight style
         if (isHighlighted) {
             item.setStyle(
                     "-fx-background-color: #ADD8E6;" +
@@ -1955,7 +1741,6 @@ private void setSelectedButton(Button btn) {
             );
         }
 
-        // Letter circle
         Circle circle = new Circle(14);
         circle.setFill(Color.web("#1a5490"));
         circle.setStroke(Color.WHITE);
@@ -1969,7 +1754,6 @@ private void setSelectedButton(Button btn) {
         letterCircle.setMinSize(28, 28);
         letterCircle.setMaxSize(28, 28);
 
-        // Text
         Label instructionText = new Label(text);
         instructionText.setFont(Font.font("DM Sans Medium", 12));
         instructionText.setStyle("-fx-text-fill: #333;");
@@ -1977,21 +1761,19 @@ private void setSelectedButton(Button btn) {
         instructionText.setMaxWidth(280);
         HBox.setHgrow(instructionText, Priority.ALWAYS);
 
-        // Edit icon (pencil)
         Label editIcon = new Label("✏");
         editIcon.setFont(Font.font("DM Sans Medium", 12));
         editIcon.setStyle("-fx-text-fill: #1a5490; -fx-cursor: hand;");
 
         item.getChildren().addAll(letterCircle, instructionText, editIcon);
 
-        // Click to highlight
         item.setOnMouseClicked(e -> highlightInstruction(item, stepNumber + "." + letter));
 
         return item;
     }
 
     private void highlightInstruction(HBox item, String instructionId) {
-        // Remove previous highlight
+
         if (currentHighlightedInstruction != null) {
             HBox prevItem = (HBox) currentInstructionsList.lookup("#" + currentHighlightedInstruction);
             if (prevItem != null) {
@@ -1999,7 +1781,6 @@ private void setSelectedButton(Button btn) {
             }
         }
 
-        // Highlight current
         item.setStyle(
                 "-fx-background-color: #ADD8E6;" +
                         "-fx-border-radius: 5;" +
@@ -2007,17 +1788,15 @@ private void setSelectedButton(Button btn) {
         );
         currentHighlightedInstruction = item.getId();
 
-        // Update circle label
         Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
         if (circleLabel != null) {
             circleLabel.setText(instructionId);
         }
     }
-    // ========== NAVIGATION HANDLERS ==========
 
     private void handlePreviousStep() {
         if (currentProtocolStep == 1) {
-            // Go back to button panel
+
             resetToButtonView();
         } else {
             loadProtocolStep(currentProtocolStep - 1);
@@ -2035,10 +1814,8 @@ private void setSelectedButton(Button btn) {
             return;
         }
 
-        // Find and highlight the instruction
         String instructionId = "instruction_" + stepNumber + "_" + subStep;
 
-        // Remove previous highlight
         if (currentHighlightedInstruction != null) {
             HBox prevItem = (HBox) currentInstructionsList.lookup("#" + currentHighlightedInstruction);
             if (prevItem != null) {
@@ -2046,7 +1823,6 @@ private void setSelectedButton(Button btn) {
             }
         }
 
-        // Highlight current instruction
         HBox currentItem = (HBox) currentInstructionsList.lookup("#" + instructionId);
         if (currentItem != null) {
             currentItem.setStyle(
@@ -2056,7 +1832,6 @@ private void setSelectedButton(Button btn) {
             );
             currentHighlightedInstruction = instructionId;
 
-            // Update circle label
             Label circleLabel = (Label) instructionCommandPanel.lookup("#stepCircleLabel");
             if (circleLabel != null) {
                 circleLabel.setText(stepNumber + "." + subStep);
@@ -2064,12 +1839,6 @@ private void setSelectedButton(Button btn) {
         }
     }
 
-    /**
-     * Store prediction radius for later comparison with actual results
-     *
-     * @param index  Circle index (0=A, 1=B, 2=C, 3=D)
-     * @param radius Radius value in pixels
-     */
     private void storePredictionRadius(int index, double radius) {
         switch (index) {
             case 0:
@@ -2087,12 +1856,6 @@ private void setSelectedButton(Button btn) {
         }
     }
 
-    /**
-     * Get prediction radius for a specific circle
-     *
-     * @param circleName Circle name (A, B, C, or D)
-     * @return Radius in pixels
-     */
     public double getPredictionRadius(String circleName) {
         switch (circleName) {
             case "A":
@@ -2108,38 +1871,32 @@ private void setSelectedButton(Button btn) {
         }
     }
 
-    /**
-     * Complete current step and auto-advance to next sub-step
-     * Called by MSLabworkspace when user completes an action
-     */
     public void completeCurrentStep() {
-        // Mark current step as complete
+
         String stepKey = activeStep + "_" + activeSubStep;
         stepCompletionMap.put(stepKey, true);
 
         System.out.println("✅ Completed: Step " + activeStep + "." + activeSubStep);
 
-        // Check if this was the last step (Step 4.c)
         if (activeStep == 4 && activeSubStep.equals("c")) {
-            // Enable Results button
+
             enableResultsButton();
             System.out.println("🎊 All protocol steps completed! Results section now available.");
         }
 
-        // Map to determine next sub-step
         String nextSubStep = getNextSubStep(activeStep, activeSubStep);
 
         if (nextSubStep != null) {
-            // Move to next sub-step
+
             activeSubStep = nextSubStep;
             highlightNextInstruction(String.valueOf(activeStep), activeSubStep);
             System.out.println("➡️ Moving to: Step " + activeStep + "." + activeSubStep);
         } else {
-            // Current step's all sub-steps complete, check if we can move to next step
+
             if (activeStep < TOTAL_PROTOCOL_STEPS) {
                 activeStep++;
                 activeSubStep = "a";
-                // Auto-load next step if needed
+
                 if (currentProtocolStep != activeStep) {
                     loadProtocolStep(activeStep);
                 }
@@ -2150,9 +1907,6 @@ private void setSelectedButton(Button btn) {
         }
     }
 
-    /**
-     * Enable the Results button after all protocol steps are complete
-     */
     private void enableResultsButton() {
         allStepsCompleted = true;
 
@@ -2160,7 +1914,6 @@ private void setSelectedButton(Button btn) {
             btnResults.setDisable(false);
             btnResults.setOpacity(1.0);
 
-            // Show congratulatory message then auto-navigate to Results
             javafx.application.Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Congratulations!");
@@ -2172,7 +1925,6 @@ private void setSelectedButton(Button btn) {
                 );
                 alert.showAndWait();
 
-                // Auto-navigate to Results section after alert is dismissed
                 mainpanel.getChildren().clear();
                 mainpanel.getChildren().add(scrollPane);
                 scrollPane.setVisible(true);
@@ -2183,7 +1935,6 @@ private void setSelectedButton(Button btn) {
                 setSelectedButton(btnResults);
             });
 
-            // Optional: Add a subtle highlight animation to draw attention
             Timeline timeline = new Timeline(
                     new KeyFrame(
                             Duration.millis(0),
@@ -2201,21 +1952,18 @@ private void setSelectedButton(Button btn) {
                             new KeyValue(btnResults.scaleYProperty(), 1.0)
                     )
             );
-            timeline.setCycleCount(2); // Pulse twice
+            timeline.setCycleCount(2);
             timeline.play();
         }
     }
 
-    /**
-     * Get the next sub-step based on current step and sub-step
-     */
     private String getNextSubStep(int step, String currentSub) {
-        // Define the progression for each step
+
         String[][] stepProgression = {
-                {"a", "b", "c", "d", "e"},  // Step 1: a->b->c->d->e
-                {"a", "b", "c", "d"},        // Step 2: a->b->c->d
-                {"a", "b", "c", "d"},        // Step 3: a->b->c->d
-                {"a", "b", "c"}              // Step 4: a->b->c
+                {"a", "b", "c", "d", "e"},
+                {"a", "b", "c", "d"},
+                {"a", "b", "c", "d"},
+                {"a", "b", "c"}
         };
 
         if (step < 1 || step > stepProgression.length) return null;
@@ -2227,54 +1975,35 @@ private void setSelectedButton(Button btn) {
             }
         }
 
-        return null; // Last sub-step of current step
+        return null;
     }
 
-    /**
-     * Get step index for tracking completion
-     */
     private int getStepIndex(int step, String subStep) {
         int baseIndex = 0;
 
-        // Calculate base index based on previous steps
-        if (step == 2) baseIndex = 5;      // Step 1 has 5 sub-steps (a-e)
-        else if (step == 3) baseIndex = 9;  // Step 1: 5 + Step 2: 4
-        else if (step == 4) baseIndex = 13; // Step 1: 5 + Step 2: 4 + Step 3: 4
+        if (step == 2) baseIndex = 5;
+        else if (step == 3) baseIndex = 9;
+        else if (step == 4) baseIndex = 13;
 
-        // Add sub-step offset
         int subIndex = subStep.charAt(0) - 'a';
         return baseIndex + subIndex;
     }
 
-    /**
-     * Check if a specific step is already completed
-     * Used to prevent users from skipping steps
-     */
     public boolean isStepCompleted(int step, String subStep) {
         String stepKey = step + "_" + subStep;
         return stepCompletionMap.getOrDefault(stepKey, false);
     }
 
-    /**
-     * Check if current step allows the user to perform a specific action
-     * Returns true only if we're on that step or it's already completed
-     */
     public boolean canPerformAction(int step, String subStep) {
-        // Can perform if it's the current active step OR if it's already completed
+
         return (activeStep == step && activeSubStep.equals(subStep)) ||
                 isStepCompleted(step, subStep);
     }
 
-    /**
-     * Get current active step number
-     */
     public int getActiveStep() {
         return activeStep;
     }
 
-    /**
-     * Get current active sub-step
-     */
     public String getActiveSubStep() {
         return activeSubStep;
     }

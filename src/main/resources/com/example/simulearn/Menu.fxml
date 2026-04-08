@@ -15,10 +15,8 @@
 
                 <VBox spacing="0" styleClass="page-root">
 
-                    <!-- ══════ NAVBAR ══════ -->
                     <HBox alignment="CENTER_LEFT" spacing="0" styleClass="navbar">
 
-                        <!-- Brand -->
                         <HBox alignment="CENTER_LEFT" spacing="12">
                             <FontIcon iconLiteral="mdi2d-dna" styleClass="brand-icon" />
                             <Label styleClass="brand-name" text="SimuLearn" />
@@ -26,7 +24,6 @@
 
                         <Region HBox.hgrow="ALWAYS" />
 
-                        <!-- ── Logged-OUT state (visible by default) ── -->
                         <HBox fx:id="loggedOutBox" alignment="CENTER" spacing="6">
                             <Button mnemonicParsing="false" styleClass="nav-btn-active" text="Home" />
                             <Button mnemonicParsing="false" onAction="#about" styleClass="nav-btn" text="About" />
@@ -34,12 +31,10 @@
                             <Button mnemonicParsing="false" onAction="#exit" styleClass="nav-btn-exit" text="Exit" />
                         </HBox>
 
-                        <!-- ── Logged-IN state (hidden until login) ── -->
                         <HBox fx:id="loggedInBox" alignment="CENTER" managed="false" spacing="10" visible="false">
                             <Button mnemonicParsing="false" styleClass="nav-btn-active" text="Home" />
                             <Button mnemonicParsing="false" onAction="#about" styleClass="nav-btn" text="About" />
 
-                            <!-- User avatar chip -->
                             <HBox alignment="CENTER" spacing="10" styleClass="user-chip">
                                 <Label fx:id="userAvatarLabel" styleClass="user-avatar" text="U" />
                                 <VBox alignment="CENTER_LEFT" spacing="1">
@@ -57,7 +52,6 @@
                         </HBox.margin>
                     </HBox>
 
-                    <!-- ══════ HERO ══════ -->
                     <VBox alignment="CENTER" spacing="18" styleClass="hero-section">
                         <Label styleClass="hero-badge" text="🌱   Interactive Science Learning Platform" />
                         <Label styleClass="hero-title" text="Explore. Simulate." />
@@ -85,7 +79,6 @@
                         </HBox>
                     </VBox>
 
-                    <!-- ══════ CARDS ══════ -->
                     <VBox alignment="CENTER" spacing="14" styleClass="cards-section">
 
                         <Label styleClass="section-title" text="Choose Your Subject" />
@@ -93,7 +86,6 @@
 
                         <HBox fx:id="cardHBox" alignment="CENTER" spacing="36" styleClass="cards-row">
 
-                            <!-- Physics -->
                             <Button mnemonicParsing="false" onAction="#physics" styleClass="subject-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
@@ -112,7 +104,6 @@
                                 </graphic>
                             </Button>
 
-                            <!-- Mathematics -->
                             <Button mnemonicParsing="false" onAction="#math" styleClass="subject-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
@@ -131,7 +122,6 @@
                                 </graphic>
                             </Button>
 
-                            <!-- Chemistry -->
                             <Button mnemonicParsing="false" onAction="#chemistry" styleClass="subject-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
@@ -150,7 +140,6 @@
                                 </graphic>
                             </Button>
 
-                            <!-- Biology -->
                             <Button mnemonicParsing="false" onAction="#biology" styleClass="subject-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="18" styleClass="card-inner">
@@ -172,7 +161,6 @@
                         </HBox>
                     </VBox>
 
-                    <!-- ══════ FOOTER ══════ -->
                     <HBox alignment="CENTER" styleClass="footer">
                         <Label styleClass="footer-text" text="© 2026 SimuLearn  •  Made with ❤️ for curious minds" />
                     </HBox>

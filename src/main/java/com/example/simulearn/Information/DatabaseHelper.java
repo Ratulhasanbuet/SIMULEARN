@@ -1,6 +1,6 @@
 package com.example.simulearn.Information;
 
-import com.example.simulearn.Session;
+
 
 import java.sql.*;
 import java.security.MessageDigest;
@@ -14,12 +14,11 @@ public class DatabaseHelper {
     public static final String DB_PATH = DB_DIR + File.separator + "simulearn.db";
     private static final String URL = "jdbc:sqlite:" + DB_PATH;
 
-    // ── Singleton connection ──────────────────────────────
+
     private static Connection connection;
 
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            // Make sure the folder exists
             new File(DB_DIR).mkdirs();
             connection = DriverManager.getConnection(URL);
             connection.setAutoCommit(true);
@@ -27,7 +26,7 @@ public class DatabaseHelper {
         return connection;
     }
 
-    // ── Create tables on first run ────────────────────────
+
     public static void initialize() {
         createMessagesTable();
         String createUsers = """
@@ -70,7 +69,6 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Hash password with SHA-256 ────────────────────────
     public static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -83,7 +81,6 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Register new user ─────────────────────────────────
     public static boolean registerUser(String username, String email, String password) {
         String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         try (Connection conn = getConnection();
@@ -94,13 +91,10 @@ public class DatabaseHelper {
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
-            // UNIQUE constraint → username or email already exists
             return false;
         }
     }
 
-    // ── Validate login ────────────────────────────────────
-    // Returns username on success, null on failure
     public static String loginUser(String usernameOrEmail, String password) {
         String sql = """
                 SELECT username FROM users
@@ -119,7 +113,7 @@ public class DatabaseHelper {
         return null;
     }
 
-    // ── Check if username already taken ──────────────────
+
     public static boolean usernameExists(String username) {
         String sql = "SELECT 1 FROM users WHERE username = ?";
         try (Connection conn = getConnection();
@@ -131,7 +125,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Check if email already taken ─────────────────────
+
     public static boolean emailExists(String email) {
         String sql = "SELECT 1 FROM users WHERE email = ?";
         try (Connection conn = getConnection();
@@ -143,7 +137,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Get email from username ──────────────────────────
+
     public static String getUserEmail(String username) {
         String sql = "SELECT email FROM users WHERE username = ?";
         try (Connection conn = getConnection();
@@ -157,7 +151,7 @@ public class DatabaseHelper {
         return null;
     }
 
-    // ── Save remember-me token ────────────────────────────
+
     public static void saveRememberToken(String username, String token) {
         String getUserId = "SELECT id FROM users WHERE username = ?";
         String insert = "INSERT OR REPLACE INTO remember_tokens (user_id, token) VALUES (?, ?)";
@@ -177,7 +171,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Get username from remember token ──────────────────
+
     public static String getUserFromToken(String token) {
         String sql = """
                 SELECT u.username FROM users u
@@ -195,7 +189,7 @@ public class DatabaseHelper {
         return null;
     }
 
-    // ── Delete remember token (on logout) ─────────────────
+
     public static void deleteRememberToken(String token) {
         String sql = "DELETE FROM remember_tokens WHERE token = ?";
         try (Connection conn = getConnection();
@@ -207,7 +201,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Verification Code Management ──────────────────────
+
     public static void saveVerificationCode(String email, String code) {
         // Generate expiry time (10 minutes from now)
         String sql = """
@@ -224,7 +218,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Verify code and delete it ────────────────────────
+
     public static boolean verifyCode(String email, String code) {
         String sql = """
                 SELECT 1 FROM verification_codes
@@ -245,7 +239,7 @@ public class DatabaseHelper {
         return false;
     }
 
-    // ── Delete verification code ─────────────────────────
+
     private static void deleteVerificationCode(String email, String code) {
         String sql = "DELETE FROM verification_codes WHERE email = ? AND code = ?";
         try (Connection conn = getConnection();
@@ -258,7 +252,7 @@ public class DatabaseHelper {
         }
     }
 
-    // ── Clean expired verification codes ──────────────────
+
     public static void cleanExpiredCodes() {
         String sql = "DELETE FROM verification_codes WHERE datetime('now') >= expires_at";
         try (Connection conn = getConnection();
@@ -291,7 +285,6 @@ public class DatabaseHelper {
 
         return usernames;
     }
-    // In DatabaseHelper.java
     public static void createMessagesTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS messages (

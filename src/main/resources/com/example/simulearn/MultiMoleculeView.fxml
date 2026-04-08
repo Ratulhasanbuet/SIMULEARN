@@ -10,10 +10,8 @@
 
     <children>
 
-        <!-- NAVBAR -->
         <HBox alignment="CENTER_LEFT" prefWidth="1920.0" spacing="0" styleClass="navbar" stylesheets="@menu.css">
 
-            <!-- Brand -->
             <HBox alignment="CENTER_LEFT" spacing="12">
                 <FontIcon iconLiteral="mdi2d-dna" styleClass="brand-icon" />
                 <Label styleClass="brand-name" text="SimuLearn" />
@@ -21,7 +19,6 @@
 
             <Region HBox.hgrow="ALWAYS" />
 
-            <!-- Page title -->
             <Label styleClass="sim-page-title" text="Multi Molecule View">
                 <font>
                     <Font name="FontAwesome" size="12.0" />
@@ -30,7 +27,6 @@
 
             <Region HBox.hgrow="ALWAYS" />
 
-            <!-- Back button -->
             <HBox alignment="CENTER" spacing="6">
                 <Button mnemonicParsing="false" onAction="#onBackButtonClicked" styleClass="btn-glow-green" text="Back" />
             </HBox>
@@ -40,20 +36,17 @@
             </HBox.margin>
         </HBox>
 
-        <!-- ══ MAIN CONTENT ══ -->
         <ScrollPane prefHeight="1010.0" prefWidth="1920.0" style="-fx-background-color: #1a1a1a;">
             <content>
                 <HBox prefHeight="1000.0" prefWidth="1916.0" style="-fx-background-color: #041016;">
                     <children>
 
-                        <!-- LEFT: 3D view (mainpanel) -->
                         <VBox fx:id="mainpanel" prefHeight="1000.0" prefWidth="1515.0" style="-fx-background-color: #041016;">
                             <HBox.margin>
                                 <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                             </HBox.margin>
                         </VBox>
 
-                        <!-- RIGHT: controls (instruction) -->
                         <VBox fx:id="instruction" prefHeight="1000.0" prefWidth="400.0" style="-fx-background-color: #041016;">
                             <HBox.margin>
                                 <Insets bottom="15.0" left="7.0" right="15.0" top="15.0" />

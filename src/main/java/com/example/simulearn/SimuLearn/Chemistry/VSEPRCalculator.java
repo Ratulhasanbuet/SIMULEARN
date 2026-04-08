@@ -4,20 +4,25 @@ import javafx.geometry.Point3D;
 
 public class VSEPRCalculator {
 
-    // Helper method to get electron geometry based on steric number
     private static String getElectronGeometry(int stericNumber) {
         switch (stericNumber) {
-            case 2: return "Linear";
-            case 3: return "Trigonal Planar";
-            case 4: return "Tetrahedral";
-            case 5: return "Trigonal Bipyramidal";
-            case 6: return "Octahedral";
-            default: return "Custom";
+            case 2:
+                return "Linear";
+            case 3:
+                return "Trigonal Planar";
+            case 4:
+                return "Tetrahedral";
+            case 5:
+                return "Trigonal Bipyramidal";
+            case 6:
+                return "Octahedral";
+            default:
+                return "Custom";
         }
     }
 
     public static VSEPRGeometry calculate(int stericNumber, int lonePairs, int bondedAtoms) {
-        double bondLength = 70; // Reduced from 100 to 70 for smaller molecule
+        double bondLength = 70;
 
         switch (stericNumber) {
             case 2:

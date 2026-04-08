@@ -41,7 +41,6 @@ public class chemistryMenuController {
         }
     }
 
-
     @FXML
     void onHomeButtonClicked(ActionEvent event) {
         try {
@@ -104,7 +103,6 @@ public class chemistryMenuController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     public void onRealMoleculeButtonClicked(ActionEvent event) throws IOException {

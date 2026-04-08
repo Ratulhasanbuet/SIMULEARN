@@ -82,7 +82,6 @@ public class PPCClabworkspace {
     private boolean microcentrifugeOpen = false;
     private Map<String, Boolean> tipBoxStates = new HashMap<>();
 
-    // Microcentrifuge state
     private VBox microcentrifugeHoverBox;
     private List<String> tubesInMicrocentrifuge = new ArrayList<>();
     private int microcentrifugeRPM = 1300;
@@ -93,24 +92,18 @@ public class PPCClabworkspace {
     private boolean microTimerRunning = false;
     private Stage microcentrifugeDialog;
 
-    // Vortex state
     private String tubeInVortex = null;
     private VBox vortexButtonBox;
     private Timeline vortexTimeline;
 
-    // Tube states
     private Map<String, TubeState> tubeStates = new HashMap<>();
 
-
-    // Track currently active pipette
     private DraggablePipette currentlyActivePipette = null;
 
-    // Trash state
     private boolean trashIsOpen = false;
     private static final String TRASH_CLOSED_SVG = "/Images/PPCCImages/trash-biohazard.svg";
-    private static final String TRASH_OPEN_SVG   = "/Images/PPCCImages/trash-biohazard-open.svg";
+    private static final String TRASH_OPEN_SVG = "/Images/PPCCImages/trash-biohazard-open.svg";
 
-    // Timer state
     private Stage timerDialog;
     private int labTimerHours = 0;
     private int labTimerMinutes = 0;
@@ -118,7 +111,6 @@ public class PPCClabworkspace {
     private Timeline labTimerTimeline;
     private boolean labTimerRunning = false;
 
-    // UI Components
     private ImageView vortexView;
     private ImageView pipetteStandView;
     private ImageView trashView;
@@ -128,10 +120,8 @@ public class PPCClabworkspace {
 
     private Map<String, ImageView> tipBoxViews = new HashMap<>();
 
-    // Pipettes  we have 4 separate draggable pipettes
     private Map<String, DraggablePipette> pipettes = new HashMap<>();
 
-    // Tubes
     private Map<String, DraggableTube> tubes = new HashMap<>();
 
     public PPCClabworkspace(PPCCController controller) {
@@ -173,31 +163,30 @@ public class PPCClabworkspace {
         labWorkspace.setMaxSize(1515, 1056);
         labWorkspace.setStyle("-fx-background-color: linear-gradient(to bottom, #003E6B, #005A89);");
 
-        // ── FLOOR ─────────────────────────────────────────────────────────────
         Rectangle floor = new Rectangle(0, TABLE_Y + 206, 1515, 1056 - (TABLE_Y + 206));
         floor.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#1a2a3a")),
                 new Stop(1.0, Color.web("#0d1a26"))));
         labWorkspace.getChildren().add(floor);
 
-        // ── CABINET BODY ──────────────────────────────────────────────────────
         Rectangle cabinetBody = new Rectangle(60, TABLE_Y + 18, 300, 188);
         cabinetBody.setFill(new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#6a7a88")),
                 new Stop(0.4, Color.web("#7d8e9c")),
                 new Stop(1.0, Color.web("#5a6a78"))));
-        cabinetBody.setArcWidth(4); cabinetBody.setArcHeight(4);
-        cabinetBody.setEffect(new DropShadow(8, 3, 3, Color.rgb(0,0,0,0.5)));
+        cabinetBody.setArcWidth(4);
+        cabinetBody.setArcHeight(4);
+        cabinetBody.setEffect(new DropShadow(8, 3, 3, Color.rgb(0, 0, 0, 0.5)));
 
         Rectangle cabinetInner = new Rectangle(68, TABLE_Y + 24, 284, 176);
         cabinetInner.setFill(new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#5a6a78")),
                 new Stop(0.5, Color.web("#6e7e8c")),
                 new Stop(1.0, Color.web("#4e5e6c"))));
-        cabinetInner.setArcWidth(3); cabinetInner.setArcHeight(3);
+        cabinetInner.setArcWidth(3);
+        cabinetInner.setArcHeight(3);
         labWorkspace.getChildren().addAll(cabinetBody, cabinetInner);
 
-        // ── DRAWERS ────────────────────────────────────────────────────────────
         double dX = 72, dW = 276;
         double d1Y = TABLE_Y + 28;
 
@@ -206,21 +195,32 @@ public class PPCClabworkspace {
                 new Stop(0.0, Color.web("#8a9aaa")),
                 new Stop(0.5, Color.web("#7a8a98")),
                 new Stop(1.0, Color.web("#6a7a88"))));
-        drawer1.setArcWidth(4); drawer1.setArcHeight(4);
-        drawer1.setStroke(Color.web("#4a5a68")); drawer1.setStrokeWidth(1);
-        drawer1.setEffect(new InnerShadow(4, 0, 2, Color.rgb(0,0,0,0.3)));
-        Rectangle d1Hi = new Rectangle(dX+2, d1Y+1, dW-4, 3);
-        d1Hi.setFill(Color.web("#aabbcc", 0.4)); d1Hi.setArcWidth(3); d1Hi.setArcHeight(3);
-        Rectangle h1 = new Rectangle(dX + dW/2 - 35, d1Y+32, 70, 14);
+        drawer1.setArcWidth(4);
+        drawer1.setArcHeight(4);
+        drawer1.setStroke(Color.web("#4a5a68"));
+        drawer1.setStrokeWidth(1);
+        drawer1.setEffect(new InnerShadow(4, 0, 2, Color.rgb(0, 0, 0, 0.3)));
+        Rectangle d1Hi = new Rectangle(dX + 2, d1Y + 1, dW - 4, 3);
+        d1Hi.setFill(Color.web("#aabbcc", 0.4));
+        d1Hi.setArcWidth(3);
+        d1Hi.setArcHeight(3);
+        Rectangle h1 = new Rectangle(dX + dW / 2 - 35, d1Y + 32, 70, 14);
         h1.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#c8d4de")), new Stop(0.4, Color.web("#a0b0bc")), new Stop(1.0, Color.web("#788898"))));
-        h1.setArcWidth(7); h1.setArcHeight(7); h1.setStroke(Color.web("#5a6a78")); h1.setStrokeWidth(1);
-        h1.setEffect(new DropShadow(3, 1, 2, Color.rgb(0,0,0,0.4)));
-        Rectangle s1L = new Rectangle(dX + dW/2 - 28, d1Y+36, 6, 6);
-        s1L.setFill(Color.web("#9aaabb")); s1L.setArcWidth(3); s1L.setArcHeight(3);
-        Rectangle s1R = new Rectangle(dX + dW/2 + 22, d1Y+36, 6, 6);
-        s1R.setFill(Color.web("#9aaabb")); s1R.setArcWidth(3); s1R.setArcHeight(3);
-        Rectangle gap = new Rectangle(dX, d1Y+78, dW, 4);
+        h1.setArcWidth(7);
+        h1.setArcHeight(7);
+        h1.setStroke(Color.web("#5a6a78"));
+        h1.setStrokeWidth(1);
+        h1.setEffect(new DropShadow(3, 1, 2, Color.rgb(0, 0, 0, 0.4)));
+        Rectangle s1L = new Rectangle(dX + dW / 2 - 28, d1Y + 36, 6, 6);
+        s1L.setFill(Color.web("#9aaabb"));
+        s1L.setArcWidth(3);
+        s1L.setArcHeight(3);
+        Rectangle s1R = new Rectangle(dX + dW / 2 + 22, d1Y + 36, 6, 6);
+        s1R.setFill(Color.web("#9aaabb"));
+        s1R.setArcWidth(3);
+        s1R.setArcHeight(3);
+        Rectangle gap = new Rectangle(dX, d1Y + 78, dW, 4);
         gap.setFill(Color.web("#3a4a58"));
 
         double d2Y = d1Y + 82;
@@ -229,54 +229,66 @@ public class PPCClabworkspace {
                 new Stop(0.0, Color.web("#8a9aaa")),
                 new Stop(0.5, Color.web("#7a8a98")),
                 new Stop(1.0, Color.web("#6a7a88"))));
-        drawer2.setArcWidth(4); drawer2.setArcHeight(4);
-        drawer2.setStroke(Color.web("#4a5a68")); drawer2.setStrokeWidth(1);
-        drawer2.setEffect(new InnerShadow(4, 0, 2, Color.rgb(0,0,0,0.3)));
-        Rectangle d2Hi = new Rectangle(dX+2, d2Y+1, dW-4, 3);
-        d2Hi.setFill(Color.web("#aabbcc", 0.4)); d2Hi.setArcWidth(3); d2Hi.setArcHeight(3);
-        Rectangle h2 = new Rectangle(dX + dW/2 - 35, d2Y+32, 70, 14);
+        drawer2.setArcWidth(4);
+        drawer2.setArcHeight(4);
+        drawer2.setStroke(Color.web("#4a5a68"));
+        drawer2.setStrokeWidth(1);
+        drawer2.setEffect(new InnerShadow(4, 0, 2, Color.rgb(0, 0, 0, 0.3)));
+        Rectangle d2Hi = new Rectangle(dX + 2, d2Y + 1, dW - 4, 3);
+        d2Hi.setFill(Color.web("#aabbcc", 0.4));
+        d2Hi.setArcWidth(3);
+        d2Hi.setArcHeight(3);
+        Rectangle h2 = new Rectangle(dX + dW / 2 - 35, d2Y + 32, 70, 14);
         h2.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#c8d4de")), new Stop(0.4, Color.web("#a0b0bc")), new Stop(1.0, Color.web("#788898"))));
-        h2.setArcWidth(7); h2.setArcHeight(7); h2.setStroke(Color.web("#5a6a78")); h2.setStrokeWidth(1);
-        h2.setEffect(new DropShadow(3, 1, 2, Color.rgb(0,0,0,0.4)));
-        Rectangle s2L = new Rectangle(dX + dW/2 - 28, d2Y+36, 6, 6);
-        s2L.setFill(Color.web("#9aaabb")); s2L.setArcWidth(3); s2L.setArcHeight(3);
-        Rectangle s2R = new Rectangle(dX + dW/2 + 22, d2Y+36, 6, 6);
-        s2R.setFill(Color.web("#9aaabb")); s2R.setArcWidth(3); s2R.setArcHeight(3);
+        h2.setArcWidth(7);
+        h2.setArcHeight(7);
+        h2.setStroke(Color.web("#5a6a78"));
+        h2.setStrokeWidth(1);
+        h2.setEffect(new DropShadow(3, 1, 2, Color.rgb(0, 0, 0, 0.4)));
+        Rectangle s2L = new Rectangle(dX + dW / 2 - 28, d2Y + 36, 6, 6);
+        s2L.setFill(Color.web("#9aaabb"));
+        s2L.setArcWidth(3);
+        s2L.setArcHeight(3);
+        Rectangle s2R = new Rectangle(dX + dW / 2 + 22, d2Y + 36, 6, 6);
+        s2R.setFill(Color.web("#9aaabb"));
+        s2R.setArcWidth(3);
+        s2R.setArcHeight(3);
 
         labWorkspace.getChildren().addAll(drawer1, d1Hi, h1, s1L, s1R, gap,
                 drawer2, d2Hi, h2, s2L, s2R);
 
-        // ── TABLE TOP SURFACE ──────────────────────────────────────────────────
-        Rectangle benchWall = new Rectangle(0, TABLE_Y+24, 1515, 182);
+        Rectangle benchWall = new Rectangle(0, TABLE_Y + 24, 1515, 182);
         benchWall.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#7a8a98")), new Stop(1.0, Color.web("#5a6878"))));
-        Rectangle benchEdge = new Rectangle(0, TABLE_Y+18, 1515, 6);
+        Rectangle benchEdge = new Rectangle(0, TABLE_Y + 18, 1515, 6);
         benchEdge.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#6a7a88")), new Stop(1.0, Color.web("#4a5a68"))));
         Rectangle benchSurface = new Rectangle(0, TABLE_Y, 1515, 18);
         benchSurface.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#d8e2ea")), new Stop(0.3, Color.web("#c2cdd8")),
                 new Stop(0.7, Color.web("#b0bcc8")), new Stop(1.0, Color.web("#8a9aaa"))));
-        benchSurface.setEffect(new DropShadow(12, 0, 4, Color.rgb(0,0,0,0.55)));
+        benchSurface.setEffect(new DropShadow(12, 0, 4, Color.rgb(0, 0, 0, 0.55)));
         Rectangle benchHi = new Rectangle(0, TABLE_Y, 1515, 2);
         benchHi.setFill(Color.web("#eef4f8", 0.7));
         labWorkspace.getChildren().addAll(benchWall, benchEdge, benchSurface, benchHi);
 
-        // ── TABLE LEGS ────────────────────────────────────────────────────────
-        Rectangle legL = new Rectangle(60, TABLE_Y+18, 18, 188);
+        Rectangle legL = new Rectangle(60, TABLE_Y + 18, 18, 188);
         legL.setFill(new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#7a8a98")), new Stop(0.3, Color.web("#9aaaba")), new Stop(1.0, Color.web("#5a6a78"))));
-        Rectangle legR = new Rectangle(1437, TABLE_Y+18, 18, 188);
+        Rectangle legR = new Rectangle(1437, TABLE_Y + 18, 18, 188);
         legR.setFill(new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#7a8a98")), new Stop(0.3, Color.web("#9aaaba")), new Stop(1.0, Color.web("#5a6a78"))));
-        Rectangle padL = new Rectangle(50, TABLE_Y+196, 38, 10);
-        padL.setFill(Color.web("#4a5a68")); padL.setArcWidth(4); padL.setArcHeight(4);
-        Rectangle padR = new Rectangle(1427, TABLE_Y+196, 38, 10);
-        padR.setFill(Color.web("#4a5a68")); padR.setArcWidth(4); padR.setArcHeight(4);
+        Rectangle padL = new Rectangle(50, TABLE_Y + 196, 38, 10);
+        padL.setFill(Color.web("#4a5a68"));
+        padL.setArcWidth(4);
+        padL.setArcHeight(4);
+        Rectangle padR = new Rectangle(1427, TABLE_Y + 196, 38, 10);
+        padR.setFill(Color.web("#4a5a68"));
+        padR.setArcWidth(4);
+        padR.setArcHeight(4);
         labWorkspace.getChildren().addAll(legL, legR, padL, padR);
 
-        // ── WALL SHELF ────────────────────────────────────────────────────────
         for (int bx : new int[]{80, 380, 680, 980, 1200}) {
             Rectangle br = new Rectangle(bx, 323, 8, 30);
             br.setFill(Color.web("#8a9aaa"));
@@ -285,14 +297,13 @@ public class PPCClabworkspace {
         Rectangle shelfBody = new Rectangle(50, 323, 1200, 16);
         shelfBody.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0.0, Color.web("#c2cdd8")), new Stop(0.4, Color.web("#aabbcc")), new Stop(1.0, Color.web("#7a8a98"))));
-        shelfBody.setEffect(new DropShadow(6, 0, 3, Color.rgb(0,0,0,0.4)));
+        shelfBody.setEffect(new DropShadow(6, 0, 3, Color.rgb(0, 0, 0, 0.4)));
         Rectangle shelfHi = new Rectangle(50, 323, 1200, 2);
         shelfHi.setFill(Color.web("#e8f0f8", 0.5));
         Rectangle shelfEdge = new Rectangle(50, 339, 1200, 4);
         shelfEdge.setFill(Color.web("#5a6a78"));
         labWorkspace.getChildren().addAll(shelfBody, shelfHi, shelfEdge);
 
-        // Create all equipment
         createTubes();
         createEquipment();
         createTipBoxes();
@@ -300,42 +311,34 @@ public class PPCClabworkspace {
     }
 
     private void createEquipment() {
-        // Vortex
+
         vortexView = createEquipmentImage("/Images/PPCCImages/equipment/vortex.svg", 120, 100, VORTEX_X, VORTEX_Y);
         addEquipLabel("Vortex", VORTEX_X + 60, VORTEX_Y - 24);
 
-        // Microcentrifuge
         microcentrifugeView = createEquipmentImage("/Images/PPCCImages/equipment/Microcentrifuge.svg", 150, 130, MICROCENTRIFUGE_X, MICROCENTRIFUGE_Y);
         addEquipLabel("Microcentrifuge", MICROCENTRIFUGE_X + 75, MICROCENTRIFUGE_Y - 24);
 
-        // Create hover buttons for microcentrifuge
         createMicrocentrifugeHoverButtons();
 
-        // Add mouse enter/exit handlers
         microcentrifugeView.setOnMouseEntered(e -> microcentrifugeHoverBox.setOpacity(1.0));
         microcentrifugeView.setOnMouseExited(e -> {
             if (!microcentrifugeHoverBox.isHover()) microcentrifugeHoverBox.setOpacity(0.0);
         });
 
-        // Pipette Stand
         pipetteStandView = createEquipmentImage("/Images/PPCCImages/equipment/PipetteRack.svg", 180, 220, PIPETTE_STAND_X, PIPETTE_STAND_Y);
 
-        // Trash
         trashView = createEquipmentImage("/Images/PPCCImages/trash-biohazard.svg", 120, 100, TRASH_X, TRASH_Y);
         trashView.setOnMouseClicked(e -> handleTrashClick());
         addEquipLabel("Biohazardous Waste", TRASH_X + 60, TRASH_Y - 24);
 
-        // Chromatography Column
         CColumnView = createEquipmentImage("/Images/PPCCImages/column-blue-full-closed.svg", 120, 400, CCOLUMN_X, CCOLUMN_Y);
         addEquipLabel("Chromatography Column", CCOLUMN_X + 60, CCOLUMN_Y - 24);
 
-        // Timer
         timerView = createEquipmentImage("/Images/PPCCImages/timer.svg", 150, 150, TIMER_X, TIMER_Y);
         timerView.setOnMouseClicked(e -> handleTimerClick());
         addEquipLabel("Timer", TIMER_X + 75, TIMER_Y - 24);
     }
 
-    /** Centered horizontal label above equipment. centerX = image center, topY = just above image top */
     private void addEquipLabel(String text, double centerX, double topY) {
         Label lbl = new Label(text);
         lbl.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 11));
@@ -348,7 +351,7 @@ public class PPCClabworkspace {
                         "-fx-border-radius: 4;" +
                         "-fx-border-width: 1;"
         );
-        // Approximate centering: each char ~6.5px wide at 11pt bold
+
         lbl.setLayoutX(centerX - text.length() * 3.3);
         lbl.setLayoutY(topY);
         labWorkspace.getChildren().add(lbl);
@@ -357,7 +360,6 @@ public class PPCClabworkspace {
     private void handleTrashClick() {
         trashIsOpen = !trashIsOpen;
 
-        // Swap the trash image
         String newPath = trashIsOpen ? TRASH_OPEN_SVG : TRASH_CLOSED_SVG;
         ImageView newView = SVGLoader.loadSVG(newPath, 120, 100);
         newView.setLayoutX(TRASH_X);
@@ -375,7 +377,6 @@ public class PPCClabworkspace {
         trashView = newView;
         labWorkspace.getChildren().add(trashView);
 
-        // If trash is now open and a pipette with tip is nearby, eject the tip
         if (trashIsOpen && currentlyActivePipette != null && currentlyActivePipette.hasTip) {
             if (isNear(currentlyActivePipette.x, currentlyActivePipette.y, TRASH_X, TRASH_Y, 120)) {
                 currentlyActivePipette.ejectTip();
@@ -610,7 +611,6 @@ public class PPCClabworkspace {
 
         Map<String, TubeImagePaths> tubeImageMap = new HashMap<>();
 
-        // Define image paths for each tube type (closed and open versions)
         tubeImageMap.put("Water Collection Jar", new TubeImagePaths("/Images/PPCCImages/waste-collection-jar.svg",
                 "/Images/PPCCImages/waste-collection-jar-open.svg"));
 
@@ -644,10 +644,9 @@ public class PPCClabworkspace {
         tubeImageMap.put("RFP Tube", new TubeImagePaths("/Images/PPCCImages/solution-tube-rfp-empty.svg",
                 "/Images/PPCCImages/solution-tube-rfp.svg"));
 
-
         String[] tubeNames = {"Water Collection Jar", "\uD835\uDE0C. \uD835\uDE24\uD835\uDE30\uD835\uDE2D\uD835\uDE2A (EC1)", "\uD835\uDE0C. \uD835\uDE24\uD835\uDE30\uD835\uDE2D\uD835\uDE2A (EC2)", "Lysis Buffer (LyB)", "RFP Tube", "Super Tube", "Balancing Tube", "Elution Buffer (EB)", "Binding Buffer (BB)", "Wash Buffer (WB)", "Column Equilibration Buffer (CEB)",};
         double startX = TUBE_RACK_X + 3;
-        double tubeY = TUBE_RACK_Y -4;
+        double tubeY = TUBE_RACK_Y - 4;
 
         DraggableTube WaterJar = new DraggableTube("Water Collection Jar", WASTEJAR_X, WASTEJAR_Y, tubeImageMap.get("Water Collection Jar"));
         tubes.put("Water Collection Jar", WaterJar);
@@ -657,7 +656,7 @@ public class PPCClabworkspace {
 
         for (int i = 1; i < tubeNames.length; i++) {
             String tubeName = tubeNames[i];
-            double xPos = startX + ((i-1) * tubeSpacing);
+            double xPos = startX + ((i - 1) * tubeSpacing);
 
             DraggableTube tube = new DraggableTube(tubeName, xPos, tubeY, tubeImageMap.get(tubeName));
             tubes.put(tubeName, tube);
@@ -668,20 +667,16 @@ public class PPCClabworkspace {
     }
 
     private void createTipBoxes() {
-        // ORIGINAL TIP BOX CREATION with exact paths - P2, P20, P200, P1000
-        // P2 Tips
+
         createTipBoxImage("/Images/PPCCImages/tipboxes/P2-sm-close.svg", "P2", "/Images/PPCCImages/tipboxes/P2-sm-open.svg", TIP_BOX_P2_X, TIP_BOX_P2_Y);
         addTipBoxLabel("P2", TIP_BOX_P2_X, TIP_BOX_P2_Y - 20);
 
-        // P20 Tips
         createTipBoxImage("/Images/PPCCImages/tipboxes/P20-sm-close.svg", "P20", "/Images/PPCCImages/tipboxes/P20-sm-open.svg", TIP_BOX_P20_X, TIP_BOX_P20_Y);
         addTipBoxLabel("P20", TIP_BOX_P20_X, TIP_BOX_P20_Y - 20);
 
-        // P200 Tips
         createTipBoxImage("/Images/PPCCImages/tipboxes/P200-sm-close.svg", "P200", "/Images/PPCCImages/tipboxes/P200-sm-open.svg", TIP_BOX_P200_X, TIP_BOX_P200_Y);
         addTipBoxLabel("P200", TIP_BOX_P200_X, TIP_BOX_P200_Y - 20);
 
-        // P1000 Tips
         createTipBoxImage("/Images/PPCCImages/tipboxes/P1000-sm-close.svg", "P1000", "/Images/PPCCImages/tipboxes/P1000-sm-open.svg", TIP_BOX_P1000_X, TIP_BOX_P1000_Y);
         addTipBoxLabel("P1000", TIP_BOX_P1000_X, TIP_BOX_P1000_Y - 20);
     }
@@ -740,23 +735,19 @@ public class PPCClabworkspace {
         pipettes.put("P2", p2);
         labWorkspace.getChildren().add(p2.getView());
 
-
         DraggablePipette p20 = new DraggablePipette("P20", PIPETTE_STAND_X + 60, PIPETTE_STAND_Y, "/Images/PPCCImages/pipettes/P20-body.svg", "/Images/PPCCImages/pipettes/P20-bodywithtip.svg");
         pipettes.put("P20", p20);
         labWorkspace.getChildren().add(p20.getView());
 
-
         DraggablePipette p200 = new DraggablePipette("P200", PIPETTE_STAND_X + 95, PIPETTE_STAND_Y, "/Images/PPCCImages/pipettes/P200-body.svg", "/Images/PPCCImages/pipettes/P200-bodywithtip.svg");
         pipettes.put("P200", p200);
         labWorkspace.getChildren().add(p200.getView());
-
 
         DraggablePipette p1000 = new DraggablePipette("P1000", PIPETTE_STAND_X + 130, PIPETTE_STAND_Y, "/Images/PPCCImages/pipettes/P1000-body.svg", "/Images/PPCCImages/pipettes/P1000-bodywithtip.svg");
         pipettes.put("P1000", p1000);
         labWorkspace.getChildren().add(p1000.getView());
     }
 
-    // ========== MICROCENTRIFUGE ==========
     private void createMicrocentrifugeHoverButtons() {
         microcentrifugeHoverBox = new VBox(5);
         microcentrifugeHoverBox.setLayoutX(MICROCENTRIFUGE_X + 60);
@@ -769,7 +760,7 @@ public class PPCClabworkspace {
         openBtn.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 11));
         openBtn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; " + "-fx-cursor: hand; -fx-padding: 5px 15px;");
         openBtn.setOnAction(e -> {
-            // Check if trying to open while tubes inside and timer running
+
             if (!microcentrifugeOpen && !tubesInMicrocentrifuge.isEmpty() && microTimerRunning) {
                 showMessage("Cannot open microcentrifuge while timer is running!");
                 return;
@@ -856,15 +847,12 @@ public class PPCClabworkspace {
         mainBox.setPadding(new Insets(20));
         mainBox.setStyle("-fx-background-color: white;");
 
-        // Title
         Label titleLabel = new Label("Programming the microcentrifuge");
         titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 16));
 
-        // Description
         Label descLabel = new Label("A microcentrifuge is used to spin samples (typically in 1.5 mL tubes) at\n" + "high speeds. To spin your samples at a set speed and time, set the RPM and\n" + "time using the arrows and buttons. To quickly spin down your samples,\n" + "pressing the Pulse button will accelerates the rotor to the preset RPM\n" + "then promptly decelerates it.");
         descLabel.setFont(Font.font("DM Sans Medium", 11));
 
-        // Warning box
         VBox warningBox = new VBox(5);
         warningBox.setStyle("-fx-background-color: #FFF3CD; -fx-padding: 10px; -fx-border-color: #FFC107; -fx-border-width: 1px;");
         Label warningTitle = new Label("⚠ Double check");
@@ -878,11 +866,9 @@ public class PPCClabworkspace {
 
         warningBox.getChildren().addAll(warningTitle, warningText, balanceStatus);
 
-        // RPM and Timer controls
         HBox controlsBox = new HBox(20);
         controlsBox.setAlignment(Pos.CENTER);
 
-        // RPM Control
         VBox rpmBox = new VBox(10);
         rpmBox.setAlignment(Pos.CENTER);
         rpmBox.setStyle("-fx-background-color: #F5F5F5; -fx-padding: 15px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
@@ -898,7 +884,7 @@ public class PPCClabworkspace {
         rpmLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 36));
         rpmLabel.setTextFill(Color.WHITE);
 
-        rpmDisplayBox.getChildren().add(rpmLabel);  // Add label to display box
+        rpmDisplayBox.getChildren().add(rpmLabel);
 
         Button rpmUpBtn = new Button("▲");
         rpmUpBtn.setStyle("-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand;");
@@ -929,7 +915,6 @@ public class PPCClabworkspace {
 
         rpmBox.getChildren().addAll(rpmTitle, rpmControlRow, rpmUnitLabel);
 
-        // Timer Control (similar to water bath)
         VBox timerBox = new VBox(10);
         timerBox.setAlignment(Pos.CENTER);
         timerBox.setStyle("-fx-background-color: #F5F5F5; -fx-padding: 15px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
@@ -973,7 +958,6 @@ public class PPCClabworkspace {
         ssLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 10));
         unitLabels.getChildren().addAll(hhLabel, mmLabel, ssLabel);
 
-        // Timer increment/decrement buttons
         HBox timerControls = new HBox(15);
         timerControls.setAlignment(Pos.CENTER);
 
@@ -1027,7 +1011,6 @@ public class PPCClabworkspace {
 
         timerControls.getChildren().addAll(hourControls, minuteControls, secondControls);
 
-        // Start/Stop/Pulse buttons
         HBox timerButtonBox = new HBox(10);
         timerButtonBox.setAlignment(Pos.CENTER);
 
@@ -1073,7 +1056,6 @@ public class PPCClabworkspace {
 
         controlsBox.getChildren().addAll(rpmBox, timerBox);
 
-        // Back button
         Button backButton = new Button("← Back");
         backButton.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
         backButton.setStyle("-fx-background-color: #1976D2; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-cursor: hand;");
@@ -1081,14 +1063,13 @@ public class PPCClabworkspace {
 
         mainBox.getChildren().addAll(titleLabel, descLabel, warningBox, controlsBox, backButton);
 
-        // Update timer display periodically if timer is running
         Timeline timerUpdateTimeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             if (microTimerRunning) {
                 hourLabel.setText(String.format("%02d", microTimerHours));
                 minuteLabel.setText(String.format("%02d", microTimerMinutes));
                 secondLabel.setText(String.format("%02d", microTimerSeconds));
             }
-            // Update balance status
+
             balanceStatus.setText("Tube balanced: " + (tubesInMicrocentrifuge.size() % 2 == 0 ? "Yes ✓" : "No ❌"));
             balanceStatus.setStyle("-fx-background-color: " + (tubesInMicrocentrifuge.size() % 2 == 0 ? "#D4EDDA" : "#F8D7DA") + "; -fx-padding: 5px; -fx-background-radius: 5px;");
         }));
@@ -1107,15 +1088,15 @@ public class PPCClabworkspace {
 
         microTimerRunning = true;
         microTimerTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
-            // Decrement milliseconds (displayed as seconds)
+
             microTimerSeconds--;
             if (microTimerSeconds < 0) {
                 microTimerSeconds = 59;
-                // Decrement seconds (displayed as minutes)
+
                 microTimerMinutes--;
                 if (microTimerMinutes < 0) {
                     microTimerMinutes = 59;
-                    // Decrement minutes (displayed as hours)
+
                     microTimerHours--;
                     if (microTimerHours < 0) {
                         stopMicroTimer();
@@ -1151,7 +1132,6 @@ public class PPCClabworkspace {
         tubesInMicrocentrifuge.clear();
     }
 
-
     private class DraggablePipette {
         private Group pipetteGroup;
         private ImageView bodyView;
@@ -1168,13 +1148,11 @@ public class PPCClabworkspace {
         private String withTipWithSolutionPath;
         private String plungerPath;
 
-        // Volume settings
         private double currentVolume;
         private double minVolume;
         private double maxVolume;
         private Stage volumeDialog;
 
-        // Eject tip button (shown only when near trash)
         private Button ejectButton;
 
         DraggablePipette(String type, double x, double y, String noTipPath, String withTipPath) {
@@ -1188,7 +1166,6 @@ public class PPCClabworkspace {
             this.plungerPath = noTipPath.replace("-body.svg", "-plunger.svg");
             this.withTipWithSolutionPath = withTipPath.replace("-bodywithtip.svg", "-withsolution.svg");
 
-            // Set volume limits based on pipette type
             setVolumeLimits();
 
             createView();
@@ -1197,7 +1174,7 @@ public class PPCClabworkspace {
         private void setVolumeLimits() {
             switch (type) {
                 case "P2":
-                    minVolume = 0.2;  // 0.5 rounded to 1
+                    minVolume = 0.2;
                     maxVolume = 2;
                     currentVolume = 0.2;
                     break;
@@ -1220,58 +1197,50 @@ public class PPCClabworkspace {
         }
 
         private void createView() {
-            // Load body and plunger separately
+
             bodyView = SVGLoader.loadSVG(noTipImagePath, 30, 200);
             plungerView = SVGLoader.loadSVG(plungerPath, 20, 30);
 
-            // Position plunger at top
             plungerView.setLayoutX(5);
             plungerView.setLayoutY(3);
 
-            // Position body below plunger
             bodyView.setLayoutX(0);
             bodyView.setLayoutY(15);
 
-            // Create volume badge (initially hidden)
             String volumeText = (currentVolume == (int) currentVolume) ?
-                    (int)currentVolume + "μL" :
+                    (int) currentVolume + "μL" :
                     String.format("%.1f", currentVolume) + "μL";
             volumeBadge = new Label(volumeText);
             volumeBadge.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
             volumeBadge.setTextFill(Color.WHITE);
             volumeBadge.setStyle("-fx-background-color: #54BCE3; -fx-padding: 5px 10px; -fx-background-radius: 15px;");
-            volumeBadge.setLayoutX(-60);  // Left side of pipette
+            volumeBadge.setLayoutX(-60);
             volumeBadge.setLayoutY(100);
-            volumeBadge.setVisible(false);  // Hidden initially
+            volumeBadge.setVisible(false);
             volumeBadge.setCursor(Cursor.HAND);
 
-            // Volume badge click opens dialog
             volumeBadge.setOnMouseClicked(e -> {
                 openVolumeDialog();
                 e.consume();
             });
 
-            // Create eject tip button (initially hidden)
             ejectButton = new Button("Eject Tip");
             ejectButton.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 12));
             ejectButton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; " +
                     "-fx-padding: 8px 15px; -fx-background-radius: 15px; " +
                     "-fx-cursor: hand;");
-            ejectButton.setLayoutX(-70);  // Left side of pipette
-            ejectButton.setLayoutY(140);  // Below volume badge
-            ejectButton.setVisible(false);  // Hidden initially
+            ejectButton.setLayoutX(-70);
+            ejectButton.setLayoutY(140);
+            ejectButton.setVisible(false);
             ejectButton.setCursor(Cursor.HAND);
 
-            // Eject button click handler
             ejectButton.setOnAction(e -> {
                 ejectTip();
                 showMessage("Tip ejected from " + type + " pipette!");
-                ejectButton.setVisible(false);  // Hide button after ejecting
+                ejectButton.setVisible(false);
                 e.consume();
             });
 
-            // Create group with body, plunger, badge and eject button
-            // Name label — sits above plunger, moves with the pipette
             Label nameLabel = new Label(type);
             nameLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 11));
             nameLabel.setTextFill(Color.WHITE);
@@ -1283,7 +1252,7 @@ public class PPCClabworkspace {
                             "-fx-border-radius: 4;" +
                             "-fx-border-width: 1;"
             );
-            // Center above the pipette body (body width ~30px)
+
             nameLabel.setLayoutX(-5);
             nameLabel.setLayoutY(-22);
 
@@ -1297,9 +1266,8 @@ public class PPCClabworkspace {
             shadow.setRadius(5);
             pipetteGroup.setEffect(shadow);
 
-            // Only plunger double-clickable for solution draw/dispense
             plungerView.setOnMouseClicked(e -> {
-                if (e.getClickCount() == 2) { // Double click required
+                if (e.getClickCount() == 2) {
                     handlePlungerClick();
                 }
                 e.consume();
@@ -1317,15 +1285,12 @@ public class PPCClabworkspace {
                 pipetteGroup.setCursor(Cursor.MOVE);
                 pipetteGroup.toFront();
 
-                // Hide all other pipettes' volume badges
                 if (currentlyActivePipette != null && currentlyActivePipette != DraggablePipette.this) {
                     currentlyActivePipette.hideVolumeBadge();
                 }
 
-                // Set this pipette as currently active
                 currentlyActivePipette = DraggablePipette.this;
 
-                // Show volume badge when dragged from stand
                 if (!volumeBadge.isVisible()) {
                     volumeBadge.setVisible(true);
                 }
@@ -1339,7 +1304,6 @@ public class PPCClabworkspace {
                 pipetteGroup.setLayoutX(x);
                 pipetteGroup.setLayoutY(y);
 
-                // Show eject button only if trash is open, pipette is near trash, and has tip
                 if (hasTip && trashIsOpen && isInVerticalColumn(x, y, TRASH_X, TRASH_Y, 80)) {
                     ejectButton.setVisible(true);
                 } else {
@@ -1357,7 +1321,7 @@ public class PPCClabworkspace {
         }
 
         private void checkPipetteInteractions() {
-            // Get tip box position for this pipette type
+
             double tipBoxX = 0, tipBoxY = 0;
 
             switch (type) {
@@ -1379,7 +1343,6 @@ public class PPCClabworkspace {
                     break;
             }
 
-            // Check if in tip box vertical column and tip box is open and pipette doesn't have tip
             if (isInVerticalColumn(x, y, tipBoxX, tipBoxY, 80) &&
                     tipBoxStates.get(type) &&
                     !hasTip) {
@@ -1389,22 +1352,18 @@ public class PPCClabworkspace {
                 notifyStepComplete("2", "d");
             }
 
-            // Hide eject button when released (user can click it before releasing)
             if (!trashIsOpen || !isInVerticalColumn(x, y, TRASH_X, TRASH_Y, 80)) {
                 ejectButton.setVisible(false);
             }
 
-            // Check waste jar interaction for solution ejection
             if (hasTip && hasSolution && isNear(x, y, WASTEJAR_X, WASTEJAR_Y, 100)) {
                 ejectSolutionToWaste();
             }
 
-            // Check CColumn interaction for solution ejection (vertical position)
             if (hasTip && hasSolution && isInVerticalColumn(x, y, CCOLUMN_X, CCOLUMN_Y, 50)) {
                 ejectSolutionToColumn();
             }
 
-            // Check if near pipette stand to return
             if (isNear(x, y, initialX, initialY, 50)) {
                 returnToStand();
             }
@@ -1433,15 +1392,13 @@ public class PPCClabworkspace {
 
         private void ejectTip() {
             hasTip = false;
-            hasSolution = false; // Tip chole gele solution o chole jabe
+            hasSolution = false;
             updatePipetteImage();
         }
 
         private void updatePipetteImage() {
             String imagePath;
 
-            // Choose image based on tip and solution state
-            // Plunger stays same, only body changes
             if (hasTip && hasSolution) {
                 imagePath = withTipWithSolutionPath;
             } else if (hasTip && !hasSolution) {
@@ -1450,7 +1407,6 @@ public class PPCClabworkspace {
                 imagePath = noTipImagePath;
             }
 
-            // Update only body, plunger stays same
             ImageView newBody = SVGLoader.loadSVG(imagePath, 30, 200);
             newBody.setLayoutX(0);
             newBody.setLayoutY(15);
@@ -1460,14 +1416,12 @@ public class PPCClabworkspace {
             pipetteGroup.getChildren().add(0, bodyView);
         }
 
-
         private void handlePlungerClick() {
             if (!hasTip) {
                 showMessage("Attach a tip first before using pipette!");
                 return;
             }
 
-            // Check if pipette is over any tube
             String overTube = getTubeUnderPipette();
 
             if (overTube == null) {
@@ -1475,14 +1429,13 @@ public class PPCClabworkspace {
                 return;
             }
 
-            // Toggle solution state
             if (!hasSolution) {
-                // Draw solution
+
                 hasSolution = true;
                 updatePipetteImage();
                 showMessage("Solution drawn from " + overTube + " tube into " + type + " pipette!");
             } else {
-                // Dispense solution
+
                 hasSolution = false;
                 updatePipetteImage();
                 showMessage("Solution dispensed from " + type + " pipette into " + overTube + " tube!");
@@ -1490,12 +1443,12 @@ public class PPCClabworkspace {
         }
 
         private String getTubeUnderPipette() {
-            // Check if pipette is in vertical column above any tube
+
             for (Map.Entry<String, DraggableTube> entry : tubes.entrySet()) {
                 DraggableTube tube = entry.getValue();
-                // Use vertical column check (same X, pipette at or above tube)
+
                 if (isInVerticalColumn(x, y, tube.getX(), tube.getY(), 40)) {
-                    // Check if tube is open
+
                     TubeState state = tubeStates.get(entry.getKey());
                     if (state != null && state.isOpen) {
                         return entry.getKey();
@@ -1521,14 +1474,12 @@ public class PPCClabworkspace {
             mainBox.setPadding(new Insets(20));
             mainBox.setStyle("-fx-background-color: white;");
 
-            // Title section
             Label titleLabel = new Label("Turn the top to change the volume.");
             titleLabel.setFont(Font.font("DM Sans Medium", FontWeight.BOLD, 14));
             titleLabel.setTextFill(Color.WHITE);
             titleLabel.setStyle("-fx-background-color: #1a5f7a; -fx-padding: 10px;");
             titleLabel.setMaxWidth(Double.MAX_VALUE);
 
-            // Volume display and controls
             VBox volumeBox = new VBox(10);
             volumeBox.setPadding(new Insets(10));
             volumeBox.setStyle("-fx-border-color: #cccccc; -fx-border-width: 1px;");
@@ -1563,7 +1514,6 @@ public class PPCClabworkspace {
 
             volumeBox.getChildren().addAll(volumeLabel, volumeControlBox, resetButton);
 
-            // Tip check section
             VBox tipCheckBox = new VBox(10);
             tipCheckBox.setPadding(new Insets(10));
             tipCheckBox.setStyle("-fx-border-color: #cccccc; -fx-border-width: 1px; -fx-background-color: #f9f9f9;");
@@ -1581,18 +1531,17 @@ public class PPCClabworkspace {
 
             tipCheckBox.getChildren().addAll(warningLabel, tipWarningText, tipStatusLabel);
 
-            // Back button
             Button backButton = new Button("← Back");
             backButton.setStyle("-fx-background-color: white; -fx-text-fill: #1a5f7a; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-border-color: #1a5f7a; -fx-border-width: 2px;");
             backButton.setOnAction(e -> {
-                // Update volume from field
+
                 try {
                     double newVolume = Double.parseDouble(volumeField.getText());
                     if (newVolume >= minVolume && newVolume <= maxVolume) {
                         currentVolume = newVolume;
-                        // Format badge display
+
                         if (newVolume == (int) newVolume) {
-                            volumeBadge.setText((int)newVolume + "μL");
+                            volumeBadge.setText((int) newVolume + "μL");
                         } else {
                             volumeBadge.setText(String.format("%.1f", newVolume) + "μL");
                         }
@@ -1605,11 +1554,10 @@ public class PPCClabworkspace {
                 volumeDialog.close();
             });
 
-            // Plus button action
             plusButton.setOnAction(e -> {
                 try {
                     double vol = Double.parseDouble(volumeField.getText());
-                    // Increment based on pipette type
+
                     if (type.equals("P2")) {
                         vol += 0.2;
                     } else if (type.equals("P20")) {
@@ -1619,7 +1567,7 @@ public class PPCClabworkspace {
                     }
 
                     if (vol <= maxVolume) {
-                        // Format based on whether it has decimals
+
                         if (vol == (int) vol) {
                             volumeField.setText(String.valueOf((int) vol));
                         } else {
@@ -1631,11 +1579,10 @@ public class PPCClabworkspace {
                 }
             });
 
-            // Minus button action
             minusButton.setOnAction(e -> {
                 try {
                     double vol = Double.parseDouble(volumeField.getText());
-                    // Decrement based on pipette type
+
                     if (type.equals("P2")) {
                         vol -= 0.2;
                     } else if (type.equals("P20")) {
@@ -1645,7 +1592,7 @@ public class PPCClabworkspace {
                     }
 
                     if (vol >= minVolume) {
-                        // Format based on whether it has decimals
+
                         if (vol == (int) vol) {
                             volumeField.setText(String.valueOf((int) vol));
                         } else {
@@ -1679,10 +1626,9 @@ public class PPCClabworkspace {
             transition.play();
         }
 
-        // Helper method to hide volume badge
         private void hideVolumeBadge() {
             volumeBadge.setVisible(false);
-            ejectButton.setVisible(false);  // Also hide eject button
+            ejectButton.setVisible(false);
         }
 
         public Group getView() {
@@ -1716,13 +1662,12 @@ public class PPCClabworkspace {
         private VBox view;
         private String name;
         private double x, y;
-        private double initialX, initialY;  // Store initial position for freezer
-        private boolean isOpen = false;  // Initially CLOSED
+        private double initialX, initialY;
+        private boolean isOpen = false;
         private TubeImagePaths imagePaths;
 
-        // Rack attachment
         private boolean inRack = false;
-        private int rackPosition = -1;  // Position in rack (0, 1, 2)
+        private int rackPosition = -1;
         private double rackBaseX = 0;
         private double rackBaseY = 0;
 
@@ -1730,11 +1675,12 @@ public class PPCClabworkspace {
             this.name = name;
             this.x = x;
             this.y = y;
-            this.initialX = x;  // Store initial position
+            this.initialX = x;
             this.initialY = y;
             this.imagePaths = imagePaths;
             createView();
         }
+
         private void createView() {
             view = new VBox(2);
             view.setAlignment(Pos.CENTER);
@@ -1742,7 +1688,6 @@ public class PPCClabworkspace {
             view.setLayoutY(y);
             view.setCursor(Cursor.HAND);
 
-            // SET FIXED WIDTH for consistent spacing
             view.setMinWidth(60);
             view.setMaxWidth(60);
             view.setPrefWidth(60);
@@ -1761,36 +1706,29 @@ public class PPCClabworkspace {
                             "-fx-border-radius: 4;" +
                             "-fx-border-width: 1;"
             );
-            // Rotate vertically so it reads bottom-to-top
+
             label.setRotate(270);
 
-            // Label first (above), then image (below)
             view.getChildren().addAll(label, tubeImage);
 
             makeTubeDraggable();
         }
 
-
-
         private void toggleTube() {
-            // Toggle state
+
             isOpen = !isOpen;
 
-            // Update tube state
             TubeState state = tubeStates.get(name);
             if (state != null) {
                 state.isOpen = isOpen;
             }
 
-            // Choose appropriate image based on state
             String imagePath = isOpen ? imagePaths.openImagePath : imagePaths.closedImagePath;
 
-            // Update the image (index 1 because label is at index 0)
             ImageView newTubeImage = SVGLoader.loadSVG(imagePath, 50, 70);
             newTubeImage.setPreserveRatio(true);
             view.getChildren().set(1, newTubeImage);
 
-            // Notify controller based on tube state changes
             if (isOpen) {
                 switch (name) {
                     case "A+":
@@ -1811,19 +1749,18 @@ public class PPCClabworkspace {
 
         private void makeTubeDraggable() {
             final Delta dragDelta = new Delta();
-            final boolean[] isDragging = {false}; // Track if actually dragging
+            final boolean[] isDragging = {false};
 
             view.setOnMousePressed(e -> {
                 dragDelta.x = view.getLayoutX() - e.getSceneX();
                 dragDelta.y = view.getLayoutY() - e.getSceneY();
-                isDragging[0] = false; // Reset drag flag
+                isDragging[0] = false;
                 e.consume();
             });
 
             view.setOnMouseDragged(e -> {
-                isDragging[0] = true; // Mark as dragging
+                isDragging[0] = true;
                 view.setCursor(Cursor.MOVE);
-
 
                 x = e.getSceneX() + dragDelta.x;
                 y = e.getSceneY() + dragDelta.y;
@@ -1835,15 +1772,12 @@ public class PPCClabworkspace {
             view.setOnMouseReleased(e -> {
                 view.setCursor(Cursor.HAND);
 
-                // Only toggle if NOT dragging (pure click)
                 if (!isDragging[0] && e.getClickCount() == 1) {
                     toggleTube();
                 }
 
                 checkTubeInteractions();
 
-
-                // Check if near microcentrifuge to place inside
                 if (isNear(x, y, MICROCENTRIFUGE_X, MICROCENTRIFUGE_Y, 100) && microcentrifugeOpen) {
                     if (tubesInMicrocentrifuge.size() < 6) {
                         tubesInMicrocentrifuge.add(name);
@@ -1853,7 +1787,6 @@ public class PPCClabworkspace {
                         showMessage("Microcentrifuge is full (max 6 tubes)!");
                     }
                 }
-
 
                 e.consume();
             });
@@ -1883,7 +1816,6 @@ public class PPCClabworkspace {
             return y;
         }
 
-        // Rack attachment methods
         public void setInRack(boolean inRack, int position, double rackX, double rackY) {
             this.inRack = inRack;
             this.rackPosition = position;
@@ -1891,7 +1823,7 @@ public class PPCClabworkspace {
             this.rackBaseY = rackY;
 
             if (inRack) {
-                // Position tube in rack (spacing: 35 pixels between tubes)
+
                 x = rackX + 25 + (position * 35);
                 y = rackY + 15;
                 view.setLayoutX(x);
@@ -1904,7 +1836,6 @@ public class PPCClabworkspace {
             this.rackBaseX = rackX;
             this.rackBaseY = rackY;
 
-            // Update position
             x = rackX + 25 + (position * 35);
             y = rackY + 15;
             view.setLayoutX(x);
@@ -1923,27 +1854,25 @@ public class PPCClabworkspace {
         }
     }
 
-
-    // ========== HELPER METHODS ==========
     private boolean isNear(double x1, double y1, double x2, double y2, double threshold) {
         double distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         return distance < threshold;
     }
 
-    // Check if pipette is in vertical column above target (same X, any Y above)
     private boolean isInVerticalColumn(double pipetteX, double pipetteY, double targetX, double targetY, double xThreshold) {
-        // Check if X is within threshold
+
         boolean xMatch = Math.abs(pipetteX - targetX) < xThreshold;
-        // Check if pipette is at or above the target (Y <= targetY since Y increases downward)
+
         boolean yAbove = pipetteY <= targetY;
         return xMatch && yAbove;
     }
 
     private void notifyStepComplete(String step, String subStep) {
         if (controller != null) {
-            //controller.highlightNextInstruction(step, subStep);
+
         }
     }
+
     private class TubeState {
         String name;
         int volume;

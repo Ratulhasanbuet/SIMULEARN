@@ -14,7 +14,7 @@ import static com.example.simulearn.Information.DatabaseHelper.DB_PATH;
 
 public class chatServer {
 
-    // Thread-safe map of online clients
+
     private static Map<String, PrintWriter> clients = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws Exception {
@@ -43,10 +43,10 @@ public class chatServer {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 
-                //  Read username from client
+
                 username = in.readLine();
 
-                // Optional: validate username in DB here
+
                 if (username == null || username.isEmpty()) {
                     socket.close();
                     return;
@@ -99,7 +99,7 @@ public class chatServer {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                // Remove client on disconnect
+
                 if (username != null) {
                     clients.remove(username);
                     broadcastUserList();
@@ -107,11 +107,12 @@ public class chatServer {
                 }
                 try {
                     socket.close();
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
 
-        // Broadcast current online users to all clients
+
         private void broadcastUserList() {
             String userList = String.join(",", clients.keySet());
             for (PrintWriter pw : clients.values()) {

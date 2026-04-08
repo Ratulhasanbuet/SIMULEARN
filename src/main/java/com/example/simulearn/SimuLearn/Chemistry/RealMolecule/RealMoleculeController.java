@@ -32,7 +32,7 @@ public class RealMoleculeController implements Initializable {
     @FXML
     private void onBackButtonClicked(ActionEvent event) {
         try {
-            // Load FXML correctly
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/simulearn/chemistryMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -43,7 +43,6 @@ public class RealMoleculeController implements Initializable {
             System.out.println("Failed to open the window.");
         }
     }
-
 
     @FXML
     private VBox mainpanel;
@@ -64,7 +63,7 @@ public class RealMoleculeController implements Initializable {
 
     private Molecule molecule;
     private SubScene subscene;
-    private StackPane view3DContainer; // Container for 3D view and overlays
+    private StackPane view3DContainer;
 
     private Button btnContext, btnLaunch, btnReflection;
     private Button selectedButton = null;
@@ -72,16 +71,13 @@ public class RealMoleculeController implements Initializable {
     private ScrollPane scrollPane;
     private VBox buttonPanel;
 
-    // For geometry info updates
     private Label geometryInfoLabel;
     private Label bondAngleLabel;
     private Label electronGeometryLabel;
     private Label molecularGeometryLabel;
 
-    // Molecule selector dropdown
     private ComboBox<String> moleculeSelector;
 
-    // IMAGE PATHS - Replace these with your actual image file paths
     private static final String LINEAR_GEOMETRY_IMAGE = "/Images/RealMolecule/lineargeometry.jpg";
     private static final String TRIGONAL_PLANAR_IMAGE = "/Images/RealMolecule/trigonalplanar.jpg";
     private static final String TETRAHEDRAL_IMAGE = "/Images/RealMolecule/tetrahedralgeometry.jpg";
@@ -248,14 +244,13 @@ public class RealMoleculeController implements Initializable {
     }
 
     private void showContextMode() {
-        // Show scrollpane in mainpanel
+
         mainpanel.getChildren().clear();
         mainpanel.getChildren().add(scrollPane);
         scrollPane.setVisible(true);
         scrollPane.setManaged(true);
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
 
-        // Reset instruction panel to just buttons
         instruction.getChildren().clear();
         instruction.getChildren().add(buttonPanel);
 
@@ -263,7 +258,7 @@ public class RealMoleculeController implements Initializable {
     }
 
     private void showLaunchMode() {
-        // Hide scrollpane, show 3D view
+
         scrollPane.setVisible(false);
         scrollPane.setManaged(false);
 
@@ -276,7 +271,6 @@ public class RealMoleculeController implements Initializable {
         if (subscene != null) {
             view3DContainer.getChildren().add(subscene);
 
-            // Dynamically resize SubScene when container resizes
             view3DContainer.layoutBoundsProperty().addListener((obs, o, n) -> {
                 if (n.getWidth() > 1 && n.getHeight() > 1) {
                     subscene.setWidth(n.getWidth());
@@ -284,7 +278,6 @@ public class RealMoleculeController implements Initializable {
                 }
             });
 
-            // Mouse rotate (on viewport, not subscene)
             view3DContainer.setOnMousePressed(e -> {
                 anchorX = e.getSceneX();
                 anchorY = e.getSceneY();
@@ -296,7 +289,6 @@ public class RealMoleculeController implements Initializable {
                 rotateY.setAngle(anchorAngleY + (e.getSceneX() - anchorX) * 0.4);
             });
 
-            // Scroll zoom
             view3DContainer.setOnScroll(e ->
                     camera.setTranslateZ(Math.min(-80, camera.getTranslateZ() + e.getDeltaY() * 1.2))
             );
@@ -304,7 +296,6 @@ public class RealMoleculeController implements Initializable {
 
         mainpanel.getChildren().add(view3DContainer);
 
-        // REPLACE instruction panel with controls
         createLaunchControlPanel();
     }
 
@@ -322,13 +313,11 @@ public class RealMoleculeController implements Initializable {
     }
 
     private void createLaunchControlPanel() {
-        // CLEAR and REBUILD instruction panel
+
         instruction.getChildren().clear();
 
-        // Add button panel first
         instruction.getChildren().add(buttonPanel);
 
-        // Molecule Selector Panel
         VBox moleculeSelectorPanel = createControlPanel("Select Molecule");
 
         moleculeSelector = new ComboBox<>();
@@ -362,7 +351,6 @@ public class RealMoleculeController implements Initializable {
 
         moleculeSelectorPanel.getChildren().add(moleculeSelector);
 
-        // Bonding Panel
         VBox bondingPanel = createControlPanel("Bonding");
 
         VBox bondsContainer = new VBox(8);
@@ -374,7 +362,6 @@ public class RealMoleculeController implements Initializable {
         bondsContainer.getChildren().addAll(singleBondBtn, doubleBondBtn, tripleBondBtn);
         bondingPanel.getChildren().add(bondsContainer);
 
-        // Lone Pair Panel
         VBox lonePairPanel = createControlPanel("Lone Pair");
 
         Button lpButton = new Button();
@@ -384,7 +371,6 @@ public class RealMoleculeController implements Initializable {
         lpContent.setAlignment(Pos.CENTER_LEFT);
         lpContent.setPadding(new Insets(12, 15, 12, 15));
 
-        // Lone pair visual
         StackPane lpVisual = new StackPane();
         lpVisual.setPrefSize(50, 30);
 
@@ -413,14 +399,12 @@ public class RealMoleculeController implements Initializable {
                         "-fx-border-radius: 8;" +
                         "-fx-cursor: hand;");
 
-        // Add click action to directly add lone pair
         lpButton.setOnAction(e -> {
             molecule.addLonePair();
             updateMolecule();
             System.out.println("Added lone pair");
         });
 
-        // Hover effects
         lpButton.setOnMouseEntered(e -> {
             lpButton.setStyle(
                     "-fx-background-color: #0d3436;" +
@@ -443,7 +427,6 @@ public class RealMoleculeController implements Initializable {
 
         lonePairPanel.getChildren().add(lpButton);
 
-        // Remove All Button
         Button removeAllBtn = new Button("Remove All");
         removeAllBtn.setMaxWidth(Double.MAX_VALUE);
         removeAllBtn.setFont(Font.font("Segoe UI", FontWeight.BOLD, 13));
@@ -460,7 +443,6 @@ public class RealMoleculeController implements Initializable {
         removeAllBtn.setOnMouseEntered(e -> removeAllBtn.setOpacity(0.85));
         removeAllBtn.setOnMouseExited(e -> removeAllBtn.setOpacity(1.0));
 
-        // Remove Last Button
         Button removeLastBtn = new Button("Remove Last");
         removeLastBtn.setFont(Font.font("Segoe UI", FontWeight.BOLD, 13));
         removeLastBtn.setMaxWidth(Double.MAX_VALUE);
@@ -477,7 +459,6 @@ public class RealMoleculeController implements Initializable {
         removeLastBtn.setOnMouseEntered(e -> removeLastBtn.setOpacity(0.85));
         removeLastBtn.setOnMouseExited(e -> removeLastBtn.setOpacity(1.0));
 
-        // Reset View button
         Button resetViewBtn = new Button("⟳  Reset View");
         resetViewBtn.setMaxWidth(Double.MAX_VALUE);
         resetViewBtn.setFont(Font.font("Segoe UI", FontWeight.BOLD, 13));
@@ -495,7 +476,6 @@ public class RealMoleculeController implements Initializable {
         resetViewBtn.setOnMouseEntered(e -> resetViewBtn.setOpacity(0.85));
         resetViewBtn.setOnMouseExited(e -> resetViewBtn.setOpacity(1.0));
 
-        // Options Panel
         VBox optionsPanel = createControlPanel("Options");
 
         CheckBox showLpCheck = new CheckBox("Show Lone Pairs");
@@ -520,7 +500,6 @@ public class RealMoleculeController implements Initializable {
         optionsBox.setPadding(new Insets(5));
         optionsPanel.getChildren().add(optionsBox);
 
-        // Name Panel (Electron/Molecule Geometry)
         VBox namePanel = createControlPanel("Name");
 
         HBox nameBox = new HBox(15);
@@ -529,7 +508,6 @@ public class RealMoleculeController implements Initializable {
         nameBox.setStyle(
                 "-fx-background-color: transparent;");
 
-        // Create VBox for geometry labels
         VBox geomLabels = new VBox(12);
         geomLabels.setPadding(new Insets(8, 12, 8, 12));
         geomLabels.setStyle(
@@ -539,7 +517,6 @@ public class RealMoleculeController implements Initializable {
                         "-fx-border-width: 1;" +
                         "-fx-border-radius: 8;");
 
-        // Electron Geometry Label
         VBox electronBox = new VBox(4);
         Label electronTitle = new Label("Electron Geometry");
         electronTitle.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 11));
@@ -552,7 +529,6 @@ public class RealMoleculeController implements Initializable {
 
         electronBox.getChildren().addAll(electronTitle, electronGeometryLabel);
 
-        // Molecular Geometry Label
         VBox molecularBox = new VBox(4);
         Label molecularTitle = new Label("Molecule Geometry");
         molecularTitle.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 11));
@@ -569,7 +545,6 @@ public class RealMoleculeController implements Initializable {
         nameBox.getChildren().add(geomLabels);
         namePanel.getChildren().add(nameBox);
 
-        // Geometry Info Display
         VBox infoDisplay = new VBox(8);
         infoDisplay.setPadding(new Insets(10));
         infoDisplay.setStyle(
@@ -591,7 +566,6 @@ public class RealMoleculeController implements Initializable {
 
         infoDisplay.getChildren().addAll(geometryInfoLabel, bondAngleLabel);
 
-        // Add all to instruction panel
         instruction.getChildren().addAll(
                 moleculeSelectorPanel,
                 bondingPanel,
@@ -638,7 +612,6 @@ public class RealMoleculeController implements Initializable {
         content.setAlignment(Pos.CENTER_LEFT);
         content.setPadding(new Insets(12, 15, 12, 15));
 
-        // Bond visual
         int bondCount = label.equals("Single") ? 1 : label.equals("Double") ? 2 : 3;
         StackPane bondVisual = new StackPane();
         bondVisual.setPrefSize(60, 30);
@@ -676,14 +649,12 @@ public class RealMoleculeController implements Initializable {
                         "-fx-border-radius: 8;" +
                         "-fx-cursor: hand;");
 
-        // Add click action to directly add atom with this bond type
         button.setOnAction(e -> {
             molecule.addAtom("H", bondType);
             updateMolecule();
             System.out.println("Added H atom with " + label.toLowerCase() + " bond (type " + bondType + ")");
         });
 
-        // Hover effects
         button.setOnMouseEntered(e -> {
             button.setStyle(
                     "-fx-background-color: #0d3436;" +
@@ -725,7 +696,6 @@ public class RealMoleculeController implements Initializable {
         underline.setStyle("-fx-background-color: #0d7377;");
         underline.setPrefHeight(3);
 
-        // Introduction paragraph
         Label introText = new Label(
                 "When we look at Lewis structures, we are only seeing a two-dimensional picture. To get the full picture of "
                         +
@@ -745,20 +715,17 @@ public class RealMoleculeController implements Initializable {
         introText.setLineSpacing(3);
         introText.setStyle("-fx-text-fill: #333333;");
 
-        // Linear Geometry Section
         Label linearHeading = new Label("Linear Geometry");
         linearHeading.setFont(Font.font("Segoe UI", FontWeight.BOLD, 20));
         linearHeading.setStyle("-fx-text-fill: #000000;");
         linearHeading.setPadding(new Insets(20, 0, 10, 0));
 
-        // Try to load linear geometry image
         VBox linearImageBox = createImageBox(LINEAR_GEOMETRY_IMAGE,
                 "Figure 5-12. Linear Geometry\n" +
                         "In carbon dioxide, there is a central atom with two repelling regions of electron density (the electrons in "
                         +
                         "the bonds). This forms a bond angle of 180°.");
 
-        // VSEPR Theory Section
         Label vseprHeading = new Label("Valence Shell Electron Pair Repulsion Theory");
         vseprHeading.setFont(Font.font("Segoe UI", FontWeight.BOLD, 20));
         vseprHeading.setStyle("-fx-text-fill: #000000;");
@@ -795,7 +762,6 @@ public class RealMoleculeController implements Initializable {
         vseprText.setLineSpacing(3);
         vseprText.setStyle("-fx-text-fill: #333333;");
 
-        // Trigonal Planar Section
         Label trigonalHeading = new Label("Trigonal Planar Geometry");
         trigonalHeading.setFont(Font.font("Segoe UI", FontWeight.BOLD, 20));
         trigonalHeading.setStyle("-fx-text-fill: #000000;");
@@ -817,7 +783,6 @@ public class RealMoleculeController implements Initializable {
         trigonalText.setLineSpacing(3);
         trigonalText.setStyle("-fx-text-fill: #333333;");
 
-        // Tetrahedral Section
         Label tetrahedralHeading = new Label("Tetrahedral Geometry");
         tetrahedralHeading.setFont(Font.font("Segoe UI", FontWeight.BOLD, 20));
         tetrahedralHeading.setStyle("-fx-text-fill: #000000;");
@@ -842,7 +807,6 @@ public class RealMoleculeController implements Initializable {
         tetrahedralText.setLineSpacing(3);
         tetrahedralText.setStyle("-fx-text-fill: #333333;");
 
-        // Molecular Geometry vs Electron Geometry
         Label molecularHeading = new Label("Molecular Geometry: Accounting for Lone Pairs");
         molecularHeading.setFont(Font.font("Segoe UI", FontWeight.BOLD, 20));
         molecularHeading.setStyle("-fx-text-fill: #000000;");
@@ -895,23 +859,21 @@ public class RealMoleculeController implements Initializable {
                         "-fx-border-radius: 8;" +
                         "-fx-background-radius: 8;");
 
-        ImageView image= new ImageView(getClass().getResource(imageFilePath).toExternalForm());
+        ImageView image = new ImageView(getClass().getResource(imageFilePath).toExternalForm());
 
-        // Image container with styling
         StackPane imageContainer = new StackPane(image);
         imageContainer.setStyle("-fx-background-color: white;" + "-fx-border-color: #d0d0d0;" + "-fx-border-width: 1;" + "-fx-border-radius: 9;" + "-fx-background-radius: 5;" + "-fx-padding: 10;" + "-fx-effect: dropshadow(three-pass-box, rgba(60, 64, 67, 0.3), 15, 0, 0, 6);");
         imageContainer.setMaxWidth(600);
         imageContainer.setPrefHeight(300);
         imageContainer.setPadding(new Insets(10, 0, 10, 0));
 
-        // Add caption
         Label captionLabel = new Label(caption);
         captionLabel.setWrapText(true);
         captionLabel.setMaxWidth(600);
         captionLabel.setFont(Font.font("Segoe UI", 13));
         captionLabel.setStyle("-fx-text-fill: #666666;");
         captionLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        imageBox.getChildren().addAll(imageContainer,captionLabel);
+        imageBox.getChildren().addAll(imageContainer, captionLabel);
 
         return imageBox;
     }
@@ -1036,7 +998,7 @@ public class RealMoleculeController implements Initializable {
 
             drawBond(Point3D.ZERO, pos, bondType);
 
-            Sphere atomSphere = new Sphere(9); // Smaller atoms
+            Sphere atomSphere = new Sphere(9);
             PhongMaterial atomMat = new PhongMaterial(getAtomColor(atom));
             atomMat.setSpecularColor(Color.WHITE);
             atomSphere.setMaterial(atomMat);
@@ -1045,7 +1007,6 @@ public class RealMoleculeController implements Initializable {
             atomSphere.setTranslateZ(pos.getZ());
             moleculeGroup.getChildren().add(atomSphere);
 
-            // Show bond angle arc if enabled and we have at least 2 bonds
             if (showBondAngles && i > 0 && molecule.bondedAtoms.size() >= 2) {
                 Point3D prevPos = positions[i - 1];
                 double angle = calculateBondAngle(prevPos, Point3D.ZERO, pos);
@@ -1100,8 +1061,8 @@ public class RealMoleculeController implements Initializable {
             bond.setTranslateZ(mid.getZ());
 
             if (bondType > 1) {
-                double offset = (i - (bondType - 1) / 2.0) * 5; // Increased spacing
-                // Better perpendicular calculation that works in 3D
+                double offset = (i - (bondType - 1) / 2.0) * 5;
+
                 Point3D arbitrary = Math.abs(direction.getY()) < 0.9 ? new Point3D(0, 1, 0) : new Point3D(1, 0, 0);
                 Point3D perpendicular = direction.normalize().crossProduct(arbitrary).normalize();
                 bond.setTranslateX(bond.getTranslateX() + perpendicular.getX() * offset);
@@ -1130,36 +1091,31 @@ public class RealMoleculeController implements Initializable {
     }
 
     private void drawBondAngleArc(Point3D p1, Point3D center, Point3D p2, double angle) {
-        // Draw red arc between two bonds
+
         Point3D v1 = p1.subtract(center).normalize();
         Point3D v2 = p2.subtract(center).normalize();
 
-        double arcRadius = 25; // Radius of the arc
-        int segments = 30; // More segments for smoother arc
+        double arcRadius = 25;
+        int segments = 30;
 
-        // Calculate rotation axis (perpendicular to both vectors)
         Point3D axis = v1.crossProduct(v2).normalize();
 
         if (axis.magnitude() < 0.001)
-            return; // Vectors are parallel
+            return;
 
-        // Create arc using small cylinders
         for (int i = 0; i < segments; i++) {
             double t1 = (double) i / segments;
             double t2 = (double) (i + 1) / segments;
 
-            // Interpolate between v1 and v2
             Point3D dir1 = rotateVector(v1, axis, angle * t1).multiply(arcRadius);
             Point3D dir2 = rotateVector(v1, axis, angle * t2).multiply(arcRadius);
 
-            // Draw small cylinder segment
             Point3D start = center.add(dir1);
             Point3D end = center.add(dir2);
 
             drawArcSegment(start, end);
         }
 
-        // No text label needed - angle info shown in side panel
     }
 
     private void drawArcSegment(Point3D start, Point3D end) {
@@ -1170,7 +1126,7 @@ public class RealMoleculeController implements Initializable {
             return;
 
         Cylinder segment = new Cylinder(1, length);
-        PhongMaterial mat = new PhongMaterial(Color.web("#ff6b6b")); // Red color
+        PhongMaterial mat = new PhongMaterial(Color.web("#ff6b6b"));
         segment.setMaterial(mat);
 
         Point3D mid = start.midpoint(end);
@@ -1178,7 +1134,6 @@ public class RealMoleculeController implements Initializable {
         segment.setTranslateY(mid.getY());
         segment.setTranslateZ(mid.getZ());
 
-        // Rotate segment to align with direction
         Point3D yAxis = new Point3D(0, 1, 0);
         Point3D axis = yAxis.crossProduct(direction.normalize());
         double angle = Math.acos(yAxis.dotProduct(direction.normalize()));
@@ -1234,17 +1189,14 @@ public class RealMoleculeController implements Initializable {
     private void updateGeometryInfo() {
         VSEPRGeometry geometry = molecule.getGeometry();
 
-        // Update electron geometry label
         if (electronGeometryLabel != null) {
             electronGeometryLabel.setText(geometry.electronGeometry);
         }
 
-        // Update molecular geometry label
         if (molecularGeometryLabel != null) {
             molecularGeometryLabel.setText(geometry.name);
         }
 
-        // Keep old label for compatibility (if still used elsewhere)
         if (geometryInfoLabel != null) {
             String shapeName = geometry.name;
             shapeName = shapeName.replaceAll("\\s*\\([^)]*\\)", "");
@@ -1261,7 +1213,7 @@ public class RealMoleculeController implements Initializable {
 
         switch (selection) {
             case "H₂O - Water":
-                // 2 H atoms with single bonds, 2 lone pairs
+
                 molecule.addAtom("H", 1);
                 molecule.addAtom("H", 1);
                 molecule.addLonePair();
@@ -1269,13 +1221,13 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "CO₂ - Carbon Dioxide":
-                // 2 O atoms with double bonds (linear)
+
                 molecule.addAtom("O", 2);
                 molecule.addAtom("O", 2);
                 break;
 
             case "NH₃ - Ammonia":
-                // 3 H atoms with single bonds, 1 lone pair
+
                 molecule.addAtom("H", 1);
                 molecule.addAtom("H", 1);
                 molecule.addAtom("H", 1);
@@ -1283,7 +1235,7 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "CH₄ - Methane":
-                // 4 H atoms with single bonds (tetrahedral)
+
                 molecule.addAtom("H", 1);
                 molecule.addAtom("H", 1);
                 molecule.addAtom("H", 1);
@@ -1291,14 +1243,14 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "BF₃ - Boron Trifluoride":
-                // 3 F atoms with single bonds (trigonal planar)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 break;
 
             case "SF₆ - Sulfur Hexafluoride":
-                // 6 F atoms with single bonds (octahedral)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
@@ -1308,14 +1260,14 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "SO₂ - Sulfur Dioxide":
-                // 2 O atoms with double bonds, 1 lone pair (bent)
+
                 molecule.addAtom("O", 2);
                 molecule.addAtom("O", 2);
                 molecule.addLonePair();
                 break;
 
             case "XeF₂ - Xenon Difluoride":
-                // 2 F atoms with single bonds, 3 lone pairs (linear from trigonal bipyramidal)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addLonePair();
@@ -1324,7 +1276,7 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "ClF₃ - Chlorine Trifluoride":
-                // 3 F atoms with single bonds, 2 lone pairs (T-shaped)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
@@ -1333,7 +1285,7 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "XeF₄ - Xenon Tetrafluoride":
-                // 4 F atoms with single bonds, 2 lone pairs (square planar)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
@@ -1343,7 +1295,7 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "BrF₅ - Bromine Pentafluoride":
-                // 5 F atoms with single bonds, 1 lone pair (square pyramidal)
+
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
                 molecule.addAtom("F", 1);
@@ -1353,7 +1305,7 @@ public class RealMoleculeController implements Initializable {
                 break;
 
             case "PCl₅ - Phosphorus Pentachloride":
-                // 5 Cl atoms with single bonds (trigonal bipyramidal)
+
                 molecule.addAtom("Cl", 1);
                 molecule.addAtom("Cl", 1);
                 molecule.addAtom("Cl", 1);

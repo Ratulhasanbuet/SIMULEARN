@@ -5,18 +5,12 @@ import com.example.simulearn.Session;
 import java.io.*;
 import java.util.Properties;
 
-/**
- * Handles the current login session and persists the
- * "Remember Me" token to a local file so the user stays
- * logged in between app restarts.
- */
 public class SessionManager {
 
     private static final String TOKEN_FILE =
             System.getProperty("user.home") + File.separator +
                     ".simulearn" + File.separator + "remember.properties";
 
-    // ── In-memory current user ────────────────────────────
     private static String currentUser = null;
 
     public static void setCurrentUser(String username) {
@@ -40,7 +34,6 @@ public class SessionManager {
         currentUser = null;
     }
 
-    // ── Remember-Me token persistence ─────────────────────
     public static void saveToken(String token) {
         try {
             File f = new File(TOKEN_FILE);
@@ -71,11 +64,6 @@ public class SessionManager {
         new File(TOKEN_FILE).delete();
     }
 
-    /**
-     * Call this at app startup — auto-logs in if a valid
-     * remember-me token exists on disk.
-     * Returns the username if auto-login succeeded, else null.
-     */
     public static String tryAutoLogin() {
 
         String token = loadToken();
@@ -83,16 +71,13 @@ public class SessionManager {
         String username = DatabaseHelper.getUserFromToken(token);
         if (username != null) {
             setCurrentUser(username);
-            Session.username=username;
+            Session.username = username;
         } else {
-            clearToken(); // stale token
+            clearToken();
         }
         return username;
     }
 
-    /**
-     * Generate a simple unique token
-     */
     public static String generateToken() {
         return java.util.UUID.randomUUID().toString();
     }

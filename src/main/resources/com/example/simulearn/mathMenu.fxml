@@ -14,10 +14,8 @@
             <content>
 
                 <VBox spacing="0" styleClass="page-root">
-                    <!-- ══════ NAVBAR ══════ -->
                     <HBox alignment="CENTER_LEFT" spacing="0" styleClass="navbar">
 
-                        <!-- Brand -->
                         <HBox alignment="CENTER_LEFT" spacing="12">
                             <FontIcon iconLiteral="mdi2d-dna" styleClass="brand-icon" />
                             <Label styleClass="brand-name" text="SimuLearn" />
@@ -25,7 +23,6 @@
 
                         <Region HBox.hgrow="ALWAYS" />
 
-                        <!-- ── Logged-OUT state (visible by default) ── -->
                         <HBox fx:id="loggedOutBox" alignment="CENTER" spacing="6">
                             <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" styleClass="nav-btn" text="Home" />
                             <Button mnemonicParsing="false" onAction="#about" styleClass="nav-btn" text="About" />
@@ -33,12 +30,10 @@
                             <Button mnemonicParsing="false" onAction="#exit" styleClass="nav-btn-exit" text="Exit" />
                         </HBox>
 
-                        <!-- ── Logged-IN state (hidden until login) ── -->
                         <HBox fx:id="loggedInBox" alignment="CENTER" managed="false" spacing="10" visible="false">
                             <Button mnemonicParsing="false" onAction="#onHomeButtonClicked" styleClass="nav-btn" text="Home" />
                             <Button mnemonicParsing="false" onAction="#about" styleClass="nav-btn" text="About" />
 
-                            <!-- User avatar chip -->
                             <HBox alignment="CENTER" spacing="10" styleClass="user-chip">
                                 <Label fx:id="userAvatarLabel" styleClass="user-avatar" text="U" />
                                 <VBox alignment="CENTER_LEFT" spacing="1">
@@ -56,7 +51,6 @@
                         </HBox.margin>
                     </HBox>
 
-                    <!-- ══════ PAGE HEADER ══════ -->
                     <VBox alignment="CENTER" spacing="12" styleClass="page-header">
 
                         <Label styleClass="hero-badge" text="📐   Mathematics Simulations" />
@@ -68,7 +62,6 @@
 
                     </VBox>
 
-                    <!-- ══════ SIMULATION CARDS ══════ -->
                     <VBox alignment="CENTER" spacing="14" styleClass="cards-section">
 
                         <Label styleClass="section-title" text="Choose a Simulation" />
@@ -76,11 +69,9 @@
 
                         <HBox alignment="CENTER" spacing="40" styleClass="cards-row">
 
-                            <!-- Card 1 — Vector (already exists) -->
                             <Button mnemonicParsing="false" onAction="#vectorClicked" styleClass="sim-card">
                                 <graphic>
                                     <VBox alignment="CENTER" prefHeight="548.0" prefWidth="362.0" spacing="16" styleClass="sim-card-inner">
-                                        <!-- TODO: replace emoji with ImageView when image is ready -->
                                         <ImageView fitHeight="304.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../Images/Vector Addition and Subtraction - visual selection.png" />
@@ -95,18 +86,15 @@
                                 </graphic>
                             </Button>
 
-                            <!-- Card 2 — Placeholder (add onAction + image later) -->
                             <Button mnemonicParsing="false" onAction="#eulerClicked" styleClass="sim-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
-                                        <!-- TODO: replace emoji with ImageView when image is ready -->
                                         <ImageView fitHeight="304.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../Images/Planar Graph Simulation - visual selection.png" />
                                             </image>
                                         </ImageView>
                                         <VBox alignment="CENTER" spacing="6">
-                                            <!-- TODO: update title and description -->
                                             <Label styleClass="sim-card-title" text="Planar Graph" />
                                             <Label maxWidth="300" styleClass="sim-card-desc" text="" wrapText="true" />
                                             <Label styleClass="sim-card-tag-dna" text="Data structure" />
@@ -115,7 +103,6 @@
                                 </graphic>
                             </Button>
 
-                            <!-- Card 3 — Placeholder (add onAction + image later) -->
                             <Button mnemonicParsing="false" onAction="#HistogramClicked" styleClass="sim-card">
                                 <graphic>
                                     <VBox alignment="CENTER" spacing="16" styleClass="sim-card-inner">
@@ -138,7 +125,6 @@
                         </HBox>
                     </VBox>
 
-                    <!-- ══════ FOOTER ══════ -->
                     <HBox alignment="CENTER" styleClass="footer">
                         <Label styleClass="footer-text" text="© 2025 SimuLearn  •  Made with ❤️ for curious minds" />
                     </HBox>

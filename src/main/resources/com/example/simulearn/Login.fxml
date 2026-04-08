@@ -15,17 +15,15 @@
 
     <children>
 
-        <!-- Full page split layout -->
+
         <HBox prefHeight="1080" prefWidth="1920" spacing="0">
 
-            <!-- ══ LEFT PANEL — Branding ══ -->
             <VBox alignment="CENTER" prefHeight="1080" prefWidth="860" spacing="30" styleClass="auth-left-panel">
 
                 <Label styleClass="auth-brand-icon" text="🌿" />
                 <Label styleClass="auth-brand-name" text="SimuLearn" />
                 <Label maxWidth="500" styleClass="auth-brand-tagline" text="Your virtual science laboratory. Explore. Simulate. Understand." wrapText="true" />
 
-                <!-- Decorative subject pills -->
                 <VBox alignment="CENTER" spacing="14">
                     <HBox alignment="CENTER" spacing="14">
                         <Label styleClass="auth-pill-physics" text="⚡  Physics" />
@@ -41,54 +39,52 @@
 
             </VBox>
 
-            <!-- ══ RIGHT PANEL — Login Form ══ -->
+
             <VBox alignment="CENTER" styleClass="auth-right-panel" HBox.hgrow="ALWAYS">
 
                 <VBox alignment="CENTER" spacing="0" styleClass="auth-card">
 
-                    <!-- Header -->
+
                     <Label styleClass="auth-card-title" text="Welcome back" />
                     <Label styleClass="auth-card-subtitle" text="Sign in to your SimuLearn account" />
 
                     <VBox spacing="20" styleClass="auth-form">
 
-                        <!-- Username / Email -->
+
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Username or Email" />
                             <TextField fx:id="usernameField" promptText="Enter your username or email" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Password -->
                         <VBox spacing="6">
                             <Label styleClass="auth-field-label" text="Password" />
                             <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="auth-input" />
                         </VBox>
 
-                        <!-- Remember Me -->
+
                         <HBox alignment="CENTER_LEFT" spacing="10">
                             <CheckBox fx:id="rememberMe" styleClass="auth-checkbox" text="Remember me" />
                         </HBox>
 
-                        <!-- Error label -->
+
                         <Label fx:id="errorLabel" maxWidth="360" styleClass="auth-error" text="" wrapText="true" />
 
-                        <!-- Login Button -->
+
                         <Button mnemonicParsing="false" onAction="#handleLogin" styleClass="btn-glow-green" text="Sign In →" />
 
-                        <!-- Divider -->
+
                         <HBox alignment="CENTER" spacing="12" styleClass="auth-divider-row">
                             <Region styleClass="auth-divider-line" HBox.hgrow="ALWAYS" />
                             <Label styleClass="auth-divider-text" text="or" />
                             <Region styleClass="auth-divider-line" HBox.hgrow="ALWAYS" />
                         </HBox>
 
-                        <!-- Go to Sign Up -->
+
                         <HBox alignment="CENTER" spacing="6">
                             <Label styleClass="auth-switch-text" text="Don't have an account?" />
                             <Hyperlink fx:id="goToSignUp" onAction="#openSignUp" styleClass="auth-link" text="Create one" />
                         </HBox>
 
-                        <!-- Back to Home -->
                         <HBox alignment="CENTER">
                             <Hyperlink onAction="#goHome" styleClass="auth-link-muted" text="← Back to Home" />
                         </HBox>

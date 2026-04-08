@@ -1,5 +1,3 @@
-
-
 package com.example.simulearn.SimuLearn.Chemistry.RealMolecule;
 
 import com.example.simulearn.SimuLearn.Chemistry.VSEPRCalculator;
@@ -14,7 +12,6 @@ public class Molecule {
     List<Integer> bondTypes = new ArrayList<>();
     int lonePairs = 0;
 
-    // Track the order of additions: "atom" or "lonepair"
     private List<String> additionOrder = new ArrayList<>();
 
     void setCentralAtom(String atom) {
@@ -34,19 +31,19 @@ public class Molecule {
 
     void removeLast() {
         if (additionOrder.isEmpty()) {
-            return; // Nothing to remove
+            return;
         }
 
         String lastAddition = additionOrder.remove(additionOrder.size() - 1);
 
         if (lastAddition.equals("atom")) {
-            // Remove last atom
+
             if (!bondedAtoms.isEmpty()) {
                 bondedAtoms.remove(bondedAtoms.size() - 1);
                 bondTypes.remove(bondTypes.size() - 1);
             }
         } else if (lastAddition.equals("lonepair")) {
-            // Remove last lone pair
+
             if (lonePairs > 0) {
                 lonePairs--;
             }

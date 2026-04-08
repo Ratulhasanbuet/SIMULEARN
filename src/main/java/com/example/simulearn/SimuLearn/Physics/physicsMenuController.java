@@ -40,7 +40,6 @@ public class physicsMenuController {
         }
     }
 
-
     @FXML
     void onHomeButtonClicked(ActionEvent event) {
         try {
@@ -103,7 +102,6 @@ public class physicsMenuController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     void onBuoyancyClick(ActionEvent event) {
